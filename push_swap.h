@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 10:49:39 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/26 12:06:32 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/26 11:55:43 by rcollet           #+#    #+#             */
+/*   Updated: 2026/05/26 12:45:23 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-typedef struct s_stack_frame {
-	int						val;
-	struct s_stack_frame	*next;
-	struct s_stack_frame	*prev;
-}	t_stack_frame;
+typedef struct s_interface
+{
+	t_stack	*a;
+	t_stack	*b;
+}	t_interface;
 
-typedef struct s_stack {
-	t_stack_frame	*head;
-	t_stack_frame	*tail;
-}	t_stack;
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scan_stack_0.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 12:37:13 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/27 11:57:26 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/05/27 12:57:57 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/27 12:58:58 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 	- works with any node, checks in both direction if it finds duplicates 
 	- O(n)
 */
+
 int	lxy_has_duplicate_values(t_stack_frame *node)
 {
 	t_stack_frame	*ptr;

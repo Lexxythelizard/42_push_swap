@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 10:49:39 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/26 12:06:32 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/05/27 12:50:55 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,5 @@ typedef struct s_stack {
 	t_stack_frame	*head;
 	t_stack_frame	*tail;
 }	t_stack;
+
+#endif

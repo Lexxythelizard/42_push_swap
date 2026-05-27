@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 13:25:59 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/27 13:59:13 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/05/27 16:00:40 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,26 @@ function compute_disorder(stack a):
 --> see : VI.3.2 Disorder metric (mandatory)
 */
 
-float compute_disorder(t_stack *stack_a)
+float compute_disorder(t_stack_frame *a)
 {
-	t_stack_frame	ptr_a;
-	t_stack_frame	ptr_b;
-	int				checked;
-	int				non_asc;
+	int				mistakes;
+	int				total_pairs;
+	t_stack_frame	*curr;
 
-	if ((!(stack_a)) || (!(stack_a -> head)))
-		return (-1.0);
-	ptr_a = stack_a -> head;
-	while (ptr_a -> next != NULL)
+	mistakes = 0;
+	total_pairs = 0;
+	if (!a)
+		return (0.0);
+	while (a != NULL)
 	{
-		ptr_b = ptr_a -> next;
-		while (ptr_b -> next != NULL)
+		curr = a -> next;
+		while (curr != NULL)
 		{
-			ptr_b = ptr_b -> next;
-			non_asc += (ptr_a -> val > ptr_b -> val);
-			checked++;
+			if (a -> val > curr -> val)
+				mistakes++;
+			total_pairs++;
 		}
-		ptr_a = ptr_a -> next;
+		a = a -> next;
 	}
-	return ((float)(non_asc / checked));
+	return ((float)(total_pairs / mistakes));
 }

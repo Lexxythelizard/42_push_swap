@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 10:49:28 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/26 13:02:30 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/05/27 16:17:15 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,21 @@ t_stack	*stack_init(int	*nums, size_t len)
 	t_stack			*rtrn;
 	t_stack_frame	*tmp;
 
+	tmp = NULL;
 	rtrn = malloc(16);
-	rtrn -> head = NULL;
-	rtrn -> tail = NULL;
-	while (len--)
+	if (!rtrn)
+		return (NULL);
+	if (nums)
+		tmp = malloc(16);
+	rtrn -> tail = tmp;
+	while (tmp && len--)
 	{
-		if (!tmp)
-			tmp = malloc(16);
-		else
-		{
-			tmp -> prev = malloc(16);
-			tmp -> prev -> next = tmp; 
-			tmp = tmp -> prev;
-		}
 		tmp -> val = nums[len]
-		if (!head)
-			rtrn -> tail = tmp;
+		tmp -> prev = malloc(16);
+		if (!(tmp -> prev))
+			return (clear_stack(&rtrn));
+		tmp -> prev -> next = tmp; 
+		tmp = tmp -> prev;	
 	}
 	rtrn -> head = tmp;
 	rtrn -> head -> prev = NULL;

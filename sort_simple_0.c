@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:54:33 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/28 14:43:10 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/05/28 14:48:11 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ idea:
 	after I implemented the sort_simple 
 
 	Classic Lexxy ;)
-
 */
 
 // --- define ---

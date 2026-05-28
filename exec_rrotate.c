@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:54:33 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/28 14:08:53 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/05/28 19:22:42 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include "libft.h"
 #include "push_swap.h"
+#include "output.h"
 
 // --- DOC ---
 
@@ -32,6 +33,7 @@ void	exec_rra_n(t_interface *stacks, t_op_track *tracker, int n)
 		(tracker -> rra)++;
 		i++;
 	}
+	ft_putendl_fd(STR_RRA, STDOUT);
 }
 
 void	exec_rrb_n(t_interface *stacks, t_op_track *tracker, int n)
@@ -45,6 +47,7 @@ void	exec_rrb_n(t_interface *stacks, t_op_track *tracker, int n)
 		(tracker -> rrb)++;
 		i++;
 	}
+	ft_putendl_fd(STR_RRB, STDOUT);
 }
 
 void	exec_rrr_n(t_interface *stacks, t_op_track *tracker, int n)
@@ -58,4 +61,5 @@ void	exec_rrr_n(t_interface *stacks, t_op_track *tracker, int n)
 		(tracker -> rrr)++;
 		i++;
 	}
+	ft_putendl_fd(STR_RRR, STDOUT);
 }

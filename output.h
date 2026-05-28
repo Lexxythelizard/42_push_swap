@@ -1,46 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_tracker.h                                       :+:      :+:    :+:   */
+/*   output.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:21:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/28 19:09:59 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/05/28 19:24:25 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	OP_TRACKER_H
-# define OP_TRACKER_H
+#ifndef	OUTPUT_H
+# define OUTPUT_H
 
 // notes
 /*
-Contains struct: s op_tracker 
+Contains string MAKROS
 
 	see VI.5.1 Usage examples
 */
 
 // --- MAKROS ---
 
-// --- structs ---
-
-typedef struct s_op_tracker
-{
-	size_t	sa;
-	size_t	sb;
-	size_t	ss;
-	size_t	pa;
-	size_t	pb;
-	size_t	ra;
-	size_t	rb;
-	size_t	rr;
-	size_t	rra;
-	size_t	rrb;
-	size_t	rrr;
-	size_t	total_ops;
-	double	disorder;
-	char	*strategy;
-	void	(*print_bench)(s_op_tracker*);
-}			t_op_track
+# define STDOUT 1
+# define STDERR 2
+# define STR_BENCH "[bench]"
+# define STR_TWO_SPACE "  "
+# define STR_DISORDER " disorder : "
+# define STR_STRATEGY " strategy : "
+# define STR_TOTAL_OPS " total_ops : "
+# define STR_SA "sa:"
+# define STR_SB "sb:"
+# define STR_SS "ss:"
+# define STR_PA "pa:"
+# define STR_PB "pb:"
+# define STR_RA "ra:"
+# define STR_RB "rb:"
+# define STR_RR "rr:"
+# define STR_RRA "rra:"
+# define STR_RRB "rrb:"
+# define STR_RRR "rrr:"
 
 #endif

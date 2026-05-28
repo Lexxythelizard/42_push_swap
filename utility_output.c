@@ -1,51 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_push.c                                        :+:      :+:    :+:   */
+/*   utility_output.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/28 12:54:33 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/28 19:19:50 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/05/28 18:32:11 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/28 19:00:12 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- include ---
 
 #include "libft.h"
-#include "push_swap.h"
-#include "output.h"
 
 // --- DOC ---
 
-// --- proto ---
-
 // --- define ---
 
-void	exec_pa_n(t_interface *stacks, t_op_track *tracker, int n)
+void	lxy_putzu_fd(size_t zu, int fd)
 {
-	int	i;
+	size_t	divisor;
 
-	i = 0;
-	while (i < n)
+	divisor = 1;
+	while (((size_t)(zu / divisor)) >= 10)
+		divisor *= 10;
+	while (divisor >= 10)
 	{
-		pa(stacks);
-		(tracker -> pa)++;
-		i++;
+		ft_putchar(((unsigned char)((size_t)(zu / divisor) + 48)), fd);
+		zu %= divisor;
+		divisor /= 10;
 	}
-	ft_putendl_fd(STR_PA, STDOUT);
+	ft_putchar(((unsigned char)((size_t)(zu / divisor) + 48)), fd);
+	zu %= divisor;
 }
 
-void	exec_pb_n(t_interface *stacks, t_op_track *tracker, int n)
+void	lxy_putfloat_fd(size_t zu, int fd)
 {
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		pb(stacks);
-		(tracker -> pb)++;
-		i++;
-	}
-	ft_putendl_fd(STR_PB, STDOUT);
+	//code
 }

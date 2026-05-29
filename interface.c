@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:37:13 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/27 16:19:44 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/05/29 15:12:13 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,3 @@ t_interface	*init(int argc, char **argv)
 
 */
 
-// === check for invalid (non-numeric + '-') inputs ===
-
-/*
-lxy_is_nbr_input_valid
-	- Nullpointer guard
-	- skipping whitespaces
-	- skipping single sign
-	- return is_numeric
-
-	--> return 0 / 1
-*/
-
-int lxy_is_nbr_input_valid(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	if (!(s))
-		return (0);
-	while((s[i]) && (((s[i] >= 9) && (s[i] <= 13)) || (s[i] == 32)))
-		i++;
-	i += ((s[i] == 43) || (s[i] == 45));
-	return (ft_isnumeric(s[i]));
-}

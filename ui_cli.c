@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:12:11 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/29 17:33:16 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/05/29 19:51:04 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	*get_int_list(const char **argv)
 
 	i = 0;
 	j = 0;
-	int_list = malloc(count_numbers(argv));
+	int_list = malloc(count_numbers(argv) * 4);
 	if (!(flag_list))
 		return (NULL);
 	while (argv[i++])

@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 11:40:28 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/28 19:08:44 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/02 16:11:31 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,17 @@
 #include "op_tracker.h"
 #include "output.h"
 
-// --- DOC ---
-
-/*
-TODO: see output_layer_1.c
-*/
-
-// --- proto types ---
-
-static void	put_line_0(t_op_track *track, int fd);
-static void	put_line_1(t_op_track *track, int fd);
-static void	put_line_2(t_op_track *track, int fd);
-static void	put_line_3(t_op_track *track, int fd);
-static void	put_line_4(t_op_track *track, int fd);
-
 // --- define ---
 
 void print_bench(t_op_track *track, int fd)
 {
-	put_line_0(track, fd);
-	ft_putchar_fd(10, fd);
-	put_line_1(track, fd);
-	ft_putchar_fd(10, fd);
-	put_line_2(track, fd);
-	ft_putchar_fd(10, fd);
-	put_line_3(track, fd);
-	ft_putchar_fd(10, fd);
-	put_line_4(track, fd);
-	ft_putchar_fd(10, fd);
+	ft_printf("[bench] disorder:  %d.%d%%\n", (int)(track -> disorder), \
+	(int)(track -> disorder * 100));
+	ft_printf("[bench] strategy:  %s\n", track -> strategy);
+	ft_printf("[bench] total_ops:  %d\n", track -> total_ops);
+	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d,  pa:  %d,  pb:  %d\n", \
+	track -> sa, track -> sb, track -> ss, track -> pa, track -> pb);
+	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d,  rra:  %d,  rrb:  %d  " \
+    "rrr:  %d\n", track -> ra, track -> rb, track -> rr, track -> rra, \
+	track -> rrb, track -> rrr);
 }

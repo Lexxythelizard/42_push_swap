@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:21:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/28 19:09:59 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/02 16:04:13 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_op_tracker
 	size_t	rrb;
 	size_t	rrr;
 	size_t	total_ops;
-	double	disorder;
+	float	disorder;
 	char	*strategy;
 	void	(*print_bench)(s_op_tracker*);
 }			t_op_track

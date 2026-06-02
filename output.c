@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output_layer_0.c                                   :+:      :+:    :+:   */
+/*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 11:40:28 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/02 16:11:31 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/02 18:33:25 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ void print_bench(t_op_track *track, int fd)
 	ft_printf("[bench] disorder:  %d.%d%%\n", (int)(track -> disorder), \
 	(int)(track -> disorder * 100));
 	ft_printf("[bench] strategy:  %s\n", track -> strategy);
-	ft_printf("[bench] total_ops:  %d\n", track -> total_ops);
-	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d,  pa:  %d,  pb:  %d\n", \
-	track -> sa, track -> sb, track -> ss, track -> pa, track -> pb);
-	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d,  rra:  %d,  rrb:  %d  " \
-    "rrr:  %d\n", track -> ra, track -> rb, track -> rr, track -> rra, \
-	track -> rrb, track -> rrr);
+	ft_printf("[bench] total_ops:  %u\n", track -> total_ops);
+	ft_printf("[bench] sa:  %u  sb:  %u  ss:  %u,  pa:  %u,  pb:  %u\n", \
+	(track -> calls)[0], (track -> calls)[1], (track -> calls)[2], \
+	(track -> calls)[3], (track -> calls)[4]);
+	ft_printf("[bench] ra:  %u  rb:  %u  rr:  %u,  rra:  %u,  rrb:  %u  " \
+    "rrr:  %u\n", (track -> calls)[5], (track -> calls)[6], \
+	(track -> calls)[7], (track -> calls)[8], (track -> calls)[9], \
+	(track -> calls)[10]);
 }

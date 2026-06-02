@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:21:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/02 16:04:13 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/02 18:32:04 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,11 @@ Contains struct: s op_tracker
 
 typedef struct s_op_tracker
 {
-	size_t	sa;
-	size_t	sb;
-	size_t	ss;
-	size_t	pa;
-	size_t	pb;
-	size_t	ra;
-	size_t	rb;
-	size_t	rr;
-	size_t	rra;
-	size_t	rrb;
-	size_t	rrr;
-	size_t	total_ops;
-	float	disorder;
-	char	*strategy;
-	void	(*print_bench)(s_op_tracker*);
-}			t_op_track
+	unsigned int	calls[11];
+	unsigned int	total_ops;
+	float			disorder;
+	char			*strategy;
+	void			(*print_bench)(s_op_tracker*);
+}					t_op_track;
 
 #endif

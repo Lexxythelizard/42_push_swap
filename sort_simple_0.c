@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:54:33 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/28 19:18:16 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/02 21:10:32 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ idea:
 
 	*1 because we can rotate in both directions:
 
+	n/2 + 2 * (n/2 -1) + 2 * (n/2 - 2) + ... + 1
+	= (n + (n-1) + (n-2) + ... + 1) / 2 - n / 4
+	= n^2/4 if even, or (n^2 - 1)/4 if n is odd
 	max rotations: (n / 2 + 1) * (n / 2 / 2) * 2 
 			-->	   (n / 2 + 1) * (n / 2)			if n is even
 	pa:				n
@@ -84,12 +87,12 @@ int	sort_simple(t_op_track *tracker, t_interface *stacks)
 	{
 		idx_min = get_index_min_val(stacks -> a);
 		if (idx_min > (int)(size / 2))
-			call exec_ra_n(stacks, tracker, (size - idx_min));
+			exec_n(stacks, tracker, 5, size - idx_min);
 		else 
-			exec_rra_n(stacks, tracker, idx_min);
-		exec_pb_n(stacks, tracker, 1);
+			exec_n(stacks, tracker, 8, idx_min);
+		exec(stacks, tracker, 4);
 	}
-	size = get_stack_size(stacks -> b)
-	exec_pa_n(stacks, tracker, size);
+	size = get_stack_size(stacks -> b);
+	exec_n(stacks, tracker, 3, size);
 	return (1);
 }

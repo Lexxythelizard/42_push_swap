@@ -6,15 +6,14 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:54:33 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/28 19:19:50 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/02 18:17:16 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- include ---
 
-#include "libft.h"
+#include "ft_printf.h"
 #include "push_swap.h"
-#include "output.h"
 
 // --- DOC ---
 
@@ -22,30 +21,15 @@
 
 // --- define ---
 
-void	exec_pa_n(t_interface *stacks, t_op_track *tracker, int n)
+void	exec(t_interface *stacks, t_op_track *tracker, int idx)
 {
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		pa(stacks);
-		(tracker -> pa)++;
-		i++;
-	}
-	ft_putendl_fd(STR_PA, STDOUT);
+	(tracker -> calls)[idx]++;
+	((stacks -> func)[idx] -> f)(stacks)
+	ft_printf("%s\n", (stacks -> func)[idx] -> name);
 }
 
-void	exec_pb_n(t_interface *stacks, t_op_track *tracker, int n)
+void	exec_n(t_interface *stacks, t_op_track *tracker, int idx, int n)
 {
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		pb(stacks);
-		(tracker -> pb)++;
-		i++;
-	}
-	ft_putendl_fd(STR_PB, STDOUT);
+	while (n--)
+		exec(stacks, tracker, idx);
 }

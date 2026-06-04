@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_complex_alt_1_base.c                          :+:      :+:    :+:   */
+/*   sort_complex_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 18:14:33 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/04 22:54:05 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 
 // --- prototype ---
 
-void	sort_pairs(t_interface *stacks, t_op_track *tracker, int sz_a, int sz_b);
+void	sort_pairs(t_interface *stacks, t_op_track *tracker, 
+			t_stack_track *st_tr);
 void	split_stack(t_interface *stacks, t_op_track *tracker, int size);
 void	utility3(void);
 void	utility4(void);
@@ -34,7 +35,8 @@ void	utility4(void);
 
 /* pairs are sorted ascending */
 
-void	sort_pairs(t_interface *stacks, t_op_track *tracker, t_stack_track *st_tr)
+void	sort_pairs(t_interface *stacks, t_op_track *tracker, 
+		t_stack_track *st_tr)
 {
 	t_stack_frame	a;
 	t_stack_frame	b;
@@ -53,11 +55,11 @@ void	sort_pairs(t_interface *stacks, t_op_track *tracker, t_stack_track *st_tr)
 			exec(stacks, tracker, 1);		// exec sb 1 time
 		exec_n(stacks, tracker, 7, 2);		// exec rr 2 time
 		(st_tr -> size_a)--;
-		st_tr -> size_b -= 2
+		st_tr -> size_b -= 2;
 	}
 	if ((sz_b >= 2) && ((b -> val) < (b -> next -> val)))
 		exec(stacks, tracker, 1);					// exec sb 1 time
-	exec_n(stacks, tracker, 6, (st_tr -> size_b))	// exec rb (st_tr -> size_b) times
+	exec_n(stacks, tracker, 6, (st_tr -> size_b));	// exec rb (st_tr -> size_b) times
 }
 
 /*	...you comment... */
@@ -77,15 +79,17 @@ void	split_stack(t_interface *stacks, t_op_track *tracker, int size)
 }
 
 /*	...you comment... */
-
+/*
 void	utility3(void)
 {
 	// code
 }
-
+*/
 /*	...you comment... */
-
+/*
 void	utility4(void)
 {
 	// code
 }
+*/
+

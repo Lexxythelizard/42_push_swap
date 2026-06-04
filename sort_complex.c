@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_complex_alt_1.c                               :+:      :+:    :+:   */
+/*   sort_complex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 18:16:28 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/04 22:52:07 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@
 
 void	func0(t_interface stacks, t_op_track *tracker);
 void	merge(t_stack dest, t_stack sec, int ms);
-void	merge_to_a(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr);
-void	merge_to_b(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr);
+void	merge_to_a(t_interface stacks, t_op_track *tracker, 
+			t_stack_track *st_tr);
+void	merge_to_b(t_interface stacks, t_op_track *tracker, 
+			t_stack_track *st_tr);
 
 // --- define ---
 
@@ -60,14 +62,25 @@ void	func0(t_interface stacks, t_op_track *tracker)
 // --- utilities ---
 
 /*
-	copied over, needs to get modified
-	TODO: modify
+merges one level like merge size 4, then double merge size...
 
+consider mergin this two functions
 */
 
-void	merge(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
+
+void	merge_level(t_interface stacks, t_op_track *tracker, 
+		t_stack_track *st_tr)
 {
-	//coordinates the two merge functions
+	while (st_tr -> unmerged_a || (st_tr -> unmerged_b))
+		merge(stacks, tracker, st_tr);
+	st_tr -> merge_size *= 2;
+}
+
+/*coordinates the two merge functions like a pendulum*/
+
+void	merge(t_interface stacks, t_op_track *tracker, 
+		t_stack_track *st_tr)
+{
 	if (st_tr -> side)
 	{
 		merge_to_b(stacks, tracker, st_tr);
@@ -78,7 +91,8 @@ void	merge(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
 	st_tr -> side--;
 }
 
-void	merge_to_a(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
+void	merge_to_a(t_interface stacks, t_op_track *tracker, 
+		t_stack_track *st_tr)
 {
 	int	pos;
 	int	el_a;
@@ -107,7 +121,8 @@ void	merge_to_a(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
 		exec(stacks, tracker, a);			// exec rra 1 time
 }
 
-void	merge_to_b(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
+void	merge_to_b(t_interface stacks, t_op_track *tracker, 
+		t_stack_track *st_tr)
 {
 	int	pos;
 	int	el_a;
@@ -131,7 +146,7 @@ void	merge_to_b(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
 		(st_tr -> size_a)++;
 		(st_tr -> unmerged_b)--;
 	}
-	st_tr -> unmerged_a -= el_a;
+	(st_tr->unmerged_a) -= el_a;
 	while (pos--)
 		exec(stacks, tracker, 9);			// exec rrb 1 time
 }

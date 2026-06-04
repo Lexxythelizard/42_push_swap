@@ -6,13 +6,14 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 17:50:21 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/04 18:16:28 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
 #include "stack.h"
+#include "stack_track.h"
 
 // --- DOC ---
 
@@ -24,9 +25,8 @@
 
 void	func0(t_interface stacks, t_op_track *tracker);
 void	merge(t_stack dest, t_stack sec, int ms);
-void	sort_pairs(t_interface *stacks, t_op_track *tracker, int sz_a, int sz_b);
-void	utility3(void);
-void	utility4(void);
+void	merge_to_a(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr);
+void	merge_to_b(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr);
 
 // --- define ---
 
@@ -62,15 +62,6 @@ void	func0(t_interface stacks, t_op_track *tracker)
 /*
 	copied over, needs to get modified
 	TODO: modify
-	// --- struct ---
-
-	typedef struct s_stack_track
-	{
-	    int     size_a;
-	    int     size_b;
-	    int     merge_size;
-	    int     side;
-	}           t_stack_track;
 
 */
 
@@ -87,7 +78,7 @@ void	merge(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
 	st_tr -> side--;
 }
 
-void	merge_to_a(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
+void	merge_to_a(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
 {
 	int	pos;
 	int	el_a;
@@ -116,7 +107,7 @@ void	merge_to_a(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
 		exec(stacks, tracker, a);			// exec rra 1 time
 }
 
-void	merge_to_b(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
+void	merge_to_b(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
 {
 	int	pos;
 	int	el_a;
@@ -143,65 +134,4 @@ void	merge_to_b(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
 	st_tr -> unmerged_a -= el_a;
 	while (pos--)
 		exec(stacks, tracker, 9);			// exec rrb 1 time
-}
-
-// Ruler for lenght max lenghts:)
-/* ************************************************************************** */
-
-/* pairs are sorted ascending */
-
-void	sort_pairs(t_interface *stacks, t_op_track *tracker, t_stack_track *st_tr)
-{
-	t_stack_frame	a;
-	t_stack_frame	b;
-
-	if ((!(stacks)) || (!(stacks -> a)) || (!(stacks -> b)) || (!(tracker)))
-		return ;
-	a = stacks -> a -> head;
-	b = stacks -> b -> head;
-	while ((st_tr -> size_a)--)
-	{
-		if ((a -> val > a -> next -> val) && (b -> val > b -> next -> val))
-			exec(stacks, tracker, 2);		// exec ss 1 time
-		if (a -> val > a -> next -> val)
-			exec(stacks, tracker, 0);		// exec sa 1 time
-		if (b -> val > b -> next -> val)
-			exec(stacks, tracker, 1);		// exec sb 1 time
-		exec_n(stacks, tracker, 7, 2);		// exec rr 2 time
-		(st_tr -> size_a)--;
-		st_tr -> size_b -= 2
-	}
-	if ((sz_b >= 2) && ((b -> val) < (b -> next -> val)))
-		exec(stacks, tracker, 1);					// exec sb 1 time
-	exec_n(stacks, tracker, 6, (st_tr -> size_b))	// exec rb (st_tr -> size_b) times
-}
-
-/*	...you comment... */
-
-void	split_stack(t_interface *stacks, t_op_track *tracker, int size)
-{
-	int	half;
-
-	half = (int)(size / 2);
-	if ((!(stacks)) || (!(stacks -> a)) || (!(stacks -> b)) || (!(tracker)))
-		return ;
-	while (half--)
-	{
-		exec(stacks, tracker, 4);			// exec pb 1 time
-		exec_n(stacks, tracker, 5, 2);		// exec ra 2 times
-	}
-}
-
-/*	...you comment... */
-
-void	utility3(void)
-{
-	// code
-}
-
-/*	...you comment... */
-
-void	utility4(void)
-{
-	// code
 }

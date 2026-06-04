@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:57:57 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 18:01:11 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/04 18:02:28 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int	get_nth_min(t_stack *stack, int n)
 	return (prev_min);
 }
 
-int	get_nth_min_idx(t_stack	*stack, int n);
+int	get_nth_min_idx(t_stack	*stack, int n)
+{
 	t_stack_frame	*ptr;
 	int				min;
 	int				rtrn;
@@ -90,6 +91,7 @@ int	get_nth_min_idx(t_stack	*stack, int n);
 	if (min == INT_MAX && n != get_stack_size(stack))
 		rtrn = -1;
 	return (rtrn);
+}
 /*
 gets the 'index' (difference to first value) of the greates value in stack
 NOTE: please make sure to parse the first note/element in stack

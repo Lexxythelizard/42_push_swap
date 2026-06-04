@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 15:09:01 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/04 16:44:54 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,24 @@ void	func0(t_interface stacks, t_op_track *tracker)
 /*
 	copied over, needs to get modified
 	TODO: modify
+	// --- struct ---
+
+	typedef struct s_stack_track
+	{
+	    int     size_a;
+	    int     size_b;
+	    int     merge_size;
+	    int     side;
+	}           t_stack_track;
+
 */
 
-void	merge(t_interface stacks, t_op_track *tracker, int ms)
+void	merge(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
 {
-
 	int	pos;
-	int	i;
 	int	left;
 
 	pos = 0;
-	i = 0;
-	left = (ms / 2)
 	while ((left--) && (stacks -> a -> head))
 	{
 		while (i++ <= (ms / 2) && 
@@ -88,10 +94,58 @@ void	merge(t_interface stacks, t_op_track *tracker, int ms)
 		exec(stacks, tracker, 9);			// exec rrb 1 time
 }
 
+void	merge_to_a(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
+{
+	int	pos;
+	int	el_a;
+	int	el_b;
+	int	i;
+
+	pos = 0;
+	el_a = min_of((st_tr -> unmerged_a), ((st_tr -> merge_size) / 2));
+	el_b = min_of((st_tr -> unmerged_b), ((st_tr -> merge_size) / 2));
+	while ((el_b--) && (stacks -> a -> head))
+	{
+		while (i++ <= (ms / 2) && 
+		((stack -> b -> head -> val) > (stacks -> a -> head -> val)))
+		{
+			exec(stacks, tracker, 5);		// exec ra 1 time
+			pos++;
+		}
+		exec(stacks, tracker, 3);			// exec pa 1 time;
+	}
+	while (pos--)
+		exec(stacks, tracker, a);			// exec rra 1 time
+}
+
+void	merge_to_b(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
+{
+	int	pos;
+	int	el_a;
+	int	el_b;
+	int	i;
+
+	pos = 0;
+	el_a = min_of((st_tr -> unmerged_a), ((st_tr -> merge_size) / 2));
+	el_b = min_of((st_tr -> unmerged_b), ((st_tr -> merge_size) / 2));
+	while ((el_a--) && (stacks -> a -> head))
+	{
+		while (i++ <= (ms / 2) && 
+		((stack -> a -> head -> val) > (stacks -> b -> head -> val)))
+		{
+			exec(stacks, tracker, 6);		// exec rb 1 time
+			pos++;
+		}
+		exec(stacks, tracker, 4);			// exec pb 1 time;
+	}
+	while (pos--)
+		exec(stacks, tracker, 9);			// exec rrb 1 time
+}
+
 // Ruler for lenght max lenghts:)
 /* ************************************************************************** */
 
-/* TODO: let the pairs get sorted ascendig*/
+/* pairs are sorted ascending */
 
 void	sort_pairs(t_interface *stacks, t_op_track *tracker, int sz_a, int sz_b)
 {
@@ -104,11 +158,11 @@ void	sort_pairs(t_interface *stacks, t_op_track *tracker, int sz_a, int sz_b)
 	b = stacks -> b -> head;
 	while (sz_a--)
 	{
-		if ((a -> val < a -> next -> val) && (b -> val < b -> next -> val))
+		if ((a -> val > a -> next -> val) && (b -> val > b -> next -> val))
 			exec(stacks, tracker, 2);		// exec ss 1 time
-		if (a -> val < a -> next -> val)
+		if (a -> val > a -> next -> val)
 			exec(stacks, tracker, 0);		// exec sa 1 time
-		if (b -> val < b -> next -> val)
+		if (b -> val > b -> next -> val)
 			exec(stacks, tracker, 1);		// exec sb 1 time
 		exec_n(stacks, tracker, 7, 2);		// exec rr 2 time
 		sz_a--;

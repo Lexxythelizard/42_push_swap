@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:57:57 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/02 23:08:46 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/04 18:01:11 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	get_min_geq_n(t_stack_frame *stack, int n)
 	return (min);
 }
 
-int	get_nth_min_val(t_stack_frame stack, int n)
+int	get_nth_min(t_stack *stack, int n)
 {
 	int				prev_min;
 	int				rtrn;
@@ -65,11 +65,11 @@ int	get_nth_min_val(t_stack_frame stack, int n)
 	
 	prev_min = INT_MAX;
 	while (n--)
-		prev_min = get_min_larger_n(stack, prev_min + 1);
+		prev_min = get_min_larger_n(stack -> head, prev_min + 1);
 	return (prev_min);
 }
 
-int	get_idx_min(t_stack	*stack);
+int	get_nth_min_idx(t_stack	*stack, int n);
 	t_stack_frame	*ptr;
 	int				min;
 	int				rtrn;
@@ -78,7 +78,7 @@ int	get_idx_min(t_stack	*stack);
 	if (!stack)
 		return (-1);
 	ptr = stack -> head;
-	min = get_nth_min_val(*ptr, 1);
+	min = get_nth_min_val(stack, n);
 	i = 0;
 	rtrn = -1;
 	while (ptr)
@@ -87,7 +87,7 @@ int	get_idx_min(t_stack	*stack);
 			rtrn = i;
 		ptr = ptr -> next;
 	}
-	if (min == INT_MAX && 1 != get_stack_size(stack))
+	if (min == INT_MAX && n != get_stack_size(stack))
 		rtrn = -1;
 	return (rtrn);
 /*

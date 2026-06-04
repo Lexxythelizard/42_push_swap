@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 16:44:54 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/04 17:50:21 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,17 @@ void	func0(t_interface stacks, t_op_track *tracker)
 
 */
 
-void	merge(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
+void	merge(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
 {
-	int	pos;
-	int	left;
-
-	pos = 0;
-	while ((left--) && (stacks -> a -> head))
+	//coordinates the two merge functions
+	if (st_tr -> side)
 	{
-		while (i++ <= (ms / 2) && 
-		((stack -> a -> head -> val) < (stacks -> b -> head -> val)))
-		{
-			exec(stacks, tracker, 6);		// exec rb 1 time
-			pos++;
-		}
-		exec(stacks, tracker, 4);			// exec pb 1 time;
-	}
-	while (pos--)
-		exec(stacks, tracker, 9);			// exec rrb 1 time
+		merge_to_b(stacks, tracker, st_tr);
+		st_tr -> side++;
+		return ;
+	}	
+	merge_to_a(stacks, tracker, st_tr);
+	st_tr -> side--;
 }
 
 void	merge_to_a(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
@@ -102,18 +95,23 @@ void	merge_to_a(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
 	int	i;
 
 	pos = 0;
+	i = 0;
 	el_a = min_of((st_tr -> unmerged_a), ((st_tr -> merge_size) / 2));
 	el_b = min_of((st_tr -> unmerged_b), ((st_tr -> merge_size) / 2));
 	while ((el_b--) && (stacks -> a -> head))
 	{
-		while (i++ <= (ms / 2) && 
+		while ((i++ <= el_a) && 
 		((stack -> b -> head -> val) > (stacks -> a -> head -> val)))
 		{
 			exec(stacks, tracker, 5);		// exec ra 1 time
 			pos++;
 		}
 		exec(stacks, tracker, 3);			// exec pa 1 time;
+		(st_tr -> size_b)--;
+		(st_tr -> size_a)++;
+		(st_tr -> unmerged_b)--;
 	}
+	st_tr -> unmerged_a -= el_a;
 	while (pos--)
 		exec(stacks, tracker, a);			// exec rra 1 time
 }
@@ -126,18 +124,23 @@ void	merge_to_b(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
 	int	i;
 
 	pos = 0;
+	i = 0;
 	el_a = min_of((st_tr -> unmerged_a), ((st_tr -> merge_size) / 2));
 	el_b = min_of((st_tr -> unmerged_b), ((st_tr -> merge_size) / 2));
 	while ((el_a--) && (stacks -> a -> head))
 	{
-		while (i++ <= (ms / 2) && 
+		while ((i++ <= el_b) && 
 		((stack -> a -> head -> val) > (stacks -> b -> head -> val)))
 		{
 			exec(stacks, tracker, 6);		// exec rb 1 time
 			pos++;
 		}
 		exec(stacks, tracker, 4);			// exec pb 1 time;
+		(st_tr -> size_b)--;
+		(st_tr -> size_a)++;
+		(st_tr -> unmerged_b)--;
 	}
+	st_tr -> unmerged_a -= el_a;
 	while (pos--)
 		exec(stacks, tracker, 9);			// exec rrb 1 time
 }
@@ -147,7 +150,7 @@ void	merge_to_b(t_interface_stacks, t_op_track *tracker, t_stack_track *st_tr)
 
 /* pairs are sorted ascending */
 
-void	sort_pairs(t_interface *stacks, t_op_track *tracker, int sz_a, int sz_b)
+void	sort_pairs(t_interface *stacks, t_op_track *tracker, t_stack_track *st_tr)
 {
 	t_stack_frame	a;
 	t_stack_frame	b;
@@ -156,7 +159,7 @@ void	sort_pairs(t_interface *stacks, t_op_track *tracker, int sz_a, int sz_b)
 		return ;
 	a = stacks -> a -> head;
 	b = stacks -> b -> head;
-	while (sz_a--)
+	while ((st_tr -> size_a)--)
 	{
 		if ((a -> val > a -> next -> val) && (b -> val > b -> next -> val))
 			exec(stacks, tracker, 2);		// exec ss 1 time
@@ -165,12 +168,12 @@ void	sort_pairs(t_interface *stacks, t_op_track *tracker, int sz_a, int sz_b)
 		if (b -> val > b -> next -> val)
 			exec(stacks, tracker, 1);		// exec sb 1 time
 		exec_n(stacks, tracker, 7, 2);		// exec rr 2 time
-		sz_a--;
-		sz_b -= 2;
+		(st_tr -> size_a)--;
+		st_tr -> size_b -= 2
 	}
 	if ((sz_b >= 2) && ((b -> val) < (b -> next -> val)))
-		exec(stacks, tracker, 1);			// exec sb 1 time
-	exec_n(stacks, tracker, 6, sz_b)		// exec rb sz_b times
+		exec(stacks, tracker, 1);					// exec sb 1 time
+	exec_n(stacks, tracker, 6, (st_tr -> size_b))	// exec rb (st_tr -> size_b) times
 }
 
 /*	...you comment... */

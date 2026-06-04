@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:17:20 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 16:55:34 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/04 17:50:49 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_stack_track
 	int		size_a;
 	int		size_b;
 	int		merge_size;
+	int		unmerged_a;
+	int		unmerged_b;
 	int		side;
 }			t_stack_track;
 

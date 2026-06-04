@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 15:29:29 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/22 19:00:56 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/04 17:47:18 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* Prints a character and returns 1 */
 int	rvn_printchar(char c)
 {
-	ft_putchar_fd(c, 1);
+	ft_putchar_fd(c, 2);
 	return (1);
 }
 
@@ -28,7 +28,7 @@ int	rvn_printstr(const char *s)
 	if (s == NULL)
 		return (rvn_printstr("(null)"));
 	count = ft_strlen(s);
-	ft_putstr_fd((char *)s, 1);
+	ft_putstr_fd((char *)s, 2);
 	return (count);
 }
 
@@ -41,7 +41,7 @@ int	rvn_printnbr(unsigned long n, char *base, bool issigned)
 	count = rvn_getlog(n, ft_strlen(base), issigned) + !n + (issigned && \
 	((long)n < 0));
 	if (issigned && (long)n < 0)
-		ft_putchar_fd('-', 1);
+		ft_putchar_fd('-', 2);
 	rvn_putbase(n * (1 - 2 * ((long)n < 0 && issigned)), base);
 	return (count);
 }

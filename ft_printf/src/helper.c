@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 15:40:25 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/22 19:31:14 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/04 17:46:52 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	rvn_printuntil(const char **s)
 	count = 0;
 	while (*(*s) != '\0' && *(*s) != '%')
 	{
-		ft_putchar_fd(*((*s)++), 1);
+		ft_putchar_fd(*((*s)++), 2);
 		count++;
 	}
 	return (count);
@@ -64,5 +64,5 @@ void	rvn_putbase(unsigned long n, char *base)
 	base_len = ft_strlen(base);
 	if (n >= base_len)
 		rvn_putbase(n / base_len, base);
-	ft_putchar_fd(base[n % base_len], 1);
+	ft_putchar_fd(base[n % base_len], 2);
 }

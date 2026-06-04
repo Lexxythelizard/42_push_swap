@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:54:33 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/02 21:10:32 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/04 16:45:31 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	sort_simple(t_op_track *tracker, t_interface *stacks)
 		return (0);
 	while (size-- > 0)
 	{
-		idx_min = get_index_min_val(stacks -> a);
+		idx_min = get_nth_min_idx(stacks -> a, 1);
 		if (idx_min > (int)(size / 2))
 			exec_n(stacks, tracker, 5, size - idx_min);
 		else 

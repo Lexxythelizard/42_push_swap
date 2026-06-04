@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 11:40:28 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/02 18:33:25 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/04 17:44:51 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 // --- define ---
 
-void print_bench(t_op_track *track, int fd)
+void print_bench(t_op_track *track)
 {
 	ft_printf("[bench] disorder:  %d.%d%%\n", (int)(track -> disorder), \
 	(int)(track -> disorder * 100));

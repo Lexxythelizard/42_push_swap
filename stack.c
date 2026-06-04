@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 10:49:28 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/27 16:17:15 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/04 17:30:33 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,48 @@ t_stack	*stack_init(int	*nums, size_t len)
 /* Swap first two elements of c */
 void	s(t_stack *c)
 {
+	if (!(c -> head) || !(c -> head -> next))
+		return ;
 	c -> head = c -> head -> next;
 	c -> head -> prev -> next = c -> head -> next;
 	c -> head -> next -> prev = c -> head -> prev;
 	c -> head -> next = c -> head -> prev;
 	c -> head -> next -> prev = c -> head;
 	c -> head -> prev = NULL;
+	if (c -> head == c -> tail)
+		c -> tail = c -> head -> next;
 }
 
 /* Push first element of d on top of c */
 void	p(t_stack *c, t_stack *d)
 {
-	c -> head -> prev = d -> head;
-	d -> head = d -> head -> next;
-	c -> head -> prev -> next = c -> head;
-	c -> head = c -> head -> prev;
-	d -> head -> prev = NULL;
+	if (!(d -> head))
+		return ; 
+	if (!(c -> head))
+	{
+		c -> head = d -> head;
+		c -> tail = c -> head;
+		d -> head = d -> head -> next;
+		c -> head -> next = NULL;
+	}
+	else
+	{
+		c -> head -> prev = d -> head;
+		d -> head = d -> head -> next;
+		c -> head -> prev -> next = c -> head;
+		c -> head = c -> head -> prev;
+	}
+	if (d -> head)
+		d -> head -> prev = NULL;
+	else
+		d -> tail = NULL;
 }
 
 /* rotate upwards one step */
 void	r(t_stack *c)
 {
+	if (!(c -> head) || !(c -> head -> next))
+		return ;
 	c -> tail -> next = c -> head;
 	c -> head -> prev = c -> tail;
 	c -> tail = c -> head;
@@ -75,6 +96,8 @@ void	r(t_stack *c)
 /* rotate downwards one step */
 void	rr(t_stack *c)
 {
+	if (!(c -> head) || !(c -> head -> next))
+		return ;
 	c -> head -> prev = c -> tail;
 	c -> tail -> next = c -> head;
 	c -> head = c -> tail;

@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 21:10:38 by rcollet           #+#    #+#             */
-/*   Updated: 2026/06/03 15:12:54 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/04 17:53:08 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,31 @@ int		ft_sqrt(int nb);
 
 /*lexxy's first scratchnotes*/
 
-void	func0(void)
+void	sort_medium(t_interface *stacks)
 {
-	// int	stack size;
-	// int	buckets;
-	// int	last_bucket init with 0;
-
-	// get bucket size
-	//	 if sqrt(stack_size) --> sqrt
-	//	 else get the next closest sqrt and have one extra bucket
-	//		--> buckets + 1 (calculating bucket size leftover)
-	// loop
-	//	 use min extraktion to extract first [bucketsize] elements
-	//	 sort stack by insertion sort : descending
-	// if leftover bucket:
-	//	 use insertion sort on stack a : ascending
-	// calling pa [size stack b] times
+	int	stack_size;
+	int	bucket_size;
+	int	bucket_max;
+	int	i;
+	
+	stack_size = get_stack_size(stacks -> a);
+	bucket_size = ft_sqrt(stack_size);
+	while (stack_size >= bucket_size)
+	{
+		i = 0;
+		stack_size -= bucket_size;
+		bucket_max = get_nth_min(stacks -> a, bucket_size);
+		while (i < bucket_size)
+		{
+			exec(stacks, tracker, 5);
+			if (stacks -> a -> head -> val <= bucket_max)
+				exec(stacks, tracker, 4);
+		}
+		sort_bucket(stacks, tracker, bucket_size, 1);
+	}
+	sort_last(stacks, tracker, stack_size, 0);
+	while (stacks -> b -> head)
+		exec(stacks, tracker, 3);
 }
 
 /*
@@ -56,20 +65,13 @@ TODO: 	implement either sort last bucket (ascending not descanding)
 		consider to NULL poiner protect
 */
 
-void	sort_bucket(t_stack_frame stack, int bs)
+void	sort_bucket(t_interface	*stacks, int bs, int side)
 {
-	//int	i;
+	int	i;
 
-	// i = 0
-	// do nothing if bs is 1
-	// consider first element as sorted
 	while (i++ < bs)
 	{
-		// rotate to bucket index i
-		// pa
-		// rotate stack b until element fitting in (keep track)
-		// pb
-		// rotate back
+		
 	}
 }
 
@@ -83,23 +85,23 @@ TODO: refactor to get the closest srqt <= sqrt(nb)
 int	ft_sqrt(int nb)
 {
 	int				sqrt;
-	int				start;
+	int				step;
 	unsigned int	power;
 
-	start = 65536 / 2;
-	sqrt = start;
+	step = 16384;
+	sqrt = step * 2;
 	if (nb <= 0)
 		return (0);
-	while (start >= 1)
+	while (step && power != nb)
 	{
 		power = sqrt * sqrt;
-		if (power == (unsigned int)(nb))
-			return (sqrt);
 		else if (power > (unsigned int)(nb))
-			sqrt -= start / 2;
+			sqrt -= step;
 		else
-			sqrt += start / 2;
-		start /= 2;
+			sqrt += step;
+		step /= 2;
 	}
-	return (0);
+	if (power > (unsigned int)nb)
+		sqrt--;
+	return (sqrt);
 }

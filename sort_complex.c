@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_complex.c                                     :+:      :+:    :+:   */
+/*   sort_complex_alt_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/03 21:50:28 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/04 18:16:28 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
 #include "stack.h"
+#include "stack_track.h"
 
 // --- DOC ---
 
@@ -24,140 +25,113 @@
 
 void	func0(t_interface stacks, t_op_track *tracker);
 void	merge(t_stack dest, t_stack sec, int ms);
-void	push_sort(t_interface stacks, t_op_track *tracker, int n);
-void	push_back(t_interface stacks, t_op_track *tracker, int n);
-int		*get_sequence(t_interface stacks);
+void	merge_to_a(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr);
+void	merge_to_b(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr);
 
 // --- define ---
 
 void	func0(t_interface stacks, t_op_track *tracker)
 {
 	// to create a merged stack of four elemnts:
-	//	 pb first two elements
-	//	 sort first two elemnts of b
-	//	 sort first two elements of a
-	//	 merge first two elements of a and first two elements of b in a
-	//	 probably source out the merging to a function
-	// continue to sort and merge the next <= 4 elements stack
-	// than continue to sort and merge the next <= 8 elements stack
-	// ...
-	// recursion ??? ...
+	//	 first splt the stack
+	//	 sort all pairs in each side see sort pairs
+	//	 afterwards merge four pacs plus rest \
+		 and destribute the merge results equalyy on both stacks
+	//	 than merge eight pacs plus rest \
+		 and destribute the merge results equalyy on both stacks
+	//	 continue until it's merged back into one array
 
-	// IDEA: 
+	// last theoretical problem:
+	
 	/*
-		istead of doing it recursively by 'splitting' the size every time
+		if sorted stack appears in b:
+			and if it is descending just calling pa size times
+		if sorted stack appears in b:
+			either let it be merged asending or let it ...
 
-		start to push and sort 2 elements, next to elements merge to four ...
-		and so on
-		right side sorted side (stack b) will grow constantly
-		my inspireation was: https://www.youtube.com/watch?v=ZRPoEKHXTJg 
-		
-		to do that I thought of creating a numerical sequence 
-		related to function calls
-		
-		2 2 2 4 2 2 2 4 4 8 2 2 2 4 2 2 2 4 4 8 8 16 2 2 2 4 ...
-		p p b m p p b m b m p p b m p p b m b m b m  p p b m ...
+		...screw this, why not just merge everything in ascending order
+		and let the sorted stack appear in a by merging :)
 
-		p : 'push' - push n elements to b and swap sort (n = 2)
-		b : 'back' - push n elements back to a
-		m : 'merge' - sides to <= n elements --> dest stack b
-
-		rythm:	if n two : p, p, b
-				else	 : m, b, m, b, ...
-
-		in that case merge() needs to get modified 
-		pushing back changes order ascending <--> descending ...
-
-		--> alternatively we just modify b: back() 					<== I decided to do this
-		this would mean plus rotations <-- 
+		... Yeah, problem solved.
 	*/
+
 }
 
 // --- utilities ---
 
-/*ms: merge size: max size of the resulting stack: allways even */
-
 /*
-	 merge deeps in dest (stack b) [ms / 2]
-	 merge deeps in sec  (stack a) <= [ms / 2]
-	 keep track of the rotatios and ([new]: not) rotate back everytime
+	copied over, needs to get modified
+	TODO: modify
 
-	 new estimation:
-		 worst case !simplified!:	rotations 2 * (ms / 2) + ms
-									pushes ms / 2
-
-		--> O(n)	for merge yeah I was an Idiot^^
 */
 
-void	merge(t_interface stacks, t_op_track *tracker, int ms)
+void	merge(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
 {
+	//coordinates the two merge functions
+	if (st_tr -> side)
+	{
+		merge_to_b(stacks, tracker, st_tr);
+		st_tr -> side++;
+		return ;
+	}	
+	merge_to_a(stacks, tracker, st_tr);
+	st_tr -> side--;
+}
 
+void	merge_to_a(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
+{
 	int	pos;
+	int	el_a;
+	int	el_b;
 	int	i;
-	int	left;
 
 	pos = 0;
 	i = 0;
-	left = (ms / 2)
-	while ((left--) && (stacks -> a -> head))
+	el_a = min_of((st_tr -> unmerged_a), ((st_tr -> merge_size) / 2));
+	el_b = min_of((st_tr -> unmerged_b), ((st_tr -> merge_size) / 2));
+	while ((el_b--) && (stacks -> a -> head))
 	{
-		while (i++ <= (ms / 2) && 
-		((stack -> a -> head -> val) < (stacks -> b -> head -> val)))
+		while ((i++ <= el_a) && 
+		((stack -> b -> head -> val) > (stacks -> a -> head -> val)))
+		{
+			exec(stacks, tracker, 5);		// exec ra 1 time
+			pos++;
+		}
+		exec(stacks, tracker, 3);			// exec pa 1 time;
+		(st_tr -> size_b)--;
+		(st_tr -> size_a)++;
+		(st_tr -> unmerged_b)--;
+	}
+	st_tr -> unmerged_a -= el_a;
+	while (pos--)
+		exec(stacks, tracker, a);			// exec rra 1 time
+}
+
+void	merge_to_b(t_interface stacks, t_op_track *tracker, t_stack_track *st_tr)
+{
+	int	pos;
+	int	el_a;
+	int	el_b;
+	int	i;
+
+	pos = 0;
+	i = 0;
+	el_a = min_of((st_tr -> unmerged_a), ((st_tr -> merge_size) / 2));
+	el_b = min_of((st_tr -> unmerged_b), ((st_tr -> merge_size) / 2));
+	while ((el_a--) && (stacks -> a -> head))
+	{
+		while ((i++ <= el_b) && 
+		((stack -> a -> head -> val) > (stacks -> b -> head -> val)))
 		{
 			exec(stacks, tracker, 6);		// exec rb 1 time
 			pos++;
 		}
 		exec(stacks, tracker, 4);			// exec pb 1 time;
+		(st_tr -> size_b)--;
+		(st_tr -> size_a)++;
+		(st_tr -> unmerged_b)--;
 	}
+	st_tr -> unmerged_a -= el_a;
 	while (pos--)
 		exec(stacks, tracker, 9);			// exec rrb 1 time
 }
-
-/*	0 <= n <= 2 */
-
-void	push_sort(t_interface stacks, t_op_track *tracker, int n)
-{
-	int	two;
-
-	two = (n == 2);
-	if ((!(stacks -> a -> head)) || (!(n)) || (n > 3))
-		return ;
-	while (n--)
-	{
-		if (!(stacks -> a -> head))
-			return ;
-		exec(stacks, tracker, 4);			// exec pb 1 time
-	}
-	if ((two) && ((stacks -> b -> head) < (stacks -> b -> tail -> val)))
-		exec(stacks, tracker, 1);			// exec sb 1 time
-}
-
-/*	pushes back this way to keep the descending order and make merge easier */
-
-void	push_back(t_interface stacks, t_op_track *tracker, int n)
-{
-	if (n <= 0)
-		return ;
-	exec_n(stacks, tracker, 6, (n - 1));           // exec rb n times
-	while (n--)
-	{
-		exec(stacks, tracker, 6);           // exec pa 1 time
-		exec(stacks, tracker, 9);           // exec rrb 1 time
-	}
-}
-
-/*	...you comment... */
-
-int	*get_sequence(t_interface stacks)
-{
-	// int var
-	// int var
-
-	
-	if ((!(stacks)) || (!(stacks -> a -> head)))
-		return (NULL);
-	// some algorythm ;)
-
-	// return (sequence);
-}
-

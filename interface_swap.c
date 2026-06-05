@@ -6,22 +6,22 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:16:29 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/27 17:18:14 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/05 14:40:56 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	sa(t_interface	*stacks)
+void	sa(t_interface *c)
 {
-	s(stacks -> a);
+	s((c -> stacks)[0]);
 }
 
-void	sb(t_interface	*stacks)
+void	sb(t_interface *c)
 {
-	s(stacks -> b);
+	s((c -> stacks)[1]);
 }
 
-void	ss(t_interface	*stacks)
+void	ss(t_interface *c)
 {
-	s(stacks -> a);
-	s(stacks -> b);
+	sa(c);
+	sb(c);
 }

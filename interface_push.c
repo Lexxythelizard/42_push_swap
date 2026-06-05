@@ -6,16 +6,16 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:18:26 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/27 17:19:33 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/05 14:38:31 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	pa(t_interface	*stacks)
+void	pa(t_interface *c)
 {
-	p(stacks -> a, stacks -> b);
+	p((c -> stacks)[0], (c -> stacks)[1]);
 }
 
-void	pb(t_interface	*stacks)
+void	pb(t_interface *c)
 {
-	p(stacks -> b, stacks -> a);
+	p((c -> stacks)[1], (c -> stacks)[0]);
 }

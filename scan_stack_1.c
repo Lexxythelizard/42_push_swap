@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:57:57 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 18:02:28 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/05 14:31:00 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 gets the 'size of the stack'
 NOTE: please make sure to parse the first note/element in stack
 */
+
+int	stack_comp(t_stack *stack)
+{
+	return (stack -> head > stack -> head -> next);
+}
 
 int	get_stack_size(t_stack *stack)
 {

@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:37:13 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/29 19:53:11 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/05 14:36:27 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,20 @@ t_interface	*init(int argc, char **argv)
 	nums = get_int_list(argv);
 	if (!nums)
 		return (NULL);
-	rtrn -> a = stack_init(nums, argc - 1);
-	rtrn -> b = stack_init(NULL, 0);
+	rtrn -> stacks[0] = stack_init(nums, argc - 1);
+	rtrn -> stacks[1] = stack_init(NULL, 0);
+	rtrn -> funcs[0] = &sa;
+	rtrn -> funcs[1] = &sb;
+	rtrn -> funcs[2] = &ss;
+	rtrn -> funcs[3] = &pa;
+	rtrn -> funcs[4] = &pb;
+	rtrn -> funcs[5] = &ra;
+	rtrn -> funcs[6] = &rb;
+	rtrn -> funcs[7] = &rr;
+	rtrn -> funcs[8] = &rra;
+	rtrn -> funcs[9] = &rrb;
+	rtrn -> funcs[10] = &rrr;
+	rtrn -> stats = NULL;
 	free(nums);
 	return (rtrn);
 }

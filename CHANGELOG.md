@@ -9,7 +9,26 @@ This project is currently in early development for the 42 Berlin Rank 1
 
 ---
 
-## [Unreleased]
+## [2026-06-05]
+
+RAVEN:
+
+### Added
+- `sort_bucket` for `--medium`
+
+### Changed
+- `op_tracker` is now a part of `interface`
+- merged `interface.a` and `interface.b` into an array `interface.stacks[2]`
+- Changed the corresponding interface functions and exec
+- exec calls `ft_putendl` instead of `ft_printf` to print to `STDOUT`
+- Removed redundancies
+- Added `interface.funcs` initialization to `init`
+- `interface.stats` (i.e. `op_tracker`) is initialized to `NULL` and may be changed when `--bench` is raised
+
+### Notes
+Some changes I made before are not tracked in here, sry >.<
+
+## [2026-06-??]
 
 ### Added
 - CLI flag handling via `ui_cli.c` / `ui_cli.h`.

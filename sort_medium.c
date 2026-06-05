@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 21:10:38 by rcollet           #+#    #+#             */
-/*   Updated: 2026/06/04 17:53:08 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/05 14:49:08 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,17 @@ void	sort_medium(t_interface *stacks)
 		bucket_max = get_nth_min(stacks -> a, bucket_size);
 		while (i < bucket_size)
 		{
-			exec(stacks, tracker, 5);
+			exec(stacks, 5);
 			if (stacks -> a -> head -> val <= bucket_max)
-				exec(stacks, tracker, 4);
+			{
+				i++;
+				exec(stacks, 4);
+			}
 		}
-		sort_bucket(stacks, tracker, bucket_size, 1);
+		sort_bucket(stacks, bucket_size, 1);
 	}
-	sort_last(stacks, tracker, stack_size, 0);
-	while (stacks -> b -> head)
-		exec(stacks, tracker, 3);
+	sort_bucket(stacks, stack_size, 0);
+	exec_n(stacks, 3, get_stack_size(stacks -> b));
 }
 
 /*
@@ -65,16 +67,30 @@ TODO: 	implement either sort last bucket (ascending not descanding)
 		consider to NULL poiner protect
 */
 
-void	sort_bucket(t_interface	*stacks, int bs, int side)
+void	sort_bucket(t_interface	*c, int bs, int side)
 {
-	int	i;
+	t_stack_frame	*start;
+	t_stack_frame	*end;
+	int				i;
 
+	i = 0;
+	start = (c -> stacks)[side] -> head;
+	end = start;
 	while (i++ < bs)
+		end = end -> next;
+	while ((c -> stacks)[side] -> head != end)
 	{
-		
+		if ((stack_comp((c -> stacks)[side]) + side) % 2)
+		{
+			exec(c, side);
+			exec(c, 8 + side);
+		}
+		else
+			exec(c, 5 + side);
 	}
+	while (i--)
+		exec(c, 8 + side);
 }
-
 
 // --- utility ---
 
@@ -92,7 +108,7 @@ int	ft_sqrt(int nb)
 	sqrt = step * 2;
 	if (nb <= 0)
 		return (0);
-	while (step && power != nb)
+	while (step && power != (unsigned int)nb)
 	{
 		power = sqrt * sqrt;
 		else if (power > (unsigned int)(nb))

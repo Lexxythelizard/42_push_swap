@@ -15,6 +15,7 @@ RAVEN:
 
 ### Added
 - `sort_bucket` for `--medium`
+- Cleanup functions for the interface and stacks
 
 ### Changed
 - `op_tracker` is now a part of `interface`
@@ -24,9 +25,13 @@ RAVEN:
 - Removed redundancies
 - Added `interface.funcs` initialization to `init`
 - `interface.stats` (i.e. `op_tracker`) is initialized to `NULL` and may be changed when `--bench` is raised
-
+- `array_handling.c` has been renamed to `cleanup.c`, the string array cleanup was removed, interface and stacks cleanup functions added.
+- `t_op_tracker` has been renamed to `t_stats`
+- exec now counts `total_ops` as well and only changes stats if they aren't `NULL`
+- Added comments
+- Deleted `get_max` since it's unused
 ### Notes
-Some changes I made before are not tracked in here, sry >.<
+Some changes I made the last few days before are not tracked in here, sry >.<
 
 ## [2026-06-??]
 

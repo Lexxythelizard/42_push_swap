@@ -6,21 +6,24 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:57:57 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/05 14:31:00 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/05 15:45:45 by rcollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // === scanning the stack ===
 
-/*
-gets the 'size of the stack'
-NOTE: please make sure to parse the first note/element in stack
-*/
+/* Returns 1 if the two values on top of the stack are in descending order or
+   0 otherwise */
 
 int	stack_comp(t_stack *stack)
 {
 	return (stack -> head > stack -> head -> next);
 }
+
+/*
+gets the 'size of the stack'
+NOTE: please make sure to parse the first note/element in stack
+*/
 
 int	get_stack_size(t_stack *stack)
 {
@@ -41,10 +44,8 @@ int	get_stack_size(t_stack *stack)
 	return (count);
 }
 
-/*
-gets the 'index' (difference to first value) of the lowest value in stack
-NOTE: please make sure to parse the first note/element in stack
-*/
+/* Returns the smallest element greater than n in the stack or INT_MAX
+   if non-existant or on error */
 
 int	get_min_geq_n(t_stack_frame *stack, int n)
 {
@@ -62,6 +63,8 @@ int	get_min_geq_n(t_stack_frame *stack, int n)
 	return (min);
 }
 
+/* gets the nth lowest value in the stack */
+
 int	get_nth_min(t_stack *stack, int n)
 {
 	int				prev_min;
@@ -73,6 +76,11 @@ int	get_nth_min(t_stack *stack, int n)
 		prev_min = get_min_larger_n(stack -> head, prev_min + 1);
 	return (prev_min);
 }
+
+/*
+gets the 'index' (difference to first value) of the nth lowest value in stack
+NOTE: please make sure to parse the first note/element in stack
+*/
 
 int	get_nth_min_idx(t_stack	*stack, int n)
 {
@@ -96,34 +104,4 @@ int	get_nth_min_idx(t_stack	*stack, int n)
 	if (min == INT_MAX && n != get_stack_size(stack))
 		rtrn = -1;
 	return (rtrn);
-}
-/*
-gets the 'index' (difference to first value) of the greates value in stack
-NOTE: please make sure to parse the first note/element in stack
-*/
-
-int	get_idx_max(t_stack *stack)
-{
-	t_stack_frame	*ptr;
-	int				max;
-	int				count;
-	int				i;
-	
-	if ((!(stack)) || (!(stack -> head)))
-		return (-1);
-	ptr = stack -> head;
-	max = ptr -> val;
-	i = 0;
-	count = 0;
-	while (ptr -> next != NULL)
-	{
-		ptr = ptr -> next;
-		i++;
-		if (ptr -> val > max)
-		{
-			count = i;
-			max = ptr -> val;
-		}
-	}
-	return (count);
 }

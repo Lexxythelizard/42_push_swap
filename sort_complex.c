@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 22:52:07 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/05 15:52:13 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,14 @@
 // --- prototype ---
 
 void	func0(t_interface stacks, t_op_track *tracker);
-void	merge(t_stack dest, t_stack sec, int ms);
-void	merge_to_a(t_interface stacks, t_op_track *tracker, 
-			t_stack_track *st_tr);
-void	merge_to_b(t_interface stacks, t_op_track *tracker, 
-			t_stack_track *st_tr);
+void	merge_level(t_interface stacks, t_stack_track *st_tr);
+void	merge(t_interface stacks, t_stack_track *st_tr);
+void	merge_to_a(t_interface stacks, t_stack_track *st_tr);
+void	merge_to_b(t_interface stacks, t_stack_track *st_tr);
 
 // --- define ---
 
-void	func0(t_interface stacks, t_op_track *tracker)
+void	func0(t_interface stacks, t_stack_track *st_tr)
 {
 	// to create a merged stack of four elemnts:
 	//	 first splt the stack
@@ -56,43 +55,40 @@ void	func0(t_interface stacks, t_op_track *tracker)
 
 		... Yeah, problem solved.
 	*/
-
+	
 }
 
-// --- utilities ---
+// --- merge functions ---
 
 /*
 merges one level like merge size 4, then double merge size...
 
-consider mergin this two functions
+consider merging this two functions
 */
 
 
-void	merge_level(t_interface stacks, t_op_track *tracker, 
-		t_stack_track *st_tr)
+void	merge_level(t_interface stacks, t_stack_track *st_tr)
 {
 	while (st_tr -> unmerged_a || (st_tr -> unmerged_b))
-		merge(stacks, tracker, st_tr);
+		merge(stacks, st_tr);
 	st_tr -> merge_size *= 2;
 }
 
 /*coordinates the two merge functions like a pendulum*/
 
-void	merge(t_interface stacks, t_op_track *tracker, 
-		t_stack_track *st_tr)
+void	merge(t_interface stacks, t_stack_track *st_tr)
 {
 	if (st_tr -> side)
 	{
-		merge_to_b(stacks, tracker, st_tr);
+		merge_to_b(stacks, st_tr);
 		st_tr -> side++;
 		return ;
 	}	
-	merge_to_a(stacks, tracker, st_tr);
+	merge_to_a(stacks, st_tr);
 	st_tr -> side--;
 }
 
-void	merge_to_a(t_interface stacks, t_op_track *tracker, 
-		t_stack_track *st_tr)
+void	merge_to_a(t_interface stacks, t_stack_track *st_tr)
 {
 	int	pos;
 	int	el_a;
@@ -103,26 +99,25 @@ void	merge_to_a(t_interface stacks, t_op_track *tracker,
 	i = 0;
 	el_a = min_of((st_tr -> unmerged_a), ((st_tr -> merge_size) / 2));
 	el_b = min_of((st_tr -> unmerged_b), ((st_tr -> merge_size) / 2));
-	while ((el_b--) && (stacks -> a -> head))
+	while ((el_b--) && (stacks -> stacks[0] -> head))
 	{
 		while ((i++ <= el_a) && 
-		((stack -> b -> head -> val) > (stacks -> a -> head -> val)))
+		((stack->stacks[1]->head->val) > (stacks->stacks[0]->head->val)))
 		{
-			exec(stacks, tracker, 5);		// exec ra 1 time
+			exec(stacks, 5);		// exec ra 1 time
 			pos++;
 		}
-		exec(stacks, tracker, 3);			// exec pa 1 time;
+		exec(stacks, 3);			// exec pa 1 time;
 		(st_tr -> size_b)--;
 		(st_tr -> size_a)++;
 		(st_tr -> unmerged_b)--;
 	}
 	st_tr -> unmerged_a -= el_a;
 	while (pos--)
-		exec(stacks, tracker, a);			// exec rra 1 time
+		exec(stacks, 8);			// exec rra 1 time
 }
 
-void	merge_to_b(t_interface stacks, t_op_track *tracker, 
-		t_stack_track *st_tr)
+void	merge_to_b(t_interface stacks, t_stack_track *st_tr)
 {
 	int	pos;
 	int	el_a;
@@ -133,20 +128,20 @@ void	merge_to_b(t_interface stacks, t_op_track *tracker,
 	i = 0;
 	el_a = min_of((st_tr -> unmerged_a), ((st_tr -> merge_size) / 2));
 	el_b = min_of((st_tr -> unmerged_b), ((st_tr -> merge_size) / 2));
-	while ((el_a--) && (stacks -> a -> head))
+	while ((el_a--) && (stacks -> stacks[0] -> head))
 	{
 		while ((i++ <= el_b) && 
-		((stack -> a -> head -> val) > (stacks -> b -> head -> val)))
+		((stack->stack[0]->head->val) > (stacks->stacks[1]->head->val)))
 		{
-			exec(stacks, tracker, 6);		// exec rb 1 time
+			exec(stacks, 6);				// exec rb 1 time
 			pos++;
 		}
-		exec(stacks, tracker, 4);			// exec pb 1 time;
+		exec(stacks, 4);					// exec pb 1 time;
 		(st_tr -> size_b)--;
 		(st_tr -> size_a)++;
 		(st_tr -> unmerged_b)--;
 	}
 	(st_tr->unmerged_a) -= el_a;
 	while (pos--)
-		exec(stacks, tracker, 9);			// exec rrb 1 time
+		exec(stacks, 9);			// exec rrb 1 time
 }

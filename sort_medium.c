@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 21:10:38 by rcollet           #+#    #+#             */
-/*   Updated: 2026/06/05 14:49:08 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/05 19:54:29 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 
 // --- prototype ---
 
-void	func0(void);
+void	sort_medium(t_interface *stacks);
 void	sort_bucket(t_stack_frame stack, int bs);
 int		ft_sqrt(int nb);
 
 // --- define ---
 
-/*lexxy's first scratchnotes*/
+/*ravy's implementation*/
 
 void	sort_medium(t_interface *stacks)
 {

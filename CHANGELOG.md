@@ -11,6 +11,29 @@ This project is currently in early development for the 42 Berlin Rank 1
 
 ## [2026-06-05]
 
+LEXXY:
+
+### Added
+- `merge_sort` for `--complex`
+  - providing the two files `sort_complex.c` and `sort_complex_base.c`
+- normietted `sort_complex.c` and `sort_complex_base.c`
+- `t_stack_track` in `stack_track.h` for `--complex`
+- `sort_complex_base.c` contains now:
+  - void `sort_pairs()`
+  - void `split_stack()`
+  - `t_stack_track` `*init_stack_track()`
+- `sort_complex.c` contains now:
+  - void `merge_sort()`
+  - void `merge_level()`
+  - void `merge()`
+  - void `merge_to_a()`
+  - void `merge_to_b()`
+
+### Changed
+- prototype `func0()` in `sort_medium.c` --> `sort_medium()`
+- adapted to your changes in `sort_simple_0.c`
+- general adaptions in `sort_complex*.c` to your changes 
+
 RAVEN:
 
 ### Added

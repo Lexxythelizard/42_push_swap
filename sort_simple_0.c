@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:54:33 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/04 16:45:31 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/06/05 17:41:31 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,27 +72,28 @@ idea:
 
 // --- define ---
 
-int	sort_simple(t_op_track *tracker, t_interface *stacks)
+int	sort_simple(t_interface *stacks)
 {
 	int	size;
 	int	idx_min;
 
-	if ((!(op_track)) || (!(stacks)) || (!(stacks ->a )) || (!(stacks -> b)))
+	if ((!(stacks)) || (!(stacks -> stacks[0])) || 
+		(!(stacks -> stacks[1])) || (!(stacks -> stats)))
 		return (-1);
-	size = get_stack_size(stacks -> a);
+	size = get_stack_size(stacks -> stacks[0]);
 	idx_min = 0;
 	if (!(size))
 		return (0);
 	while (size-- > 0)
 	{
-		idx_min = get_nth_min_idx(stacks -> a, 1);
+		idx_min = get_nth_min_idx(stacks -> stacks[0], 1);
 		if (idx_min > (int)(size / 2))
-			exec_n(stacks, tracker, 5, size - idx_min);
+			exec_n(stacks, 5, (size - idx_min));
 		else 
-			exec_n(stacks, tracker, 8, idx_min);
-		exec(stacks, tracker, 4);
+			exec_n(stacks, 8, idx_min);
+		exec(stacks, 4);
 	}
 	size = get_stack_size(stacks -> b);
-	exec_n(stacks, tracker, 3, size);
+	exec_n(stacks, 3, size);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:12:11 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/05/29 19:51:04 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/11 18:21:07 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,38 +31,33 @@
 		order of flags and numbers could be arbitary
 		use ft_atoi to convert;
 
-	get_flag_list() :
-
-		count the valid flags in argv and allocates a NULL terminated array
-		flags n + 1 
-		order of flags and numbers could be arbitary
-		use ft_strdup;
-
 	count_numbers() :
 
 		count the valid numbers in argv
 
-	count_flags() :
-
-		count the valid flags in argv
 */
 
 // --- proto ---
+
+int	*get_int_list(const char **argv);
+int get_flag_values(const char **argv);
+int	get_flag_value(const char *flag);
+int	count_numbers(const char **argv);
 
 // --- define ---
 
 int	*get_int_list(const char **argv)
 {
 
-	char 	*int_list;
+	int		*int_list;
 	size_t	i;
 	size_t	j;
 
 	i = 0;
 	j = 0;
-	int_list = malloc(count_numbers(argv) * 4);
-	if (!(flag_list))
+	if (!argv)
 		return (NULL);
+	int_list = malloc(count_numbers(argv) * 4);
 	while (argv[i++])
 	{
 		if (is_valid_number(argv[(i - 1)]))
@@ -74,54 +69,48 @@ int	*get_int_list(const char **argv)
 	return (int_list);
 }
 
-char **get_flag_list(const char **argv)
-{
-	char 	**flag_list;
-	size_t	i;
-	size_t	j;
+/*
+get_flag_values() reads the first two strings - if they exist - 
+returns a value between 0 and 17 if args have been valid
+NOTE: Please call is_args_valid() before to check argv
+*/
 
-	i = 0;
-	j = 0;
-	flag_list = calloc_char_arr(count_flags(argv) + 1);
-	if (!(flag_list))
-		return (NULL);
-	while (argv[i++])
-	{
-		if (is_valid_flag(argv[(i - 1)]))
-		{
-			flag_list[j] = ft_strdup(argv[(i - 1)]);
-			if (!(flag_list[j]))
-			{
-				free_str_array(flag_list);
-				return (NULL);
-			}
-			j++;
-		}
-	}
-	return (flag_list)
+int get_flag_values(const char **argv)
+{
+	int	flag;
+
+	flag = 0;
+	if (!argv)
+		return (-1);
+	if ((argv[0]) && (is_valid_flag(argv[0])))
+		flag += get_flag_value(argv[0]);
+	if ((argv[1]) && (is_valid_flag(argv[1])))
+		flag += get_flag_value(argv[1]);
+	return (flag);
 }
 
-
-size_t	count_numbers(const char **argv)
+int	get_flag_value(const char *flag)
 {
-	size_t	count;
-	size_t	i;
+	int	flag;
+
+	if (!flag)
+		return (-1);
+	return (
+		1 * (!(ft_strncmp(s, FLAG_SIMPLE)) +  
+		2 * (!(ft_strncmp(s, FLAG_MEDIUM))) +  
+		4 * (!(ft_strncmp(s, FLAG_COMPLEX))) +  
+		8 * (!(ft_strncmp(s, FLAG_ADAPTIVE))) + 
+		16 * (!(ft_strncmp(s, FLAG_BENCH)))); 
+}
+
+int	count_numbers(const char **argv)
+{
+	int	count;
+	int	i;
 
 	count = 0;
 	i = 0;
 	while (argv[i++])
 		count += (is_valid_nbr(argv[(i - 1)]));
-	return (count);
-}
-
-size_t count_flags(const char **argv)
-{
-	size_t	count;
-	size_t	i;
-
-	count = 0;
-	i = 0;
-	while (argv[i++])
-		count += (is_valid_flag(argv[(i - 1)]));
 	return (count);
 }

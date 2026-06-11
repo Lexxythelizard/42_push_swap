@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:07:03 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/03 14:09:17 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:23:52 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,14 @@
 
 // --- DOC ---
 
-
 // --- define ---
+
+int	is_numbers_unique(int *list, int len)
+{
+	if (1)
+		return (is_numbers_unique_simple(list, len));
+	return (is_numbers_unique_simple(list, len));
+}
 
 /*
 refactored: now:								24 lines :)
@@ -48,7 +54,8 @@ int	is_args_valid(const char **argv)
 	}
 	if ((flags == 1) && (!(is_valid_flag(argv[0]))))
 		return (0);
-	if ((flag == 2) && (!((is_valid_flag(argv[0])) && (is_valid_flag(argv[1])))))
+	if ((flag == 2) && 
+		(!((is_valid_flag(argv[0])) && (is_valid_flag(argv[1])))))
 		return (0);
 	if ((flag == 2) && (ft_strncmp(argv[0], FLAG_BENCH, 11)) && 
 		(ft_strncmp(argv[1], FLAG_BENCH, 11)))
@@ -68,19 +75,18 @@ is_valid_nbr
 	--> return 0 / 1
 */
 
-int is_valid_nbr(const char *s)
+int	is_valid_nbr(const char *s)
 {
 	size_t	i;
 
 	i = 0;
 	if (!(s))
 		return (0);
-	while((s[i]) && (((s[i] >= 9) && (s[i] <= 13)) || (s[i] == 32)))
+	while ((s[i]) && (((s[i] >= 9) && (s[i] <= 13)) || (s[i] == 32)))
 		i++;
 	i += ((s[i] == 43) || (s[i] == 45));
 	return (ft_isnumeric(s[i]));
 }
-
 
 /*
 all the flags should work, regafrdess lenghts

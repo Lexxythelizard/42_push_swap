@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/05 20:09:56 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:13:33 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@
 // --- prototype ---
 
 void			
-	sort_pairs(t_interface *stacks, t_stack_track *st_tr);
+	sort_pairs(
+		t_interface *stacks,
+		t_stack_track *st_tr);
 void			
-	split_stack(t_interface *stacks, t_stack_track *st_tr, int size);
+	split_stack(
+		t_interface *stacks,
+		t_stack_track *st_tr, int size);
 t_stack_track	
 	*init_stack_track(void);
 
@@ -51,7 +55,9 @@ t_stack_track
 	resetting unmerged for merging
 */
 
-void	sort_pairs(t_interface *stacks, t_stack_track *st_tr)
+void	sort_pairs(
+			t_interface *stacks,
+			t_stack_track *st_tr)
 {
 	t_stack_frame	a;
 	t_stack_frame	b;
@@ -91,7 +97,10 @@ void	sort_pairs(t_interface *stacks, t_stack_track *st_tr)
 	setting unmerged_[a/b]	to stack_len [a/b]
 */
 
-void	split_stack(t_interface *stacks, t_stack_track *st_tr, int size)
+void	split_stack(
+			t_interface *stacks,
+			t_stack_track *st_tr,
+			int size)
 {
 	int	half;
 

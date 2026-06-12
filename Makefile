@@ -6,7 +6,7 @@
 #    By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/12 11:27:12 by lenivorb          #+#    #+#              #
-#    Updated: 2026/06/12 12:11:09 by lenivorb         ###   ########.fr        #
+#    Updated: 2026/06/12 12:16:20 by lenivorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 This_Dir		=	.
 
-Lib_Dir			=	./libft
+Lib_Dir			=	./ft_printf
 
 Test_Dir		=	./tests
 
@@ -67,8 +67,8 @@ create_testdir:
 	if [ -ne "$(Test_Dir)" ]; then
 		mkdir "$(Test_Dir)"
 
-create_libft:
-	cd $(Lib_Dir) $(MAKE)
+create_printf:
+	cd $(Lib_Dir) && $(MAKE)
 
 # ------------------------- Commands -------------------------
 

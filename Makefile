@@ -6,7 +6,7 @@
 #    By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/12 11:27:12 by lenivorb          #+#    #+#              #
-#    Updated: 2026/06/12 12:16:20 by lenivorb         ###   ########.fr        #
+#    Updated: 2026/06/12 15:36:45 by lenivorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,33 @@
 
 This_Dir		=	.
 
-Lib_Dir			=	./ft_printf
+Printf_Dir		=	$(This_Dir)/ft_printf
 
-Test_Dir		=	./tests
+Libft_Dir		=	$(Printf_Dir)/libft
+
+Test_Dir		=	$(This_Dir)/tests
 
 Compile			=	cc
 
-Include			=	-I
+Include_This	=	-I $(This_Dir)
+
+Include_Printf	=	-I $(Printf_Dir)
+
+Include_Libft	=	-I $(Libft_Dir)
 
 CFlags			=	-Wall -Wextra -Werror
 
-Lib				=	-L
-
-link			=	-l
-
 Out				=	-o
 
-LIBFT			=	$(Lib_Dir)/libft.h
+THIS_H			=	$(This_Dir)/push_swap.h
+
+LIBFT_H			=	$(Libft_Dir)/libft.h
+
+LIBFT_H			=	$(Printf_Dir)/ft_printf.h
+
+PRINTF			=	-L $(Printf_Dir) -l ftprintf
+
+LIBFT			=	-L $(Libft_Dir) -l ft
 
 # -------> for testing
 
@@ -59,16 +69,16 @@ Args_Main		=	./test_argparsing.c
 
 # ------------------------- Commands -------------------------
 
-create_test_args: create_testdir $(Args_Main) $(Arg_Parsing) $(LIBFT)
-	$(Compile) $(CFlags) $(debug) $(Include) $(This_Dir) \
-	$(Lib) $(Lib_dir) $(link) ft $(Out) $(Test_Dir)/argparse
+create_test_args: create_testdir $(Args_Main) $(Arg_Parsing)
+	$(Compile) $(CFlags) $(debug) $(Include_This) $(Include_Libft) \
+	$(LIBFT) $(Out) $(Test_Dir)/argparse
 
 create_testdir:
 	if [ -ne "$(Test_Dir)" ]; then
 		mkdir "$(Test_Dir)"
 
 create_printf:
-	cd $(Lib_Dir) && $(MAKE)
+	cd $(Printf_Dir) && $(MAKE)
 
 # ------------------------- Commands -------------------------
 

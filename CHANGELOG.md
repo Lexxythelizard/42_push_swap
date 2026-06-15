@@ -9,6 +9,37 @@ This project is currently in early development for the 42 Berlin Rank 1
 
 ---
 
+## [2026-06-13]
+
+LEXXY:
+
+### Added
+- `Makefile` for `--complex`
+  - `create_printf` calls the Makefile in your printf
+
+- implemended `run_sort()` in `sort-run.c`
+  - uses the integer value of `get_flag_value()` to call one of four soting paradigms + bench y/n
+- implemented a `main.c`
+  - `raise_error()` raises "Error" to STDERR
+  - calls `init()` *init stacks*  **see init**
+    - if return is NULL --> Error
+  - calls `run_sort()`
+- implemented `is_numbers_unique()` $O($n^2$)$
+
+### Changed
+- build the cli argument parsing
+  - flags get just accepted in arguments position `argv[0]` or (`argv[0]` and `argv[1]`)
+  - doubled flags are considered invalid
+  - numbers are checked (`get_flag_value()`) if they are valid '    12': valid '  12cd121': invalid
+  - flags getting read as numbers `--bench`: 16, `--adaptive`: 8, ..., `--simple`: 1
+  - (case two forced algorythms flag need to be handled: could get handled in `run_sort()`)
+- `init()` got splitted and calls now:
+  - `stacks_init()` --> new: just outsourced cause fuction was to long
+  - `func_init()`	--> new: just outsourced cause fuction was to long
+  - `stats_init()`	--> old: didn't touch it
+- `init()` checks now:
+  - if numbers are unique if not it frees arry and return NULL **see main()**
+
 ## [2026-06-05]
 
 LEXXY:

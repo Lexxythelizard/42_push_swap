@@ -6,9 +6,17 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:57:57 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/05 17:45:12 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/06 18:53:31 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// --- include ---
+
+#include "./push_swap.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/libft/libft.h"
+
+// --- define ---
 
 // === scanning the stack ===
 
@@ -29,7 +37,7 @@ int	get_stack_size(t_stack_frame *stack)
 {
 	t_stack_frame	*ptr;
 	int				count;
-	
+
 	if (!stack)
 		return (-1);
 	if (!(stack -> head))
@@ -50,7 +58,7 @@ int	get_stack_size(t_stack_frame *stack)
 int	get_min_geq_n(t_stack_frame *stack, int n)
 {
 	int	min;
-	
+
 	if (!stack)
 		return (INT_MAX);
 	min = INT_MAX;
@@ -70,7 +78,7 @@ int	get_nth_min(t_stack *stack, int n)
 	int				prev_min;
 	int				rtrn;
 	int				i;
-	
+
 	prev_min = INT_MAX;
 	while (n--)
 		prev_min = get_min_larger_n(stack -> head, prev_min + 1);
@@ -88,7 +96,7 @@ int	get_nth_min_idx(t_stack	*stack, int n)
 	int				min;
 	int				rtrn;
 	int				i;
-	
+
 	if (!stack)
 		return (-1);
 	ptr = stack -> head;

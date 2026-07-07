@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utillities.c                                       :+:      :+:    :+:   */
+/*   core_put_abstraction.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/04 17:09:48 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/07 15:32:20 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/19 16:55:47 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/07/03 16:18:47 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// --- include ---
+// --- icludes ---
 
-#include "./push_swap.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/libft/libft.h"
+#include "../core/ft_printf_core.h"
 
 // --- DOC ---
 
@@ -24,36 +22,30 @@
 
 // --- define ---
 
-int	min_of(int a, int b)
+int	lxy_put_percent_sign(void)
 {
-	if (a > b)
-		return (b);
-	return (a);
+	return (lxy_put_char(37));
 }
 
-int	max_of(int a, int b)
+int	lxy_put_trigger_hashflag(void)
 {
-	if (a < b)
-		return (b);
-	return (a);
+	return (lxy_put_str("0x"));
 }
 
-int	is_numbers_unique_simple(int *list, int len)
+int	lxy_put_trigger_hashflag_upper(void)
 {
-	int	i;
-	int	j;
+	return (lxy_put_str("0X"));
+}
 
-	i = 0;
-	while ((i + 1) < len)
+int	lxy_put_white_space(int n)
+{
+	int	written;
+
+	written = n;
+	while (n--)
 	{
-		j = i + 1;
-		while (j < len)
-		{
-			if (list[i] == list[j])
-				return (0);
-			j++;
-		}
-		i++;
+		if (lxy_put_char(32) == (-1))
+			return (-1);
 	}
-	return (1);
+	return (written);
 }

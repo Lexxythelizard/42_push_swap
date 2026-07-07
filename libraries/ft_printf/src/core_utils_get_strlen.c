@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_track.h                                      :+:      :+:    :+:   */
+/*   core_utils_get_strlen.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/04 16:17:20 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/06 19:26:30 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/19 18:32:31 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/06/19 20:22:03 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_TRACK_H
-# define STACK_TRACK_H
+// --- icludes ---
 
-// --- include ---
+#include "../core/ft_printf_core.h"
 
 // --- DOC ---
 
 /*
-	...you comment here...
+	... your comment here ...
 */
 
-// --- Makros ---
-
-# define YOUR_DEFVAL 161
-
-// --- struct ---
-
-typedef struct s_stack_track
+int	lxy_strlen(const char *s)
 {
-	int		size_a;
-	int		size_b;
-	int		merge_size;
-	int		unmerged_a;
-	int		unmerged_b;
-	int		side;
-}			t_stack_track;
+	int	len;
 
-// --- end ---
-
-#endif
+	len = 0;
+	if (!s)
+		return (-1);
+	while (s[len])
+		len++;
+	return (len);
+}

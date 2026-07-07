@@ -6,13 +6,15 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 20:25:04 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/11 21:07:34 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/06 18:49:08 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// --- icludes ---
+// --- include ---
 
-#include <[statlib].h>
+#include "./push_swap.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/libft/libft.h"
 
 // --- DOC ---
 
@@ -29,9 +31,9 @@ int	raise_error(void);
 int	main(int argc, char **argv)
 {
 	t_interface	*stacks;
+	int			*numbers;
 
-	int	*numbers;
-	if (!argc) || !(is_args_valid(argv))
+	if ((!argc) || (!(is_args_valid(argv))))
 		return (raise_error);
 	stacks = init(argv);
 	if (!stacks)
@@ -47,4 +49,3 @@ int	raise_error(void)
 	ft_putendl_fd("Error", STDERR);
 	return (STDERR);
 }
-

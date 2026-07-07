@@ -6,14 +6,16 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 14:12:11 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/11 18:21:07 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/07 15:32:07 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- include ---
 
-#include "libft.h"
-#include "ui_cli.h"
+#include "./push_swap.h"
+#include "./libraries/libft/libft.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./ui_cli.h"
 
 // --- DOC ---
 
@@ -37,18 +39,10 @@
 
 */
 
-// --- proto ---
-
-int	*get_int_list(const char **argv);
-int get_flag_values(const char **argv);
-int	get_flag_value(const char *flag);
-int	count_numbers(const char **argv);
-
 // --- define ---
 
 int	*get_int_list(const char **argv)
 {
-
 	int		*int_list;
 	size_t	i;
 	size_t	j;
@@ -63,7 +57,7 @@ int	*get_int_list(const char **argv)
 		if (is_valid_number(argv[(i - 1)]))
 		{
 			int_list[j] = ft_atoi(argv[(i - 1)]);
-			j++
+			j++;
 		}
 	}
 	return (int_list);
@@ -75,7 +69,7 @@ returns a value between 0 and 17 if args have been valid
 NOTE: Please call is_args_valid() before to check argv
 */
 
-int get_flag_values(const char **argv)
+int	get_flag_values(const char **argv)
 {
 	int	flag;
 
@@ -96,9 +90,9 @@ int	get_flag_value(const char *flag)
 	if (!flag)
 		return (-1);
 	return (
-		1 * (!(ft_strncmp(s, FLAG_SIMPLE)) +  
-		2 * (!(ft_strncmp(s, FLAG_MEDIUM))) +  
-		4 * (!(ft_strncmp(s, FLAG_COMPLEX))) +  
+		1 * (!(ft_strncmp(s, FLAG_SIMPLE))) + 
+		2 * (!(ft_strncmp(s, FLAG_MEDIUM))) + 
+		4 * (!(ft_strncmp(s, FLAG_COMPLEX))) + 
 		8 * (!(ft_strncmp(s, FLAG_ADAPTIVE))) + 
 		16 * (!(ft_strncmp(s, FLAG_BENCH)))); 
 }

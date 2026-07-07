@@ -6,13 +6,19 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 13:25:59 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/05 15:25:58 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/07/07 15:27:34 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- include ---
+
+#include "./push_swap.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/libft/libft.h"
+
 /* Computes the disorder of stack a
    (i.e. the quota of pairs of numbers which are in the wrong order) */
-float compute_disorder(t_stack_frame *a)
+float	compute_disorder(t_stack_frame *a)
 {
 	int				mistakes;
 	int				total_pairs;

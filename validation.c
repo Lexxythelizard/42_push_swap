@@ -6,16 +6,16 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:07:03 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/11 20:23:52 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/07 15:32:33 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- include ---
 
-#include "libft.h"
-#include "ui_cli.h"
-
-// --- DOC ---
+#include "./push_swap.h"
+#include "./libraries/libft/libft.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./ui_cli.h"
 
 // --- define ---
 

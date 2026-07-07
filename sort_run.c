@@ -6,15 +6,17 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 18:22:06 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/11 21:08:13 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/07 15:31:21 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "push_swap.h"
-#include "stack.h"
-#include "stack_track.h"
+#include "./push_swap.h"
+#include "./stack.h"
+#include "./stack_track.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/libft/libft.h"
 
 // --- DOC ---
 
@@ -28,7 +30,7 @@ void	run_sort(t_interface *stacks, int flag);
 
 // --- define ---
 
-void	run_sort(t_interface *stacks, int flag);
+void	run_sort(t_interface *stacks, int flag)
 {
 	int	run_bench;
 
@@ -45,4 +47,3 @@ void	run_sort(t_interface *stacks, int flag);
 	if (run_bench)
 		print_bench(stacks -> stats);
 }
-

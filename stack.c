@@ -6,38 +6,41 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 10:49:28 by rcollet           #+#    #+#             */
-/*   Updated: 2026/06/04 17:30:33 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/07/07 16:39:53 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// --- include ---
+
+#include "./push_swap.h"
+#include "./libraries/libft/libft.h"
+#include "./libraries/ft_printf/ft_printf.h"
+
+// --- define ---
 
 /* TODO: Handle malloc errors (preferably within the 25 lines) */
 
 /* Initialises a t_stack instance from a list of numbers */
-t_stack	*stack_init(int	*nums, size_t len)
+void	stack_init(t_stack *rtrn, int	*nums, size_t len)
 {
-	t_stack			*rtrn;
 	t_stack_frame	*tmp;
 
 	tmp = NULL;
-	rtrn = malloc(16);
-	if (!rtrn)
-		return (NULL);
 	if (nums)
 		tmp = malloc(16);
 	rtrn -> tail = tmp;
 	while (tmp && len--)
 	{
-		tmp -> val = nums[len]
+		tmp -> val = nums[len];
 		tmp -> prev = malloc(16);
 		if (!(tmp -> prev))
 			return (clear_stack(&rtrn));
 		tmp -> prev -> next = tmp; 
-		tmp = tmp -> prev;	
+		tmp = tmp -> prev;
 	}
 	rtrn -> head = tmp;
 	rtrn -> head -> prev = NULL;
 	rtrn -> tail -> next = NULL;
-	return (rtrn);
 }
 
 /* Swap first two elements of c */
@@ -59,7 +62,7 @@ void	s(t_stack *c)
 void	p(t_stack *c, t_stack *d)
 {
 	if (!(d -> head))
-		return ; 
+		return ;
 	if (!(c -> head))
 	{
 		c -> head = d -> head;
@@ -94,7 +97,7 @@ void	r(t_stack *c)
 }
 
 /* rotate downwards one step */
-void	rr(t_stack *c)
+void	rr_(t_stack *c)
 {
 	if (!(c -> head) || !(c -> head -> next))
 		return ;

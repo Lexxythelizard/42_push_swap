@@ -6,32 +6,38 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:37:13 by rcollet           #+#    #+#             */
-/*   Updated: 2026/06/11 21:05:35 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/07 16:41:15 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// --- include ---
+
+#include "./push_swap.h"
+#include "./libraries/libft/libft.h"
+#include "./libraries/ft_printf/ft_printf.h"
 
 /* Initialises the interface, containing a filled stack a from argv and an
    empty stack b, the stack methods and an optional variable stats */
 
-t_interface	*init(char **argv)
+t_interface	*init(const char **argv)
 {
 	int			*nums;
 	int			nums_len;
 	t_interface	*rtrn;
-	
-	rtrn = ft_calloc(16);
+
+	rtrn = ft_calloc(1, sizeof(t_interface));
 	if (!rtrn)
 		return (NULL);
 	nums_len = count_numbers(argv);
 	nums = get_int_list(argv);
 	if (!nums)
 		return (NULL);
-	if (!(is_numbers_unique(nums)))
+	if (!(is_numbers_unique(nums, nums_len)))
 	{
 		free(nums);
 		return (NULL);
 	}
-	stacks_init(rtrn, nums, nums_len)
+	stacks_init(rtrn, nums, nums_len);
 	func_init(rtrn);
 	free(nums);
 	return (rtrn);
@@ -39,14 +45,14 @@ t_interface	*init(char **argv)
 
 void	stacks_init(t_interface *c, int *nums, int len)
 {
-	c -> stacks = ft_calloc(16);
-	c -> stacks[0] = stack_init(nums, nums_ln);
-	c -> stacks[1] = stack_init(NULL, 0);
+	// c -> stacks = ft_calloc(1, 16);
+	stack_init(&(c -> stacks[0]), nums, len);
+	stack_init(&(c -> stacks[1]), NULL, 0);
 }
 
 void	func_init(t_interface *c)
 {
-	c -> funcs = ft_calloc(88);
+	// c -> funcs = ft_calloc(88);
 	c -> funcs[0] = func_wrap(&sa, "sa");
 	c -> funcs[1] = func_wrap(&sb, "sb");
 	c -> funcs[2] = func_wrap(&ss, "ss");
@@ -63,9 +69,9 @@ void	func_init(t_interface *c)
 /* Initialises the stats, to be called if a --bench flag is present */
 void	stats_init(t_interface *c, int flag)
 {
-	c -> stats = ft_calloc(32);
-	c -> stats -> disorder = compute_disorder((c -> stacks)[0] -> head);
-	c -> stats -> calls = ft_calloc(44);
+	c -> stats = ft_calloc(1, sizeof(t_stats));
+	c -> stats -> disorder = compute_disorder((c -> stacks)[0]-> head);
+	// c -> stats -> calls = ft_calloc(44);
 	if (flag == 0)
 		c -> stats -> strategy = "Simple " SIMPLE;
 	else if (flag == 1)
@@ -84,12 +90,12 @@ void	stats_init(t_interface *c, int flag)
 }
 
 /* Creates an instance of t_func from a function pointer and a function name */
-t_func	*func_wrap(void (*f)(t_interface *), char *name)
+t_func	func_wrap(void (*f)(t_interface *), char *name)
 {
-	t_func	*rtrn;
+	t_func	rtrn;
 
-	rtrn = ft_calloc(16);
-	rtrn -> f = f;
-	rtrn -> name = name;
+	// rtrn = ft_calloc(16);
+	rtrn.f = f;
+	rtrn.name = name;
 	return (rtrn);
 }

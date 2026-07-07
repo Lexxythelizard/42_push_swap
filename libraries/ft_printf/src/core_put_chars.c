@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utillities.c                                       :+:      :+:    :+:   */
+/*   core_put_chars.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/04 17:09:48 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/07 15:32:20 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/19 16:55:08 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/07/03 16:47:34 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// --- include ---
+// --- icludes ---
 
-#include "./push_swap.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/libft/libft.h"
+#include "../core/ft_printf_core.h"
 
 // --- DOC ---
 
@@ -24,36 +22,19 @@
 
 // --- define ---
 
-int	min_of(int a, int b)
+int	lxy_put_char(char c)
 {
-	if (a > b)
-		return (b);
-	return (a);
+	return ((int)(write(STDOUT, &c, 1)));
 }
 
-int	max_of(int a, int b)
+int	lxy_put_str(const char *s)
 {
-	if (a < b)
-		return (b);
-	return (a);
-}
+	int	len;
 
-int	is_numbers_unique_simple(int *list, int len)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while ((i + 1) < len)
-	{
-		j = i + 1;
-		while (j < len)
-		{
-			if (list[i] == list[j])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
+	if (!s)
+		return ((int)(write(STDOUT, NSTR, lxy_strlen(NSTR))));
+	len = lxy_strlen(s);
+	if (len < 0)
+		return (-1);
+	return ((int)(write(STDOUT, s, len)));
 }

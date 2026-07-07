@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_track.h                                      :+:      :+:    :+:   */
+/*   test_argparsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/04 16:17:20 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/06 19:26:30 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/07/05 19:28:12 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/07/05 20:11:45 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_TRACK_H
-# define STACK_TRACK_H
+// --- icludes ---
 
-// --- include ---
+#include "ft_printf.h"
+#include "push_swap.h"
+#include "stack.h"
 
 // --- DOC ---
 
 /*
-	...you comment here...
+
 */
 
-// --- Makros ---
+// --- prototype ---
 
-# define YOUR_DEFVAL 161
+void	func0(void);
 
-// --- struct ---
 
-typedef struct s_stack_track
+// --- run ---
+
+int	main(int argc, char **argv)
 {
-	int		size_a;
-	int		size_b;
-	int		merge_size;
-	int		unmerged_a;
-	int		unmerged_b;
-	int		side;
-}			t_stack_track;
+	if (argc < 3)
+		return (-1);
+	ft_printf("");
+	return (0);
+}
 
-// --- end ---
+// --- define ---
 
-#endif
+void	func0(void)
+{
+	// code
+}
+

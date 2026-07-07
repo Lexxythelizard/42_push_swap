@@ -6,9 +6,17 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:19:39 by rcollet           #+#    #+#             */
-/*   Updated: 2026/06/05 14:38:59 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/07/07 15:28:42 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// --- include ---
+
+#include "./push_swap.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/libft/libft.h"
+
+// --- def ---
 
 void	ra(t_interface *c)
 {

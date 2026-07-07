@@ -6,13 +6,13 @@
 #    By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/04 12:10:50 by rcollet           #+#    #+#              #
-#    Updated: 2026/05/15 16:00:53 by rcollet          ###   ########.fr        #
+#    Updated: 2026/07/07 13:39:51 by lenivorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-INCL	=	../incl
+INCL	=	.
 
 HEADERS = libft.h
 

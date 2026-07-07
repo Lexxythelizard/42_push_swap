@@ -6,13 +6,18 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 21:10:38 by rcollet           #+#    #+#             */
-/*   Updated: 2026/06/05 19:54:29 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/07 15:30:48 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "stack.h"
+#include "./stack.h"
+#include "./push_swap.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/libft/libft.h"
+
+// --- define ---
 
 // --- DOC ---
 
@@ -36,7 +41,7 @@ void	sort_medium(t_interface *stacks)
 	int	bucket_size;
 	int	bucket_max;
 	int	i;
-	
+
 	stack_size = get_stack_size(stacks -> a);
 	bucket_size = ft_sqrt(stack_size);
 	while (stack_size >= bucket_size)
@@ -74,11 +79,11 @@ void	sort_bucket(t_interface	*c, int bs, int side)
 	int				i;
 
 	i = 0;
-	start = (c -> stacks)[side] -> head;
+	start = (c -> stacks)[side]-> head;
 	end = start;
 	while (i++ < bs)
 		end = end -> next;
-	while ((c -> stacks)[side] -> head != end)
+	while ((c -> stacks)[side]-> head != end)
 	{
 		if ((stack_comp((c -> stacks)[side]) + side) % 2)
 		{

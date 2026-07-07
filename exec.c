@@ -6,14 +6,15 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:54:33 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/05 15:36:25 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/07/07 15:53:37 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- include ---
 
-#include "ft_printf.h"
 #include "push_swap.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/libft/libft.h"
 
 // --- DOC ---
 
@@ -42,13 +43,13 @@ void	exec(t_interface *stacks, int idx)
 		(stacks -> stats -> calls)[idx]++;
 		stacks -> stats -> total_ops++;
 	}
-	((stacks -> func)[idx] -> f)(stacks)
-	ft_putendl((stacks -> func)[idx] -> name, 1);
+	((stacks -> funcs)[idx].f)(stacks);
+	ft_putendl_fd((stacks -> funcs)[idx].name, 1);
 }
 
 /* calls exec(stats, idx) n times */
 void	exec_n(t_interface *stacks, int idx, int n)
 {
 	while (n--)
-		exec(stacks, tracker, idx);
+		exec(stacks, idx);
 }

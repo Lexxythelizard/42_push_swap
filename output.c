@@ -6,20 +6,22 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 11:40:28 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/05 15:42:13 by rcollet          ###   ########.fr       */
+/*   Updated: 2026/07/06 18:51:31 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- includes ---
 
-#include "libft.h"
-#include "op_tracker.h"
-#include "output.h"
+#include "./push_swap.h"
+#include "./op_tracker.h"
+#include "./output.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/libft/libft.h"
 
 // --- define ---
 
 /* Prints out the bench statistics */
-void print_bench(t_stats *stats)
+void	print_bench(t_stats *stats)
 {
 	ft_printf("[bench] disorder:  %d.%d%%\n", (int)(stats -> disorder), \
 	(int)(stats -> disorder * 100));
@@ -29,7 +31,7 @@ void print_bench(t_stats *stats)
 	(stats -> calls)[0], (stats -> calls)[1], (stats -> calls)[2], \
 	(stats -> calls)[3], (stats -> calls)[4]);
 	ft_printf("[bench] ra:  %u  rb:  %u  rr:  %u,  rra:  %u,  rrb:  %u  " \
-    "rrr:  %u\n", (stats -> calls)[5], (stats -> calls)[6], \
+	"rrr:  %u\n", (stats -> calls)[5], (stats -> calls)[6], \
 	(stats -> calls)[7], (stats -> calls)[8], (stats -> calls)[9], \
 	(stats -> calls)[10]);
 }

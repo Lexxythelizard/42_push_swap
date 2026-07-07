@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface_push.c                                   :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 17:18:26 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/07 15:28:31 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/16 18:17:13 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/07/03 16:50:19 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
+
 // --- include ---
 
-#include "./push_swap.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/libft/libft.h"
+// --- DOC ---
 
-// --- def ---
+/*
+	...you comment here...
+*/
 
-void	pa(t_interface *c)
-{
-	p((c -> stacks)[0], (c -> stacks)[1]);
-}
+// --- prototype ---
 
-void	pb(t_interface *c)
-{
-	p((c -> stacks)[1], (c -> stacks)[0]);
-}
+int	ft_printf(const char *parsed_line, ...);
+
+// --- end ---
+
+#endif

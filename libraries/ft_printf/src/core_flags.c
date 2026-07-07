@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utillities.c                                       :+:      :+:    :+:   */
+/*   core_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/04 17:09:48 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/07 15:32:20 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/16 18:39:28 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/06/29 14:28:43 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// --- include ---
+// --- icludes ---
 
-#include "./push_swap.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/libft/libft.h"
+#include "../ft_printf.h"
+#include "../core/ft_printf_core.h"
 
 // --- DOC ---
 
@@ -24,36 +23,24 @@
 
 // --- define ---
 
-int	min_of(int a, int b)
+t_flags	*init_flags(void)
 {
-	if (a > b)
-		return (b);
-	return (a);
+	t_flags	*new_instance;
+
+	new_instance = malloc(16);
+	if (!new_instance)
+		return (NULL);
+	new_instance -> hash = 0;
+	new_instance -> wsp = 0;
+	new_instance -> plus = 0;
+	return (new_instance);
 }
 
-int	max_of(int a, int b)
+void	clean_flags(t_flags *flags)
 {
-	if (a < b)
-		return (b);
-	return (a);
-}
-
-int	is_numbers_unique_simple(int *list, int len)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while ((i + 1) < len)
-	{
-		j = i + 1;
-		while (j < len)
-		{
-			if (list[i] == list[j])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
+	if (!flags)
+		return ;
+	flags -> hash = 0;
+	flags -> wsp = 0;
+	flags -> plus = 0;
 }

@@ -6,15 +6,19 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/06/05 20:10:16 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/07 15:30:31 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "stack.h"
-#include "push_swap.h"
-#include "stack_track.h"
+#include "./stack.h"
+#include "./push_swap.h"
+#include "./stack_track.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/libft/libft.h"
+
+// --- define ---
 
 // --- DOC ---
 

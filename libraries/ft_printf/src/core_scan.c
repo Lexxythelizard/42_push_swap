@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utillities.c                                       :+:      :+:    :+:   */
+/*   core_scan.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/04 17:09:48 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/07 15:32:20 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/06/16 18:39:28 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/07/02 15:25:47 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// --- include ---
+// --- icludes ---
 
-#include "./push_swap.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/libft/libft.h"
+#include "../ft_printf.h"
+#include "../core/ft_printf_core.h"
 
 // --- DOC ---
 
@@ -24,36 +23,26 @@
 
 // --- define ---
 
-int	min_of(int a, int b)
+int	is_flag(unsigned char c)
 {
-	if (a > b)
-		return (b);
-	return (a);
+	return ((c == 35) || (c == 32) || (c == 43));
 }
 
-int	max_of(int a, int b)
+int	is_percent(unsigned char c)
 {
-	if (a < b)
-		return (b);
-	return (a);
+	return (c == 37);
 }
 
-int	is_numbers_unique_simple(int *list, int len)
+int	is_equal(const char *s1, const char *s2, int size)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while ((i + 1) < len)
+	while ((i < size) && (s1[i]) && (s2[i]))
 	{
-		j = i + 1;
-		while (j < len)
-		{
-			if (list[i] == list[j])
-				return (0);
-			j++;
-		}
+		if (s1[i] != s2[i])
+			return (0);
 		i++;
 	}
-	return (1);
+	return (i == size);
 }

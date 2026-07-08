@@ -40,8 +40,6 @@ Libft_Dir		=	$(Library_Dir)/libft
 
 Stack_Dir		=	$(Library_Dir)/stack_machine
 
-Stack_Core_Dir	=	$(Stack_Dir)/core
-
 Test_Dir		=	$(This_Dir)/tests
 
 Include_This	=	-I $(This_Dir)
@@ -50,15 +48,11 @@ Include_Printf	=	-I $(Printf_Dir)
 
 Include_Libft	=	-I $(Libft_Dir)
 
-Include_Stack	=	-I $(Stack_Dir)
-
 # ------------------------- library files -------------------------
 
 PRINTF			=	libftprintf.a
 
 LIBFT			=	libft.a
-
-STACK			=	stackmachine.a
 
 # ------------------------- library inclusion -------------------------
 
@@ -67,22 +61,27 @@ LIBRARIES		=	-L $(Library_Dir) -l ftprintf -l ft
 # ------------------------- Files -------------------------
 
 Stack_Files		=	$(Stack_Dir)/disorder_metric.c \
-					$(Stack_Dir)/machine_exec.c \
-					$(Stack_Dir)/machine_free.c \
-					$(Stack_Dir)/machine_init.c \
-					$(Stack_Dir)/machine_operation_push.c \
-					$(Stack_Dir)/machine_operation_reverse_rotate.c \
-					$(Stack_Dir)/machine_operation_rotate.c \
-					$(Stack_Dir)/machine_operation_swap.c \
-					$(Stack_Dir)/stack_manipulation.c \
-					$(Stack_Dir)/stack_operation.c \
-					$(Stack_Dir)/stack_scan.c
+					$(Stack_Dir)/ machine_exec.c \
+					$(Stack_Dir)/ machine_free.c \
+					$(Stack_Dir)/ machine_init.c \
+					$(Stack_Dir)/ machine_operation_push.c \
+					$(Stack_Dir)/ machine_operation_reverse_rotate.c \
+					$(Stack_Dir)/ machine_operation_rotate.c \
+					$(Stack_Dir)/ machine_operation_swap.c \
+					$(Stack_Dir)/ stack_manipulation.c \
+					$(Stack_Dir)/ stack_operation.c \
+					$(Stack_Dir)/ stack_scan.c
 
-All_Files		=	./output.c \
+All_Files		=	./cleanup.c				./disorder_metric.c \
+					./exec.c				./interface.c \
+					./interface_push.c		./interface_rotate.c \
+					./interface_rrotate.c	./interface_swap.c \
+					./output.c				./scan_stack_1.c \
 					./sort_complex_base.c	./sort_complex.c \
 					./sort_medium.c 		./sort_run.c \
-					./sort_simple_0.c		./ui_cli.c \
-					./utillities.c			./validation.c
+					./sort_simple_0.c		./stack.c \
+					./ui_cli.c				./utillities.c \
+					./validation.c
 
 # -------> for testing
 
@@ -91,20 +90,9 @@ Arg_Parsing		= 	./validation.c			./utillities.c \
 
 Args_Main		=	./test_argparsing.c
 
-Stack_Obj		=	$(Stack_Files:.c=.o)
-
 All_Obj			=	$(All_Files:.c=.o)
 
 # ------------------------- compile rules -------------------------
-
-$(Stack_Obj): %.o: %.c
-	if [ "$(DEBUGG_MODE)" -eq "1" ]; then \
-		$(Compile) $(CFlags) $(Debugg) \
-		$(Include_Stack_Core) $(Include_Stack) $(Dont_link) $< $(Out) $@; \
-	else \
-		$(Compile) $(CFlags) \
-		$(Include_Stack_Core) $(Include_Stack) $(Dont_link) $< $(Out) $@; \
-	fi
 
 $(All_Obj): %.o: %.c
 	if [ "$(DEBUGG_MODE)" -eq "1" ]; then \
@@ -122,22 +110,14 @@ test0: $(All_Obj)
 clean:
 	rm -f $(All_Obj) $@
 
+create_test_args: create_testdir $(Args_Main) $(Arg_Parsing)
+	$(Compile) $(CFlags) $(debug) $(Include_This) $(Include_Libft) \
+	$(LIBFT) $(Out) $(Test_Dir)/argparse
+
 create_testdir:
 	if [ -ne "$(Test_Dir)" ]; then \
 		mkdir "$(Test_Dir)"; \
 	fi
-
-stackmachine: $(Stack_Obj)
-	ar rcs $(STACK) $(Stack_Obj)
-	mv $(STACK) $(Library_Dir)/$(STACK)
-
-stackmachine_re: stackmachine_fclean stackmachine
-
-stackmachine_fclean: stackmachine_clean
-	rm $(STACK) $(Library_Dir)/$(STACK)
-
-stackmachine_clean:
-	rm $(Stack_Obj)
 
 ftprintf:
 	cd $(Printf_Dir) && $(MAKE)

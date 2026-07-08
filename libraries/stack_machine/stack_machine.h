@@ -16,10 +16,9 @@
 // --- include ---
 
 # include <stdlib.h>
-# include "./stack.h"
-# include "./machine"
-# include "./stack_track.h"
-# include "./ui_cli.h"
+# include "./core/stack.h"
+# include "./core/machine"
+# include "./core/stack_track.h"
 
 // --- makros ---
 

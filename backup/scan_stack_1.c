@@ -6,12 +6,13 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:57:57 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/06 18:53:31 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/08 16:11:52 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- include ---
 
+#include <limits.h>
 #include "./push_swap.h"
 #include "./libraries/ft_printf/ft_printf.h"
 #include "./libraries/libft/libft.h"
@@ -38,13 +39,9 @@ int	get_stack_size(t_stack_frame *stack)
 	t_stack_frame	*ptr;
 	int				count;
 
-	if (!stack)
-		return (-1);
-	if (!(stack -> head))
-		return (0);
-	ptr = stack -> head;
-	count = 1;
-	while (ptr -> next != NULL)
+	ptr = stack;
+	count = 0;
+	while (ptr != NULL)
 	{
 		ptr = ptr -> next;
 		count++;
@@ -73,15 +70,13 @@ int	get_min_geq_n(t_stack_frame *stack, int n)
 
 /* gets the nth lowest value in the stack */
 
-int	get_nth_min(t_stack *stack, int n)
+int	get_nth_min(t_stack_frame *stack, int n)
 {
 	int				prev_min;
-	int				rtrn;
-	int				i;
 
 	prev_min = INT_MAX;
 	while (n--)
-		prev_min = get_min_larger_n(stack -> head, prev_min + 1);
+		prev_min = get_min_geq_n(stack -> head, prev_min + 1);
 	return (prev_min);
 }
 
@@ -90,7 +85,7 @@ gets the 'index' (difference to first value) of the nth lowest value in stack
 NOTE: please make sure to parse the first note/element in stack
 */
 
-int	get_nth_min_idx(t_stack	*stack, int n)
+int	get_nth_min_idx(t_stack_frame *stack, int n)
 {
 	t_stack_frame	*ptr;
 	int				min;

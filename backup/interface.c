@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:37:13 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/07 16:41:15 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/08 15:42:38 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	func_init(t_interface *c)
 void	stats_init(t_interface *c, int flag)
 {
 	c -> stats = ft_calloc(1, sizeof(t_stats));
-	c -> stats -> disorder = compute_disorder((c -> stacks)[0]-> head);
+	c -> stats -> disorder = compute_disorder((c -> stacks)[0]. head);
 	// c -> stats -> calls = ft_calloc(44);
 	if (flag == 0)
 		c -> stats -> strategy = "Simple " SIMPLE;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface_rrotate.c                                :+:      :+:    :+:   */
+/*   interface_swap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 17:21:06 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/07 15:28:53 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/05/27 17:16:29 by rcollet           #+#    #+#             */
+/*   Updated: 2026/07/08 15:53:05 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@
 
 // --- def ---
 
-void	rra(t_interface *c)
+void	sa(t_interface *c)
 {
-	rr((c -> stacks)[0]);
+	s(&((c -> stacks)[0]));
 }
 
-void	rrb(t_interface	*c)
+void	sb(t_interface *c)
 {
-	rr((c -> stacks)[1]);
+	s(&((c -> stacks)[1]));
 }
 
-void	rrr(t_interface *c)
+void	ss(t_interface *c)
 {
-	rra(c);
-	rrb(c);
+	sa(c);
+	sb(c);
 }

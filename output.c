@@ -6,15 +6,13 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 11:40:28 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/06 18:51:31 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/08 15:54:20 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- includes ---
 
 #include "./push_swap.h"
-#include "./op_tracker.h"
-#include "./output.h"
 #include "./libraries/ft_printf/ft_printf.h"
 #include "./libraries/libft/libft.h"
 

@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface_swap.c                                   :+:      :+:    :+:   */
+/*   machine_operation_rotate.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 17:16:29 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/07 15:29:08 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/05/27 17:19:39 by rcollet           #+#    #+#             */
+/*   Updated: 2026/07/08 20:39:41 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- include ---
 
-#include "./push_swap.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/libft/libft.h"
+#include "./stack_machine.h"
 
 // --- def ---
 
-void	sa(t_interface *c)
+void	ra(t_stack_machine *machine)
 {
-	s((c -> stacks)[0]);
+	rotate(&((machine -> stacks)[0]));
 }
 
-void	sb(t_interface *c)
+void	rb(t_stack_machine *machine)
 {
-	s((c -> stacks)[1]);
+	rotate(&((machine -> stacks)[1]));
 }
 
-void	ss(t_interface *c)
+void	rr(t_stack_machine *machine)
 {
-	sa(c);
-	sb(c);
+	ra(machine);
+	rb(machine);
 }

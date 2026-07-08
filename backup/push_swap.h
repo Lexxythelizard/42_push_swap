@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 11:55:43 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/07 17:15:01 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/08 16:14:03 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void			print_bench(t_stats *stats);
 int				stack_comp(t_stack *stack);
 int				get_stack_size(t_stack_frame *stack);
 int				get_min_geq_n(t_stack_frame *stack, int n);
-int				get_nth_min(t_stack *stack, int n);
+int				get_nth_min(t_stack_frame *stack, int n);
 int				get_nth_min_idx(t_stack *stack, int n);
 
 // sort_complex_base.c

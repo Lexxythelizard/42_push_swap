@@ -16,6 +16,8 @@
 
 // --- define ---
 
+// TODO: -implement free_funcs ? Actually not: nothing allocated
+
 /* Frees an instance of t_interface including the stats (if present) */
 void	free_machine(t_stack_machine *machine)
 {
@@ -32,6 +34,6 @@ void	free_machine(t_stack_machine *machine)
 	i = 0;
 	while (i < 11)
 		free(&((machine -> funcs)[i++]));
-	free(machine -> funcs);
+	//free(machine -> funcs);
 	//free(machine);
 }

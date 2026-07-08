@@ -18,10 +18,10 @@
    (i.e. the quota of pairs of numbers which are in the wrong order) */
 float	compute_disorder(t_stack *stack)
 {
-	int		mistakes;
-	int		total_pairs;
-	t_stack	*curr;
-	t_stack	*comp;
+	int			mistakes;
+	int			total_pairs;
+	t_element	*curr;
+	t_element	*comp;
 
 	mistakes = 0;
 	total_pairs = 0;
@@ -30,7 +30,7 @@ float	compute_disorder(t_stack *stack)
 	curr = stack -> first;
 	while (curr != NULL)
 	{
-		comp = a -> next;
+		comp = curr -> next;
 		while (comp != NULL)
 		{
 			if (curr -> val > comp -> val)

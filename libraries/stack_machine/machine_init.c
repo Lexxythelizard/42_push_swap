@@ -16,16 +16,25 @@
 
 int	machine_init_empty(t_stack_machine *machine)
 {
+	int	i;
+
+	i = 0;
 	if (!machine)
 		return (0);
-	machine -> stack[0].first = NULL;
-	machine -> stack[0].last = NULL;
-	machine -> stack[1].first = NULL;
-	machine -> stack[1].last = NULL;
-	machine -> stats = init_empty_stats();
+	machine -> stacks[0].first = NULL;
+	machine -> stacks[0].last = NULL;
+	machine -> stacks[1].first = NULL;
+	machine -> stacks[1].last = NULL;
+	machine -> stats = malloc(sizeof(t_stats));
 	if (!(machine -> stats))
 		return (-1);
+	machine -> stats -> total_ops = 0;
+	machine -> stats -> disorder = 0.0;
+	machine -> stats -> strategy = NULL;
+	while (i++ < 11)
+		machine -> stats -> calls[(i - 1)] = 0;
 	func_init(machine);
+	return (1);
 }
 
 int	machine_stack_init(t_stack_machine *machine, int *nums, int len)
@@ -34,12 +43,6 @@ int	machine_stack_init(t_stack_machine *machine, int *nums, int len)
 		return (0);
 	if ((!nums) && (len))
 		return (-1);
-	if ((!nums) && (!len))
-	{
-		machine -> stack[0].first = NULL;
-		machine -> stack[0].last = NULL;
-		return (1);
-	}
 	if (stack_init(&(machine -> stacks[0]), nums, len) < 0)
 	{
 		free_stack(&(machine -> stacks[0]));
@@ -66,8 +69,7 @@ void	func_init(t_stack_machine *machine)
 /* Initialises the stats, to be called if a --bench flag is present */
 void	stats_init(t_stack_machine *machine, int flag)
 {
-	machine -> stats = ft_machineallomachine(1, sizeof(t_stats));
-	machine -> stats -> disorder = compute_disorder((machine -> stacks)[0]. head);
+	machine -> stats -> disorder = compute_disorder(&((machine -> stacks)[0]));
 	if (flag == 0)
 		machine -> stats -> strategy = "Simple " SIMPLE;
 	else if (flag == 1)
@@ -86,7 +88,7 @@ void	stats_init(t_stack_machine *machine, int flag)
 }
 
 /* Creates an instance of t_func from a function pointer and a function name */
-t_func	func_wrap(void (*f)(t_interface *), char *name)
+t_func	func_wrap(void (*f)(t_stack_machine *), char *name)
 {
 	t_func	rtrn;
 

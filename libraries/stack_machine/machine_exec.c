@@ -13,6 +13,11 @@
 // --- include ---
 
 #include "./stack_machine.h"
+#include <unistd.h>
+
+// --- proto ---
+
+static void	put_exec(char *str);
 
 // --- define ---
 
@@ -38,7 +43,8 @@ void	exec(t_stack_machine *machine, int idx)
 		machine -> stats -> total_ops++;
 	}
 	((machine -> funcs)[idx].f)(machine);
-	ft_putendl_fd((machine -> funcs)[idx].name, 1);
+	//ft_putendl_fd((machine -> funcs)[idx].name, 1);
+	put_exec((machine -> funcs)[idx].name);
 }
 
 /* calls exec(stats, idx) n times */
@@ -46,4 +52,13 @@ void	exec_n(t_stack_machine *machine, int idx, int n)
 {
 	while (n--)
 		exec(machine, idx);
+}
+
+static void	put_exec(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i++])
+		write(1, &(str[(i - 1)]), 1);
 }

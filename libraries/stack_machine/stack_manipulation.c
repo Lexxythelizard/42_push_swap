@@ -32,7 +32,7 @@ t_element	*new_element(int val, t_element *prev)
 }
 
 /* Initialises a t_stack instance from a list of numbers */
-void	stack_init(t_stack *stack, int	*nums, size_t len)
+int	stack_init(t_stack *stack, int	*nums, size_t len)
 {
 	t_element	*ptr0;
 	t_element	*ptr1;

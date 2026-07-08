@@ -17,11 +17,11 @@ typedef struct s_stack_node {
 	int					val;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
-}	t_element;
+}						t_element;
 
 typedef struct s_stack {
-	t_stack_frame	*first;
-	t_stack_frame	*last;
-}	t_stack;
+	t_element	*first;
+	t_element	*last;
+}				t_stack;
 
 #endif

@@ -17,42 +17,19 @@
 
 # include <stdlib.h>
 # include "./core/stack.h"
-# include "./core/machine"
+# include "./core/machine.h"
 # include "./core/stack_track.h"
-
-// --- makros ---
-
-typedef struct s_stats
-{
-	unsigned int	calls[11];
-	unsigned int	total_ops;
-	float			disorder;
-	char			*strategy;
-}					t_stats;
-
-typedef struct s_func
-{
-	void	(*f)(struct s_interface *c);
-	char	*name;
-}			t_func;
-
-typedef struct s_interface
-{
-	t_stack	stacks[2];
-	t_stats	*stats;
-	t_func	funcs[11];	
-}			t_interface;
 
 // --- prototype ---
 
 // disorder_metric.c
 
-float		compute_disorder(t_stack_frame *a);
+float		compute_disorder(t_stack *stack);
 
 // machine_exec.c
 
-void		exec(t_interface *stacks, int idx);
-void		exec_n(t_interface *stacks, int idx, int n);
+void		exec(t_stack_machine *stacks, int idx);
+void		exec_n(t_stack_machine *stacks, int idx, int n);
 
 // machine_free.c
 
@@ -64,7 +41,7 @@ int			machine_init_empty(t_stack_machine *machine);
 int			machine_stack_init(t_stack_machine *machine, int *nums, int len);
 void		func_init(t_stack_machine *machine);
 void		stats_init(t_stack_machine *machine, int flag);
-t_func		func_wrap(void (*f)(t_interface *), char *name);
+t_func		func_wrap(void (*f)(t_stack_machine *), char *name);
 
 // machine_operation_push.c
 
@@ -92,7 +69,7 @@ void		ss(t_stack_machine *machine);
 // stack_manipulation.c
 
 t_element	*new_element(int val, t_element *prev);
-void		stack_init(t_stack *stack, int  *nums, size_t len);
+int			stack_init(t_stack *stack, int  *nums, size_t len);
 void		stack_init_empty(t_stack *stack);
 void		free_stack(t_stack *stack);
 

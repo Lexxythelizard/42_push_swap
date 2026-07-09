@@ -134,7 +134,7 @@ stackmachine: $(Stack_Obj)
 stackmachine_re: stackmachine_fclean stackmachine
 
 stackmachine_fclean: stackmachine_clean
-	rm $(STACK) $(Library_Dir)/$(STACK)
+	rm $(Library_Dir)/$(STACK)
 
 stackmachine_clean:
 	rm $(Stack_Obj)

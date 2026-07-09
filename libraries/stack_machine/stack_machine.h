@@ -83,9 +83,9 @@ void		reverse_rotate(t_stack *c);
 // stack_scan.c
 
 int			stack_comp(t_stack *stack);
-int			get_stack_size(t_element *element);
-int			get_min_geq_n(t_element *element, int n);
-int			get_nth_min(t_element *element, int n);
+int			get_stack_size(t_stack *stack);
+int			get_min_geq_n(t_stack *stack, int n);
+int			get_nth_min(t_stack *stack, int n);
 
 // --- end ---
 

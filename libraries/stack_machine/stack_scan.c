@@ -32,12 +32,14 @@ gets the 'size of the stack'
 NOTE: please make sure to parse the first note/element in stack
 */
 
-int	get_stack_size(t_element *element)
+int	get_stack_size(t_stack *stack)
 {
 	t_element	*ptr;
 	int			count;
 
-	ptr = stack;
+	if (!stack)
+		return (-1);
+	ptr = stack -> first;
 	count = 0;
 	while (ptr != NULL)
 	{
@@ -50,31 +52,33 @@ int	get_stack_size(t_element *element)
 /* Returns the smallest element greater than n in the stack or INT_MAX
    if non-existant or on error */
 
-int	get_min_geq_n(t_element *element, int n)
+int	get_min_geq_n(t_stack *stack, int n)
 {
-	int	min;
+	int			min;
+	t_element	*element;
 
-	if (!stack)
+	if ((!stack) || (!(stack -> first)))
 		return (INT_MAX);
+	element = stack -> first;
 	min = INT_MAX;
-	while (stack -> next)
+	while (element -> next)
 	{
-		stack = stack -> next;
-		if (stack -> val < min && stack -> val >= n)
-			min = stack -> val;
+		element = element -> next;
+		if (element -> val < min && element -> val >= n)
+			min = element -> val;
 	}
 	return (min);
 }
 
 /* gets the nth lowest value in the stack */
 
-int	get_nth_min(t_element *element, int n)
+int	get_nth_min(t_stack *stack, int n)
 {
 	int	prev_min;
 
 	prev_min = INT_MAX;
 	while (n--)
-		prev_min = get_min_geq_n(element -> head, prev_min + 1);
+		prev_min = get_min_geq_n(stack, prev_min + 1);
 	return (prev_min);
 }
 
@@ -93,12 +97,12 @@ int	get_nth_min_idx(t_stack *stack, int n)
 	if (!stack)
 		return (-1);
 	ptr = stack -> first;
-	min = get_nth_min_val(stack, n);
+	min = get_nth_min(stack, n);
 	i = 0;
 	rtrn = -1;
 	while (ptr)
 	{
-		if (ptr -> val == prev_min)
+		if (ptr -> val == min)
 			rtrn = i;
 		ptr = ptr -> next;
 	}
@@ -106,3 +110,4 @@ int	get_nth_min_idx(t_stack *stack, int n)
 		rtrn = -1;
 	return (rtrn);
 }
+

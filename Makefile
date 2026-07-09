@@ -62,7 +62,7 @@ STACK			=	stackmachine.a
 
 # ------------------------- library inclusion -------------------------
 
-LIBRARIES		=	-L $(Library_Dir) -l ftprintf -l ft
+LIBRARIES		=	-L $(Library_Dir) -l ftprintf -l ft -l stackmachine
 
 # ------------------------- Files -------------------------
 
@@ -91,9 +91,6 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/utillities.c
 
 # -------> for testing
-
-Arg_Parsing		= 	./validation.c			./utillities.c \
-					./ui_cli.c				./cleanup.c
 
 Args_Main		=	./test_argparsing.c
 
@@ -124,6 +121,10 @@ $(Push_Swap_Obj): %.o: %.c
 # ------------------------- Commands -------------------------
 
 test0: $(Push_Swap_Obj)
+
+test_args: create_testdir libft ftprintf stackmachine
+	$(Compile) $(Args_Main) $(Push_Swap_Files) $(Debugg) $(LIBRARIES) \
+	$(Out) $(Test_Dir)/argpasstest
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

@@ -126,7 +126,7 @@ $(Push_Swap_Obj): %.o: %.c
 test0: $(Push_Swap_Obj)
 
 clean:
-	rm -f $(All_Obj) $@
+	rm -f $(Push_Swap_Obj) $@
 
 create_testdir:
 	if [ -ne "$(Test_Dir)" ]; then \

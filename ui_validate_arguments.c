@@ -54,13 +54,13 @@ int	is_args_valid(const char **argv)
 	}
 	if ((flags == 1) && (!(is_valid_flag(argv[0]))))
 		return (0);
-	if ((flag == 2) && 
+	if ((flags == 2) && 
 		(!((is_valid_flag(argv[0])) && (is_valid_flag(argv[1])))))
 		return (0);
-	if ((flag == 2) && (ft_strncmp(argv[0], FLAG_BENCH, 11)) && 
+	if ((flags == 2) && (ft_strncmp(argv[0], FLAG_BENCH, 11)) && 
 		(ft_strncmp(argv[1], FLAG_BENCH, 11)))
 		return (0);
-	if ((flag == 2) && (!(ft_strncmp(argv[0], argv[1], 11))))
+	if ((flags == 2) && (!(ft_strncmp(argv[0], argv[1], 11))))
 		return (0);
 	return (flags <= 2);
 }
@@ -85,7 +85,7 @@ int	is_valid_nbr(const char *s)
 	while ((s[i]) && (((s[i] >= 9) && (s[i] <= 13)) || (s[i] == 32)))
 		i++;
 	i += ((s[i] == 43) || (s[i] == 45));
-	return (ft_isnumeric(s[i]));
+	return (ft_isdigit(s[i]));
 }
 
 /*
@@ -97,13 +97,13 @@ flags should be overwritten by 'contra' flags (--simple , arg, ... --complex)
 
 int	is_valid_flag(const char *s)
 {
-	if (!(is_flag))
+	if (!(is_flag(s)))
 		return (0);
-	return ((!(ft_strncmp(s, FLAG_BENCH))) || 
-		(!(ft_strncmp(s, FLAG_SIMPLE))) || 
-		(!(ft_strncmp(s, FLAG_MEDIUM))) || 
-		(!(ft_strncmp(s, FLAG_COMPLEX))) || 
-		(!(ft_strncmp(s, FLAG_ADAPTIVE))));
+	return ((!(ft_strncmp(s, FLAG_BENCH, 11))) || 
+		(!(ft_strncmp(s, FLAG_SIMPLE, 11))) || 
+		(!(ft_strncmp(s, FLAG_MEDIUM, 11))) || 
+		(!(ft_strncmp(s, FLAG_COMPLEX, 11))) || 
+		(!(ft_strncmp(s, FLAG_ADAPTIVE, 11))));
 }
 
 int	is_flag(const char *s)

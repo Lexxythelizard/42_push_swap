@@ -54,7 +54,7 @@ int	*get_int_list(const char **argv)
 	int_list = malloc(count_numbers(argv) * 4);
 	while (argv[i++])
 	{
-		if (is_valid_number(argv[(i - 1)]))
+		if (is_valid_nbr(argv[(i - 1)]))
 		{
 			int_list[j] = ft_atoi(argv[(i - 1)]);
 			j++;
@@ -71,30 +71,28 @@ NOTE: Please call is_args_valid() before to check argv
 
 int	get_flag_values(const char **argv)
 {
-	int	flag;
+	int	flag_val;
 
-	flag = 0;
+	flag_val = 0;
 	if (!argv)
 		return (-1);
 	if ((argv[0]) && (is_valid_flag(argv[0])))
-		flag += get_flag_value(argv[0]);
+		flag_val += get_flag_value(argv[0]);
 	if ((argv[1]) && (is_valid_flag(argv[1])))
-		flag += get_flag_value(argv[1]);
-	return (flag);
+		flag_val += get_flag_value(argv[1]);
+	return (flag_val);
 }
 
 int	get_flag_value(const char *flag)
 {
-	int	flag;
-
 	if (!flag)
 		return (-1);
 	return (
-		1 * (!(ft_strncmp(s, FLAG_SIMPLE))) + 
-		2 * (!(ft_strncmp(s, FLAG_MEDIUM))) + 
-		4 * (!(ft_strncmp(s, FLAG_COMPLEX))) + 
-		8 * (!(ft_strncmp(s, FLAG_ADAPTIVE))) + 
-		16 * (!(ft_strncmp(s, FLAG_BENCH)))); 
+		1 * (!(ft_strncmp(flag, FLAG_SIMPLE, 11))) + 
+		2 * (!(ft_strncmp(flag, FLAG_MEDIUM, 11))) + 
+		4 * (!(ft_strncmp(flag, FLAG_COMPLEX, 11))) + 
+		8 * (!(ft_strncmp(flag, FLAG_ADAPTIVE, 11))) + 
+		16 * (!(ft_strncmp(flag, FLAG_BENCH, 11)))); 
 }
 
 int	count_numbers(const char **argv)

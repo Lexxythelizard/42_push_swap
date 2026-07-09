@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 11:55:43 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/08 20:44:43 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:09:36 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int			stack_comp(t_stack *stack);
 int			get_stack_size(t_stack *stack);
 int			get_min_geq_n(t_stack *stack, int n);
 int			get_nth_min(t_stack *stack, int n);
+int			get_nth_min_idx(t_stack *stack, int n);
 
 // --- end ---
 

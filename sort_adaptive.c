@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_run.c                                         :+:      :+:    :+:   */
+/*   sort_adaptive.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 18:22:06 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/09 15:21:01 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:15:11 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,14 @@
 
 // --- define ---
 
-void	run_sort(t_stack_machine *machine, int flag)
+void	sort_adaptive(t_stack_machine *machine)
 {
-	int	run_bench;
-
-	run_bench = (int)(flag / 16);
-	flag %= 16;
-	if ((int)(flag / 8))
-		sort_adaptive(machine);
-	else if ((int)(flag / 4))
-		sort_adaptive(machine);
-	else if ((int)(flag / 2))
-		sort_adaptive(machine);
-	else if (flag == 1)
-		sort_adaptive(machine);
-	if (run_bench)
-		print_bench(machine -> stats);
+	if (!machine)
+		return ;
+	if (/*level of disorder < x*/)
+		sort_simple(machine);
+	else if (/*level of disorder < y*/)
+		sort_medium(machin);
+	else
+		sort_complex(machine);
 }

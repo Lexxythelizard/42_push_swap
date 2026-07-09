@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:54:33 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/09 13:46:16 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:07:07 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,28 +75,28 @@ idea:
 
 // --- define ---
 
-int	sort_simple(t_interface *stacks)
+int	sort_simple(t_stack_machine *machine)
 {
 	int	size;
 	int	idx_min;
 
-	if ((!(stacks)) || (!(stacks -> stacks[0])) || 
-		(!(stacks -> stacks[1])) || (!(stacks -> stats)))
+	if ((!(machine)) || (!(machine -> stats)))
 		return (-1);
-	size = get_stack_size(stacks -> stacks[0]);
+	size = get_stack_size(&(machine -> stacks[0]));
 	idx_min = 0;
 	if (!(size))
 		return (0);
 	while (size-- > 0)
 	{
-		idx_min = get_nth_min_idx(stacks -> stacks[0], 1);
+		//		  get_nth_min_idx(t_stack *stack, int n)
+		idx_min = get_nth_min_idx(&(machine -> stacks[0]), 1);
 		if (idx_min > (int)(size / 2))
-			exec_n(stacks, 5, (size - idx_min));
+			exec_n(machine, 5, (size - idx_min));
 		else 
-			exec_n(stacks, 8, idx_min);
-		exec(stacks, 4);
+			exec_n(machine, 8, idx_min);
+		exec(machine, 4);
 	}
-	size = get_stack_size(stacks -> b);
-	exec_n(stacks, 3, size);
+	size = get_stack_size(&(machine -> stacks[1]));
+	exec_n(machine, 3, size);
 	return (1);
 }

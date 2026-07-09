@@ -6,7 +6,7 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 21:10:38 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/09 13:45:22 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:02:09 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,33 @@
 
 /*ravy's implementation*/
 
-void	sort_medium(t_interface *stacks)
+void	sort_medium(t_stack_machine *machine)
 {
 	int	stack_size;
 	int	bucket_size;
 	int	bucket_max;
 	int	i;
 
-	stack_size = get_stack_size(stacks -> a);
+	stack_size = get_stack_size(&(machine -> stacks[0]));
 	bucket_size = ft_sqrt(stack_size);
 	while (stack_size >= bucket_size)
 	{
 		i = 0;
 		stack_size -= bucket_size;
-		bucket_max = get_nth_min(stacks -> a, bucket_size);
+		bucket_max = get_nth_min(&(machine -> stacks[0]), bucket_size);
 		while (i < bucket_size)
 		{
-			exec(stacks, 5);
-			if (stacks -> a -> head -> val <= bucket_max)
+			exec(machine, 5);
+			if (machine -> stacks[0].first -> val <= bucket_max)
 			{
 				i++;
-				exec(stacks, 4);
+				exec(machine, 4);
 			}
 		}
-		sort_bucket(stacks, bucket_size, 1);
+		sort_bucket(machine, bucket_size, 1);
 	}
-	sort_bucket(stacks, stack_size, 0);
-	exec_n(stacks, 3, get_stack_size(stacks -> b));
+	sort_bucket(machine, stack_size, 0);
+	exec_n(machine, 3, get_stack_size(&(machine -> stacks[1])));
 }
 
 /*
@@ -66,29 +66,29 @@ TODO: 	implement either sort last bucket (ascending not descanding)
 		consider to NULL poiner protect
 */
 
-void	sort_bucket(t_interface	*c, int bs, int side)
+void	sort_bucket(t_stack_machine	*machine, int bs, int side)
 {
-	t_stack_frame	*start;
-	t_stack_frame	*end;
-	int				i;
+	t_element	*start;
+	t_element	*end;
+	int			i;
 
 	i = 0;
-	start = (c -> stacks)[side]-> head;
+	start = (machine -> stacks)[side].first;
 	end = start;
 	while (i++ < bs)
 		end = end -> next;
-	while ((c -> stacks)[side]-> head != end)
+	while ((machine -> stacks)[side].first != end)
 	{
-		if ((stack_comp((c -> stacks)[side]) + side) % 2)
+		if ((stack_comp(&((machine -> stacks)[side])) + side) % 2)
 		{
-			exec(c, side);
-			exec(c, 8 + side);
+			exec(machine, side);
+			exec(machine, 8 + side);
 		}
 		else
-			exec(c, 5 + side);
+			exec(machine, 5 + side);
 	}
 	while (i--)
-		exec(c, 8 + side);
+		exec(machine, 8 + side);
 }
 
 // --- utility ---
@@ -110,7 +110,7 @@ int	ft_sqrt(int nb)
 	while (step && power != (unsigned int)nb)
 	{
 		power = sqrt * sqrt;
-		else if (power > (unsigned int)(nb))
+		if (power > (unsigned int)(nb))
 			sqrt -= step;
 		else
 			sqrt += step;

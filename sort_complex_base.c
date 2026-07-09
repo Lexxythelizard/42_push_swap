@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 15:27:02 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/09 13:42:10 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 15:31:48 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,31 @@
 */
 
 void	sort_pairs(
-			t_interface *stacks,
+			t_stack_machine *machine,
 			t_stack_track *st_tr)
 {
-	t_stack_frame	a;
-	t_stack_frame	b;
+	t_element	*a;
+	t_element	*b;
 
-	if ((!(stacks)) || (!(stacks -> stacks[0])) || (!(stacks -> stacks[1])))
+	if (!(machine))
 		return ;
-	a = stacks -> stacks[0]->head;
-	b = stacks -> stacks[1]->head;
+	a = machine -> stacks[0].first;
+	b = machine -> stacks[1].first;
 	while ((st_tr -> unmerged_a)--)
 	{
 		if ((a -> val > a -> next -> val) && (b -> val > b -> next -> val))
-			exec(stacks, 2);
+			exec(machine, 2);
 		if (a -> val > a -> next -> val)
-			exec(stacks, 0);
+			exec(machine, 0);
 		if (b -> val > b -> next -> val)
-			exec(stacks, 1);
-		exec_n(stacks, 7, 2);
+			exec(machine, 1);
+		exec_n(machine, 7, 2);
 		(st_tr -> unmerged_a)--;
 		st_tr -> unmerged_b -= 2;
 	}
 	if ((st_tr -> unmerged_b >= 2) && ((b -> val) < (b -> next -> val)))
-		exec(stacks, 1);
-	exec_n(stacks, 6, (st_tr -> unmerged_b));
+		exec(machine, 1);
+	exec_n(machine, 6, (st_tr -> unmerged_b));
 	st_tr -> unmerged_a = st_tr -> size_a;
 	st_tr -> unmerged_b = st_tr -> size_b;
 }
@@ -86,23 +86,23 @@ void	sort_pairs(
 */
 
 void	split_stack(
-			t_interface *stacks,
+			t_stack_machine *machine,
 			t_stack_track *st_tr,
 			int size)
 {
 	int	half;
 
 	half = (int)(size / 2);
-	if ((!(stacks)) || (!(stacks -> stacks[0])) || (!(stacks -> stacks[0])) || 
-		(!(stacks -> tracker)))
+	if ((!(machine)) || (!&((machine -> stacks[0])))
+		|| (!&((machine -> stacks[0]))) || (!(machine -> stats)))
 		return ;
 	while (half--)
 	{
-		exec(stacks, 4);
-		exec_n(stacks, 5, 2);
+		exec(machine, 4);
+		exec_n(machine, 5, 2);
 	}
-	st_tr -> size_a = get_stack_size(stacks -> stacks[0]);
-	st_tr -> size_a = get_stack_size(stacks -> stacks[0]);
+	st_tr -> size_a = get_stack_size(&(machine -> stacks[0]));
+	st_tr -> size_b = get_stack_size(&(machine -> stacks[1]));
 	st_tr -> unmerged_a = st_tr -> size_a;
 	st_tr -> unmerged_b = st_tr -> size_b;
 }

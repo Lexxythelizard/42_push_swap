@@ -6,7 +6,7 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 12:57:57 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/08 20:40:49 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:08:28 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,3 @@ int	get_nth_min_idx(t_stack *stack, int n)
 		rtrn = -1;
 	return (rtrn);
 }
-

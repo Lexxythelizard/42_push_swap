@@ -6,7 +6,7 @@
 #    By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/12 11:27:12 by lenivorb          #+#    #+#              #
-#    Updated: 2026/07/09 14:05:44 by lenivorb         ###   ########.fr        #
+#    Updated: 2026/07/09 16:16:23 by lenivorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,8 @@ Stack_Files		=	$(Stack_Dir)/disorder_metric.c \
 					$(Stack_Dir)/stack_operation.c \
 					$(Stack_Dir)/stack_scan.c
 
-Push_Swap_Files	=	$(This_Dir)/sort_complex_base.c \
+Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
+					$(This_Dir)/sort_complex_base.c \
 					$(This_Dir)/sort_complex.c \
 					$(This_Dir)/sort_medium.c \
 					$(This_Dir)/sort_simple.c \

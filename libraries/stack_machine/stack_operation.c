@@ -69,7 +69,7 @@ void	rotate(t_stack *stack)
 		swap(stack);
 		return ;
 	}
-	stack -> last; -> next = stack -> first;
+	stack -> last -> next = stack -> first;
 	stack -> first -> prev = stack -> last;
 	stack -> last = stack -> first;
 	stack -> first = stack -> first -> next;
@@ -78,7 +78,7 @@ void	rotate(t_stack *stack)
 }
 
 /* rotate downwards one step */
-void	reverse_rotate(t_stack *c)
+void	reverse_rotate(t_stack *stack)
 {
 	if (!(stack -> first) || !(stack -> first -> next))
 		return ;

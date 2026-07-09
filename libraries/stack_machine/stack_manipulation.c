@@ -34,9 +34,11 @@ t_element	*new_element(int val, t_element *prev)
 /* Initialises a t_stack instance from a list of numbers */
 int	stack_init(t_stack *stack, int	*nums, size_t len)
 {
+	size_t	i;
 	t_element	*ptr0;
 	t_element	*ptr1;
 
+	i = 0;
 	if ((!stack) || (!nums) || (len))
 		return (-1);
 	ptr0 = new_element(nums[0], NULL);
@@ -47,8 +49,8 @@ int	stack_init(t_stack *stack, int	*nums, size_t len)
 	ptr1 = stack -> first;
 	while (i < len)
 	{
-		ptr = new_element(nums[i], stack -> last);
-		if (!ptr)
+		ptr0 = new_element(nums[i], stack -> last);
+		if (!ptr0)
 			return (-1);
 		ptr1 -> next = ptr0;
 		ptr1 = ptr1 -> next;
@@ -69,7 +71,7 @@ void	free_stack(t_stack *stack)
 {
 	t_element	*ptr;
 
-	ptr = stack -> head;
+	ptr = stack -> first;
 	while (ptr -> next)
 	{
 		ptr = ptr -> next;

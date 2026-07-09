@@ -6,15 +6,16 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 17:09:48 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/07 15:32:20 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 13:58:34 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- include ---
 
 #include "./push_swap.h"
-#include "./libraries/ft_printf/ft_printf.h"
 #include "./libraries/libft/libft.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/stack_machine/stack_machine.h"
 
 // --- DOC ---
 

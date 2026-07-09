@@ -6,7 +6,7 @@
 #    By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/12 11:27:12 by lenivorb          #+#    #+#              #
-#    Updated: 2026/07/07 15:44:52 by lenivorb         ###   ########.fr        #
+#    Updated: 2026/07/09 14:05:44 by lenivorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,11 +78,15 @@ Stack_Files		=	$(Stack_Dir)/disorder_metric.c \
 					$(Stack_Dir)/stack_operation.c \
 					$(Stack_Dir)/stack_scan.c
 
-All_Files		=	./output.c \
-					./sort_complex_base.c	./sort_complex.c \
-					./sort_medium.c 		./sort_run.c \
-					./sort_simple_0.c		./ui_cli.c \
-					./utillities.c			./validation.c
+Push_Swap_Files	=	$(This_Dir)/sort_complex_base.c \
+					$(This_Dir)/sort_complex.c \
+					$(This_Dir)/sort_medium.c \
+					$(This_Dir)/sort_simple.c \
+					$(This_Dir)/sort_run.c \
+					$(This_Dir)/ui_convert_arguments.c \
+					$(This_Dir)/ui_validate_arguments.c \
+					$(This_Dir)/ui_output.c \
+					$(This_Dir)/utillities.c
 
 # -------> for testing
 
@@ -93,7 +97,7 @@ Args_Main		=	./test_argparsing.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
-All_Obj			=	$(All_Files:.c=.o)
+Push_Swap_Obj	=	$(Push_Swap_Files:.c=.o)
 
 # ------------------------- compile rules -------------------------
 
@@ -106,7 +110,7 @@ $(Stack_Obj): %.o: %.c
 		$(Include_Stack_Core) $(Include_Stack) $(Dont_link) $< $(Out) $@; \
 	fi
 
-$(All_Obj): %.o: %.c
+$(Push_Swap_Obj): %.o: %.c
 	if [ "$(DEBUGG_MODE)" -eq "1" ]; then \
 		$(Compile) $(CFlags) $(Debugg) \
 		$(Include_This) $(Include_Printf) $(Include_Libft) $(Dont_link) $< $(Out) $@; \
@@ -117,7 +121,7 @@ $(All_Obj): %.o: %.c
 
 # ------------------------- Commands -------------------------
 
-test0: $(All_Obj)
+test0: $(Push_Swap_Obj)
 
 clean:
 	rm -f $(All_Obj) $@

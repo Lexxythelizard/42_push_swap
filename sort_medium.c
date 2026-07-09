@@ -6,16 +6,16 @@
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 21:10:38 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/07 15:30:48 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 13:45:22 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
-#include "./stack.h"
 #include "./push_swap.h"
-#include "./libraries/ft_printf/ft_printf.h"
 #include "./libraries/libft/libft.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/stack_machine/stack_machine.h"
 
 // --- define ---
 
@@ -24,12 +24,6 @@
 /*
 	... your comment here ...
 */
-
-// --- prototype ---
-
-void	sort_medium(t_interface *stacks);
-void	sort_bucket(t_stack_frame stack, int bs);
-int		ft_sqrt(int nb);
 
 // --- define ---
 

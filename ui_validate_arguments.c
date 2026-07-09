@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   ui_validate_arguments.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:07:03 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/07 15:32:33 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 13:56:41 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "./push_swap.h"
 #include "./libraries/libft/libft.h"
 #include "./libraries/ft_printf/ft_printf.h"
-#include "./ui_cli.h"
+#include "./libraries/stack_machine/stack_machine.h"
 
 // --- define ---
 

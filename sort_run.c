@@ -6,27 +6,22 @@
 /*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 18:22:06 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/07 15:31:21 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/07/09 13:47:38 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // --- icludes ---
 
 #include "./push_swap.h"
-#include "./stack.h"
-#include "./stack_track.h"
-#include "./libraries/ft_printf/ft_printf.h"
 #include "./libraries/libft/libft.h"
+#include "./libraries/ft_printf/ft_printf.h"
+#include "./libraries/stack_machine/stack_machine.h"
 
 // --- DOC ---
 
 /*
 	... your comment here ...
 */
-
-// --- prototype ---
-
-void	run_sort(t_interface *stacks, int flag);
 
 // --- define ---
 

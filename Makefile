@@ -79,7 +79,8 @@ Stack_Files		=	$(Stack_Dir)/disorder_metric.c \
 					$(Stack_Dir)/stack_scan.c
 
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
-					$(This_Dir)/sort_complex_base.c \
+					$(This_Dir)/sort_complex_mergesort_base.c \
+					$(This_Dir)/sort_complex_mergesort.c \
 					$(This_Dir)/sort_complex.c \
 					$(This_Dir)/sort_medium.c \
 					$(This_Dir)/sort_simple.c \

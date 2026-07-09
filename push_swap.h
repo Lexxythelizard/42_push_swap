@@ -27,13 +27,23 @@
 
 // --- prototypes ---
 
+
+
 // ::: sorting :::
 
-// sort_complex_base.c
+// sort_adaptive.c
 
-void    sort_pairs(
-			t_stack_machine *machine,
-			t_stack_track *st_tr);
+void			sort_adaptive(t_stack_machine *machine);
+
+// sort_complex.c
+
+void			sort_complex(t_stack_machine *machine);
+
+// sort_complex_mergesort_base.c
+
+void			sort_pairs(
+					t_stack_machine *machine,
+					t_stack_track *st_tr);
 
 void    		split_stack(
 					t_stack_machine *machine,
@@ -42,7 +52,7 @@ void    		split_stack(
 
 t_stack_track	*init_stack_track(void);
 
-// sort_complex.c
+// sort_complex_mergesort.c
 
 void			merge_sort(t_stack_machine *machine);
 void			merge_level(t_stack_machine *machine, t_stack_track *st_tr);

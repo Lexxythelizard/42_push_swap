@@ -27,12 +27,12 @@
 
 void	sort_adaptive(t_stack_machine *machine)
 {
-	if (!machine)
+	if ((!machine) || (!(machine -> stats)))
 		return ;
-	if (/*level of disorder < x*/)
+	if (machine -> stats -> disorder < 0.2)
 		sort_simple(machine);
-	else if (/*level of disorder < y*/)
-		sort_medium(machin);
+	else if (machine -> stats -> disorder < 0.4)
+		sort_medium(machine);
 	else
 		sort_complex(machine);
 }

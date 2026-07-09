@@ -93,8 +93,7 @@ void	split_stack(
 	int	half;
 
 	half = (int)(size / 2);
-	if ((!(machine)) || (!&((machine -> stacks[0])))
-		|| (!&((machine -> stacks[0]))) || (!(machine -> stats)))
+	if ((!(machine)) || (!(machine -> stats)))
 		return ;
 	while (half--)
 	{

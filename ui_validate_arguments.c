@@ -24,7 +24,9 @@ int	is_args_valid(const char **argv, int argc)
 	int	i;
 	int	flags;
 
-	i = 0;
+	if (argc < 2)
+		return (0);
+	i = 1;
 	flags = count_repitition_of_flags(argv, argc);
 	i += flags;
 	while (i < argc)

@@ -36,7 +36,7 @@
 		- test:			is_flag					: DOME
 		- test:			is_valid_flag			: DONE
 		- test:			is_valid_nbr			: DONE
-		- test:			is_args_valid			:
+		- test:			is_args_valid			: DONE
 		- test:			2a not valid number		: DONE
 */
 

@@ -39,11 +39,11 @@ int	is_unique_and_one_bench(const char **argv, int argc)
 		return (0);
 	if (argc < 3)
 		return (is_valid_flag(argv[1]));
-	if (ft_strncmp(argv[1], argv[2], 11)) 
+	if (ft_strncmp(argv[1], argv[2], 11) == 0) 
 		return (0);
-	if (ft_strncmp(argv[1], FLAG_BENCH, 11))
+	if (ft_strncmp(argv[1], FLAG_BENCH, 11) == 0)
 		return (1);
-	if (ft_strncmp(argv[2], FLAG_BENCH, 11))
+	if (ft_strncmp(argv[2], FLAG_BENCH, 11) == 0)
 		return (1);
 	return (0);
 }

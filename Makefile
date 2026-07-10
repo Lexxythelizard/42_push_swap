@@ -58,7 +58,7 @@ PRINTF			=	libftprintf.a
 
 LIBFT			=	libft.a
 
-STACK			=	stackmachine.a
+STACK			=	libstackmachine.a
 
 # ------------------------- library inclusion -------------------------
 
@@ -87,6 +87,8 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_run.c \
 					$(This_Dir)/ui_convert_arguments.c \
 					$(This_Dir)/ui_validate_arguments.c \
+					$(This_Dir)/ui_validate_arguments_flags.c \
+					$(This_Dir)/ui_validate_arguments_numbers.c \
 					$(This_Dir)/ui_output.c \
 					$(This_Dir)/utillities.c
 
@@ -130,7 +132,7 @@ clean:
 	rm -f $(Push_Swap_Obj) $@
 
 create_testdir:
-	if [ -ne "$(Test_Dir)" ]; then \
+	if [ ! -e "$(Test_Dir)" ]; then \
 		mkdir "$(Test_Dir)"; \
 	fi
 

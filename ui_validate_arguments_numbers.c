@@ -19,21 +19,28 @@
 
 // --- define ---
 
-int	is_args_valid(const char **argv, int argc)
+int	is_numbers_unique(int *list, int len)
 {
-	int	i;
-	int	flags;
+	if (1)
+		return (is_numbers_unique_simple(list, len));
+	return (is_numbers_unique_simple(list, len));
+}
+
+int	is_valid_nbr(const char *s)
+{
+	size_t	i;
 
 	i = 0;
-	flags = count_repitition_of_flags(argv, argc);
-	i += flags;
-	while (i < argc)
+	if (!(s))
+		return (0);
+	while ((s[i]) && (((s[i] >= 9) && (s[i] <= 13)) || (s[i] == 32)))
+		i++;
+	i += ((s[i] == 43) || (s[i] == 45));
+	while (s[i])
 	{
-		if (!(is_valid_nbr(argv[i])))
+		if (!(ft_isdigit(s[i])))
 			return (0);
 		i++;
 	}
-	if ((flags == 2)) 
-		return (is_unique_and_one_bench(argv, argc));
 	return (1);
 }

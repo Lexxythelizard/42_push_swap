@@ -21,9 +21,22 @@
 
 int	is_numbers_unique(int *list, int len)
 {
-	if (1)
-		return (is_numbers_unique_simple(list, len));
-	return (is_numbers_unique_simple(list, len));
+	int	i;
+	int	j;
+
+	i = 0;
+	while ((i + 1) < len)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if (list[i] == list[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int	is_valid_nbr(const char *s)

@@ -38,23 +38,3 @@ int	max_of(int a, int b)
 		return (b);
 	return (a);
 }
-
-int	is_numbers_unique_simple(int *list, int len)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while ((i + 1) < len)
-	{
-		j = i + 1;
-		while (j < len)
-		{
-			if (list[i] == list[j])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}

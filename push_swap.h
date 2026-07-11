@@ -109,7 +109,6 @@ void			print_bench(t_stats *stats);
 
 int				min_of(int a, int b);
 int				max_of(int a, int b);
-int				is_numbers_unique_simple(int *list, int len);
 
 // --- end ---
 

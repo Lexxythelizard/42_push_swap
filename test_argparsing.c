@@ -48,6 +48,7 @@ void	check_is_flag(const char *s);
 void	check_get_flag_values(const char **argv, int argc);
 void	check_count_valid_numbers(const char **argv, int argc);
 void	check_int_array(int *arr, int len);
+void	check_is_numbers_unique(int *arr, int len);
 void	test_converted_flag_value(int flag_val);
 
 // --- run ---
@@ -134,9 +135,13 @@ int	main(int argc, char **argv)
 	check_int_array(
 		arr,
 		count_valid_numbers((const char **)(argv), argc));
+	test_converted_flag_value(get_flag_values((const char **)(argv), argc));
+	ft_printf("\n");
+	check_is_numbers_unique(
+		arr,
+		count_valid_numbers((const char **)(argv), argc));
 	if (arr)
 		free(arr);
-	test_converted_flag_value(get_flag_values((const char **)(argv), argc));
 	ft_printf("\n++++++++++++++++++++++++++++++++++++++++++++++\n");
 	return (0);
 }
@@ -181,12 +186,17 @@ void	check_int_array(int *arr, int len)
 	}
 	while (i++ < len)
 		ft_printf("idx: %d\tval: %d\n", (i - 1), arr[(i - 1)]);
-	ft_printf("end\n");
+	ft_printf("end\n\n");
+}
+
+void	check_is_numbers_unique(int *arr, int len)
+{
+	ft_printf("is_numbers unique: %d\n", is_numbers_unique(arr, len));
 }
 
 void	test_converted_flag_value(int flag_val)
 {
-	ft_printf("value %d means:\n");
+	ft_printf("value %d means:\n", flag_val);
 	if (flag_val / 16)
 		ft_printf("%s was given\n", FLAG_BENCH);
 	else

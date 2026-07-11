@@ -78,10 +78,10 @@ void			run_sort(t_stack_machine *machine, int flag);
 
 // ui_convert_arguments.c
 
-int				*get_int_list(const char **argv);
-int				get_flag_values(const char **argv);
+int				*get_int_list(const char **argv, int argc);
+int				count_valid_numbers(const char **argv, int argc);
+int				get_flag_values(const char **argv, int argc);
 int				get_flag_value(const char *flag);
-int				count_numbers(const char **argv);
 
 // ui_validate_arguments.c
 

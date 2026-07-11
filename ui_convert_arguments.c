@@ -41,26 +41,44 @@
 
 // --- define ---
 
-int	*get_int_list(const char **argv)
+int	*get_int_list(const char **argv, int argc)
 {
-	int		*int_list;
-	size_t	i;
-	size_t	j;
+	int	*int_list;
+	int	valid_nbrs;
+	int	i;
+	int	j;
 
-	i = 0;
+	valid_nbrs = 0;
+	i = 1;
 	j = 0;
-	if (!argv)
+	int_list = NULL;
+	if (argc < 2)
+		return (int_list);
+	while (i++ < argc)
+		valid_nbrs += is_valid_nbr(argv[(i - 1)]);
+	int_list = malloc(valid_nbrs * 4);
+	if (!int_list)
 		return (NULL);
-	int_list = malloc(count_numbers(argv) * 4);
-	while (argv[i++])
+	i = argc - valid_nbrs;
+	while (i < argc)
 	{
-		if (is_valid_nbr(argv[(i - 1)]))
-		{
-			int_list[j] = ft_atoi(argv[(i - 1)]);
-			j++;
-		}
+		int_list[j] = ft_atoi(argv[i]);
+		j++;
+		i++;
 	}
 	return (int_list);
+}
+
+int count_valid_numbers(const char **argv, int argc)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 1;
+	while (i++ < argc)
+		count += is_valid_nbr(argv[(i - 1)]);
+	return (count);
 }
 
 /*
@@ -69,18 +87,13 @@ returns a value between 0 and 17 if args have been valid
 NOTE: Please call is_args_valid() before to check argv
 */
 
-int	get_flag_values(const char **argv)
+int	get_flag_values(const char **argv, int argc)
 {
-	int	flag_val;
-
-	flag_val = 0;
-	if (!argv)
+	if (argc < 2)
 		return (-1);
-	if ((argv[0]) && (is_valid_flag(argv[0])))
-		flag_val += get_flag_value(argv[0]);
-	if ((argv[1]) && (is_valid_flag(argv[1])))
-		flag_val += get_flag_value(argv[1]);
-	return (flag_val);
+	if (argc < 3)
+		return (get_flag_value(argv[1]));
+	return(get_flag_value(argv[1]) + get_flag_value(argv[2]));
 }
 
 int	get_flag_value(const char *flag)
@@ -93,16 +106,4 @@ int	get_flag_value(const char *flag)
 		4 * (!(ft_strncmp(flag, FLAG_COMPLEX, 11))) + 
 		8 * (!(ft_strncmp(flag, FLAG_ADAPTIVE, 11))) + 
 		16 * (!(ft_strncmp(flag, FLAG_BENCH, 11)))); 
-}
-
-int	count_numbers(const char **argv)
-{
-	int	count;
-	int	i;
-
-	count = 0;
-	i = 0;
-	while (argv[i++])
-		count += (is_valid_nbr(argv[(i - 1)]));
-	return (count);
 }

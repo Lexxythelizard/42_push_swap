@@ -45,13 +45,17 @@
 void	check_valid_flag(const char *s);
 void	check_valid_nbr(const char *s);
 void	check_is_flag(const char *s);
+void	check_get_flag_values(const char **argv, int argc);
+void	check_count_valid_numbers(const char **argv, int argc);
+void	check_int_array(int *arr, int len);
+void	test_converted_flag_value(int flag_val);
 
 // --- run ---
 
 int	main(int argc, char **argv)
 {
-	int		i;
-	char	**start;
+	int	i;
+	int	*arr;
 
 	i = 1;
 	if (argc < 3)
@@ -120,10 +124,19 @@ int	main(int argc, char **argv)
 		ft_printf("\"%s\" ", argv[(i - 1)]);
 	ft_printf("\n\n");
 	i = 0;
-	/*
-	ft_printf("test every argument seperately\n\n");
-	*/
 	ft_printf("is args valid: %d\n", is_args_valid((const char **)(argv), argc));
+	check_get_flag_values((const char **)(argv), argc);
+	check_count_valid_numbers((const char **)(argv), argc);
+	ft_printf("\n");
+
+	arr = get_int_list((const char **)(argv), argc);
+	ft_printf("create int array   ");
+	check_int_array(
+		arr,
+		count_valid_numbers((const char **)(argv), argc));
+	if (arr)
+		free(arr);
+	test_converted_flag_value(get_flag_values((const char **)(argv), argc));
 	ft_printf("\n++++++++++++++++++++++++++++++++++++++++++++++\n");
 	return (0);
 }
@@ -145,9 +158,62 @@ void	check_is_flag(const char *s)
 	ft_printf("is any flag: %d\n", is_any_flag(s));
 }
 
-/*
-void	check_valid_flag(const char *s)
+void	check_get_flag_values(const char **argv, int argc)
 {
-	ft_printf("is args valid: %d", is_valid_flag(s));
+	ft_printf("flag values are: %d\n", get_flag_values(argv, argc));
 }
-*/
+
+void	check_count_valid_numbers(const char **argv, int argc)
+{
+	ft_printf("valid numbers are: %d\n", count_valid_numbers(argv, argc));
+}
+
+void	check_int_array(int *arr, int len)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("display int array\n");
+	if ((!arr) || (len <= 0))
+	{
+		ft_printf("%p\n", arr);
+		return ;
+	}
+	while (i++ < len)
+		ft_printf("idx: %d\tval: %d\n", (i - 1), arr[(i - 1)]);
+	ft_printf("end\n");
+}
+
+void	test_converted_flag_value(int flag_val)
+{
+	ft_printf("value %d means:\n");
+	if (flag_val / 16)
+		ft_printf("%s was given\n", FLAG_BENCH);
+	else
+		ft_printf("%s NOT given\n", FLAG_BENCH);
+	flag_val %= 16;	
+
+	if (flag_val / 8)
+		ft_printf("%s was given\n", FLAG_ADAPTIVE);
+	else
+		ft_printf("%s NOT given\n", FLAG_ADAPTIVE);
+	flag_val %= 8;	
+
+	if (flag_val / 4)
+		ft_printf("%s was given\n", FLAG_COMPLEX);
+	else
+		ft_printf("%s NOT given\n", FLAG_COMPLEX);
+	
+	flag_val %= 4;	
+	if (flag_val / 2)
+		ft_printf("%s was given\n", FLAG_MEDIUM);
+	else
+		ft_printf("%s NOT given\n", FLAG_MEDIUM);
+
+	flag_val %= 2;	
+	if (flag_val / 1)
+		ft_printf("%s was given\n", FLAG_SIMPLE);
+	else
+		ft_printf("%s NOT given\n", FLAG_SIMPLE);
+	flag_val %= 1;
+}

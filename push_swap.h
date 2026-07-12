@@ -76,6 +76,10 @@ void			run_sort(t_stack_machine *machine, int flag);
 
 // ::: UI :::
 
+// ui_calculate_entropy.c
+
+float			calculate_entropy(int *arr, int len);
+
 // ui_convert_arguments.c
 
 int				*get_int_list(const char **argv, int argc);

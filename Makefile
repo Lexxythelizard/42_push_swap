@@ -85,6 +85,7 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_medium.c \
 					$(This_Dir)/sort_simple.c \
 					$(This_Dir)/sort_run.c \
+					$(This_Dir)/ui_entropy.c \
 					$(This_Dir)/ui_convert_arguments.c \
 					$(This_Dir)/ui_validate_arguments.c \
 					$(This_Dir)/ui_validate_arguments_flags.c \
@@ -97,6 +98,8 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 Args_Main		=	./test_argparsing.c
 
 Bench_Main		=	./test_output.c
+
+Entropy_Main	=	./test_entropy.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
@@ -133,6 +136,10 @@ test_args: create_testdir libft ftprintf stackmachine
 test_bench: create_testdir libft ftprintf stackmachine
 	$(Compile) $(Bench_Main) $(Push_Swap_Files) $(Debugg) $(LIBRARIES) \
 	$(Out) $(Test_Dir)/benchtest
+
+test_entropy: create_testdir libft ftprintf stackmachine
+	$(Compile) $(Entropy_Main) $(Push_Swap_Files) $(Debugg) $(LIBRARIES) \
+	$(Out) $(Test_Dir)/entropytest
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

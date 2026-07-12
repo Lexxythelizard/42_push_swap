@@ -42,7 +42,9 @@ Stack_Dir		=	$(Library_Dir)/stack_machine
 
 Stack_Core_Dir	=	$(Stack_Dir)/core
 
-Test_Dir		=	$(This_Dir)/tests
+Test_Dir		=	$(This_Dir)/test_programs
+
+Main_Dir		=	$(This_Dir)/test_files
 
 Include_This	=	-I $(This_Dir)
 
@@ -95,11 +97,11 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 
 # -------> for testing
 
-Args_Main		=	./test_argparsing.c
+Args_Main		=	$(Main_Dir)/test_argparsing.c
 
-Bench_Main		=	./test_output.c
+Bench_Main		=	$(Main_Dir)/test_output.c
 
-Entropy_Main	=	./test_entropy.c
+Entropy_Main	=	$(Main_Dir)/test_entropy.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 

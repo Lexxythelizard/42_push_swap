@@ -96,6 +96,8 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 
 Args_Main		=	./test_argparsing.c
 
+Bench_Main		=	./test_output.c
+
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
 Push_Swap_Obj	=	$(Push_Swap_Files:.c=.o)
@@ -127,6 +129,10 @@ test0: $(Push_Swap_Obj)
 test_args: create_testdir libft ftprintf stackmachine
 	$(Compile) $(Args_Main) $(Push_Swap_Files) $(Debugg) $(LIBRARIES) \
 	$(Out) $(Test_Dir)/argpasstest
+
+test_bench: create_testdir libft ftprintf stackmachine
+	$(Compile) $(Bench_Main) $(Push_Swap_Files) $(Debugg) $(LIBRARIES) \
+	$(Out) $(Test_Dir)/benchtest
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

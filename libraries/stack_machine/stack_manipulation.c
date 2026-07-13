@@ -1,64 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   stack_manipulation.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 10:49:28 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/08 20:43:31 by lenivorb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 // --- include ---
 
 #include "./stack_machine.h"
 
+// --- DOC ---
+
+/*TODO:	test functions*/
+
+// --- proto --- for tests
+
+void	stack_init_empty(t_stack *stack);
+int		stack_init(t_stack *stack, int *arr, int len);
+int		free_stack(t_stack *stack);
+
 // --- define ---
-
-/* TODO: Handle malloc errors (preferably within the 25 lines) */
-
-t_element	*new_element(int val, t_element *prev)
-{
-	t_element	*new;
-
-	new = malloc(sizeof(t_element));
-	if (!new)
-		return (NULL);
-	new -> val = val;
-	new -> prev = prev;
-	new -> next = NULL;
-	return (new);
-}
-
-/* Initialises a t_stack instance from a list of numbers */
-int	stack_init(t_stack *stack, int	*nums, size_t len)
-{
-	size_t	i;
-	t_element	*ptr0;
-	t_element	*ptr1;
-
-	i = 0;
-	if ((!stack) || (!nums) || (len))
-		return (-1);
-	ptr0 = new_element(nums[0], NULL);
-	if (!ptr0)
-		return (-1);
-	stack -> first = ptr0;
-	stack -> last = ptr0;
-	ptr1 = stack -> first;
-	while (i < len)
-	{
-		ptr0 = new_element(nums[i], stack -> last);
-		if (!ptr0)
-			return (-1);
-		ptr1 -> next = ptr0;
-		ptr1 = ptr1 -> next;
-		stack -> last = ptr0;
-		i++;
-	}
-	return (1);
-}
 
 void	stack_init_empty(t_stack *stack)
 {
@@ -66,17 +20,29 @@ void	stack_init_empty(t_stack *stack)
 	stack -> last = NULL;
 }
 
-/* Frees an instance of t_stack */
-void	free_stack(t_stack *stack)
+int	stack_init(t_stack *stack, int *arr, int len)
 {
-	t_element	*ptr;
 
-	ptr = stack -> first;
-	while (ptr -> next)
-	{
-		ptr = ptr -> next;
-		free(ptr -> prev);
-	}
-	free(ptr);
-	free(stack);
+	i = 0;
+	if ((!stack) || (!nums) || (len <= 0))
+		return (-1);
+	stack -> first = element_new_list(arr, len);
+	stack -> last = stack -> first;
+	if ((!stack) && (len >= 1))
+		return (-1);
+	while (stack -> last -> next)
+		stack -> last = stack -> last -> next;
+	return (len);
+}
+
+int	free_stack(t_stack *stack)
+{
+	int	count;
+
+	count = 0;
+	if (!stack)
+		return (-1);
+	count = element_free_tail(stack -> first);
+	stack_init_empty(stack);
+	return (count);
 }

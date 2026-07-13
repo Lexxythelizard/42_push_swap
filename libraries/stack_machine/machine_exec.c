@@ -15,9 +15,15 @@
 #include "./stack_machine.h"
 #include <unistd.h>
 
-// --- proto ---
+// --- DOC --
 
-static void	put_exec(char *str);
+/*
+TODO: reimplement from the scratch
+*/
+
+// --- proto --- for tests
+
+static void	put_exec(char *str, int fd);
 
 // --- define ---
 
@@ -43,22 +49,20 @@ void	exec(t_stack_machine *machine, int idx)
 		machine -> stats -> total_ops++;
 	}
 	((machine -> funcs)[idx].f)(machine);
-	//ft_putendl_fd((machine -> funcs)[idx].name, 1);
 	put_exec((machine -> funcs)[idx].name);
 }
 
-/* calls exec(stats, idx) n times */
 void	exec_n(t_stack_machine *machine, int idx, int n)
 {
 	while (n--)
 		exec(machine, idx);
 }
 
-static void	put_exec(char *str)
+static void	put_exec(char *str, int fd)
 {
 	int	i;
 
 	i = 0;
 	while (str[i++])
-		write(1, &(str[(i - 1)]), 1);
+		write(fd, &(str[(i - 1)]), 1);
 }

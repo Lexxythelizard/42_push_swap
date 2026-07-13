@@ -15,9 +15,21 @@
 #include <limits.h>
 #include "./stack_machine.h"
 
-// --- define ---
+// --- DOC --
 
-// === scanning the stack ===
+/*
+TODO:   reimplement from scratch
+*/
+
+// --- proto --- for tests
+
+int	stack_comp(t_stack *stack);
+int	get_stack_size(t_stack *stack);
+int	get_min_geq_n(t_stack *stack, int n);
+int	get_nth_min(t_stack *stack, int n);
+int	get_nth_min_idx(t_stack *stack, int n);
+
+// --- define ---
 
 /* Returns 1 if the two values on top of the stack are in descending order or
    0 otherwise */

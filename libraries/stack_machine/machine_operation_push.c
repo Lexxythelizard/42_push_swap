@@ -1,18 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   machine_operation_push.c                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 17:18:26 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/08 20:39:08 by lenivorb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 // --- include ---
 
 #include "./stack_machine.h"
+
+// --- DOC --
+
+/*
+TODO:   refactor and test
+*/
+
+// --- proto --- for tests
+
+void	pa(t_stack_machine *machine);
+void	pb(t_stack_machine *machine);
+
+// --- define ---
+
 
 // --- def ---
 

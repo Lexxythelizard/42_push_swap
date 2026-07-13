@@ -1,20 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   machine_operation_swap.c                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 17:16:29 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/08 20:40:00 by lenivorb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 // --- include ---
 
 #include "./stack_machine.h"
 
-// --- def ---
+// --- DOC --
+
+/*
+TODO:   refactor and test
+*/
+
+// --- proto --- for tests
+
+void	sa(t_stack_machine *machine);
+void	sb(t_stack_machine *machine);
+void	ss(t_stack_machine *machine);
+
+// --- define ---
 
 void	sa(t_stack_machine *machine)
 {

@@ -14,6 +14,24 @@
 
 #include "./stack_machine.h"
 
+// --- DOC --
+
+/*
+TODO:   - reimplement from scratch
+		- source out func_ functions
+		- source out stats_ functions
+*/
+
+// --- proto --- for tests
+
+int	machine_init_empty(t_stack_machine *machine);
+int	machine_stack_init(t_stack_machine *machine, int *nums, int len)
+void	func_init(t_stack_machine *machine)
+void	stats_init(t_stack_machine *machine, int flag)
+t_func	func_wrap(void (*f)(t_stack_machine *), char *name)
+
+// --- define ---
+
 int	machine_init_empty(t_stack_machine *machine)
 {
 	int	i;

@@ -1,21 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   disorder_metric.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 13:25:59 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/08 20:37:33 by lenivorb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 // --- include ---
 
 #include "./stack_machine.h"
 
-/* Computes the disorder of stack a
-   (i.e. the quota of pairs of numbers which are in the wrong order) */
+// --- DOC --
+
+/*TODO: reimplement or toss out*/
+
+// --- proto --- for tests
+
+float	compute_disorder(t_stack *stack);
+
+// --- define ---
+
 float	compute_disorder(t_stack *stack)
 {
 	int			mistakes;

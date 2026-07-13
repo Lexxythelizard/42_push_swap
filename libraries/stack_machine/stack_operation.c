@@ -1,18 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   stack_operation.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 10:49:28 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/08 20:43:54 by lenivorb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 // --- include ---
 
 #include "./stack_machine.h"
+
+// --- DOC --
+
+/*
+TODO:   reimplement from scratch
+*/
+
+// --- proto --- for tests
+
+void	swap(t_stack *stack);
+void	push(t_stack *from, t_stack *to);
+void	rotate(t_stack *stack);
+void	reverse_rotate(t_stack *stack);
 
 // --- define ---
 

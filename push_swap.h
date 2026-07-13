@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stddef.h>
-#include "./libraries/stack_machine/stack_machine.h"
+#include "./libraries/stack_machine/stackmachine.h"
 
 // --- Makros ---
 

@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <assert.h>
+#include "../libraries/stack_machine/core/stack.h"
 
 // --- DOC ---
 

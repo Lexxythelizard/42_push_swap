@@ -49,7 +49,7 @@ typedef struct s_func
 typedef struct s_stack_machine
 {
 	t_stack	stacks[2];
-	t_stats	*stats;
+	t_stats	stats;
 	t_func	funcs[11];	
 }			t_stack_machine;
 

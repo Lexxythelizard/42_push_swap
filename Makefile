@@ -54,6 +54,10 @@ Include_Libft	=	-I $(Libft_Dir)
 
 Include_Stack	=	-I $(Stack_Dir)
 
+Include_StackC	=	-I $(Stack_Core_Dir)
+
+Include_Test	=	-I $(Main_Dir)
+
 # ------------------------- library files -------------------------
 
 PRINTF			=	libftprintf.a
@@ -68,17 +72,8 @@ LIBRARIES		=	-L $(Library_Dir) -l ftprintf -l ft -l stackmachine
 
 # ------------------------- Files -------------------------
 
-Stack_Files		=	$(Stack_Dir)/disorder_metric.c \
-					$(Stack_Dir)/machine_exec.c \
-					$(Stack_Dir)/machine_free.c \
-					$(Stack_Dir)/machine_init.c \
-					$(Stack_Dir)/machine_operation_push.c \
-					$(Stack_Dir)/machine_operation_reverse_rotate.c \
-					$(Stack_Dir)/machine_operation_rotate.c \
-					$(Stack_Dir)/machine_operation_swap.c \
-					$(Stack_Dir)/stack_manipulation.c \
-					$(Stack_Dir)/stack_operation.c \
-					$(Stack_Dir)/stack_scan.c
+Stack_Files		=	$(Stack_Dir)/stack_elements.c \
+					$(Stack_Dir)/stack_stack.c
 
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex_mergesort_base.c \
@@ -95,6 +90,8 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/ui_output.c \
 					$(This_Dir)/utillities.c
 
+Test_Helper		=	$(Main_Dir)/test_helper_stack.c
+
 # -------> for testing
 
 Args_Main		=	$(Main_Dir)/test_argparsing.c
@@ -102,6 +99,8 @@ Args_Main		=	$(Main_Dir)/test_argparsing.c
 Bench_Main		=	$(Main_Dir)/test_output.c
 
 Entropy_Main	=	$(Main_Dir)/test_entropy.c
+
+Stack_Main		=	$(Main_Dir)/test_stack_manipulation.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
@@ -136,12 +135,17 @@ test_args: create_testdir libft ftprintf stackmachine
 	$(Out) $(Test_Dir)/argpasstest
 
 test_bench: create_testdir libft ftprintf stackmachine
-	$(Compile) $(Bench_Main) $(Push_Swap_Files) $(Debugg) $(LIBRARIES) \
+	$(Compile) $(Stack_Main) $(Push_Swap_Files) $(Debugg) \
 	$(Out) $(Test_Dir)/benchtest
 
 test_entropy: create_testdir libft ftprintf stackmachine
 	$(Compile) $(Entropy_Main) $(Push_Swap_Files) $(Debugg) $(LIBRARIES) \
 	$(Out) $(Test_Dir)/entropytest
+
+test_stackmanipulation: create_testdir
+	$(Compile) $(Stack_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
+	$(Include_StackC) $(Include_Stack) $(Include_Test) \
+	$(Out) $(Test_Dir)/stackmanipulationtest
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

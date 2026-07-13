@@ -6,8 +6,8 @@ Branch: stackmachine
 
 ### Test:
 
-- `stack_elements.c`
-- `stack_manipulation.c`
+- `stack_elements.c`							[x] DONE
+- `stack_manipulation.c`						[x] DONE
 
 ### Refactor and test:
 
@@ -30,13 +30,13 @@ Branch: stackmachine
 
 ### outsource split
 
-- `machine_init.c` --> `machine_stats`
-- `machine_init.c` --> `machine_func`
-- `machine_init.c` --> `machine_machine`
+- `machine_init.c` --> `machine_stats`			[x] DONE
+- `machine_init.c` --> `machine_func`			[x] DONE
+- `machine_init.c` --> `machine_machine`		[x] DONE
 
 ### rename
 
-- `machine_manipulation.c` --> `stack_stack`
+- `machine_manipulation.c` --> `stack_stack`	[x] DONE
 
 ## features
 
@@ -48,7 +48,7 @@ Branch: stackmachine
 
 ### solution
 
-- stacks should keep track of number of elements
+- stacks should keep track of number of elements	[x] DONE
 - use define to define
   - `[OP_STR]` 	`[str]`
   - `[OP]` 		`[int]`

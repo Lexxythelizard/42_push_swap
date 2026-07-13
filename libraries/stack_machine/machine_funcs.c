@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   machine_init.c                                     :+:      :+:    :+:   */
+/*   machine_funcs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -24,39 +24,32 @@ TODO:   - reimplement from scratch
 
 // --- proto --- for tests
 
-int	machine_init_empty(t_stack_machine *machine);
-int	machine_stack_init(t_stack_machine *machine, int *nums, int len);
+void	func_assign(t_stack_machine *machine)
+t_func	func_init(void (*f)(t_stack_machine *), char *name)
 
 // --- define ---
 
-int	machine_init_empty(t_stack_machine *machine)
+void	func_assign(t_stack_machine *machine)
 {
-	int	i;
-
-	i = 0;
-	if (!machine)
-		return (0);
-	machine -> stacks[0].first = NULL;
-	machine -> stacks[0].last = NULL;
-	machine -> stacks[1].first = NULL;
-	machine -> stacks[1].last = NULL;
-	machine -> stats = malloc(sizeof(t_stats));
-	if (!(machine -> stats))
-		return (-1);
-	machine -> stats -> total_ops = 0;
-	machine -> stats -> disorder = 0.0;
-	machine -> stats -> strategy = NULL;
-	while (i++ < 11)
-		machine -> stats -> calls[(i - 1)] = 0;
-	func_init(machine);
-	return (1);
+	machine -> funcs[0] = func_wrap(&sa, "sa");
+	machine -> funcs[1] = func_wrap(&sb, "sb");
+	machine -> funcs[2] = func_wrap(&ss, "ss");
+	machine -> funcs[3] = func_wrap(&pa, "pa");
+	machine -> funcs[4] = func_wrap(&pb, "pb");
+	machine -> funcs[5] = func_wrap(&ra, "ra");
+	machine -> funcs[6] = func_wrap(&rb, "rb");
+	machine -> funcs[7] = func_wrap(&rr, "rr");
+	machine -> funcs[8] = func_wrap(&rra, "rra");
+	machine -> funcs[9] = func_wrap(&rrb, "rrb");
+	machine -> funcs[10] = func_wrap(&rrr, "rrr");
 }
 
-int	machine_stack_init(t_stack_machine *machine, int *nums, int len)
+/* Creates an instance of t_func from a function pointer and a function name */
+t_func	func_init(void (*f)(t_stack_machine *machine), char *name)
 {
-	if (!machine)
-		return (0);
-	if ((!nums) && (len))
-	}
-	return (1);
+	t_func	func_obj;
+
+	func_obj.func = f;
+	func_obj.name = name;
+	return (func_obj);
 }

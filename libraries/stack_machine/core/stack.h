@@ -20,6 +20,7 @@ typedef struct s_stack_node {
 }						t_element;
 
 typedef struct s_stack {
+	int			len;
 	t_element	*first;
 	t_element	*last;
 }				t_stack;

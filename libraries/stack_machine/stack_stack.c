@@ -16,6 +16,7 @@ int		free_stack(t_stack *stack);
 
 void	stack_init_empty(t_stack *stack)
 {
+	stack -> len = 0;
 	stack -> first = NULL;
 	stack -> last = NULL;
 }
@@ -32,10 +33,11 @@ int	stack_init(t_stack *stack, int *arr, int len)
 		return (-1);
 	while (stack -> last -> next)
 		stack -> last = stack -> last -> next;
+	stack -> len = len;
 	return (len);
 }
 
-int	free_stack(t_stack *stack)
+int	stack_free(t_stack *stack)
 {
 	int	count;
 

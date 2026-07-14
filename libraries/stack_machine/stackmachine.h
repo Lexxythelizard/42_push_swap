@@ -32,6 +32,13 @@ int			stack_add_first(t_stack *stack, t_element *new);
 int			stack_add_last(t_stack *stack, t_element *new);
 int			stack_init_add(t_stack *stack, t_element *new);
 
+// stack_operation.c
+
+int			swap(t_stack *stack);
+int			push(t_stack *from, t_stack *to);
+int			rotate(t_stack *stack);
+int			reverse_rotate(t_stack *stack);
+
 // default.c
 
 // --- end ---

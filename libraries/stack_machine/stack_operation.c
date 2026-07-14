@@ -10,22 +10,31 @@ TODO:   reimplement from scratch
 
 // --- proto --- for tests
 
-void	swap(t_stack *stack);
-void	push(t_stack *from, t_stack *to);
-void	rotate(t_stack *stack);
-void	reverse_rotate(t_stack *stack);
+int	swap(t_stack *stack);
+int	push(t_stack *from, t_stack *to);
+int	rotate(t_stack *stack);
+int	reverse_rotate(t_stack *stack);
 
 // --- define ---
 
 /* Swap first two elements of c */
-void	swap(t_stack *stack)
+int	swap(t_stack *stack)
 {
 	t_element	*new_first;
 	t_element	*new_sec;
 
-	if (!(stack -> first) || !(stack -> first -> next))
-		return ;
+	if (!(stack -> first))
+		return (-1);
+	if (!(stack -> len <= 1))
+		return (0);
 
+	new_sec = stack_pop_first(stack);
+	new_first = stack_pop_first(stack);
+
+	stack_add_first(stack, new_sec);
+	stack_add_first(stack, new_first);
+
+	/*
 	new_first = stack -> first -> next;
 	new_sec = stack -> first;
 	
@@ -38,49 +47,43 @@ void	swap(t_stack *stack)
 	stack -> first = new_first;
 	if (!(new_sec -> next))
 		stack -> last = new_sec;
+	*/
+
+	return (1);
 }
 
 /* Push first element of d on top of c */
-void	push(t_stack *from, t_stack *to)
+int	push(t_stack *from, t_stack *to)
 {
-	t_element	*ptr;
+	t_element	*element;
 
-	if ((!from) || (!(from -> first)) || (!to))
+	if ((!from) || (!to))
 		return (-1);
+	if (!(from -> len))
+		return (0);
 
 	// pop
-	ptr = from -> first;
-	from -> first = from -> first -> next;
-	if (from -> len > 1)
-		from -> first -> prev = NULL;
-	if (from -> len == 1)
-		stack_init_empty(stack);
+	element = stack_pop_first(from);
 
 	// add
-	ptr -> next = NULL;
-	if (to -> len)
-		ptr -> next = to -> first;
-	else
-		to -> last = ptr;
-	to -> first = ptr;
-
-	//update length
-	from -> len--;
-	to -> len++;
+	stack_add_first(to, element);
+	return (1);
 }
 
 /* rotate upwards one step */
-void	rotate(t_stack *stack)
+int	rotate(t_stack *stack)
 {
-	t_element	*ptr
+	t_element	*element;
 
 	if (!stack) 
 		return (-1);
-	if (stack -> len >= 1)
+	if (stack -> len == 1)
 		return (stack -> len);
-	if (stack -> first -> next == stack -> last)
-		return (swap(stack));
 
+	element = stack_pop_last(stack);
+	stack_add_first(stack, element);
+
+	/*
 	ptr = stack -> last;
 	
 	stack -> last -> prev -> next = NULL;
@@ -95,23 +98,31 @@ void	rotate(t_stack *stack)
 	stack -> last -> next = stack -> first;
 
 	stack -> last -> prev -> next = NULL;
+	*/
 	return (1);
 }
 
 /* rotate downwards one step */
-void	reverse_rotate(t_stack *stack)
+int	reverse_rotate(t_stack *stack)
 {
-	if (!(stack -> first) || !(stack -> first -> next))
-		return ;
-	if (stack -> first -> next == stack -> last)
-	{
-		swap(stack);
-		return ;
-	}
+	t_element	*element;
+
+	if (!stack) 
+		return (-1);
+	if (stack -> len == 1)
+		return (stack -> len);
+
+	element = stack_pop_first(stack);
+	stack_add_last(stack, element);
+
+	/*
 	stack -> first -> prev = stack -> last;
 	stack -> last -> next = stack -> first;
 	stack -> first = stack -> last;
 	stack -> last = stack -> last -> prev;
 	stack -> last -> next = NULL;
 	stack -> first -> prev = NULL;
+	*/
+
+	return (1);
 }

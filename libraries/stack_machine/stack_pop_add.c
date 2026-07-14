@@ -65,10 +65,8 @@ t_element	*stack_pop_last(t_stack *stack)
 	if ((!stack) || (!(stack -> len)))
 		return (ptr);
 	ptr = stack -> last;
-	
 	if (stack -> len == 1)
 		stack_init_empty(stack);
-
 	else
 	{
 		stack -> last = stack -> last -> prev;
@@ -92,15 +90,12 @@ int	stack_add_first(t_stack *stack, t_element *new)
 		return (-1);
 	if (!new)
 		return (0);
-
 	if (!(stack -> len))
 		return (stack_init_add(stack, new));
-
 	new -> next = stack -> first;
 	stack -> first -> prev = new;
 	stack -> first = new;
-
-	stack -> len++;	
+	stack -> len++;
 	return (stack -> len);
 }
 
@@ -116,12 +111,9 @@ int	stack_add_last(t_stack *stack, t_element *new)
 		return (-1);
 	if (!new)
 		return (0);
-	
 	new -> prev = stack -> last;
-
 	if (!(stack -> len))
 		return (stack_init_add(stack, new));
-
 	stack -> last = element_add_next(stack -> last, new);
 	stack -> len++;
 	return (stack -> len);

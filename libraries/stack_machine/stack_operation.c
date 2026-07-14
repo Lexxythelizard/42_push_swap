@@ -5,7 +5,7 @@
 // --- DOC --
 
 /*
-TODO:   reimplement from scratch
+TODO:   test
 */
 
 // --- proto --- for tests
@@ -17,42 +17,35 @@ int	reverse_rotate(t_stack *stack);
 
 // --- define ---
 
-/* Swap first two elements of c */
+/*
+Swaps first two elements of stack,
+return	0 / 1 : not swapable / success
+return	-1 if error
+*/
+
 int	swap(t_stack *stack)
 {
 	t_element	*new_first;
 	t_element	*new_sec;
 
-	if (!(stack -> first))
+	if (!stack)
 		return (-1);
-	if (!(stack -> len <= 1))
+	if (stack -> len <= 1)
 		return (0);
-
 	new_sec = stack_pop_first(stack);
 	new_first = stack_pop_first(stack);
-
 	stack_add_first(stack, new_sec);
 	stack_add_first(stack, new_first);
-
-	/*
-	new_first = stack -> first -> next;
-	new_sec = stack -> first;
-	
-	new_sec -> next = stack -> first -> next -> next;
-	new_sec -> prev = new_first;
-
-	new_first -> next = new_sec;
-	new_first -> prev = NULL;
-
-	stack -> first = new_first;
-	if (!(new_sec -> next))
-		stack -> last = new_sec;
-	*/
-
 	return (1);
 }
 
-/* Push first element of d on top of c */
+/*
+Pushes the first element of stack 'from' to the top of stack 'to'
+by calling pop and add
+return	0 / 1	: not popable / success
+return	-1		: if error
+*/
+
 int	push(t_stack *from, t_stack *to)
 {
 	t_element	*element;
@@ -70,59 +63,42 @@ int	push(t_stack *from, t_stack *to)
 	return (1);
 }
 
-/* rotate upwards one step */
+/*
+rotates stack forward:
+last element becomes first, first becomes second, ...
+return	0 / 1	: empty / success
+return	-1 		: if error
+*/
+
 int	rotate(t_stack *stack)
 {
 	t_element	*element;
 
 	if (!stack) 
 		return (-1);
-	if (stack -> len == 1)
+	if (stack -> len <= 1)
 		return (stack -> len);
-
 	element = stack_pop_last(stack);
 	stack_add_first(stack, element);
-
-	/*
-	ptr = stack -> last;
-	
-	stack -> last -> prev -> next = NULL;
-
-	stack -> last -> next = stack -> first;
-	stack -> first -> prev = stack -> last;
-	stack -> last = stack -> first;
-	stack -> first = stack -> first -> next;
-	stack -> first -> prev = NULL;
-	stack -> last -> next = NULL;
-
-	stack -> last -> next = stack -> first;
-
-	stack -> last -> prev -> next = NULL;
-	*/
 	return (1);
 }
 
-/* rotate downwards one step */
+/*
+rotates stack backward:
+first element becomes last, second becomes first, ...
+return	0 / 1	: empty / success
+return	-1 		: if error
+*/
+
 int	reverse_rotate(t_stack *stack)
 {
 	t_element	*element;
 
 	if (!stack) 
 		return (-1);
-	if (stack -> len == 1)
+	if (stack -> len <= 1)
 		return (stack -> len);
-
 	element = stack_pop_first(stack);
 	stack_add_last(stack, element);
-
-	/*
-	stack -> first -> prev = stack -> last;
-	stack -> last -> next = stack -> first;
-	stack -> first = stack -> last;
-	stack -> last = stack -> last -> prev;
-	stack -> last -> next = NULL;
-	stack -> first -> prev = NULL;
-	*/
-
 	return (1);
 }

@@ -19,10 +19,11 @@ Branch: stackmachine
 
 ### Reimplement from the scratch:
 
-- `disorder_metric.c`
+- `disorder_metric.c`		removed				[x] DONE			
 - `machine_free.c`
 - `machine_init.c`
 - `stack_operation.c`
+- `stack_pop_add.c`								[x] DONE
 - `stack_scan.c`
 
 

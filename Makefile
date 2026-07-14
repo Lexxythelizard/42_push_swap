@@ -73,6 +73,7 @@ LIBRARIES		=	-L $(Library_Dir) -l ftprintf -l ft -l stackmachine
 # ------------------------- Files -------------------------
 
 Stack_Files		=	$(Stack_Dir)/stack_elements.c \
+					$(Stack_Dir)/stack_pop_add.c \
 					$(Stack_Dir)/stack_stack.c
 
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
@@ -101,6 +102,8 @@ Bench_Main		=	$(Main_Dir)/test_output.c
 Entropy_Main	=	$(Main_Dir)/test_entropy.c
 
 Stack_Main		=	$(Main_Dir)/test_stack_manipulation.c
+
+Stack_Bas_Main	=	$(Main_Dir)/test_stack_operation_basics.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
@@ -146,6 +149,11 @@ test_stackmanipulation: create_testdir
 	$(Compile) $(Stack_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
 	$(Include_StackC) $(Include_Stack) $(Include_Test) \
 	$(Out) $(Test_Dir)/stackmanipulationtest
+
+test_stackbasicoperation: create_testdir
+	$(Compile) $(Stack_Bas_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
+	$(Include_StackC) $(Include_Stack) $(Include_Test) \
+	$(Out) $(Test_Dir)/stackbasicoperations
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

@@ -22,9 +22,17 @@ int         element_free_tail(t_element *element);
 
 // ../libraries/stack_machine/stack_stack.c
 
-void		stack_init_empty(t_stack *stack);
+int			stack_init_empty(t_stack *stack);
 int			stack_init(t_stack *stack, int *arr, int len);
 int			stack_free(t_stack *stack);
+
+// ../libraries/stack_machine/stack_stack.c
+
+t_element	*stack_pop_first(t_stack *stack);
+t_element	*stack_pop_last(t_stack *stack);
+int			stack_add_first(t_stack *stack, t_element *new);
+int			stack_add_last(t_stack *stack, t_element *new);
+int			stack_init_add(t_stack *stack, t_element *new);
 
 // this file
 
@@ -37,6 +45,8 @@ t_stack		create_stack_init_two_elements(void);
 t_stack		create_stack_init_three_elements(void);
 t_stack		create_stack_init(void);
 int			create_stack_free(t_stack *stack);
+
+
 
 // --- define ---
 

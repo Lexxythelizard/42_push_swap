@@ -64,7 +64,7 @@ void	test_swap_empty(void)
 	assert(swap(&test) == 0);
 	assert(stack_free(&test) == 0);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_swap_one(void)
@@ -83,7 +83,7 @@ void	test_swap_one(void)
 	assert(test.last -> prev == NULL);
 	assert(stack_free(&test) == 1);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_swap_two(void)
@@ -107,7 +107,7 @@ void	test_swap_two(void)
 	assert(test.last -> prev == test.first);
 	assert(stack_free(&test) == 2);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_swap_three(void)
@@ -131,7 +131,7 @@ void	test_swap_three(void)
 	assert(test.last -> next == NULL);
 	assert(stack_free(&test) == 3);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 // operations rotate
@@ -149,7 +149,7 @@ void	test_rotate_empty(void)
 	assert(test.last == NULL);
 	assert(stack_free(&test) == 0);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_rotate_one(void)
@@ -173,7 +173,7 @@ void	test_rotate_one(void)
 	assert(test.last == test.first);
 	assert(stack_free(&test) == 1);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_rotate_two(void)
@@ -194,7 +194,7 @@ void	test_rotate_two(void)
 	assert(test.last -> prev == test.first);
 	assert(stack_free(&test) == 2);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 } 
 
 void	test_rotate_three(void)
@@ -219,7 +219,7 @@ void	test_rotate_three(void)
 	assert(test.last -> prev == test.first -> next);
 	assert(stack_free(&test) == 3);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 // operations reverse rotate
@@ -237,7 +237,7 @@ void	test_reverse_rotate_empty(void)
 	assert(test.last == NULL);
 	assert(stack_free(&test) == 0);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_reverse_rotate_one(void)
@@ -261,7 +261,7 @@ void	test_reverse_rotate_one(void)
 	assert(test.last == test.first);
 	assert(stack_free(&test) == 1);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_reverse_rotate_two(void)
@@ -284,7 +284,7 @@ void	test_reverse_rotate_two(void)
 	assert(test.last -> prev == test.first);
 	assert(stack_free(&test) == 2);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_reverse_rotate_three(void)
@@ -309,7 +309,7 @@ void	test_reverse_rotate_three(void)
 	assert(test.last -> prev == test.first -> next);
 	assert(stack_free(&test) == 3);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 
@@ -331,7 +331,7 @@ void	test_push_from_stack_empty(void)
 	assert(stack_free(&test0) == 0);
 	assert(stack_free(&test1) == 0);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_push_from_stack_one(void)
@@ -343,9 +343,9 @@ void	test_push_from_stack_one(void)
 
 	test0 = create_stack_init_one_elements();
 	test1 = create_stack_init_empty();
-	assert(push(&test1, &test0) == 0);
 	assert(test0.len == 1);
 	assert(test1.len == 0);
+	assert(push(&test1, &test0) == 0);
 	assert(push(&test0, &test1) == 1);
 	assert(test0.len == 0);
 	assert(test0.first == NULL);
@@ -358,7 +358,7 @@ void	test_push_from_stack_one(void)
 	assert(stack_free(&test0) == 0);
 	assert(stack_free(&test1) == 1);
 
-	printf("[OK] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_push_from_stack_two(void)
@@ -369,9 +369,27 @@ void	test_push_from_stack_two(void)
 	printf("test push from two element stack: ");
 
 	test0 = create_stack_init_two_elements();
-	assert(stack_free(&test0) == 2);
+	test1 = create_stack_init_empty();
+	assert(test0.len == 2);
+	assert(test1.len == 0);
+	assert(push(&test1, &test0) == 0);
+	assert(push(&test0, &test1) == 1);
+	assert(test0.len == 1);
+	assert(test0.first != NULL);
+	assert(test0.first -> prev == NULL);
+	assert(test0.first -> next == NULL);
+	assert(test0.first == test0.last);
+	assert(test1.len == 1);
+	assert(test1.first != NULL);
+	assert(test1.first -> prev == NULL);
+	assert(test1.first -> next == NULL);
+	assert(test1.first == test1.last);
+	assert(test0.first -> val == 22);
+	assert(test1.first -> val == 21);
+	assert(stack_free(&test0) == 1);
+	assert(stack_free(&test1) == 1);
 
-	printf("[implment] \n");
+	printf("[OK] \\\n");
 }
 
 void	test_push_from_stack_three(void)
@@ -382,7 +400,46 @@ void	test_push_from_stack_three(void)
 	printf("test push from three element stack: ");
 
 	test0 = create_stack_init_three_elements();
-	assert(stack_free(&test0) == 3);
+	test1 = create_stack_init_empty();
+	assert(test0.len == 3);
+	assert(test1.len == 0);
+	assert(push(&test1, &test0) == 0);
+	assert(push(&test0, &test1) == 1);
 
-	printf("[implment] \n");
+	assert(test0.len == 2);
+	assert(test0.first != NULL);
+	assert(test0.first != test0.last);
+	assert(test0.first -> prev == NULL);
+	assert(test0.first -> next == test0.last);
+	assert(test0.last -> prev == test0.first);
+	assert(test0.last -> next == NULL);
+	assert(test0.first -> val == 22);
+	assert(test0.last -> val == 23);
+	assert(test1.len == 1);
+	assert(test1.first != NULL);
+	assert(test1.first -> prev == NULL);
+	assert(test1.first -> next == NULL);
+	assert(test1.first == test1.last);
+	assert(test1.first -> val == 21);
+
+	assert(push(&test0, &test1) == 1);
+	assert(test0.len == 1);
+	assert(test0.first != NULL);
+	assert(test0.first -> prev == NULL);
+	assert(test0.first -> next == NULL);
+	assert(test0.first == test0.last);
+	assert(test0.first -> val == 23);
+	assert(test1.len == 2);
+	assert(test1.first != NULL);
+	assert(test1.first != test1.last);
+	assert(test1.first -> prev == NULL);
+	assert(test1.first -> next == test1.last);
+	assert(test1.last -> prev == test1.first);
+	assert(test1.last -> next == NULL);
+	assert(test1.first -> val == 22);
+	assert(test1.last -> val == 21);
+	assert(stack_free(&test0) == 1);
+	assert(stack_free(&test1) == 2);
+
+	printf("[OK] \\\n");
 }

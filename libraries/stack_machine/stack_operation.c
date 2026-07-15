@@ -5,7 +5,24 @@
 // --- DOC --
 
 /*
-TODO:   test
+	This file defines the four generic operations:
+
+		- push
+		- swap
+		- rotate
+		- reverse rotate
+
+		all these functions using the four basic operations:
+			- pop	first / last
+			- add	first last
+
+			  (see stack_pop_add.c)
+
+	the four generic operations are returning:
+
+		1	if succes
+		0	operation not possiple
+		-1	error
 */
 
 // --- proto --- for tests
@@ -54,11 +71,7 @@ int	push(t_stack *from, t_stack *to)
 		return (-1);
 	if (!(from -> len))
 		return (0);
-
-	// pop
 	element = stack_pop_first(from);
-
-	// add
 	stack_add_first(to, element);
 	return (1);
 }
@@ -74,7 +87,7 @@ int	rotate(t_stack *stack)
 {
 	t_element	*element;
 
-	if (!stack) 
+	if (!stack)
 		return (-1);
 	if (stack -> len <= 1)
 		return (stack -> len);
@@ -94,7 +107,7 @@ int	reverse_rotate(t_stack *stack)
 {
 	t_element	*element;
 
-	if (!stack) 
+	if (!stack)
 		return (-1);
 	if (stack -> len <= 1)
 		return (stack -> len);

@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 #include "test_helper.h"
-#include "../libraries/stack_machine/core/stack.h"
+#include "../stackmachine/stack/stack.h"
 
 // --- DOC ---
 

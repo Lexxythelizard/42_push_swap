@@ -38,9 +38,9 @@ Printf_Dir		=	$(Library_Dir)/ft_printf
 
 Libft_Dir		=	$(Library_Dir)/libft
 
-Stack_Dir		=	$(Library_Dir)/stack_machine
+Machine_Dir		=	$(This_Dir)/stackmachine
 
-Stack_Core_Dir	=	$(Stack_Dir)/core
+Stack_Dir		=	$(Machine_Dir)/stack
 
 Test_Dir		=	$(This_Dir)/test_programs
 
@@ -54,8 +54,6 @@ Include_Libft	=	-I $(Libft_Dir)
 
 Include_Stack	=	-I $(Stack_Dir)
 
-Include_StackC	=	-I $(Stack_Core_Dir)
-
 Include_Test	=	-I $(Main_Dir)
 
 # ------------------------- library files -------------------------
@@ -68,7 +66,7 @@ STACK			=	libstackmachine.a
 
 # ------------------------- library inclusion -------------------------
 
-LIBRARIES		=	-L $(Library_Dir) -l ftprintf -l ft -l stackmachine
+LIBRARIES		=	-L $(Library_Dir) -l ftprintf -l ft
 
 # ------------------------- Files -------------------------
 
@@ -76,6 +74,8 @@ Stack_Files		=	$(Stack_Dir)/stack_elements.c \
 					$(Stack_Dir)/stack_pop_add.c \
 					$(Stack_Dir)/stack_operation.c \
 					$(Stack_Dir)/stack_stack.c
+
+Stats_Files		=	$(Stat_Dir)/stats:
 
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex_mergesort_base.c \
@@ -150,17 +150,17 @@ test_entropy: create_testdir libft ftprintf stackmachine
 
 test_stackmanipulation: create_testdir
 	$(Compile) $(Stack_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
-	$(Include_StackC) $(Include_Stack) $(Include_Test) \
+	$(Include_Stack) $(Include_Test) \
 	$(Out) $(Test_Dir)/stackmanipulationtest
 
 test_stackbasicoperation: create_testdir
 	$(Compile) $(Stack_Bas_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
-	$(Include_StackC) $(Include_Stack) $(Include_Test) \
+	$(Include_Stack) $(Include_Test) \
 	$(Out) $(Test_Dir)/stackbasicoperations
 
 test_stackoperation: create_testdir
 	$(Compile) $(Stack_Op_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
-	$(Include_StackC) $(Include_Stack) $(Include_Test) \
+	$(Include_Stack) $(Include_Test) \
 	$(Out) $(Test_Dir)/stackoperations
 
 clean:
@@ -170,18 +170,6 @@ create_testdir:
 	if [ ! -e "$(Test_Dir)" ]; then \
 		mkdir "$(Test_Dir)"; \
 	fi
-
-stackmachine: $(Stack_Obj)
-	ar rcs $(STACK) $(Stack_Obj)
-	mv $(STACK) $(Library_Dir)/$(STACK)
-
-stackmachine_re: stackmachine_fclean stackmachine
-
-stackmachine_fclean: stackmachine_clean
-	rm $(Library_Dir)/$(STACK)
-
-stackmachine_clean:
-	rm $(Stack_Obj)
 
 ftprintf:
 	cd $(Printf_Dir) && $(MAKE)

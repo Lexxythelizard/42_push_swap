@@ -1,6 +1,6 @@
 // --- include ---
 
-#include "./stackmachine.h"
+#include "./stack.h"
 
 // --- DOC --
 

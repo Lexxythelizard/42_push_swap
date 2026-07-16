@@ -1,12 +1,23 @@
-#ifndef STACKMACHINE_H
-# define STACKMACHINE_H
+#ifndef STACK_H
+# define STACK_H
 
 // --- include ---
 
 # include <stdlib.h>
-# include "./core/stack.h"
-# include "./core/machine.h"
-# include "./core/stack_track.h"
+
+// --- struct ---
+
+typedef struct s_stack_node {
+	int					val;
+	struct s_stack_node	*next;
+	struct s_stack_node	*prev;
+}						t_element;
+
+typedef struct s_stack {
+	int			len;
+	t_element	*first;
+	t_element	*last;
+}				t_stack;
 
 // --- prototype ---
 
@@ -38,8 +49,6 @@ int			swap(t_stack *stack);
 int			push(t_stack *from, t_stack *to);
 int			rotate(t_stack *stack);
 int			reverse_rotate(t_stack *stack);
-
-// default.c
 
 // --- end ---
 

@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include "test_helper.h"
-#include "../libraries/stack_machine/stackmachine.h"
+#include "../stackmachine/stack/stack.h"
 
 // --- proto ---
 

@@ -24,39 +24,17 @@ TODO:   - reimplement from scratch
 
 // --- proto --- for tests
 
-int	machine_init_empty(t_stack_machine *machine);
-int	machine_stack_init(t_stack_machine *machine, int *nums, int len);
+t_stack_machine	*machine_init_new_empty(void);
 
 // --- define ---
 
-int	machine_init_empty(t_stack_machine *machine)
+t_stack_machine	*machine_init_new_empty(void)
 {
-	int	i;
+	t_stack_machine	machine;
 
-	i = 0;
-	if (!machine)
-		return (0);
-	machine -> stacks[0].first = NULL;
-	machine -> stacks[0].last = NULL;
-	machine -> stacks[1].first = NULL;
-	machine -> stacks[1].last = NULL;
-	machine -> stats = malloc(sizeof(t_stats));
-	if (!(machine -> stats))
-		return (-1);
-	machine -> stats -> total_ops = 0;
-	machine -> stats -> disorder = 0.0;
-	machine -> stats -> strategy = NULL;
-	while (i++ < 11)
-		machine -> stats -> calls[(i - 1)] = 0;
-	func_init(machine);
-	return (1);
-}
-
-int	machine_stack_init(t_stack_machine *machine, int *nums, int len)
-{
-	if (!machine)
-		return (0);
-	if ((!nums) && (len))
-	}
-	return (1);
+	stack_init_empty(&(machine.stack[0]));
+	stack_init_empty(&(machine.stack[1]));
+	stats_init_empty(&(machine.stats));
+	func_assign(&machine);
+	return (&machine);
 }

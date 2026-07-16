@@ -44,6 +44,8 @@ Stack_Dir		=	$(Machine_Dir)/stack
 
 Stats_Dir		=	$(Machine_Dir)/stats
 
+Funcs_Dir		=	$(Machine_Dir)/funcs
+
 Test_Dir		=	$(This_Dir)/test_programs
 
 Main_Dir		=	$(This_Dir)/test_files
@@ -57,6 +59,8 @@ Include_Libft	=	-I $(Libft_Dir)
 Include_Stack	=	-I $(Stack_Dir)
 
 Include_Stats	=	-I $(Stats_Dir)
+
+Include_Funcs	=	-I $(Funcs_Dir)
 
 Include_Test	=	-I $(Main_Dir)
 
@@ -81,7 +85,9 @@ Stack_Files		=	$(Stack_Dir)/stack_elements.c \
 
 Stats_Files		=	$(Stats_Dir)/machine_stats.c \
 					$(Stats_Dir)/machine_stats_strategy_entro.c \
-					$(Stats_Dir)/machine_stats_strategy_flag.c \
+					$(Stats_Dir)/machine_stats_strategy_flag.c
+
+Funcs_Files		=	$(Funcs_Dir)/machine_funcs.c
 
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex_mergesort_base.c \
@@ -102,6 +108,8 @@ Test_Helper		=	$(Main_Dir)/test_helper_stack.c
 
 Test_Stats		=	$(Main_Dir)/test_helper_stats.c
 
+Test_Funcs		=	$(Main_Dir)/test_helper_funcs.c
+
 # -------> for testing
 
 Args_Main		=	$(Main_Dir)/test_argparsing.c
@@ -117,6 +125,8 @@ Stack_Bas_Main	=	$(Main_Dir)/test_stack_operation_basics.c
 Stack_Op_Main	=	$(Main_Dir)/test_stack_operation.c
 
 Stats_Main		=	$(Main_Dir)/test_stats_manipulation.c
+
+Funcs_Main		=	$(Main_Dir)/test_funcs_manipulation.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
@@ -177,6 +187,11 @@ test_stats: create_testdir
 	$(Compile) $(Stats_Main) $(Test_Stats) $(Stats_Files) $(Debugg) \
 	$(Include_Stats) $(Include_Test) \
 	$(Out) $(Test_Dir)/statsmanipulation
+
+test_funcs: create_testdir
+	$(Compile) $(Funcs_Main) $(Test_Funcs) $(Funcs_Files) $(Debugg) \
+	$(Include_Funcs) $(Include_Test) \
+	$(Out) $(Test_Dir)/funcsmanipulation
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

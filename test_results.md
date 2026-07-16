@@ -11,7 +11,7 @@ test element two: [OK] \
 test stack empty: [OK] \
 test stack one: [OK] \
 test stack two: [OK] \
-test stack three: [OK] \
+test stack three: [OK] 
 
 all passed
 
@@ -31,7 +31,7 @@ test stack pop first with one element stack: [OK] \
 test stack pop first with two element stack: [OK] \
 test stack pop last with empty stack: [OK] \
 test stack pop last with one element stack: [OK] \
-test stack pop last with two element stack: [OK] \
+test stack pop last with two element stack: [OK] 
 
 all passed
 
@@ -54,6 +54,24 @@ test reverse rotate with three element stack: [OK] \
 test push from empty stack: [OK] \
 test push from one element stack: [OK] \
 test push from two element stack: [OK] \
-test push from three element stack: [OK] \
+test push from three element stack: [OK] 
+
+all passed
+
+### stats manipulation
+
+run test stacks:
+
+test stack init empty: [OK] \
+test assign by flag: [OK] \
+test assign by entropy: [OK] 
+
+all passed
+
+### funcs manipulation
+
+run test funcss:
+
+test funcs init empty: [OK] 
 
 all passed

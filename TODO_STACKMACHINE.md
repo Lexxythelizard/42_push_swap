@@ -55,5 +55,5 @@ Branch: stackmachine
 
 - stacks should keep track of number of elements	[x] DONE
 - use define to define
-  - `[OP_STR]` 	`[str]`
-  - `[OP]` 		`[int]`
+  - `[OP_STR]` 	`[str]`								[x] DONE
+  - `[OP]` 		`[int]`								[x] DONE

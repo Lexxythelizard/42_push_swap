@@ -15,7 +15,7 @@
 #include "../push_swap.h"
 #include "../libraries/libft/libft.h"
 #include "../libraries/ft_printf/ft_printf.h"
-#include "../libraries/stack_machine/stack_machine.h"
+#include "../libraries/stack_machine/stackmachine.h"
 
 #include <stdio.h>
 

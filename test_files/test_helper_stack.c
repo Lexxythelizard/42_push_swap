@@ -1,13 +1,14 @@
-// --- icludes --#include "../libraries/stack_machine/core/stack.h"-
+// --- icludes ---
 
 #include <stdlib.h>
 #include "test_helper.h"
 #include "../stackmachine/stack/stack.h"
+#include "../stackmachine/stats/stats.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+	define all test functions needed to test all the stack functions
 */
 
 // --- prototype ---

@@ -5,12 +5,13 @@
 // --- DOC --
 
 /*
-TODO:   - test
+	this file contains functions to assign a strategy to stats 
+	by processing the entropy
+	
+	the flag key of the matching strategy will be returned
 */
 
-// --- proto --- for tests
-
-int	stats_assign_strategy_by_entropy(t_stats *stats);
+// --- proto ---
 
 static int	stats_assign_complex_if_complex(t_stats *stats);
 static int	stats_assign_medium_if_medium(t_stats *stats);
@@ -19,7 +20,9 @@ static int	stats_assign_simple_if_simple(t_stats *stats);
 // --- define ---
 
 /*
-comment
+Assigns stats -> strategy by stats -> entropy
+
+returns:	int		flag value {4, 2, 1, 0}
 */
 
 int	stats_assign_strategy_by_entropy(t_stats *stats)
@@ -37,30 +40,30 @@ int	stats_assign_strategy_by_entropy(t_stats *stats)
 
 static int	stats_assign_complex_if_complex(t_stats *stats)
 {
-	if (stats -> entro > COMPLEX_ENTRO)
-		stats -> strategy == COMPLEX_STR;
-	return (stats -> entro > COMPLEX_ENTRO);
+	if (stats -> entropy >= COMPLEX_ENTRO)
+		stats -> strategy = COMPLEX_STR;
+	return (stats -> entropy >= COMPLEX_ENTRO);
 }
 
 static int	stats_assign_medium_if_medium(t_stats *stats)
 {
-	if (stats -> entro > MEDIUM_ENTRO)
-		stats -> strategy == MEDIUM_STR;
-	return (stats -> entro > MEDIUM_ENTRO);
+	if (stats -> entropy >= MEDIUM_ENTRO)
+		stats -> strategy = MEDIUM_STR;
+	return (stats -> entropy >= MEDIUM_ENTRO);
 }
 
 static int	stats_assign_simple_if_simple(t_stats *stats)
 {
-	if (stats -> entro > SIMPLE_ENTRO)
-		stats -> strategy == SIMPLE_STR;
-	return (stats -> entro > SIMPLE_ENTRO);
+	if (stats -> entropy > NULL_ENTRO)
+		stats -> strategy = SIMPLE_STR;
+	return (stats -> entropy > NULL_ENTRO);
 }
 
 /*
 static int	stats_assign_null_if_null(t_stats *stats, int *flag_val)
 {
-	if (stats -> entro > COMPLEX_ENTRO)
+	if (stats -> entropy > COMPLEX_ENTRO)
 		stats -> strategy == COMPLEX_STR;
-	return (stats -> entro > COMPLEX_ENTRO);
+	return (stats -> entropy > COMPLEX_ENTRO);
 }
 */

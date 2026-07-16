@@ -11,21 +11,25 @@ Branch: stackmachine
 
 ### Refactor and test:
 
-- `machine_exec.c`
-- `machine_operation_push.c`
-- `machine_operation_reverse_rotate.c`
-- `machine_operation_rotate.c`
-- `machine_operation_swap.c`
+- `machine_exec.c`								[]
+- `machine_operation_push.c`					[]
+- `machine_operation_reverse_rotate.c`			[]
+- `machine_operation_rotate.c`					[]
+- `machine_operation_swap.c`					[]
 
 ### Reimplement from the scratch:
 
 - `disorder_metric.c`		removed				[x] DONE			
-- `machine_free.c`
+- `machine_free.c`			(toss out?)
 - `machine_init.c`
-- `stack_operation.c`
+- `stack_operation.c`							[x] DONE
 - `stack_pop_add.c`								[x] DONE
 - `stack_scan.c`
 
+### Implement:
+
+- `machine_stats`								[x] DONE
+- `machine_func`								[x] DONE
 
 ## move and make
 

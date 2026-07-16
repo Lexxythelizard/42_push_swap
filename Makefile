@@ -42,6 +42,8 @@ Machine_Dir		=	$(This_Dir)/stackmachine
 
 Stack_Dir		=	$(Machine_Dir)/stack
 
+Stats_Dir		=	$(Machine_Dir)/stats
+
 Test_Dir		=	$(This_Dir)/test_programs
 
 Main_Dir		=	$(This_Dir)/test_files
@@ -53,6 +55,8 @@ Include_Printf	=	-I $(Printf_Dir)
 Include_Libft	=	-I $(Libft_Dir)
 
 Include_Stack	=	-I $(Stack_Dir)
+
+Include_Stats	=	-I $(Stats_Dir)
 
 Include_Test	=	-I $(Main_Dir)
 
@@ -75,7 +79,9 @@ Stack_Files		=	$(Stack_Dir)/stack_elements.c \
 					$(Stack_Dir)/stack_operation.c \
 					$(Stack_Dir)/stack_stack.c
 
-Stats_Files		=	$(Stat_Dir)/stats:
+Stats_Files		=	$(Stats_Dir)/machine_stats.c \
+					$(Stats_Dir)/machine_stats_strategy_entro.c \
+					$(Stats_Dir)/machine_stats_strategy_flag.c \
 
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex_mergesort_base.c \
@@ -94,6 +100,8 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 
 Test_Helper		=	$(Main_Dir)/test_helper_stack.c
 
+Test_Stats		=	$(Main_Dir)/test_helper_stats.c
+
 # -------> for testing
 
 Args_Main		=	$(Main_Dir)/test_argparsing.c
@@ -107,6 +115,8 @@ Stack_Main		=	$(Main_Dir)/test_stack_manipulation.c
 Stack_Bas_Main	=	$(Main_Dir)/test_stack_operation_basics.c
 
 Stack_Op_Main	=	$(Main_Dir)/test_stack_operation.c
+
+Stats_Main		=	$(Main_Dir)/test_stats_manipulation.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
@@ -151,7 +161,7 @@ test_entropy: create_testdir libft ftprintf stackmachine
 test_stackmanipulation: create_testdir
 	$(Compile) $(Stack_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
 	$(Include_Stack) $(Include_Test) \
-	$(Out) $(Test_Dir)/stackmanipulationtest
+	$(Out) $(Test_Dir)/stackmanipulation
 
 test_stackbasicoperation: create_testdir
 	$(Compile) $(Stack_Bas_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
@@ -162,6 +172,11 @@ test_stackoperation: create_testdir
 	$(Compile) $(Stack_Op_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
 	$(Include_Stack) $(Include_Test) \
 	$(Out) $(Test_Dir)/stackoperations
+
+test_stats: create_testdir
+	$(Compile) $(Stats_Main) $(Test_Stats) $(Stats_Files) $(Debugg) \
+	$(Include_Stats) $(Include_Test) \
+	$(Out) $(Test_Dir)/statsmanipulation
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

@@ -20,17 +20,21 @@
 # define SIMPLE_VAL 1
 
 # define COMPLEX_ENTRO 0.5
-# define MEDIUM_ENTRO 0.3
-# define SIMPLE_ENTRO 0.2
+# define MEDIUM_ENTRO 0.2
+# define SIMPLE_ENTRO 0.01
 # define NULL_ENTRO 0.00
+
+# ifndef OPS_N
+#  define OPS_N 11
+# endif
 
 // --- structs ---
 
 typedef struct s_stats
 {
-	unsigned int	calls[11];
+	unsigned int	calls[OPS_N];
 	unsigned int	total_ops;
-	float			disorder;
+	float			entropy;
 	char			*strategy;
 }					t_stats;
 
@@ -46,7 +50,7 @@ int	stats_assign_strategy_by_flag(t_stats *stats, int flag_val);
 
 // machine_stats_strategy_entro.c
 
-int stats_assign_strategy_by_entropy(t_stats *stats);
+int	stats_assign_strategy_by_entropy(t_stats *stats);
 
 // --- end ---
 

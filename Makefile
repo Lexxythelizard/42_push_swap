@@ -62,6 +62,13 @@ Include_Stats	=	-I $(Stats_Dir)
 
 Include_Funcs	=	-I $(Funcs_Dir)
 
+Include_Machine	=	-I $(Machine_Dir)
+
+Include_SM		=	$(Include_Stack) \
+					$(Include_Stats) \
+					$(Include_Funcs) \
+					$(Include_Machine)
+
 Include_Test	=	-I $(Main_Dir)
 
 # ------------------------- library files -------------------------
@@ -89,6 +96,9 @@ Stats_Files		=	$(Stats_Dir)/machine_stats.c \
 
 Funcs_Files		=	$(Funcs_Dir)/machine_funcs.c
 
+Machine_Files	=	$(Machine_Dir)/machine_machine.c \
+					$(Machine_Dir)/machine_assign.c
+
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex_mergesort_base.c \
 					$(This_Dir)/sort_complex_mergesort.c \
@@ -110,6 +120,8 @@ Test_Stats		=	$(Main_Dir)/test_helper_stats.c
 
 Test_Funcs		=	$(Main_Dir)/test_helper_funcs.c
 
+Test_Machine	=	$(Main_Dir)/test_helper_machine.c
+
 # -------> for testing
 
 Args_Main		=	$(Main_Dir)/test_argparsing.c
@@ -127,6 +139,8 @@ Stack_Op_Main	=	$(Main_Dir)/test_stack_operation.c
 Stats_Main		=	$(Main_Dir)/test_stats_manipulation.c
 
 Funcs_Main		=	$(Main_Dir)/test_funcs_manipulation.c
+
+Machine_M_Main	=	$(Main_Dir)/test_machine_manipulation.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
@@ -192,6 +206,12 @@ test_funcs: create_testdir
 	$(Compile) $(Funcs_Main) $(Test_Funcs) $(Funcs_Files) $(Debugg) \
 	$(Include_Funcs) $(Include_Test) \
 	$(Out) $(Test_Dir)/funcsmanipulation
+
+test_machinemanipulation: create_testdir
+	$(Compile) $(Machine_M_Main) $(Test_Machine) $(Machine_Files) \
+	$(Stack_Files) $(Stats_Files) $(Funcs_Files) $(Debugg) \
+	$(Include_SM) $(Include_Test) \
+	$(Out) $(Test_Dir)/machinemanipulation
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

@@ -5,7 +5,10 @@
 // --- DOC --
 
 /*
-TODO:   - test
+	This file contains the basic machine manipulation function:
+
+		- machine_init_new_empty
+		- machine_free
 */
 
 // --- proto --- for tests
@@ -14,6 +17,15 @@ int	machine_init_new_empty(t_stack_machine *machine);
 int	machine_free(t_stack_machine *machine);
 
 // --- define ---
+
+/*
+initialize the instance of stack_machine, 
+by setting all its member values to 0 / NULL
+should be the first function you call on stackmachine 
+after declaring it
+
+returns 1 if succes and -1 if error
+*/
 
 int	machine_init_new_empty(t_stack_machine *machine)
 {
@@ -29,6 +41,12 @@ int	machine_init_new_empty(t_stack_machine *machine)
 		func_init_empty(&(machine -> funcs[(i - 1)]));
 	return (1);
 }
+
+/*
+frees alle elements of both stacks and sets machine back to empty
+returns number of freed elements
+returns -1 if error
+*/
 
 int	machine_free(t_stack_machine *machine)
 {

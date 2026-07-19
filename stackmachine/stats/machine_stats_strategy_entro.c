@@ -1,6 +1,7 @@
 // --- include ---
 
 #include "./stats.h"
+#include <stddef.h>
 
 // --- DOC --
 
@@ -16,6 +17,7 @@
 static int	stats_assign_complex_if_complex(t_stats *stats);
 static int	stats_assign_medium_if_medium(t_stats *stats);
 static int	stats_assign_simple_if_simple(t_stats *stats);
+static int	stats_assign_null_if_null(t_stats *stats);
 
 // --- define ---
 
@@ -35,6 +37,7 @@ int	stats_assign_strategy_by_entropy(t_stats *stats)
 		return (MEDIUM_VAL);
 	if (stats_assign_simple_if_simple(stats))
 		return (SIMPLE_VAL);
+	stats_assign_null_if_null(stats);
 	return (0);
 }
 
@@ -59,11 +62,9 @@ static int	stats_assign_simple_if_simple(t_stats *stats)
 	return (stats -> entropy > NULL_ENTRO);
 }
 
-/*
-static int	stats_assign_null_if_null(t_stats *stats, int *flag_val)
+static int	stats_assign_null_if_null(t_stats *stats)
 {
-	if (stats -> entropy > COMPLEX_ENTRO)
-		stats -> strategy == COMPLEX_STR;
-	return (stats -> entropy > COMPLEX_ENTRO);
+	if (stats -> entropy == NULL_ENTRO)
+		stats -> strategy = NULL;
+	return (stats -> entropy == NULL_ENTRO);
 }
-*/

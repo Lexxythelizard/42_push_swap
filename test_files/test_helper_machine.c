@@ -35,6 +35,7 @@ t_stack_machine	create_machine_init_one_elements(void)
 	int		arr[1];
 
 	arr[0] = 21;
+	machine_init_new_empty(&new_machine);
 	machine_stack_init(&new_machine, arr, 1);
 	return (new_machine);
 }
@@ -46,6 +47,7 @@ t_stack_machine	create_machine_init_two_elements(void)
 
 	arr[0] = 21;
 	arr[1] = 22;
+	machine_init_new_empty(&new_machine);
 	machine_stack_init(&new_machine, arr, 2);
 	return (new_machine);
 }
@@ -58,6 +60,7 @@ t_stack_machine	create_machine_init_three_elements(void)
 	arr[0] = 21;
 	arr[1] = 22;
 	arr[2] = 23;
+	machine_init_new_empty(&new_machine);
 	machine_stack_init(&new_machine, arr, 3);
 	return (new_machine);
 }

@@ -20,8 +20,8 @@ Branch: stackmachine
 ### Reimplement from the scratch:
 
 - `disorder_metric.c`		removed				[x] DONE			
-- `machine_free.c`			(toss out?)
-- `machine_init.c`
+- `machine_assign.c`							[x] DONE
+- `machine_machine.c`							[x] DONE
 - `stack_operation.c`							[x] DONE
 - `stack_pop_add.c`								[x] DONE
 - `stack_scan.c`

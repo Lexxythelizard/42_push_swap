@@ -19,10 +19,10 @@
 # define MEDIUM_VAL 2
 # define SIMPLE_VAL 1
 
-# define COMPLEX_ENTRO 0.5
-# define MEDIUM_ENTRO 0.2
-# define SIMPLE_ENTRO 0.01
-# define NULL_ENTRO 0.00
+# define COMPLEX_ENTRO 0.5f
+# define MEDIUM_ENTRO 0.2f
+# define SIMPLE_ENTRO 0.01f
+# define NULL_ENTRO 0
 
 # ifndef OPS_N
 #  define OPS_N 11

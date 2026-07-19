@@ -75,3 +75,18 @@ run test funcss:
 test funcs init empty: [OK] 
 
 all passed
+
+
+## Basic Machine Parts
+
+### stack and element manipulations:
+
+run test machine basic manipulation:
+
+test machine init empty: [OK] \
+test assign by flag: [OK] \
+test assign by entropy: [OK]  \
+test assign stack: [OK] \
+test assign func: [OK] 
+
+all passed

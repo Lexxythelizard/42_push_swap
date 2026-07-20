@@ -34,7 +34,7 @@ int	machine_assign_strategy(t_stack_machine *machine, int flag_val);
 
 // machine_operation_swap.c
 
-int sa(t_stack_machine *machine);
+int	sa(t_stack_machine *machine);
 int	sb(t_stack_machine *machine);
 int	ss(t_stack_machine *machine);
 
@@ -54,6 +54,11 @@ int	rr(t_stack_machine *machine);
 int	rra(t_stack_machine *machine);
 int	rrb(t_stack_machine *machine);
 int	rrr(t_stack_machine *machine);
+
+// machine_operation.c
+
+int	machine_operation_execute(t_stack_machine *machine, int idx);
+int	machine_operation_execute_times_n(t_stack_machine *machine, int idx, int n);
 
 // --- end ---
 

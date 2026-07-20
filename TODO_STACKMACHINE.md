@@ -11,11 +11,11 @@ Branch: stackmachine
 
 ### Refactor and test:
 
-- `machine_exec.c`								[]
-- `machine_operation_push.c`					[]
-- `machine_operation_reverse_rotate.c`			[]
-- `machine_operation_rotate.c`					[]
-- `machine_operation_swap.c`					[]
+- `machine_operation.c`							[x] DONE
+- `machine_operation_push.c`					[x] DONE
+- `machine_operation_reverse_rotate.c`			[x] DONE
+- `machine_operation_rotate.c`					[x] DONE
+- `machine_operation_swap.c`					[x] DONE
 
 ### Reimplement from the scratch:
 

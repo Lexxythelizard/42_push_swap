@@ -6,16 +6,27 @@
 // --- DOC --
 
 /*
-TODO:   refactor and test
+    this file contains the Operations {sa, sb, ss}
+
+        both are taking a pointer to an in stance of t_stack_machine 
+        and calling the swap on its members stack a or stack b
+
+        functions writing sa / sb / ss to standart output if success
+
+        return:
+
+            no operation possible   :   0
+            success                 :   1
+            error                   :   -1
 */
 
-// --- proto --- for tests
-
-int	sa(t_stack_machine *machine);
-int	sb(t_stack_machine *machine);
-int	ss(t_stack_machine *machine);
-
 // --- define ---
+
+/*
+calls swap to pop first two elements of stack a 
+and add them in reversed order
+	--> swap stack a
+*/
 
 int	sa(t_stack_machine *machine)
 {
@@ -31,6 +42,12 @@ int	sa(t_stack_machine *machine)
 	return (ctrl);
 }
 
+/*
+calls swap to pop first two elements of stack b 
+and add them in reversed order
+	--> swap stack b
+*/
+
 int	sb(t_stack_machine *machine)
 {
 	t_stack	*stack_b;
@@ -44,6 +61,12 @@ int	sb(t_stack_machine *machine)
 		ft_putendl_fd(SB_STR, 1);
 	return (ctrl);
 }
+
+/*
+calls swap to pop first two elements of stack a and stack b
+and add them in reversed order
+	--> swap stack a and stack b
+*/
 
 int	ss(t_stack_machine *machine)
 {

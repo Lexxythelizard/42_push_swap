@@ -101,7 +101,8 @@ Machine_Files	=	$(Machine_Dir)/machine_machine.c \
 					$(Machine_Dir)/machine_operation_swap.c \
 					$(Machine_Dir)/machine_operation_push.c \
 					$(Machine_Dir)/machine_operation_rotate.c \
-					$(Machine_Dir)/machine_operation_reverse_rotate.c
+					$(Machine_Dir)/machine_operation_reverse_rotate.c \
+					$(Machine_Dir)/machine_operation.c
 
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex_mergesort_base.c \

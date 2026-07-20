@@ -1,7 +1,7 @@
 README.md
 
 *This project has been created as part of the 42 curriculum \
-as a collaboration by `[Partner Intra name]` and lenivorb.*
+as a collaboration by esakella and lenivorb.*
 
 # Push Swap
 
@@ -29,15 +29,15 @@ the program is capable of using three different sorting algorythms
 
 **simple disorder**
 
-`[name]`
+`insertion sort`	*planned*
 
 **medium disorder**
 
-`[name]`
+`bucket sort`		*planend*
 
 **complex disorder**
 
-`[name]`
+`merge sort`		*planned*
 
  
 also takes flags:
@@ -59,6 +59,9 @@ Include this `[library/snippet/binary/...]`
 cc [your flags] [your files] -L [path to library] -l ft -o [your Program name]
 ```
 
+### valid and invalid arguments
+
+	...follows...
 
 ## Resources
 
@@ -101,63 +104,147 @@ AI assistance was used for:
 
 ---
 
+## Architecture
+
+### Tree
+
+```text
+.
+├── Makefile
+├── README.md
+├── main.c
+├── push_swap.h
+├── sort_adaptive.c
+├── sort_complex.c
+├── sort_complex_mergesort.c
+├── sort_complex_mergesort_base.c
+├── sort_medium.c
+├── sort_run.c
+├── sort_simple.c
+├── sort_utillities.c
+├── libraries/
+│   ├── ft_printf/
+│   └── libft/
+├── stackmachine/
+│   ├── funcs/
+│   │   ├── funcs.h
+│   │   └── machine_funcs.c
+│   ├── stack/
+│   │   ├── stack.h
+│   │   ├── stack_elements.c
+│   │   ├── stack_operation.c
+│   │   ├── stack_pop_add.c
+│   │   ├── stack_scan.c
+│   │   └── stack_stack.c
+│   ├── stats/
+│   │   ├── stats.h
+│   │   ├── machine_stats.c
+│   │   ├── machine_stats_strategy_entro.c
+│   │   └── machine_stats_strategy_flag.c
+│   ├── machine.h
+│   ├── machine_assign.c
+│   ├── machine_machine.c
+│   ├── machine_operation.c
+│   ├── machine_operation_push.c
+│   ├── machine_operation_reverse_rotate.c
+│   ├── machine_operation_rotate.c
+│   └── machine_operation_swap.c
+└── ui/
+    ├── ui.h
+    ├── ui_convert_arguments.c
+    ├── ui_entropy.c
+    ├── ui_output.c
+    ├── ui_validate_arguments.c
+    ├── ui_validate_arguments_flags.c
+    └── ui_validate_arguments_numbers.c
+
+```
+
 ## Structs
 
 ### overview
 
-- `[you structs]`
+- `t_stack_machine`
+  - `t_stack`
+    - `t_element`
+  - `t_stats`
+  - `t_func`
 
 ### define
 
-**your struct**
+**t_stack_machine**
 
-`[Your text]`
+defined in `./stackmachine/machine.h`
+`t_stack_machine` contains two instances of `t_stack` one instance of `t_stats` \
+and `OPS_N` instances of `t_func` \
+while `OPS_N` is defined in `./stackmachine/funcs/funcs.h`
 
-```[language]
-
+```C
+typedef struct s_stack_machine
+{
+    t_stack stacks[2];
+    t_stats stats;
+    t_func  funcs[OPS_N];   
+}           t_stack_machine;
 
 ```
 
+**t_stack**
+
+defined in `./stackmachine/stack/stack.h`
+`t_stack` contails the length of the `t_stack` instance \
+as well as a pointer to first element and last element in stack
+(pointer to instance of `t_element`)
+while `t_element` is defined in the same file
+
+```C
+typedef struct s_stack {
+    int         len;
+    t_element   *first;
+    t_element   *last;
+}               t_stack;
+
+```
+
+**t_element**
+
+	...folows...
+
+**t_stats**
+
+	...folows...
+
+**t_funcs**
+
+	...folows...
+
 ---
 
-## Functions - overview
+## Modules
 
-### Part n 
+### Stackmachine 
 
 - ...
 - ...
 - ...
 
----
 
-## Funcions in detail
+### Ui
 
-### Undersection 1:
+- ...
+- ...
+- ...
 
-**ft_func name**
-- Params:	`[type]` `[name]`
-- Return:	`[type]` `[name]`
-- NOTE:		the original ...
-			be carefull; usefull to delete sensitiv data
-			(no) NULL guard - ...
-			...
-
-**...**
-
-### Undersection 2:
-
-	...
-
-### Architecture
-
-...follows...
 
 ---
 
-## Author
+## Authors
 
-`[Your Name]`
-42 Berlin login: `[Your intra]`
+`esakella` \
+`lenivorb` \
 
-private Github:	`[Your GitHub]`
+42 Berlin login: `esakella`
+42 Berlin login: `lenivorb`
 
+private Github:	https://github.com/esakella ? \
+private Github:	https://github.com/Lexxythelizard

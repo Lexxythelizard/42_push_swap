@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/29 14:14:04 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/09 15:56:31 by lenivorb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -33,34 +21,25 @@ void			sort_complex(t_stack_machine *machine);
 
 // sort_complex_mergesort_base.c
 
-void			sort_pairs(
-					t_stack_machine *machine,
-					t_stack_track *st_tr);
+void			sort_pairs(t_stack_machine *machine);
 
-void    		split_stack(
-					t_stack_machine *machine,
-					t_stack_track *st_tr,
-					int size);
-
-t_stack_track	*init_stack_track(void);
+void    		split_stack(t_stack_machine *machine);
 
 // sort_complex_mergesort.c
 
 void			merge_sort(t_stack_machine *machine);
-void			merge_level(t_stack_machine *machine, t_stack_track *st_tr);
-void			merge(t_stack_machine *machine, t_stack_track *st_tr);
-void			merge_to_a(t_stack_machine *machine, t_stack_track *st_tr);
-void			merge_to_b(t_stack_machine *machine, t_stack_track *st_tr);
+void			merge_level(t_stack_machine *machine);
+void			merge(t_stack_machine *machine);
+void			merge_to_a(t_stack_machine *machine);
+void			merge_to_b(t_stack_machine *machine);
 
 // sort_medium.c
 
 void			sort_medium(t_stack_machine *machine);
-void			sort_bucket(t_stack_machine *machine, int bs, int side);
-int				ft_sqrt(int nb);
 
 // sort_simple.c
 
-int				sort_simple(t_stack_machine *machine);
+void			sort_simple(t_stack_machine *machine);
 
 // sort_run.c
 

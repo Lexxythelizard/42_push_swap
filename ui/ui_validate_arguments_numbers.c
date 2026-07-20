@@ -1,7 +1,7 @@
 // --- include ---
 
 #include "./ui.h"
-#include "./libraries/libft/libft.h"
+#include "../libraries/libft/libft.h"
 
 // --- define ---
 

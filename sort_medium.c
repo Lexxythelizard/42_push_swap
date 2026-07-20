@@ -1,18 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sort_medium.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 21:10:38 by rcollet           #+#    #+#             */
-/*   Updated: 2026/07/09 16:02:09 by lenivorb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 // --- icludes ---
 
 #include "./push_swap.h"
+
+// test
+#include <stdio.h>
 
 // --- DOC ---
 
@@ -24,5 +15,7 @@ TODO: reimplement from srcatch
 
 void	sort_medium(t_stack_machine *machine)
 {
+	(void)(machine);
+	printf("test medium\n");
 	return ;
 }

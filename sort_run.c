@@ -1,21 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sort_run.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/11 18:22:06 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/09 15:21:01 by lenivorb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 // --- icludes ---
 
 #include "./push_swap.h"
-#include "./libraries/libft/libft.h"
 #include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/stack_machine/stack_machine.h"
 
 // --- DOC ---
 
@@ -25,20 +11,21 @@
 
 // --- define ---
 
-void	run_sort(t_stack_machine *machine, int flag)
+void	run_sort(t_stack_machine *machine, int flag_val)
 {
-	int	run_bench;
+	int	bench;
 
-	run_bench = (int)(flag / 16);
-	flag %= 16;
-	if ((int)(flag / 8))
+	bench = (int)(flag_val / BENCH_VAL);
+	flag_val %= BENCH_VAL;
+	if ((int)(flag_val / ADAPTIVE_VAL))
 		sort_adaptive(machine);
-	else if ((int)(flag / 4))
+	else if ((int)(flag_val / COMPLEX_VAL))
 		sort_adaptive(machine);
-	else if ((int)(flag / 2))
+	else if ((int)(flag_val / MEDIUM_VAL))
 		sort_adaptive(machine);
-	else if (flag == 1)
+	else if (flag_val == SIMPLE_VAL)
 		sort_adaptive(machine);
-	if (run_bench)
-		print_bench(machine -> stats);
+	if (bench)
+		ft_printf("test bench\n");
+		//print_bench(machine -> stats);
 }

@@ -12,9 +12,15 @@
 # define FLAG_COMPLEX   "--complex"
 # define FLAG_ADAPTIVE  "--adaptive"
 
+# define ERR_STR "Error"
+
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
+
 // --- prototypes ---
 
-// ::: UI :::
+struct s_stats;
 
 // ui_calculate_entropy.c
 
@@ -45,8 +51,8 @@ int				is_any_flag(const char *s);
 
 // ui_output.c
 
-void			print_bench(t_stats *stats);
-
+void			print_bench(struct s_stats *stats);
+int				put_error(void);
 // --- end ---
 
 #endif

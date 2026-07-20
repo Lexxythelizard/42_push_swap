@@ -9,7 +9,7 @@
 /*
 Prints out the bench statistics
 */
-
+/*
 void	print_bench(t_stats *stats)
 {
 	int	pre_comma;
@@ -29,7 +29,7 @@ void	print_bench(t_stats *stats)
 	ft_printf(",  rra:  %u,  rrb:  %u,  rrr:  %u\n",
 		(stats -> calls)[8], (stats -> calls)[9], (stats -> calls)[10]);
 }
-
+*/
 /*
 puts an Error message followd by a new line to the standart error
 and returns 1
@@ -37,6 +37,6 @@ and returns 1
 
 int	put_error(void)
 {
-	ft_putendl_fd(ERR_STR, STD_ERR);
+	ft_putendl_fd(ERR_STR, STDERR);
 	return (1);
 }

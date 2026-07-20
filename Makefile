@@ -75,6 +75,12 @@ Include_SM		=	$(Include_Stack) \
 
 Include_Test	=	-I $(Main_Dir)
 
+Include_All		=	$(Include_SM) \
+					$(Include_Ui) \
+					$(Include_Libft) \
+					$(Include_Printf) \
+					$(Include_This)
+
 # ------------------------- library files -------------------------
 
 PRINTF			=	libftprintf.a
@@ -119,14 +125,16 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex.c \
 					$(This_Dir)/sort_medium.c \
 					$(This_Dir)/sort_simple.c \
-					$(This_Dir)/sort_run.c \
-					$(This_Dir)/ui_entropy.c \
-					$(This_Dir)/ui_convert_arguments.c \
-					$(This_Dir)/ui_validate_arguments.c \
-					$(This_Dir)/ui_validate_arguments_flags.c \
-					$(This_Dir)/ui_validate_arguments_numbers.c \
-					$(This_Dir)/ui_output.c \
-					$(This_Dir)/utillities.c
+					$(This_Dir)/sort_run.c
+
+All_Src_Files	=	$(Stack_Files) \
+					$(Stats_Files) \
+					$(Funcs_Files) \
+					$(Machine_Files) \
+					$(Ui_Files) \
+					$(Push_Swap_Files)
+
+Push_Swap_Main	=	$(This_Dir)/main.c
 
 Test_Helper		=	$(Main_Dir)/test_helper_stack.c
 
@@ -157,6 +165,8 @@ Funcs_Main		=	$(Main_Dir)/test_funcs_manipulation.c
 Machine_M_Main	=	$(Main_Dir)/test_machine_manipulation.c
 
 Machine_Main	=	$(Main_Dir)/test_machine_operation.c
+
+Ui_Main			=	$(Main_Dir)/test_ui.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
@@ -208,7 +218,19 @@ test_machineoperation: create_testdir libft
 	-L $(Library_Dir) -l ft \
 	$(Out) $(Test_Dir)/machineoperation
 
+test_ui: create_testdir libft ftprintf
+	$(Compile) $(Ui_Main) \
+	$(Ui_Files) $(Debugg) \
+	$(Include_Libft) $(Include_Ui) $(Include_Test) \
+	$(LIBRARIES) \
+	$(Out) $(Test_Dir)/ui
+
 # others
+
+push_swap: create_testdir libft ftprintf
+	$(Compile) $(CFlags) $(Push_Swap_Main) $(All_Src_Files) \
+	$(Include_All) $(LIBRARIES) \
+	$(Out) $(Test_Dir)/prototype
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

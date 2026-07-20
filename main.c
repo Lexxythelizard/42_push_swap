@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/11 20:25:04 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/06 18:49:08 by lenivorb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 // --- include ---
 
 #include "./push_swap.h"
@@ -24,28 +12,77 @@
 
 // --- prototype ---
 
-int	raise_error(void);
+int	ui_validate(const char **argv, int argc);
+int	machine_set(t_stack_machine *machine, const char **argv, int argc);
 
 // --- run ---
 
 int	main(int argc, char **argv)
 {
-	t_interface	*stacks;
-	int			*numbers;
+	t_stack_machine	machine;
+	int				flag_val;
 
-	if ((!argc) || (!(is_args_valid(argv))))
-		return (raise_error);
-	stacks = init(argv);
-	if (!stacks)
-		return (raise_error);
-	run_sort(stacks);
-	free_interface(stacks);
+	if (argc < 2)
+		return (0);	
+	if (!(ui_validate((const char **)(argv), argc)))
+		return (put_error());
+	flag_val = machine_set(&machine, (const char **)(argv), argc);	
+	run_sort(&machine, flag_val);
+	machine_free(&machine);
+	return (0);
 }
 
 // --- define ---
 
-int	raise_error(void)
+/* TODO: outsource */
+
+int	ui_validate(const char **argv, int argc)
 {
-	ft_putendl_fd("Error", STDERR);
-	return (STDERR);
+	int		*arr;
+	int		len;
+
+	if (!(is_args_valid(argv, argc)))
+		return (0);
+
+	len = count_valid_numbers(argv, argc);
+	arr = get_int_list(argv, argc);
+
+	if ((!arr) || (len == 0))
+		return (0);
+
+	if (!(is_numbers_unique(arr, len)))
+	{
+		free(arr);
+		return (0);
+	}
+
+	free(arr);
+	return (1);
+}
+
+/* TODO: outsource */
+
+int	machine_set(t_stack_machine *machine, const char **argv, int argc)
+{
+	int		*arr;
+	int		len;
+	int		flag_val;
+	int		bench;
+	float	entro;
+
+	len = count_valid_numbers(argv, argc);
+	arr = get_int_list(argv, argc);
+	flag_val = get_flag_values(argv, argc);
+	bench = 0;
+	entro = calculate_entropy(arr, len);
+
+	machine_init_new_empty(machine);
+	machine_func_assign(machine);
+	machine_assign_entropy(machine, entro);
+	machine_stack_init(machine, arr, len);
+	bench = 16 * (flag_val / 16);
+
+	free(arr);
+
+	return (bench + machine_assign_strategy(machine, flag_val));
 }

@@ -14,6 +14,9 @@
 
 #include "./push_swap.h"
 
+// test
+#include <stdio.h>
+
 // --- DOC ---
 
 /*
@@ -24,5 +27,7 @@
 
 void	sort_adaptive(t_stack_machine *machine)
 {
+	(void)(machine);
+	printf("test adaptive\n");
 	return ;
 }

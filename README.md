@@ -241,9 +241,9 @@ typedef struct s_stack {
 ## Authors
 
 `esakella` \
-`lenivorb` \
+`lenivorb`
 
-42 Berlin login: `esakella`
+42 Berlin login: `esakella` \
 42 Berlin login: `lenivorb`
 
 private Github:	https://github.com/esakella ? \

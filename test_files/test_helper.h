@@ -9,6 +9,7 @@
 #include "../stackmachine/stats/stats.h"
 #include "../stackmachine/funcs/funcs.h"
 #include "../stackmachine/machine.h"
+#include "../ui/ui.h"
 
 // --- DOC ---
 

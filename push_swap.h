@@ -14,20 +14,12 @@
 # define PUSH_SWAP_H
 
 # include <stddef.h>
-#include "./libraries/stack_machine/stackmachine.h"
+# include "./stackmachine/machine.h"
+# include "./ui/ui.h"
 
 // --- Makros ---
 
-# define FLAG_NULL     "--"
-# define FLAG_BENCH     "--bench"
-# define FLAG_SIMPLE    "--simple"
-# define FLAG_MEDIUM    "--medium"
-# define FLAG_COMPLEX   "--complex"
-# define FLAG_ADAPTIVE  "--adaptive"
-
 // --- prototypes ---
-
-
 
 // ::: sorting :::
 
@@ -74,42 +66,7 @@ int				sort_simple(t_stack_machine *machine);
 
 void			run_sort(t_stack_machine *machine, int flag);
 
-// ::: UI :::
-
-// ui_calculate_entropy.c
-
-float			calculate_entropy(int *arr, int len);
-
-// ui_convert_arguments.c
-
-int				*get_int_list(const char **argv, int argc);
-int				count_valid_numbers(const char **argv, int argc);
-int				get_flag_values(const char **argv, int argc);
-int				get_flag_value(const char *flag);
-
-// ui_validate_arguments.c
-
-int				is_args_valid(const char **argv, int argc);
-
-// ui_validate_arguments_numbers.c
-
-int				is_numbers_unique(int *list, int len);
-int				is_valid_nbr(const char *s);
-
-// ui_validate_arguments_flags.c
-
-int				is_valid_flag(const char *s);
-int				count_repitition_of_flags(const char **argv, int argc);
-int				is_unique_and_one_bench(const char **argv, int argc);
-int				is_any_flag(const char *s);
-
-// ui_output.c
-
-void			print_bench(t_stats *stats);
-
-// ::: utilities :::
-
-// utilities.c
+// sort_utilities.c
 
 int				min_of(int a, int b);
 int				max_of(int a, int b);

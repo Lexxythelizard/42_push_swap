@@ -13,26 +13,16 @@
 // --- icludes ---
 
 #include "./push_swap.h"
-#include "./libraries/libft/libft.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/stack_machine/stack_machine.h"
 
 // --- DOC ---
 
 /*
-	... your comment here ...
+	TODO: reimplement from scratch
 */
 
 // --- define ---
 
 void	sort_adaptive(t_stack_machine *machine)
 {
-	if ((!machine) || (!(machine -> stats)))
-		return ;
-	if (machine -> stats -> disorder < 0.2)
-		sort_simple(machine);
-	else if (machine -> stats -> disorder < 0.4)
-		sort_medium(machine);
-	else
-		sort_complex(machine);
+	return ;
 }

@@ -13,113 +13,21 @@
 // --- icludes ---
 
 #include "./push_swap.h"
-#include "./libraries/libft/libft.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/stack_machine/stack_machine.h"
 
 // --- DOC ---
 
 /*
-	approach to pseudocode merge sort ...
+TODO:	reimplement from scratch
 */
 
 // --- define ---
 
-/* pairs are sorted ascending */
-/*
-	while (still pair nee to get sorted)
-	{
-		if both sides need to get swapped
-			exec ss 1 time
-		if just side a needs to get swapped
-			exec sa 1 time
-		if just side b needs to get swapped
-			exec sb 1 time
-		exec rr 2 time
-		}
-	if unsorted elements in stack b == 2 and if need for swap
-		exec sb 1 time
-	exec rb (st_tr -> size_b) times
-	resetting unmerged for merging
-*/
-
-void	sort_pairs(
-			t_stack_machine *machine,
-			t_stack_track *st_tr)
+void	sort_pairs(t_stack_machine *machine)
 {
-	t_element	*a;
-	t_element	*b;
-
-	if (!(machine))
-		return ;
-	a = machine -> stacks[0].first;
-	b = machine -> stacks[1].first;
-	while ((st_tr -> unmerged_a)--)
-	{
-		if ((a -> val > a -> next -> val) && (b -> val > b -> next -> val))
-			exec(machine, 2);
-		if (a -> val > a -> next -> val)
-			exec(machine, 0);
-		if (b -> val > b -> next -> val)
-			exec(machine, 1);
-		exec_n(machine, 7, 2);
-		(st_tr -> unmerged_a)--;
-		st_tr -> unmerged_b -= 2;
-	}
-	if ((st_tr -> unmerged_b >= 2) && ((b -> val) < (b -> next -> val)))
-		exec(machine, 1);
-	exec_n(machine, 6, (st_tr -> unmerged_b));
-	st_tr -> unmerged_a = st_tr -> size_a;
-	st_tr -> unmerged_b = st_tr -> size_b;
+	return ;
 }
 
-/*	...you comment... */
-
-/*
-	while (there is still the half)
-	{
-		exec pb 1 time
-		exec ra 2 times
-	}
-	setting size_[a/b]		to stack_len [a/b]
-	setting unmerged_[a/b]	to stack_len [a/b]
-*/
-
-void	split_stack(
-			t_stack_machine *machine,
-			t_stack_track *st_tr,
-			int size)
+void	split_stack(t_stack_machine *machine)
 {
-	int	half;
-
-	half = (int)(size / 2);
-	if ((!(machine)) || (!(machine -> stats)))
-		return ;
-	while (half--)
-	{
-		exec(machine, 4);
-		exec_n(machine, 5, 2);
-	}
-	st_tr -> size_a = get_stack_size(&(machine -> stacks[0]));
-	st_tr -> size_b = get_stack_size(&(machine -> stacks[1]));
-	st_tr -> unmerged_a = st_tr -> size_a;
-	st_tr -> unmerged_b = st_tr -> size_b;
-}
-
-/*	...you comment... */
-
-t_stack_track	*init_stack_track(void)
-{
-	t_stack_track	*stack_track;
-
-	stack_track = malloc(24);
-	if (!stack_track)
-		return (NULL);
-	stack_track -> size_a = 0;
-	stack_track -> size_b = 0;
-	stack_track -> merge_size = 0;
-	stack_track -> unmerged_a = 0;
-	stack_track -> unmerged_b = 0;
-	stack_track -> side = 0;
-	return (stack_track);
+	return ;
 }

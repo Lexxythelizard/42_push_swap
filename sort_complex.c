@@ -13,18 +13,16 @@
 // --- icludes ---
 
 #include "./push_swap.h"
-#include "./libraries/libft/libft.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/stack_machine/stack_machine.h"
 
 // --- DOC ---
 
 /*
+TODO:	implement from scratch
 */
 
 // --- define ---
 
 void	sort_complex(t_stack_machine *machine)
 {
-	merge_sort(machine);
+	return ;
 }

@@ -13,9 +13,6 @@
 // --- include ---
 
 #include "./push_swap.h"
-#include "./libraries/libft/libft.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/stack_machine/stack_machine.h"
 
 // --- DOC ---
 
@@ -25,14 +22,14 @@
 
 // --- define ---
 
-int	min_of(int a, int b)
+int	int_min_of_two(int a, int b)
 {
 	if (a > b)
 		return (b);
 	return (a);
 }
 
-int	max_of(int a, int b)
+int	int_max_of_two(int a, int b)
 {
 	if (a < b)
 		return (b);

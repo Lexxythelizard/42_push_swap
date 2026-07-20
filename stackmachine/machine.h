@@ -32,6 +32,29 @@ int	machine_func_assign(t_stack_machine *machine);
 int	machine_assign_entropy(t_stack_machine *machine, float entro);
 int	machine_assign_strategy(t_stack_machine *machine, int flag_val);
 
+// machine_operation_swap.c
+
+int sa(t_stack_machine *machine);
+int	sb(t_stack_machine *machine);
+int	ss(t_stack_machine *machine);
+
+// machine_operation_push.c
+
+int	pa(t_stack_machine *machine);
+int	pb(t_stack_machine *machine);
+
+// machine_operation_rotate.c
+
+int	ra(t_stack_machine *machine);
+int	rb(t_stack_machine *machine);
+int	rr(t_stack_machine *machine);
+
+// machine_operation_reverse_rotate.c
+
+int	rra(t_stack_machine *machine);
+int	rrb(t_stack_machine *machine);
+int	rrr(t_stack_machine *machine);
+
 // --- end ---
 
 #endif

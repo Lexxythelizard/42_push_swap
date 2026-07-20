@@ -1,6 +1,7 @@
 // --- include ---
 
-#include "./stack_machine.h"
+#include "./machine.h"
+#include "../libraries/libft/libft.h"
 
 // --- DOC --
 
@@ -10,20 +11,39 @@ TODO:   refactor and test
 
 // --- proto --- for tests
 
-void	pa(t_stack_machine *machine);
-void	pb(t_stack_machine *machine);
+int	pa(t_stack_machine *machine);
+int	pb(t_stack_machine *machine);
 
 // --- define ---
 
-
-// --- def ---
-
-void	pa(t_stack_machine *machine)
+int	pa(t_stack_machine *machine)
 {
-	push(&((machine -> stacks)[0]), &((machine -> stacks)[1]));
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		ctrl;
+
+	if (!machine)
+		return (-1);
+	stack_a = &((machine -> stacks)[0]);
+	stack_b = &((machine -> stacks)[1]);
+	ctrl = push(stack_b, stack_a);
+	if (ctrl == 1)
+		ft_putendl_fd(PA_STR, 1);
+	return (ctrl);
 }
 
-void	pb(t_stack_machine *machine)
+int	pb(t_stack_machine *machine)
 {
-	push((&(machine -> stacks)[1]), &((machine -> stacks)[0]));
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		ctrl;
+
+	if (!machine)
+		return (-1);
+	stack_a = &((machine -> stacks)[0]);
+	stack_b = &((machine -> stacks)[1]);
+	ctrl = push(stack_b, stack_a);
+	if (ctrl == 1)
+		ft_putendl_fd(PB_STR, 1);
+	return (ctrl);
 }

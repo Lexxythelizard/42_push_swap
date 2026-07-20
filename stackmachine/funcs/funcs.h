@@ -35,7 +35,7 @@ struct	s_stack_machine;
 
 typedef struct s_func
 {
-	void	(*func)(struct s_stack_machine *machine);
+	int		(*func)(struct s_stack_machine *machine);
 	char	*name;
 }			t_func;
 
@@ -43,7 +43,7 @@ typedef struct s_func
 
 int	func_init_empty(t_func *func_obj);
 int	func_init(t_func *func_obj,
-		void (*f)(struct s_stack_machine *machine), char *name);
+		int (*f)(struct s_stack_machine *machine), char *name);
 
 // --- end ---
 

@@ -97,7 +97,11 @@ Stats_Files		=	$(Stats_Dir)/machine_stats.c \
 Funcs_Files		=	$(Funcs_Dir)/machine_funcs.c
 
 Machine_Files	=	$(Machine_Dir)/machine_machine.c \
-					$(Machine_Dir)/machine_assign.c
+					$(Machine_Dir)/machine_assign.c \
+					$(Machine_Dir)/machine_operation_swap.c \
+					$(Machine_Dir)/machine_operation_push.c \
+					$(Machine_Dir)/machine_operation_rotate.c \
+					$(Machine_Dir)/machine_operation_reverse_rotate.c
 
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex_mergesort_base.c \
@@ -141,6 +145,8 @@ Stats_Main		=	$(Main_Dir)/test_stats_manipulation.c
 Funcs_Main		=	$(Main_Dir)/test_funcs_manipulation.c
 
 Machine_M_Main	=	$(Main_Dir)/test_machine_manipulation.c
+
+Machine_Main	=	$(Main_Dir)/test_machine_operation.c
 
 Stack_Obj		=	$(Stack_Files:.c=.o)
 
@@ -212,6 +218,13 @@ test_machinemanipulation: create_testdir
 	$(Stack_Files) $(Stats_Files) $(Funcs_Files) $(Debugg) \
 	$(Include_SM) $(Include_Test) \
 	$(Out) $(Test_Dir)/machinemanipulation
+
+test_machineoperation: create_testdir libft
+	$(Compile) $(Machine_Main) $(Test_Machine) $(Machine_Files) \
+	$(Stack_Files) $(Stats_Files) $(Funcs_Files) $(Debugg) \
+	$(Include_Libft) $(Include_SM) $(Include_Test) \
+	-L $(Library_Dir) -l ft \
+	$(Out) $(Test_Dir)/machineoperation
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

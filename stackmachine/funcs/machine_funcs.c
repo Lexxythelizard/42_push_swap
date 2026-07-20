@@ -29,7 +29,7 @@ inits an instance of t_func from a function pointer and a function name
 */
 
 int	func_init(t_func *func_obj,
-	void (*f)(struct s_stack_machine *machine), char *name)
+	int (*f)(struct s_stack_machine *machine), char *name)
 {
 	if (!func_obj)
 		return (-1);

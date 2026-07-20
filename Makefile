@@ -46,6 +46,8 @@ Stats_Dir		=	$(Machine_Dir)/stats
 
 Funcs_Dir		=	$(Machine_Dir)/funcs
 
+Ui_Dir			=	$(This_Dir)/ui
+
 Test_Dir		=	$(This_Dir)/test_programs
 
 Main_Dir		=	$(This_Dir)/test_files
@@ -64,6 +66,8 @@ Include_Funcs	=	-I $(Funcs_Dir)
 
 Include_Machine	=	-I $(Machine_Dir)
 
+Include_Ui		=	-I $(Ui_Dir)
+
 Include_SM		=	$(Include_Stack) \
 					$(Include_Stats) \
 					$(Include_Funcs) \
@@ -76,8 +80,6 @@ Include_Test	=	-I $(Main_Dir)
 PRINTF			=	libftprintf.a
 
 LIBFT			=	libft.a
-
-STACK			=	libstackmachine.a
 
 # ------------------------- library inclusion -------------------------
 
@@ -103,6 +105,13 @@ Machine_Files	=	$(Machine_Dir)/machine_machine.c \
 					$(Machine_Dir)/machine_operation_rotate.c \
 					$(Machine_Dir)/machine_operation_reverse_rotate.c \
 					$(Machine_Dir)/machine_operation.c
+
+Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
+					$(Ui_Dir)/ui_validate_arguments_flags.c \
+					$(Ui_Dir)/ui_validate_arguments_numbers.c \
+					$(Ui_Dir)/ui_convert_arguments.c \
+					$(Ui_Dir)/ui_entropy.c \
+					$(Ui_Dir)/ui_output.c
 
 Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex_mergesort_base.c \
@@ -155,39 +164,11 @@ Push_Swap_Obj	=	$(Push_Swap_Files:.c=.o)
 
 # ------------------------- compile rules -------------------------
 
-$(Stack_Obj): %.o: %.c
-	if [ "$(DEBUGG_MODE)" -eq "1" ]; then \
-		$(Compile) $(CFlags) $(Debugg) \
-		$(Include_Stack_Core) $(Include_Stack) $(Dont_link) $< $(Out) $@; \
-	else \
-		$(Compile) $(CFlags) \
-		$(Include_Stack_Core) $(Include_Stack) $(Dont_link) $< $(Out) $@; \
-	fi
-
-$(Push_Swap_Obj): %.o: %.c
-	if [ "$(DEBUGG_MODE)" -eq "1" ]; then \
-		$(Compile) $(CFlags) $(Debugg) \
-		$(Include_This) $(Include_Printf) $(Include_Libft) $(Dont_link) $< $(Out) $@; \
-	else \
-		$(Compile) $(CFlags) \
-		$(Include_This) $(Include_Printf) $(Include_Libft) $(Dont_link) $< $(Out) $@; \
-	fi
+# None
 
 # ------------------------- Commands -------------------------
 
-test0: $(Push_Swap_Obj)
-
-test_args: create_testdir libft ftprintf stackmachine
-	$(Compile) $(Args_Main) $(Push_Swap_Files) $(Debugg) $(LIBRARIES) \
-	$(Out) $(Test_Dir)/argpasstest
-
-test_bench: create_testdir libft ftprintf stackmachine
-	$(Compile) $(Stack_Main) $(Push_Swap_Files) $(Debugg) \
-	$(Out) $(Test_Dir)/benchtest
-
-test_entropy: create_testdir libft ftprintf stackmachine
-	$(Compile) $(Entropy_Main) $(Push_Swap_Files) $(Debugg) $(LIBRARIES) \
-	$(Out) $(Test_Dir)/entropytest
+# test
 
 test_stackmanipulation: create_testdir
 	$(Compile) $(Stack_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
@@ -226,6 +207,8 @@ test_machineoperation: create_testdir libft
 	$(Include_Libft) $(Include_SM) $(Include_Test) \
 	-L $(Library_Dir) -l ft \
 	$(Out) $(Test_Dir)/machineoperation
+
+# others
 
 clean:
 	rm -f $(Push_Swap_Obj) $@

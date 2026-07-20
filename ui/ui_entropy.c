@@ -1,17 +1,12 @@
 // --- icludes ---
 
-#include "push_swap.h"
-#include "./libraries/libft/libft.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/stack_machine/stack_machine.h"
+#include "./ui.h"
 
 // --- DOC ---
 
 /*
 	TODO:	test calculate_entropy
 */
-
-// --- prototype ---
 
 // --- define ---
 
@@ -23,9 +18,7 @@ float	calculate_entropy(int *arr, int len)
 	int	j;
 
 	if ((!arr) || (len == 0))
-		return (-1.00);
-	if (len == 1)
-		return (0.00);
+		return (-1);
 	non_asc = 0;
 	checked_pairs = 0;
 	i = 0;
@@ -40,5 +33,7 @@ float	calculate_entropy(int *arr, int len)
 		}
 		i++;
 	}
-	return ((float)(non_asc) / (float)(checked_pairs));
+	if ((len == 1) || (non_asc == 0))
+		return (0);
+	return ((float)(non_asc) / checked_pairs);
 }

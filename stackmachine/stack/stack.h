@@ -50,6 +50,12 @@ int			push(t_stack *from, t_stack *to);
 int			rotate(t_stack *stack);
 int			reverse_rotate(t_stack *stack);
 
+// stack_scan.c
+
+int			stack_is_first_and_sec_ascending(t_stack *stack);
+int			stack_get_min_val(t_stack *stack);
+int			stack_get_idx_min_val(t_stack *stack);
+
 // --- end ---
 
 #endif

@@ -29,7 +29,7 @@ the program is capable of using three different sorting algorythms
 
 **simple disorder**
 
-`insertion sort`	*planned*
+`min extraction sort`
 
 **medium disorder**
 
@@ -42,21 +42,25 @@ the program is capable of using three different sorting algorythms
  
 also takes flags:
 
-... text here
+- `--simple` forced simple algorythm
+- `--medium` forced medium algorythm
+- `--complex` forced complex algorythm
+- `--adaptive` choses the algorythm based on level of entropy
+- `--bench` print benchmarks to STDERR
 
 
 ## Instructions
 
-Include this `[library/snippet/binary/...]`
+Compile programm with 
 
-```C
-[Your Code here]
+```bash
+make push_swap
 ```
 
 `[describe how to interact in Terminal]` 
 
 ```bash
-cc [your flags] [your files] -L [path to library] -l ft -o [your Program name]
+./push_swap [fist flags] [opt. sec flag] [sequenz of valid numbers separated by space]
 ```
 
 ### valid and invalid arguments
@@ -109,55 +113,59 @@ AI assistance was used for:
 ### Tree
 
 ```text
-.
+push_swap/
 ├── Makefile
 ├── README.md
 ├── main.c
 ├── push_swap.h
-├── sort_adaptive.c
-├── sort_benchmarks.c
-├── sort_complex.c
-├── sort_complex_mergesort.c
-├── sort_complex_mergesort_base.c
-├── sort_medium.c
-├── sort_run.c
-├── sort_simple.c
-├── sort_utillities.c
+├── interface_sort.c
+├── interface_stackmachine.c
+├── interface_ui.c
 ├── libraries/
-│   ├── ft_printf/
-│   └── libft/
+│   ├── libft/
+│   └── ft_printf/
+├── sort/
+│   ├── sort.h
+│   ├── sort_simple.c
+│   ├── sort_medium.c
+│   ├── sort_adaptive.c
+│   ├── sort_complex.c
+│   ├── sort_complex_mergesort.c
+│   ├── sort_complex_mergesort_base.c
+│   ├── sort_utillities.c
+│   └── sort_benchmarks.c
 ├── stackmachine/
-│   ├── funcs/
-│   │   ├── funcs.h
-│   │   └── machine_funcs.c
-│   ├── stack/
-│   │   ├── stack.h
-│   │   ├── stack_elements.c
-│   │   ├── stack_operation.c
-│   │   ├── stack_pop_add.c
-│   │   ├── stack_scan.c
-│   │   └── stack_stack.c
-│   ├── stats/
-│   │   ├── stats.h
-│   │   ├── machine_stats.c
-│   │   ├── machine_stats_strategy_entro.c
-│   │   └── machine_stats_strategy_flag.c
 │   ├── machine.h
 │   ├── machine_assign.c
 │   ├── machine_machine.c
 │   ├── machine_operation.c
 │   ├── machine_operation_push.c
-│   ├── machine_operation_reverse_rotate.c
 │   ├── machine_operation_rotate.c
-│   └── machine_operation_swap.c
+│   ├── machine_operation_reverse_rotate.c
+│   ├── machine_operation_swap.c
+│   ├── funcs/
+│   │   ├── funcs.h
+│   │   └── machine_funcs.c
+│   ├── stack/
+│   │   ├── stack.h
+│   │   ├── stack_stack.c
+│   │   ├── stack_elements.c
+│   │   ├── stack_operation.c
+│   │   ├── stack_pop_add.c
+│   │   └── stack_scan.c
+│   └── stats/
+│       ├── stats.h
+│       ├── machine_stats.c
+│       ├── machine_stats_strategy_flag.c
+│       └── machine_stats_strategy_entro.c
 └── ui/
     ├── ui.h
     ├── ui_convert_arguments.c
-    ├── ui_entropy.c
-    ├── ui_output.c
     ├── ui_validate_arguments.c
     ├── ui_validate_arguments_flags.c
-    └── ui_validate_arguments_numbers.c
+    ├── ui_validate_arguments_numbers.c
+    ├── ui_entropy.c
+    └── ui_output.c
 
 ```
 

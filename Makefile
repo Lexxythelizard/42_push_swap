@@ -101,6 +101,7 @@ LIBRARIES		=	-L $(Library_Dir) -l ftprintf -l ft
 Stack_Files		=	$(Stack_Dir)/stack_elements.c \
 					$(Stack_Dir)/stack_pop_add.c \
 					$(Stack_Dir)/stack_operation.c \
+					$(Stack_Dir)/stack_scan.c \
 					$(Stack_Dir)/stack_stack.c
 
 Stats_Files		=	$(Stats_Dir)/machine_stats.c \
@@ -130,6 +131,7 @@ Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_complex.c \
 					$(Sort_Dir)/sort_medium.c \
 					$(Sort_Dir)/sort_simple.c \
+					$(Sort_Dir)/sort_simple_min_extraction.c \
 					$(Sort_Dir)/sort_benchmarks.c
 
 Push_Swap_Files	=	$(This_Dir)/interface_sort.c \

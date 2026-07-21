@@ -40,9 +40,9 @@ void	sort_medium(t_stack_machine *machine);
 
 void	sort_simple(t_stack_machine *machine);
 
-// sort_run.c
+// sort_simple_min_extraction.c
 
-void	run_sort(t_stack_machine *machine, int flag);
+int		min_extraction_adaption_sort(t_stack_machine *machine);
 
 // sort_benchmarks.c
 

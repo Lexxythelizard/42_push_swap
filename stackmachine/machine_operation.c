@@ -43,9 +43,15 @@ return:
 
 int	machine_operation_execute(t_stack_machine *machine, int idx)
 {
+	int	ctrl;
+
 	if ((!machine) || (idx < 0) || (idx > OPS_N))
 		return (-1);
-	return (((machine -> funcs)[idx].func)(machine));
+	ctrl = ((machine -> funcs)[idx].func)(machine);
+	if (ctrl == 1)
+		machine -> stats.calls[idx]++;
+	machine -> stats.total_ops += (ctrl == 1);
+	return (ctrl);
 }
 
 /*

@@ -91,8 +91,8 @@ int	rotate(t_stack *stack)
 		return (-1);
 	if (stack -> len <= 1)
 		return (stack -> len);
-	element = stack_pop_last(stack);
-	stack_add_first(stack, element);
+	element = stack_pop_first(stack);
+	stack_add_last(stack, element);
 	return (1);
 }
 
@@ -111,7 +111,7 @@ int	reverse_rotate(t_stack *stack)
 		return (-1);
 	if (stack -> len <= 1)
 		return (stack -> len);
-	element = stack_pop_first(stack);
-	stack_add_last(stack, element);
+	element = stack_pop_last(stack);
+	stack_add_first(stack, element);
 	return (1);
 }

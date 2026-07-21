@@ -67,13 +67,13 @@ static int	rotate_smallest_element_to_top(t_stack_machine *machine)
 		return (
 			machine_operation_execute_times_n(
 				machine,
-				RRA,
+				RA,
 				idx_min));
 
 	return (
 		machine_operation_execute_times_n(
 			machine,
-			RA,
+			RRA,
 			(stack_a -> len - idx_min)));
 }
 

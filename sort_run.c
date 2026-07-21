@@ -20,11 +20,11 @@ void	run_sort(t_stack_machine *machine, int flag_val)
 	if ((int)(flag_val / ADAPTIVE_VAL))
 		sort_adaptive(machine);
 	else if ((int)(flag_val / COMPLEX_VAL))
-		sort_adaptive(machine);
+		sort_complex(machine);
 	else if ((int)(flag_val / MEDIUM_VAL))
-		sort_adaptive(machine);
+		sort_medium(machine);
 	else if (flag_val == SIMPLE_VAL)
-		sort_adaptive(machine);
+		sort_simple(machine);
 	if (bench)
 		ft_printf("test bench\n");
 		//print_bench(machine -> stats);

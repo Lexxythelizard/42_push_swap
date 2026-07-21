@@ -45,9 +45,11 @@ int	ui_validate(const char **argv, int argc)
 		return (0);
 
 	len = count_valid_numbers(argv, argc);
-	arr = get_int_list(argv, argc);
+	if (len == 0)
+		return(0);
 
-	if ((!arr) || (len == 0))
+	arr = get_int_list(argv, argc);
+	if (!arr)
 		return (0);
 
 	if (!(is_numbers_unique(arr, len)))

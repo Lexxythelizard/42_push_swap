@@ -229,7 +229,7 @@ test_ui: create_testdir libft ftprintf
 
 push_swap: create_testdir libft ftprintf
 	$(Compile) $(CFlags) $(Push_Swap_Main) $(All_Src_Files) \
-	$(Include_All) $(LIBRARIES) \
+	$(Include_All) $(LIBRARIES) -g \
 	$(Out) $(Test_Dir)/prototype
 
 clean:

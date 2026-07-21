@@ -45,6 +45,10 @@ void			sort_simple(t_stack_machine *machine);
 
 void			run_sort(t_stack_machine *machine, int flag);
 
+// sort_benchmarks.c
+
+void			print_bench(t_stack_machine *machine);
+
 // sort_utilities.c
 
 int				min_of(int a, int b);

@@ -26,6 +26,8 @@ void	run_sort(t_stack_machine *machine, int flag_val)
 	else if (flag_val == SIMPLE_VAL)
 		sort_simple(machine);
 	if (bench)
+	{
 		ft_printf("test bench\n");
-		//print_bench(machine -> stats);
+		print_bench(machine);
+	}
 }

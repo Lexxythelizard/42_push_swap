@@ -51,7 +51,6 @@ int				is_any_flag(const char *s);
 
 // ui_output.c
 
-void			print_bench(struct s_stats *stats);
 int				put_error(void);
 // --- end ---
 

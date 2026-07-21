@@ -125,7 +125,8 @@ Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
 					$(This_Dir)/sort_complex.c \
 					$(This_Dir)/sort_medium.c \
 					$(This_Dir)/sort_simple.c \
-					$(This_Dir)/sort_run.c
+					$(This_Dir)/sort_run.c \
+					$(This_Dir)/sort_benchmarks.c
 
 All_Src_Files	=	$(Stack_Files) \
 					$(Stats_Files) \

@@ -97,5 +97,7 @@ int	machine_assign_strategy(t_stack_machine *machine, int flag_val)
 	flag_val = stats_assign_strategy_by_flag(&(machine -> stats), flag_val);
 	if (flag_val == ADAPTIVE_VAL)
 		return (stats_assign_strategy_by_entropy(&(machine -> stats)));
+	if (!(flag_val))
+		return (stats_assign_strategy_by_entropy(&(machine -> stats)));
 	return (flag_val);
 }

@@ -36,6 +36,10 @@ void	merge_to_b(t_stack_machine *machine);
 
 void	sort_medium(t_stack_machine *machine);
 
+// sort_medium_chunk.c
+
+void	chunck_sort_adaption(t_stack_machine *machine);
+
 // sort_simple.c
 
 void	sort_simple(t_stack_machine *machine);

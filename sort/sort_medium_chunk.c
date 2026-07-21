@@ -31,6 +31,8 @@ void	chunck_sort_adaption(t_stack_machine *machine)
 {
 	int	sqrt;
 
+	(void)(sqrt);
+	(void)(machine);
 	// get sqrt
 	// while elements in stack a
 		// push sqrt or rest elements to stack b

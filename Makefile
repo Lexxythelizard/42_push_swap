@@ -130,6 +130,7 @@ Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_complex_mergesort.c \
 					$(Sort_Dir)/sort_complex.c \
 					$(Sort_Dir)/sort_medium.c \
+					$(Sort_Dir)/sort_medium_chunk.c \
 					$(Sort_Dir)/sort_simple.c \
 					$(Sort_Dir)/sort_simple_min_extraction.c \
 					$(Sort_Dir)/sort_benchmarks.c

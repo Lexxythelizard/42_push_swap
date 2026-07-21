@@ -1,7 +1,7 @@
 // --- icludes ---
 
 #include <limits.h>
-#include "./push_swap.h"
+#include "./sort.h"
 
 // --- DOC ---
 

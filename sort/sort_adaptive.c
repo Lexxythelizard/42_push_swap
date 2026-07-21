@@ -12,7 +12,8 @@
 
 // --- icludes ---
 
-#include "./push_swap.h"
+#include "./sort.h"
+#include "../stackmachine/machine.h"
 
 // test
 #include <stdio.h>

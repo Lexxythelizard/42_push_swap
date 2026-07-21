@@ -1,6 +1,6 @@
 // --- include ---
 
-#include "./push_swap.h"
+#include "./sort.h"
 
 // for test
 #include <stdio.h>

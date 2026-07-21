@@ -1,6 +1,6 @@
 // --- icludes ---
 
-#include "./push_swap.h"
+#include "./sort.h"
 
 // --- DOC ---
 

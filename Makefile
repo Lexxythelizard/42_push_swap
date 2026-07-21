@@ -48,6 +48,8 @@ Funcs_Dir		=	$(Machine_Dir)/funcs
 
 Ui_Dir			=	$(This_Dir)/ui
 
+Sort_Dir		=	$(This_Dir)/sort
+
 Test_Dir		=	$(This_Dir)/test_programs
 
 Main_Dir		=	$(This_Dir)/test_files
@@ -68,6 +70,8 @@ Include_Machine	=	-I $(Machine_Dir)
 
 Include_Ui		=	-I $(Ui_Dir)
 
+Include_Sort	=	-I $(Sort_Dir)
+
 Include_SM		=	$(Include_Stack) \
 					$(Include_Stats) \
 					$(Include_Funcs) \
@@ -77,6 +81,7 @@ Include_Test	=	-I $(Main_Dir)
 
 Include_All		=	$(Include_SM) \
 					$(Include_Ui) \
+					$(Include_Sort) \
 					$(Include_Libft) \
 					$(Include_Printf) \
 					$(Include_This)
@@ -119,19 +124,23 @@ Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
 					$(Ui_Dir)/ui_entropy.c \
 					$(Ui_Dir)/ui_output.c
 
-Push_Swap_Files	=	$(This_Dir)/sort_adaptive.c \
-					$(This_Dir)/sort_complex_mergesort_base.c \
-					$(This_Dir)/sort_complex_mergesort.c \
-					$(This_Dir)/sort_complex.c \
-					$(This_Dir)/sort_medium.c \
-					$(This_Dir)/sort_simple.c \
-					$(This_Dir)/sort_run.c \
-					$(This_Dir)/sort_benchmarks.c
+Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
+					$(Sort_Dir)/sort_complex_mergesort_base.c \
+					$(Sort_Dir)/sort_complex_mergesort.c \
+					$(Sort_Dir)/sort_complex.c \
+					$(Sort_Dir)/sort_medium.c \
+					$(Sort_Dir)/sort_simple.c \
+					$(Sort_Dir)/sort_benchmarks.c
+
+Push_Swap_Files	=	$(This_Dir)/interface_sort.c \
+					$(This_Dir)/interface_stackmachine.c \
+					$(This_Dir)/interface_ui.c
 
 All_Src_Files	=	$(Stack_Files) \
 					$(Stats_Files) \
 					$(Funcs_Files) \
 					$(Machine_Files) \
+					$(Sort_Files) \
 					$(Ui_Files) \
 					$(Push_Swap_Files)
 

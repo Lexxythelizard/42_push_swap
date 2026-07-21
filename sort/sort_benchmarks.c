@@ -1,6 +1,7 @@
 // --- includes ---
 
-#include "./push_swap.h"
+#include "./sort.h"
+#include "../stackmachine/machine.h"
 #include "./libraries/ft_printf/ft_printf.h"
 #include "./libraries/libft/libft.h"
 

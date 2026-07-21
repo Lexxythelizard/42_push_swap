@@ -50,13 +50,13 @@ and add it to the end of it
 
 int	rrb(t_stack_machine	*machine)
 {
-	t_stack	*stack_a;
+	t_stack	*stack_b;
 	int		ctrl;
 
 	if (!machine)
 		return (-1);
-	stack_a = &(machine -> stacks[0]);
-	ctrl = reverse_rotate(stack_a);
+	stack_b = &(machine -> stacks[1]);
+	ctrl = reverse_rotate(stack_b);
 	if (ctrl == 1)
 		ft_putendl_fd(RRB_STR, 1);
 	return (ctrl);

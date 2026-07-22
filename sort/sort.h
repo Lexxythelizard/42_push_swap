@@ -40,8 +40,6 @@ void	merge_to_b(
 void	merge_sort(t_stack_machine *machine);
 void	merge_level(t_stack_machine *machine);
 void	merge(t_stack_machine *machine);
-void	merge_to_a(t_stack_machine *machine);
-void	merge_to_b(t_stack_machine *machine);
 
 // sort_medium.c
 

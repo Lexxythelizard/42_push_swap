@@ -8,7 +8,7 @@
 // --- DOC ---
 
 /*
-TODO:	implement from scratch
+TODO:	test and debugg
 */
 
 // --- define ---
@@ -18,10 +18,36 @@ void	sort_complex(t_stack_machine *machine)
 	int	len_a;
 	int	len_b;
 	t_element	*element_a;
-	t_element	*element_b;
 
 	printf("test complex\n");
 	merge_sort(machine);
+	
+	len_a = machine -> stacks[0].len;
+	len_b = machine -> stacks[1].len;
+	
+	element_a = machine -> stacks[0].first;
+
+	printf("stacks: len a: %d\tlen b: %d\n", len_a, len_b);
+	while (element_a)
+	{
+		printf(" %d\n", element_a -> val);
+		element_a = element_a -> next;
+	}
+	printf("-----------------------------\n");
+	printf(" a\t\tb\n");
+	return ;
+}
+
+void	test_merge_and_split(t_stack_machine *machine)
+{
+	int	len_a;
+	int	len_b;
+	t_element	*element_a;
+	t_element	*element_b;
+
+	printf("test complex\n");
+	split_stack(machine);
+	sort_pairs(machine);
 	
 	len_a = machine -> stacks[0].len;
 	len_b = machine -> stacks[1].len;
@@ -46,7 +72,7 @@ void	sort_complex(t_stack_machine *machine)
 		element_a = element_a -> next;
 		element_b = element_b -> next;
 	}
-	printf("------------\n");
+	printf("-----------------------------\n");
 	printf("a\t\tb\n");
 	return ;
 }

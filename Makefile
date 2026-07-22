@@ -127,6 +127,7 @@ Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
 
 Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_complex_mergesort_base.c \
+					$(Sort_Dir)/sort_complex_mergesort_merge_to_side_x.c \
 					$(Sort_Dir)/sort_complex_mergesort.c \
 					$(Sort_Dir)/sort_complex.c \
 					$(Sort_Dir)/sort_medium.c \

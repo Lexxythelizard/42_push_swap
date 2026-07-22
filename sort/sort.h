@@ -12,16 +12,21 @@
 
 // sort_adaptive.c
 
-void	sort_adaptive(t_stack_machine *machine);
+void	sort_adaptive(
+			t_stack_machine *machine);
 
 // sort_complex.c
 
-void	sort_complex(t_stack_machine *machine);
+void	sort_complex(
+			t_stack_machine *machine);
 
 // sort_complex_mergesort_base.c
 
-int		split_stack(t_stack_machine *machine);
-int		sort_pairs(t_stack_machine *machine);
+int		split_stack(
+			t_stack_machine *machine);
+
+int		sort_pairs(
+			t_stack_machine *machine);
 
 // sort_complex_mergesort_merge_to_side_x.c
 
@@ -37,34 +42,53 @@ void	merge_to_b(
 
 // sort_complex_mergesort.c
 
-void	merge_sort(t_stack_machine *machine);
-void	merge_level(t_stack_machine *machine);
-void	merge(t_stack_machine *machine);
+void	merge_sort(
+			t_stack_machine *machine);
+
+void	merge_level_n(
+			t_stack_machine *machine,
+			int *merge_level);
+
+void	merge(
+			t_stack_machine *machine,
+			int merge_level,
+			int *unmerged_a,
+			int *unmerged_b);
 
 // sort_medium.c
 
-void	sort_medium(t_stack_machine *machine);
+void	sort_medium(
+			t_stack_machine *machine);
 
 // sort_medium_chunk.c
 
-void	chunck_sort_adaption(t_stack_machine *machine);
+void	chunck_sort_adaption(
+			t_stack_machine *machine);
 
 // sort_simple.c
 
-void	sort_simple(t_stack_machine *machine);
+void	sort_simple(
+			t_stack_machine *machine);
 
 // sort_simple_min_extraction.c
 
-int		min_extraction_adaption_sort(t_stack_machine *machine);
+int		min_extraction_adaption_sort(
+			t_stack_machine *machine);
 
 // sort_benchmarks.c
 
-void	print_bench(t_stack_machine *machine);
+void	print_bench(
+			t_stack_machine *machine);
 
 // sort_utilities.c
 
-int		int_min_of_two(int a, int b);
-int		int_max_of_two(int a, int b);
+int		int_min_of_two(
+			int a,
+			int b);
+
+int		int_max_of_two(
+			int a,
+			int b);
 
 // --- end ---
 

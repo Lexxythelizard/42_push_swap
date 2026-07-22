@@ -20,11 +20,6 @@ void	merge_to_a(
 			int to_merge_in_a,
 			int to_merge_in_b)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-
-	stack_a = &(machine -> stacks[0]);
-	stack_b = &(machine -> stacks[1]);
 	while (to_merge_in_b)
 	{
 		if (top_b_smaller_than_top_a(machine))
@@ -52,11 +47,6 @@ void	merge_to_b(
 			int to_merge_in_a,
 			int to_merge_in_b)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-
-	stack_a = &(machine -> stacks[0]);
-	stack_b = &(machine -> stacks[1]);
 	while (to_merge_in_a)
 	{
 		if (top_a_smaller_than_top_b(machine))

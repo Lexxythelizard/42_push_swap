@@ -14,13 +14,13 @@ TODO:	reimplement from scratch
 void	merge_sort(t_stack_machine *machine);
 void	merge_level(t_stack_machine *machine);
 void	merge(t_stack_machine *machine);
-void	merge_to_a(t_stack_machine *machine);
-void	merge_to_b(t_stack_machine *machine);
 
 // --- define ---
 
 void	merge_sort(t_stack_machine *machine)
 {
+	int	merge_steps;
+
 	split_stack(machine);
 	sort_pairs(machine);
 	return ;
@@ -47,14 +47,19 @@ void	merge(t_stack_machine *machine)
 	return ;
 }
 
-void	merge_to_a(t_stack_machine *machine)
+int     get_merge_levels(t_stack_machine *machine)
 {
-	(void)(machine);
-	return ;
-}
+    int len;
+    int level;
+    int merge_size;
 
-void	merge_to_b(t_stack_machine *machine)
-{
-	(void)(machine);
-	return ;
+    len = machine -> stacks[0].len;
+    level = 0;
+    merge_size = 4;
+    while ((level < 30) && (merge_size < len))
+    {   
+        merge_size *= 2;
+        level++;
+    }   
+    return (level);
 }

@@ -20,9 +20,8 @@ void	sort_complex(t_stack_machine *machine);
 
 // sort_complex_mergesort_base.c
 
-void	sort_pairs(t_stack_machine *machine);
-
-void    split_stack(t_stack_machine *machine);
+int		split_stack(t_stack_machine *machine);
+int		sort_pairs(t_stack_machine *machine);
 
 // sort_complex_mergesort.c
 
@@ -54,8 +53,8 @@ void	print_bench(t_stack_machine *machine);
 
 // sort_utilities.c
 
-int		min_of(int a, int b);
-int		max_of(int a, int b);
+int		int_min_of_two(int a, int b);
+int		int_max_of_two(int a, int b);
 
 // --- end ---
 

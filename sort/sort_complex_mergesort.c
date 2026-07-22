@@ -21,7 +21,8 @@ void	merge_to_b(t_stack_machine *machine);
 
 void	merge_sort(t_stack_machine *machine)
 {
-	(void)(machine);
+	split_stack(machine);
+	sort_pairs(machine);
 	return ;
 }
 

@@ -10,8 +10,8 @@ TODO:	test and comment
 
 // --- prototype ---
 
-static int	top_a_smaller_then_top_b(t_stack_machine *machine);
-static int	top_b_smaller_then_top_a(t_stack_machine *machine);
+static int	top_a_smaller_than_top_b(t_stack_machine *machine);
+static int	top_b_smaller_than_top_a(t_stack_machine *machine);
 
 // --- define ---
 
@@ -27,7 +27,7 @@ void	merge_to_a(
 	stack_b = &(machine -> stacks[1]);
 	while (to_merge_in_b)
 	{
-		if (top_b_smaller_then_top_a(machine))
+		if (top_b_smaller_than_top_a(machine))
 		{
 			machine_operation_execute(machine, PA);
 			machine_operation_execute(machine, RA);
@@ -59,7 +59,7 @@ void	merge_to_b(
 	stack_b = &(machine -> stacks[1]);
 	while (to_merge_in_a)
 	{
-		if (top_a_smaller_then_top_b(machine))
+		if (top_a_smaller_than_top_b(machine))
 		{
 			machine_operation_execute(machine, PB);
 			machine_operation_execute(machine, RB);
@@ -86,7 +86,7 @@ takes a pointer to instance of t_stack_machine
 return 1 / 0 : statement true / not true or empty
 */
 
-static int	top_a_smaller_then_top_b(t_stack_machine *machine)
+static int	top_a_smaller_than_top_b(t_stack_machine *machine)
 {
 	t_element	*top_a;
 	t_element	*top_b;
@@ -103,7 +103,7 @@ takes a pointer to instance of t_stack_machine
 return 1 / 0 : statement true / not true or empty
 */
 
-static int	top_b_smaller_then_top_a(t_stack_machine *machine)
+static int	top_b_smaller_than_top_a(t_stack_machine *machine)
 {
 	t_element	*top_a;
 	t_element	*top_b;

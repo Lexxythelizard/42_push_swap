@@ -20,6 +20,9 @@ void	sort_adaptive(
 void	sort_complex(
 			t_stack_machine *machine);
 
+void	test_merge_and_split(
+			t_stack_machine *machine);
+
 // sort_complex_mergesort_base.c
 
 int		split_stack(
@@ -45,15 +48,9 @@ void	merge_to_b(
 void	merge_sort(
 			t_stack_machine *machine);
 
-void	merge_level_n(
+void	merge_to(
 			t_stack_machine *machine,
-			int *merge_level);
-
-void	merge(
-			t_stack_machine *machine,
-			int merge_level,
-			int *unmerged_a,
-			int *unmerged_b);
+			int merge_to_size);
 
 // sort_medium.c
 

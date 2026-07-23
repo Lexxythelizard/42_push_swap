@@ -6,12 +6,17 @@
 // --- DOC ---
 
 /*
-TODO:	reimplement from scratch
+	This file contains the functions which are orchestering the merge sort:
+
+		- splits the stack
+		- sort pairs
+		- merge sort to size 2 --> 4 --> 8 --> 16 --> 32 --> ... --> INT_MAX
 */
 
 // --- prototype ---
 
-static int     get_merge_levels(t_stack_machine *machine);
+static int	get_number_of_rounds(t_stack_machine *machine, int chunk_size);
+static int	get_to_merge(int unmerged, int chunk_size);
 
 // --- define ---
 
@@ -19,106 +24,80 @@ static int     get_merge_levels(t_stack_machine *machine);
 performes the merge sort
 */
 
-void	merge_sort(
-			t_stack_machine *machine)
+void	merge_sort(t_stack_machine *machine)
 {
-	int	merge_steps;
-	int	merge_level;
+	int	all_elements;
+	int	current_merge_size;
 
-	merge_level = 0;
-	merge_steps = get_merge_levels(machine);
+	all_elements = machine -> stacks[0].len;
+	current_merge_size = 4;
+
 	split_stack(machine);
 	sort_pairs(machine);
-	while (merge_level < merge_steps)
-		merge_level_n(machine, &merge_level);
-	// for last round push to a
-	merge_to_a(
-		machine,
-		machine -> stacks[0].len,
-		machine -> stacks[1].len);
-	return ;
+
+	while (current_merge_size < all_elements)
+	{
+		merge_to(machine, current_merge_size);
+		current_merge_size *= 2;
+	}
+	merge_to(machine, current_merge_size);
 }
 
 // --- merge functions ---
 
-/*
-merges one level like merge size 4, then double merge size...
-consider merging this two functions
-*/
-
-void	merge_level_n(
+void	merge_to(
 			t_stack_machine *machine,
-			int *merge_level)
+			int merge_to_size)
 {
+	int	i;
+	int	chunk_size;
+	int	rounds;
 	int	unmerged_a;
 	int	unmerged_b;
 
+	i = 0;
+	chunk_size = merge_to_size / 2;
+	rounds = get_number_of_rounds(machine, chunk_size);
 	unmerged_a = machine -> stacks[0].len;
 	unmerged_b = machine -> stacks[1].len;
-
-	// call merge in a loop
-
-	while ((unmerged_a) || (unmerged_b))
+	while (i++ < rounds)
 	{
-		merge(machine, *merge_level, &unmerged_a, &unmerged_b);
+		if (i % 2)
+		{
+			merge_to_a(
+				machine,
+				get_to_merge(unmerged_a, chunk_size),
+				get_to_merge(unmerged_b, chunk_size));
+		}
+		else
+		{
+			merge_to_b(
+				machine,
+				get_to_merge(unmerged_a, chunk_size),
+				get_to_merge(unmerged_b, chunk_size));
+		}
+		unmerged_a -= int_min_of_two(unmerged_a, chunk_size);
+		unmerged_b -= int_min_of_two(unmerged_b, chunk_size);
 	}
-	// increment merge level
-	(*merge_level)++;
-
-	return ;
-}
-
-/*
-coordinates the two merge functions like a pendulum
-*/
-
-void	merge(
-			t_stack_machine *machine,
-			int merge_level,
-			int *unmerged_a,
-			int *unmerged_b)
-{
-	int	merge_size;
-	int	to_merge_in_a;
-	int	to_merge_in_b;
-
-	merge_size = 4;
-	while (merge_level--)
-		merge_size *= 2;
-
-	to_merge_in_a = int_min_of_two((merge_size / 2), *unmerged_a);
-	to_merge_in_b = int_min_of_two((merge_size / 2), *unmerged_b);
-
-	if (*unmerged_b >= *unmerged_a)
-		merge_to_a(machine, to_merge_in_a, to_merge_in_b);
-	else
-		merge_to_b(machine, to_merge_in_a, to_merge_in_b);
-
-	*unmerged_a -= to_merge_in_a;
-	*unmerged_b -= to_merge_in_b;
-
 	return ;
 }
 
 // --- utilities ---
 
-/*
-get the numbers of merge levels
-*/
-
-static int     get_merge_levels(t_stack_machine *machine)
+static int	get_number_of_rounds(t_stack_machine *machine, int chunk_size)
 {
-    int len;
-    int level;
-    int merge_size;
+	int	len_a;
+	int	len_b;
 
-    len = machine -> stacks[0].len;
-    level = 0;
-    merge_size = 4;
-    while ((level < 30) && (merge_size < len))
-    {   
-        merge_size *= 2;
-        level++;
-    }   
-    return (level);
+	len_a = machine -> stacks[0].len;
+	len_b = machine -> stacks[1].len;
+	return (
+		int_max_of_two(
+			((len_a / chunk_size) + (len_a % chunk_size)),
+			((len_b / chunk_size) + (len_b % chunk_size))));
+}
+
+static int	get_to_merge(int unmerged, int chunk_size)
+{
+	return (int_min_of_two(unmerged, chunk_size));
 }

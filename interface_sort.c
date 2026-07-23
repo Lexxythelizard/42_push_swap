@@ -31,3 +31,4 @@ void	run_sort(t_stack_machine *machine, int flag_val)
 		print_bench(machine);
 	}
 }
+		//test_merge_and_split(machine);

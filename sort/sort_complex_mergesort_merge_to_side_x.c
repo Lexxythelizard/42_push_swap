@@ -5,7 +5,18 @@
 // --- DOC ---
 
 /*
-TODO:	test and comment
+	this file contains the functions:
+
+		- merge_to_a()
+		- merge_to_b()
+
+	those functions are 'dumb' algotithm parts... they need 
+	the exact number of elements which have to get merged in
+	stack a and stack b
+
+	rotate the destintion stack, so that the dest (merged chunk) 
+	is on the bottom of destination stack
+
 */
 
 // --- prototype ---
@@ -40,7 +51,6 @@ void	merge_to_a(
 			to_merge_in_b--;
 		}
 	}
-	//machine_operation_execute(machine, RA);
 }
 
 void	merge_to_b(

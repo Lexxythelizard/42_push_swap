@@ -20,9 +20,9 @@ void	merge_to_a(
 			int to_merge_in_a,
 			int to_merge_in_b)
 {
-	while (to_merge_in_b)
+	while (to_merge_in_b || to_merge_in_a)
 	{
-		if (top_b_smaller_than_top_a(machine))
+		if ((to_merge_in_b) && (top_b_smaller_than_top_a(machine)))
 		{
 			machine_operation_execute(machine, PA);
 			machine_operation_execute(machine, RA);
@@ -40,6 +40,7 @@ void	merge_to_a(
 			to_merge_in_b--;
 		}
 	}
+	//machine_operation_execute(machine, RA);
 }
 
 void	merge_to_b(
@@ -47,9 +48,9 @@ void	merge_to_b(
 			int to_merge_in_a,
 			int to_merge_in_b)
 {
-	while (to_merge_in_a)
+	while (to_merge_in_a || to_merge_in_b)
 	{
-		if (top_a_smaller_than_top_b(machine))
+		if ((to_merge_in_a) && (top_a_smaller_than_top_b(machine)))
 		{
 			machine_operation_execute(machine, PB);
 			machine_operation_execute(machine, RB);

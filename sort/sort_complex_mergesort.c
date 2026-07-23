@@ -31,10 +31,8 @@ void	merge_sort(t_stack_machine *machine)
 
 	all_elements = machine -> stacks[0].len;
 	current_merge_size = 4;
-
 	split_stack(machine);
 	sort_pairs(machine);
-
 	while (current_merge_size < all_elements)
 	{
 		merge_to(machine, current_merge_size);
@@ -63,23 +61,16 @@ void	merge_to(
 	while (i++ < rounds)
 	{
 		if (i % 2)
-		{
-			merge_to_a(
-				machine,
+			merge_to_a(machine,
 				get_to_merge(unmerged_a, chunk_size),
 				get_to_merge(unmerged_b, chunk_size));
-		}
 		else
-		{
-			merge_to_b(
-				machine,
+			merge_to_b(machine,
 				get_to_merge(unmerged_a, chunk_size),
 				get_to_merge(unmerged_b, chunk_size));
-		}
 		unmerged_a -= int_min_of_two(unmerged_a, chunk_size);
 		unmerged_b -= int_min_of_two(unmerged_b, chunk_size);
 	}
-	return ;
 }
 
 // --- utilities ---

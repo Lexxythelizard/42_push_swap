@@ -53,8 +53,21 @@ int			reverse_rotate(t_stack *stack);
 // stack_scan.c
 
 int			stack_is_first_and_sec_ascending(t_stack *stack);
+int			stack_get_idx_of_val(t_stack *stack, int val);
+
+// stack_scan_min.c
+
 int			stack_get_min_val(t_stack *stack);
 int			stack_get_idx_min_val(t_stack *stack);
+int			stack_get_min_val_in_range(t_stack *stack, int start, int stop);
+int			stack_get_idx_min_in_range(t_stack *stack, int start, int stop);
+
+// stack_scan_min.c
+
+int			stack_get_max_val(t_stack *stack);
+int			stack_get_idx_max_val(t_stack *stack);
+int			stack_get_max_val_in_range(t_stack *stack, int start, int stop);
+int			stack_get_idx_max_in_range(t_stack *stack, int start, int stop);
 
 // --- end ---
 

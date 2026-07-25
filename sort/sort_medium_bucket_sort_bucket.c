@@ -44,7 +44,7 @@ void	sort_n_elements_with_insertion_sort_descending(
 	stack_b = &(machine -> stack[1]);
 	sorting_range = int_min_of_two(stack_b -> len, sorting_range);
 	unsorted = int_min_of_two(stack_b -> len, sorting_range);
-	sorted -= stack_count_descending_in_range_(stack_b, 0, unsorted);
+	sorted -= stack_count_descending_in_range(stack_b, 0, unsorted);
 	sorted = int_max_of_two(1, sorted);
 	pos = 0;
 
@@ -53,7 +53,7 @@ void	sort_n_elements_with_insertion_sort_descending(
 		pos += turn_to_unsorted_element_and_push_it_to_a(machine, sorted);
 		pos -= insert_in_place(machine, pos);
 		pos -= turn_back_to_start_position(machine, pos);
-		sorted = stack_count_descending_in_range_(stack_b, 0, unsorted);
+		sorted = stack_count_descending_in_range(stack_b, 0, unsorted);
 		unsorted -= sorted;
 	}
 }

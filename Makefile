@@ -102,6 +102,8 @@ Stack_Files		=	$(Stack_Dir)/stack_elements.c \
 					$(Stack_Dir)/stack_pop_add.c \
 					$(Stack_Dir)/stack_operation.c \
 					$(Stack_Dir)/stack_scan.c \
+					$(Stack_Dir)/stack_scan_max.c \
+					$(Stack_Dir)/stack_scan_min.c \
 					$(Stack_Dir)/stack_stack.c
 
 Stats_Files		=	$(Stats_Dir)/machine_stats.c \
@@ -131,7 +133,7 @@ Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_complex_mergesort.c \
 					$(Sort_Dir)/sort_complex.c \
 					$(Sort_Dir)/sort_medium.c \
-					$(Sort_Dir)/sort_medium_chunk.c \
+					$(Sort_Dir)/sort_medium_bucket.c \
 					$(Sort_Dir)/sort_simple.c \
 					$(Sort_Dir)/sort_simple_min_extraction.c \
 					$(Sort_Dir)/sort_benchmarks.c \

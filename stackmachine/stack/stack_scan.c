@@ -9,6 +9,10 @@
 TODO:   test, norminette, comment
 */
 
+// --- prototype ---
+
+static int	is_current_value_smaller_than_next(t_element *element);
+
 // --- define ---
 
 /*
@@ -28,7 +32,6 @@ int	stack_is_first_and_sec_ascending(t_stack *stack)
 int	stack_get_idx_of_val(t_stack *stack, int val)
 {
 	int			idx;
-	int			min;
 	t_element	*cursor;
 
 	if (!stack)
@@ -42,4 +45,71 @@ int	stack_get_idx_of_val(t_stack *stack, int val)
 		cursor = cursor -> next;
 	}
 	return (-1);
+}
+
+int	stack_count_descending_in_range(
+		t_stack *stack,
+		int start,
+		int range)
+{
+	int			count;
+	int			ctrl;
+	t_element	*cursor;
+
+	count = 0;
+	if ((start >= stack -> len) || (range >= stack -> len) )
+		return (-1);
+	cursor = stack -> first;
+	while ((count++ < start) && (cursor))
+		cursor = cursor -> next;
+	count = 0;
+	while ((count < range) && (cursor))
+	{
+		count++;
+		ctrl = is_current_value_smaller_than_next(cursor);
+		if (ctrl == (-1))
+			return (-1);
+		if (ctrl)
+			break ;
+	}
+	return (count);
+}
+
+int	stack_count_asscending_in_range(
+		t_stack *stack,
+		int start,
+		int range)
+{
+	int			count;
+	int			ctrl;
+	t_element	*cursor;
+
+	count = 0;
+	if ((start >= stack -> len) || (range >= stack -> len) )
+		return (-1);
+	cursor = stack -> first;
+	while ((count++ < start) && (cursor))
+		cursor = cursor -> next;
+	count = 0;
+	while ((count < range) && (cursor))
+	{
+		count++;
+		ctrl = (!(is_current_value_smaller_than_next(cursor)));
+		if (ctrl == (-1))
+			return (-1);
+		if (ctrl)
+			break ;
+	}
+	return (count);
+}
+
+// --- utility ---
+
+static int	is_current_value_smaller_than_next(t_element *element)
+{
+	if (!element)
+		return (-1);
+	if (!(element -> next))
+		return (0);
+	return (element -> val < element -> next -> val);
 }

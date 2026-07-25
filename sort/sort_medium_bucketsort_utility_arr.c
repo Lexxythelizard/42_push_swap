@@ -27,10 +27,8 @@ int	*arr_int_get_presorted(
 {
 	int			*arr_int;
 	int			len;
-	t_element	*element;
 
 	len = machine -> stacks[0].len;
-	element = machine -> stacks[0].first;
 	arr_int = get_array_from_stack_a(machine);
 	if (!arr_int)
 		return (NULL);

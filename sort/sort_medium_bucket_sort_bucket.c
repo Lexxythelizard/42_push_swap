@@ -33,18 +33,17 @@ comment
 
 void	sort_n_elements_with_insertion_sort_descending(
 			t_stack_machine *machine,
-			int	sorting_range,
-			int bucket_size)
+			int	sorting_range)
 {
 	t_stack	*stack_b;
 	int		unsorted;
 	int		sorted;
 	int		pos;
 
-	stack_b = &(machine -> stack[1]);
+	stack_b = &(machine -> stacks[1]);
 	sorting_range = int_min_of_two(stack_b -> len, sorting_range);
 	unsorted = int_min_of_two(stack_b -> len, sorting_range);
-	sorted -= stack_count_descending_in_range(stack_b, 0, unsorted);
+	sorted = stack_count_descending_in_range(stack_b, 0, unsorted);
 	sorted = int_max_of_two(1, sorted);
 	pos = 0;
 
@@ -82,10 +81,8 @@ static int	insert_in_place(
 			int position)
 {
 	int		turn_backs;
-	t_stack	*stack_b;
 
 	turn_backs = 0;
-	stack_b = &(machine -> stacks[0]);
 	while (position)
 	{
 		if (element_fits_in_between_descending(machine))
@@ -116,7 +113,6 @@ returns 0 / 1 if element woul fit in this place or not
 static int	element_fits_in_between_descending(
 				t_stack_machine *machine)
 {
-	stack	*stack_b;
 	int		bigger;
 	int		smaller;
 	int		in_between;
@@ -125,5 +121,5 @@ static int	element_fits_in_between_descending(
 	smaller = machine -> stacks[1].first -> val;
 	in_between = machine -> stacks[0].first -> val;
 
-	return ((bigger >= in_between) && (in_between >= bigger));
+	return ((bigger >= in_between) && (in_between >= smaller));
 }

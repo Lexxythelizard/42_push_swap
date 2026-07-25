@@ -57,10 +57,52 @@ void	merge_to(
 void	sort_medium(
 			t_stack_machine *machine);
 
-// sort_medium_chunk.c
+// sort_medium_bucket.c
 
 void	chunck_sort_adaption(
 			t_stack_machine *machine);
+
+// sort_medium_bucket_fill_bucket.c
+
+void	push_last_bucket_to_b(
+			t_stack_machine *machine);
+
+void	push_bucket_to_b(
+			t_stack_machine *machine,
+			int **bucket_map,
+			int bucket_i,
+			int bucket_size);
+
+// sort_medium_bucket_sort_bucket.c
+
+void	sort_n_elements_with_insertion_sort_descending(
+			t_stack_machine *machine,
+			int sorting_range);
+
+// sort_medium_bucketsort_utiliy.c
+
+int		**get_pre_sorted_buckets_as_arrays(
+			t_stack_machine *machine,
+			int buckets,
+			int rest);
+
+int		**arr_arr_int_free(
+			int **arr_arr_int);
+
+float	get_sqrt(
+			int x);
+
+// sort_medium_bucketsort_utiliy_arr.c
+
+int		*arr_int_get_presorted(
+			t_stack_machine *machine);
+
+// sort_medium_bucketsort_utiliy_arr_arr.c
+
+int		**arr_arr_int_fill_buckets(
+			int *pre_sorted_arr,
+			int buckets,
+			int rest);
 
 // sort_simple.c
 

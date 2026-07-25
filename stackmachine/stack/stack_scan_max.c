@@ -81,7 +81,7 @@ int	stack_get_max_val_in_range(t_stack *stack, int start, int stop)
 
 	if (!stack)
 		return (0);
-	if ((stack -> len < start) || (stack < stop))
+	if ((stack -> len < start) || (stack -> len < stop))
 		return (0);
 	max = INT_MIN;
 	idx = 0;
@@ -116,12 +116,12 @@ int	stack_get_idx_max_in_range(t_stack *stack, int start, int stop)
 		return (-1);
 	if (stack -> len == 0)
 		return (-1);
-	if (stack -> len < start) || (stack -> len < stop)
+	if ((stack -> len < start) || (stack -> len < stop))
 		return (-1);
 	idx = 0;
-	max = stack_get_max_val_in_range(stack);
+	max = stack_get_max_val_in_range(stack, start, stop);
 	cursor = stack -> first;
-	while (cursor)
+	while ((cursor) && (idx < stop))
 	{
 		if (cursor -> val == max)
 			return (idx);

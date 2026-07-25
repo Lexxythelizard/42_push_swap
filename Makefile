@@ -134,6 +134,11 @@ Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_complex.c \
 					$(Sort_Dir)/sort_medium.c \
 					$(Sort_Dir)/sort_medium_bucket.c \
+					$(Sort_Dir)/sort_medium_bucket_fill_bucket.c \
+					$(Sort_Dir)/sort_medium_bucket_sort_bucket.c \
+					$(Sort_Dir)/sort_medium_bucketsort_utility.c \
+					$(Sort_Dir)/sort_medium_bucketsort_utility_arr.c \
+					$(Sort_Dir)/sort_medium_bucketsort_utility_arr_arr.c \
 					$(Sort_Dir)/sort_simple.c \
 					$(Sort_Dir)/sort_simple_min_extraction.c \
 					$(Sort_Dir)/sort_benchmarks.c \

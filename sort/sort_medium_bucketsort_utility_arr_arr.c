@@ -23,7 +23,7 @@ static int	**arr_arr_int_fill_rest_bucket(
 				int	len,
 				int	rest);
 
-static int	**arr_arr_int_init_new_(
+static int	**arr_arr_int_init_new(
 				int buckets);
 
 static int	*copy_sequence(
@@ -38,7 +38,6 @@ comment
 */
 
 int	**arr_arr_int_fill_buckets(
-		t_stack_machine *machine,
 		int *pre_sorted_arr,
 		int buckets,
 		int rest)
@@ -109,7 +108,7 @@ static int	**arr_arr_int_fill_rest_bucket(
 	return (arr_arr_int);
 }
 
-static int	**arr_arr_int_init_new_(
+static int	**arr_arr_int_init_new(
 				int buckets)
 {
 	int	**arr_arr_int;
@@ -127,7 +126,7 @@ static int	**arr_arr_int_init_new_(
 	return (arr_arr_int);
 }
 
-static int	copy_sequence(
+static int	*copy_sequence(
 				int *src_arr,
 				int start,
 				int size)

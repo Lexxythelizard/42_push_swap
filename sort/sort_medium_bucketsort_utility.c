@@ -25,13 +25,12 @@ int	**get_pre_sorted_buckets_as_arrays(
 		int rest)
 {
 	int	*arr_int;
-	int	*arr_arr_int;
+	int	**arr_arr_int;
 
 	arr_int = arr_int_get_presorted(machine);
 	if (!arr_int)
 		return (NULL);
 	arr_arr_int = arr_arr_int_fill_buckets(
-		machine,
 		arr_int,
 		buckets,
 		rest);

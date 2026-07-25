@@ -25,17 +25,17 @@ comment
 int	*arr_int_get_presorted(
 		t_stack_machine *machine)
 {
-	int			*arr;
+	int			*arr_int;
 	int			len;
 	t_element	*element;
 
 	len = machine -> stacks[0].len;
 	element = machine -> stacks[0].first;
-	arr = get_array_from_stack_a(machine);
-	if (!arr)
+	arr_int = get_array_from_stack_a(machine);
+	if (!arr_int)
 		return (NULL);
-	standart_lexxy_sort(arr, len);
-	return (pre_sorted_buckets);
+	standart_lexxy_sort(arr_int, len);
+	return (arr_int);
 }
 
 static int	*get_array_from_stack_a(
@@ -43,16 +43,18 @@ static int	*get_array_from_stack_a(
 {
 	int			*arr;
 	int			len;
+	int			i;
 	t_element	*element;
 
+	i = 0;
 	len = machine -> stacks[0].len;
 	arr = malloc(len * sizeof(int));
 	element = machine -> stacks[0].first;
 	if (!arr)
 		return (NULL);
-	while (element < len)
+	while ((element) && (i < len))
 	{
-		arr[i] = elment -> val;
+		arr[i] = element -> val;
 		element = element -> next;
 		i++;
 	}

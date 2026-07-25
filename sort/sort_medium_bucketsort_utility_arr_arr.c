@@ -24,9 +24,9 @@ static int	**arr_arr_int_fill_rest_bucket(
 				int	rest);
 
 static int	**arr_arr_int_init_new_(
-				int *buckets);
+				int buckets);
 
-static int	copy_sequence(
+static int	*copy_sequence(
 				int *src_arr,
 				int start,
 				int size);
@@ -39,7 +39,7 @@ comment
 
 int	**arr_arr_int_fill_buckets(
 		t_stack_machine *machine,
-		int pre_sorted_arr,
+		int *pre_sorted_arr,
 		int buckets,
 		int rest)
 {
@@ -64,7 +64,7 @@ int	**arr_arr_int_fill_buckets(
 		rest);
 	if (!arr_arr_int)
 		return (NULL);
-	return (arr_arr);
+	return (arr_arr_int);
 }
 
 static int	**arr_arr_int_fill_full_buckets(
@@ -73,7 +73,7 @@ static int	**arr_arr_int_fill_full_buckets(
 				int	full_buckets)
 {
 	int	*temp;
-	int	i
+	int	i;
 	int	start;
 	int	bucket_size;
 
@@ -81,7 +81,7 @@ static int	**arr_arr_int_fill_full_buckets(
 	bucket_size = full_buckets;
 	while (i < full_buckets)
 	{
-		start = bucket_size * (i + 1) - 1;
+		start = bucket_size * i;
 		temp = copy_sequence(pre_sorted_arr, start, bucket_size);
 		arr_arr_int[i] = temp;
 		if (!temp)
@@ -98,12 +98,10 @@ static int	**arr_arr_int_fill_rest_bucket(
 				int	rest)
 {
 	int	*temp;
-	int i;
+	int start;
 
 	if (rest == 0)
 		return (arr_arr_int);
-	if (len > rest)
-		i = (int)(len / rest);
 	start = len - rest;
 	temp = copy_sequence(pre_sorted_arr, start, rest);
 	if (!temp)
@@ -112,10 +110,12 @@ static int	**arr_arr_int_fill_rest_bucket(
 }
 
 static int	**arr_arr_int_init_new_(
-				int *buckets)
+				int buckets)
 {
 	int	**arr_arr_int;
+	int	i;
 
+	i = 0;
 	arr_arr_int = malloc((buckets + 1) * sizeof(int *));
 	if (!arr_arr_int)
 		return (NULL);
@@ -135,6 +135,7 @@ static int	copy_sequence(
 	int	*arr;
 	int	i;
 
+	i = 0;
 	if ((!src_arr) || (size == 0))
 		return (NULL);
 	arr = malloc(size * sizeof(int));

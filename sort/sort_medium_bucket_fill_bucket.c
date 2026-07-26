@@ -82,6 +82,8 @@ static int	rotate_next_element_for_bucket_to_top(
 	while (element_i < bucket_size)
 	{
 		idx = stack_get_idx_of_val(stack_a, bucket_map[bucket_i][element_i]);
+		if (idx == (-1))
+			idx = stack_a -> len;
 		steps_ra = int_min_of_two(steps_ra, idx);
 		steps_rra = int_min_of_two(steps_rra, ((stack_a -> len) - idx));
 		element_i++;

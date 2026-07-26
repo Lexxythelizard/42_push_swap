@@ -58,7 +58,7 @@ int	stack_count_descending_in_range(
 	t_element	*cursor;
 
 	count = 0;
-	if ((start >= stack -> len) || (range >= stack -> len) )
+	if ((start >= stack -> len) || ((range + start) > stack -> len))
 		return (-1);
 	cursor = stack -> first;
 	while ((count++ < start) && (cursor))
@@ -72,6 +72,7 @@ int	stack_count_descending_in_range(
 			return (-1);
 		if (ctrl)
 			break ;
+		cursor = cursor -> next;
 	}
 	return (count);
 }
@@ -86,7 +87,7 @@ int	stack_count_asscending_in_range(
 	t_element	*cursor;
 
 	count = 0;
-	if ((start >= stack -> len) || (range >= stack -> len) )
+	if ((start >= stack -> len) || ((range + start) > stack -> len))
 		return (-1);
 	cursor = stack -> first;
 	while ((count++ < start) && (cursor))
@@ -100,6 +101,7 @@ int	stack_count_asscending_in_range(
 			return (-1);
 		if (ctrl)
 			break ;
+		cursor = cursor -> next;
 	}
 	return (count);
 }

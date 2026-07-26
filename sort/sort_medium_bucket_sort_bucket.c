@@ -53,7 +53,7 @@ void	sort_n_elements_with_insertion_sort_descending(
 		pos -= insert_in_place(machine, pos);
 		pos -= turn_back_to_start_position(machine, pos);
 		sorted = stack_count_descending_in_range(stack_b, 0, unsorted);
-		unsorted -= sorted;
+		unsorted -= int_min_of_two(sorted, unsorted);
 	}
 }
 

@@ -139,6 +139,14 @@ int		int_max_of_two(
 			int a,
 			int b);
 
+// sort_utilities_execute.c
+
+int		push_all_elements_to_stack_a(
+			t_stack_machine *machine);
+
+int		push_all_elements_to_stack_b(
+			t_stack_machine *machine);
+
 // --- end ---
 
 #endif

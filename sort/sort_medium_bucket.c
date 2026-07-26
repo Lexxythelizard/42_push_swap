@@ -23,10 +23,6 @@ Idea:
 	this would be O(n * sqrt(n)) for chunk sort adaption
 */
 
-// --- prototype ---
-
-static int	push_everything_back_to_a(t_stack_machine *machine);
-
 // --- define ---
 
 /*
@@ -52,7 +48,7 @@ void	bucket_sort_adaption(t_stack_machine *machine)
 
 	buckets = (int)(get_sqrt(machine -> stacks[0].len));
 	bucket_size = buckets;
-	rest = bucket_size * buckets;
+	rest = machine -> stacks[0].len - bucket_size * buckets;
 	buckets += (rest > 0);
 	bucket_map = get_pre_sorted_buckets_as_arrays(
 		machine,
@@ -69,7 +65,7 @@ void	bucket_sort_adaption(t_stack_machine *machine)
 	push_and_sort_rest(
 			machine,
 			rest);
-	push_everything_back_to_a(machine);
+	push_all_elements_to_stack_a(machine);
 }
 
 /*
@@ -107,15 +103,4 @@ int	push_and_sort_rest(
 		machine,
 		rest);
 	return (1);
-}
-
-// --- utillity ---
-
-static int	push_everything_back_to_a(t_stack_machine *machine)
-{
-	return (
-		machine_operation_execute_times_n(
-			machine,
-			RA,
-			machine -> stacks[1].len));
 }

@@ -13,7 +13,6 @@ TODO:	test, norminette
 static int	push_element_on_top_to_stack_b(t_stack_machine *machine);
 static int	rotate_smallest_element_to_top(t_stack_machine *machine);
 static int	elements_in_stack_a(t_stack_machine *machine);
-static int	push_all_elements_back_to_stack_b(t_stack_machine *machine);
 
 // --- define ---
 
@@ -32,7 +31,7 @@ int	min_extraction_adaption_sort(t_stack_machine *machine)
 		rotate_smallest_element_to_top(machine);
 		push_element_on_top_to_stack_b(machine);
 	}
-	return (push_all_elements_back_to_stack_b(machine));
+	return (push_all_elements_to_stack_a(machine));
 }
 
 // --- utillieties ---
@@ -84,18 +83,4 @@ returns 1 / 0 :	elements in stack a / no elements in stack a
 static int	elements_in_stack_a(t_stack_machine *machine)
 {
 	return (machine -> stacks[0].len > 0);
-}
-
-/*
-calls machine_operation_execute_times_n -> machine_operation_execute
--> calls pa n times; n = length of stack b
-*/
-
-static int	push_all_elements_back_to_stack_b(t_stack_machine *machine)
-{
-	return (
-		machine_operation_execute_times_n(
-			machine,
-			PA,
-			machine -> stacks[1].len));
 }

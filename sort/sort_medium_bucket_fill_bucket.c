@@ -77,16 +77,16 @@ static int	rotate_next_element_for_bucket_to_top(
 	idx = 0;
 	element_i = 0;
 	stack_a = &(machine -> stacks[0]);
-	steps_ra = int_max_of_two((stack_a -> len), 0);
-	steps_rra = int_max_of_two((stack_a -> len), 0);
+	steps_ra = stack_a -> len;
+	steps_rra = stack_a -> len;
 	while (element_i < bucket_size)
 	{
 		idx = stack_get_idx_of_val(stack_a, bucket_map[bucket_i][element_i]);
-		steps_ra = int_max_of_two(steps_ra, idx);
-		steps_rra = int_max_of_two(steps_rra, ((stack_a -> len) - idx));
+		steps_ra = int_min_of_two(steps_ra, idx);
+		steps_rra = int_min_of_two(steps_rra, ((stack_a -> len) - idx));
 		element_i++;
 	}
 	if (steps_ra < steps_rra)
-		return (machine_operation_execute_times_n(machine, RRA, steps_rra));
-	return (machine_operation_execute_times_n(machine, RA, steps_ra));
+		return (machine_operation_execute_times_n(machine, RA, steps_ra));
+	return (machine_operation_execute_times_n(machine, RRA, steps_rra));
 }

@@ -88,8 +88,9 @@ static int	insert_in_place(
 		if (element_fits_in_between_descending(machine))
 			break ;
 		turn_backs += machine_operation_execute(machine, RRB);
+		position--;
 	}
-	turn_backs += machine_operation_execute(machine, RB);
+	turn_backs += machine_operation_execute(machine, PB);
 	return (turn_backs);
 }
 

@@ -41,7 +41,8 @@ int	stack_get_idx_of_val(t_stack *stack, int val)
 	while (cursor)
 	{
 		if (cursor -> val == val)
-			return (idx) ;
+			return (idx);
+		idx++;
 		cursor = cursor -> next;
 	}
 	return (-1);

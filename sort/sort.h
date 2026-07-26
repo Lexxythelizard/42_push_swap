@@ -59,8 +59,18 @@ void	sort_medium(
 
 // sort_medium_bucket.c
 
-void	chunck_sort_adaption(
+void	bucket_sort_adaption(
 			t_stack_machine *machine);
+
+int		push_and_sort_bucket(
+			t_stack_machine *machine,
+			int **bucket_map,
+			int bucket_idx,
+			int bucket_size);
+
+int		push_and_sort_rest(
+			t_stack_machine *machine,
+			int rest);
 
 // sort_medium_bucket_fill_bucket.c
 

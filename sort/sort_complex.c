@@ -39,7 +39,7 @@ void	sort_complex(t_stack_machine *machine)
 		element_a = element_a -> next;
 		i++;
 	}
-	if (len_a < (len_b - i))
+	while ((len_b - i) > len_a)
 	{
 		printf("\t\t%d\n", element_b -> val);
 		element_b = element_b -> next;

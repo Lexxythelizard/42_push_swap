@@ -63,6 +63,9 @@ int	bucket_sort_adaption(t_stack_machine *machine)
 		machine,
 		bucket_map,
 		bucket_size);
+	push_and_sort_rest(
+		machine,
+		rest);
 	push_all_elements_to_stack_a(machine);
 	arr_arr_int_free(bucket_map);
 	return (machine -> stacks[0].len);

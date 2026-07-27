@@ -66,8 +66,9 @@ static int	insert_element(
 	i = 0;
 	inserted = 0;
 	pos = sorted;
-	if (sorted)
-		machine_operation_execute(machine, PA);
+	if (!(sorted))
+		return (machine_operation_execute(machine, RRB));
+	machine_operation_execute(machine, PA);
 	while ((i < sorted) && (!(inserted)))
 	{
 		if (element_fits_in_between_in_descending_order(machine))
@@ -76,9 +77,9 @@ static int	insert_element(
 			pos -= machine_operation_execute(machine, RRB);
 		i++;
 	}
-	if (!(inserted))
+	if (!(inserted) && (sorted))
 		machine_operation_execute(machine, PB);
-	machine_operation_execute_times_n(machine, RB, (sorted - pos));
+	machine_operation_execute_times_n(machine, RRB, (sorted - pos - 1));
 	return (1);
 }
 

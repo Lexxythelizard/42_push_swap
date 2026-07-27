@@ -59,13 +59,12 @@ void	sort_medium(
 
 // sort_medium_bucket.c
 
-void	bucket_sort_adaption(
+int		bucket_sort_adaption(
 			t_stack_machine *machine);
 
-int		push_and_sort_bucket(
+int		push_and_sort_buckets(
 			t_stack_machine *machine,
 			int **bucket_map,
-			int bucket_idx,
 			int bucket_size);
 
 int		push_and_sort_rest(
@@ -129,6 +128,14 @@ int		min_extraction_adaption_sort(
 void	print_bench(
 			t_stack_machine *machine);
 
+// sort_small_stacks.c
+
+int		sort_two(
+			t_stack_machine *machine);
+
+int		sort_three(
+			t_stack_machine *machine);
+
 // sort_utilities.c
 
 int		int_min_of_two(
@@ -139,12 +146,26 @@ int		int_max_of_two(
 			int a,
 			int b);
 
-// sort_utilities_execute.c
+// sort_utilities_execute_a.c
 
 int		push_all_elements_to_stack_a(
 			t_stack_machine *machine);
 
+int		swap_second_and_third_a(
+			t_stack_machine *machine);
+
+int		swap_first_and_third_a(
+			t_stack_machine *machine);
+
+// sort_utilities_execute_b.c
+
 int		push_all_elements_to_stack_b(
+			t_stack_machine *machine);
+
+int		swap_second_and_third_b(
+			t_stack_machine *machine);
+
+int		swap_first_and_third_b(
 			t_stack_machine *machine);
 
 // --- end ---

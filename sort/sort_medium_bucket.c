@@ -38,14 +38,19 @@ Idea:
 
 */
 
-void	bucket_sort_adaption(t_stack_machine *machine)
+int	bucket_sort_adaption(t_stack_machine *machine)
 {
 	int	**bucket_map;
-	int	bucket_idx;
 	int	bucket_size;
 	int	rest;
 	int	buckets;
 
+	if (machine -> stacks[0].len <= 1)
+		return (machine -> stacks[0].len);
+	if (machine -> stacks[0].len == 2)
+		return (sort_two(machine));
+	if (machine -> stacks[0].len == 3)
+		return (sort_three(machine));
 	buckets = (int)(get_sqrt(machine -> stacks[0].len));
 	bucket_size = buckets;
 	rest = machine -> stacks[0].len - bucket_size * buckets;
@@ -54,39 +59,40 @@ void	bucket_sort_adaption(t_stack_machine *machine)
 		machine,
 		buckets,
 		rest);
-	bucket_idx = 0;
-
-	while (bucket_idx < buckets)
-		bucket_idx = push_and_sort_bucket(
-			machine,
-			bucket_map,
-			bucket_idx,
-			bucket_size);
-	push_and_sort_rest(
-			machine,
-			rest);
+	push_and_sort_buckets(
+		machine,
+		bucket_map,
+		bucket_size);
 	push_all_elements_to_stack_a(machine);
+	arr_arr_int_free(bucket_map);
+	return (machine -> stacks[0].len);
 }
 
 /*
 comment
 */
 
-int	push_and_sort_bucket(
+int	push_and_sort_buckets(
 		t_stack_machine *machine,
 		int **bucket_map,
-		int bucket_idx,
 		int bucket_size)
 {
-	push_bucket_to_b(
-		machine,
-		bucket_map,
-		bucket_idx,
-		bucket_size);
-	sort_n_elements_with_insertion_sort_descending(
-		machine,
-		bucket_size);
-	return (1);
+	int	bucket_idx;
+
+	bucket_idx = 0;
+	while (bucket_idx < bucket_size)
+	{
+		push_bucket_to_b(
+			machine,
+			bucket_map,
+			bucket_idx,
+			bucket_size);
+		sort_n_elements_with_insertion_sort_descending(
+			machine,
+			bucket_size);
+		bucket_idx++;
+	}
+	return (bucket_idx);
 }
 
 /*

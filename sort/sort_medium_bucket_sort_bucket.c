@@ -10,19 +10,11 @@ TODO: test
 
 // --- prototypes ---
 
-static int	turn_to_unsorted_element_and_push_it_to_a(
+static int	insert_element(
 				t_stack_machine *machine,
 				int sorted);
 
-static int	insert_in_place(
-				t_stack_machine *machine,
-				int position);
-
-static int	turn_back_to_start_position(
-				t_stack_machine *machine,
-				int position);
-
-static int	element_fits_in_between_descending(
+static int	element_fits_in_between_in_descending_order(
 				t_stack_machine *machine);
 
 // --- define ---
@@ -36,24 +28,24 @@ void	sort_n_elements_with_insertion_sort_descending(
 			int	sorting_range)
 {
 	t_stack	*stack_b;
-	int		unsorted;
 	int		sorted;
-	int		pos;
+	int		artefact;
 
 	stack_b = &(machine -> stacks[1]);
-	sorting_range = int_min_of_two(stack_b -> len, sorting_range);
-	unsorted = int_min_of_two(stack_b -> len, sorting_range);
-	sorted = stack_count_descending_in_range(stack_b, 0, unsorted);
-	sorted = int_max_of_two(1, sorted);
-	pos = 0;
-
-	while (unsorted)
+	artefact = 0;
+	sorted = 1;
+	// if ((sorting_range >= 0) && (sorting_range <= 1))
+		// return (sorting_range);
+	// if (sorting_range == 2)
+		// return (sort_two(stack_b));
+	// if (sorting_range == 3)
+		// return (sort_three(stack_b));
+	while (sorted < sorting_range)
 	{
-		pos += turn_to_unsorted_element_and_push_it_to_a(machine, sorted);
-		pos -= insert_in_place(machine, pos);
-		pos -= turn_back_to_start_position(machine, pos);
-		sorted = stack_count_descending_in_range(stack_b, 0, unsorted);
-		unsorted -= int_min_of_two(sorted, unsorted);
+		artefact = (stack_is_first_and_sec_ascending(stack_b));
+		machine_operation_execute(machine, RB);
+		sorted += insert_element(machine, (sorted * artefact));
+		artefact = 0;
 	}
 }
 
@@ -63,55 +55,38 @@ void	sort_n_elements_with_insertion_sort_descending(
 the function name explains everything :)
 */
 
-static int	turn_to_unsorted_element_and_push_it_to_a(
+static int	insert_element(
 			t_stack_machine *machine,
 			int sorted)
 {
-	machine_operation_execute_times_n(machine, RB, sorted);
-	machine_operation_execute(machine, PA);
-	return (sorted);
-}
+	int	i;
+	int	inserted;
+	int pos;
 
-/*
-turn back until it fits in but max as far as position
-*/
-
-static int	insert_in_place(
-			t_stack_machine *machine,
-			int position)
-{
-	int		turn_backs;
-
-	turn_backs = 0;
-	while (position)
+	i = 0;
+	inserted = 0;
+	pos = sorted;
+	if (sorted)
+		machine_operation_execute(machine, PA);
+	while ((i < sorted) && (!(inserted)))
 	{
-		if (element_fits_in_between_descending(machine))
-			break ;
-		turn_backs += machine_operation_execute(machine, RRB);
-		position--;
+		if (element_fits_in_between_in_descending_order(machine))
+			inserted = machine_operation_execute(machine, PB);
+		else
+			pos -= machine_operation_execute(machine, RRB);
+		i++;
 	}
-	turn_backs += machine_operation_execute(machine, PB);
-	return (turn_backs);
-}
-
-/*
-the function name explains everything
-*/
-
-static int	turn_back_to_start_position(
-			t_stack_machine *machine,
-			int position)
-{
-	return (
-		machine_operation_execute_times_n(
-			machine, RRB, position));
+	if (!(inserted))
+		machine_operation_execute(machine, PB);
+	machine_operation_execute_times_n(machine, RB, (sorted - pos));
+	return (1);
 }
 
 /*
 returns 0 / 1 if element woul fit in this place or not
 */
 
-static int	element_fits_in_between_descending(
+static int	element_fits_in_between_in_descending_order(
 				t_stack_machine *machine)
 {
 	int		bigger;

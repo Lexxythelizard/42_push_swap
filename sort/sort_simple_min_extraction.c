@@ -26,6 +26,13 @@ while elements in stack b:
 
 int	min_extraction_adaption_sort(t_stack_machine *machine)
 {
+	t_stack	*stack_a;
+
+	stack_a = &(machine -> stacks[0]);
+	if (stack_a -> len <= 1)
+		return (stack_a -> len);
+	if (stack_a -> len == 2)
+		return (sort_two(machine));
 	while (elements_in_stack_a(machine))
 	{
 		rotate_smallest_element_to_top(machine);
@@ -61,7 +68,6 @@ static int	rotate_smallest_element_to_top(t_stack_machine *machine)
 
 	if (stack_a -> len == 1)
 		return (0);
-
 	if (idx_min <= (stack_a -> len / 2))
 		return (
 			machine_operation_execute_times_n(

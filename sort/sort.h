@@ -84,9 +84,9 @@ void	push_bucket_to_b(
 
 // sort_medium_bucket_sort_bucket.c
 
-void	sort_n_elements_with_insertion_sort_descending(
+void	bucket_insertion_sort_descending(
 			t_stack_machine *machine,
-			int sorting_range);
+			int len);
 
 // sort_medium_bucketsort_utiliy.c
 

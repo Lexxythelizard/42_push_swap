@@ -90,7 +90,7 @@ int	push_and_sort_buckets(
 			bucket_map,
 			bucket_idx,
 			bucket_size);
-		sort_n_elements_with_insertion_sort_descending(
+		bucket_insertion_sort_descending(
 			machine,
 			bucket_size);
 		bucket_idx++;
@@ -108,7 +108,7 @@ int	push_and_sort_rest(
 {
 	push_last_bucket_to_b(
 		machine);
-	sort_n_elements_with_insertion_sort_descending(
+	bucket_insertion_sort_descending(
 		machine,
 		rest);
 	return (1);

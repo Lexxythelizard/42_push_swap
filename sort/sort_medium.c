@@ -10,10 +10,8 @@ static void print_stacks(t_stack_machine *machine);
 
 void	sort_medium(t_stack_machine *machine)
 {
-	printf("test medium:\n\n");
 	bucket_sort_adaption(machine);
 	print_stacks(machine);
-	printf("\ndone\n\n");
 }
 
 // --- for testing ---

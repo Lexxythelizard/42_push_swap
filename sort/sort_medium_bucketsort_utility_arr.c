@@ -66,7 +66,7 @@ static void	standart_lexxy_sort(int *arr, int len)
 
 	i = 0;
 
-	while (i < len)
+	while ((i + 1) < len)
 	{
 		j = i + 1;
 		while (j < len)

@@ -43,23 +43,20 @@ int	sort_three(t_stack_machine *machine)
 	stack_a = &(machine -> stacks[0]);
 	if (stack_a -> len <= 2)
 		return (-1);
-
 	first = stack_a -> first -> val;
 	secon = stack_a -> first -> next -> val;
 	third = stack_a -> first -> next -> next -> val;
-
 	if ((first <= secon) && (secon <= third))
 		return (0);
 	if ((first <= third) && (third <= secon))
-		swap_second_and_third_a(machine);					// RA SA RRA
+		swap_second_and_third_a(machine);
 	if ((secon <= first) && (first <= third))
-		return (machine_operation_execute(machine, SA));	// SA
+		return (machine_operation_execute(machine, SA));
 	if ((secon <= third) && (third <= first))
-		return (machine_operation_execute(machine, RA));	// RA
+		return (machine_operation_execute(machine, RA));
 	if ((third <= first) && (first <= secon))
-		return (machine_operation_execute(machine, RRA));	// RRA
+		return (machine_operation_execute(machine, RRA));
 	if ((third <= secon) && (secon <= first))
-		swap_first_and_third_a(machine);					// RRA SA RA
-		//1 2 3 --> 3 1 2 --> 1 3 2 --> 3 2 1
+		swap_first_and_third_a(machine);
 	return (0);
 }

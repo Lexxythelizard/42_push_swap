@@ -5,7 +5,7 @@
 // --- DOC ---
 
 /*
-TODO: test and comment
+	this file contains functions to push buckets most effectively to b
 */
 
 // --- prototype ---
@@ -13,13 +13,13 @@ TODO: test and comment
 static int	rotate_next_element_for_bucket_to_top(
 				t_stack_machine *machine,
 				int **bucket_map,
-				int	bucket_i,
+				int bucket_i,
 				int bucket_size);
 
 // --- define ---
 
 /*
-comment
+name says everything
 */
 
 void	push_last_bucket_to_b(
@@ -32,13 +32,13 @@ void	push_last_bucket_to_b(
 }
 
 /*
-comment
+name says everything
 */
 
 void	push_bucket_to_b(
 			t_stack_machine *machine,
 			int **bucket_map,
-			int	bucket_i,
+			int bucket_i,
 			int bucket_size)
 {
 	int	bucket_x_i;
@@ -59,13 +59,13 @@ void	push_bucket_to_b(
 // --- utility ---
 
 /*
-TODO:	implement
+name say everything
 */
 
 static int	rotate_next_element_for_bucket_to_top(
 				t_stack_machine *machine,
 				int **bucket_map,
-				int	bucket_i,
+				int bucket_i,
 				int bucket_size)
 {
 	t_stack	*stack_a;

@@ -2,26 +2,25 @@
 
 #include "./sort.h"
 
-// test
-
 // --- DOC ---
 
 /*
-TODO: test
+	this file contains the writing and allocating of the "2D Array" 
+	which is meant to be a map of sorted buckets.
 */
 
 // --- prototype ---
 
 static int	**arr_arr_int_fill_full_buckets(
 				int **arr_arr_int,
-				int	*pre_sorted_arr,
-				int	full_buckets);
+				int *pre_sorted_arr,
+				int full_buckets);
 
 static int	**arr_arr_int_fill_rest_bucket(
 				int **arr_arr_int,
-				int	*pre_sorted_arr,
-				int	full_buckets,
-				int	rest);
+				int *pre_sorted_arr,
+				int full_buckets,
+				int rest);
 
 static int	**arr_arr_int_init_new(
 				int buckets);
@@ -34,7 +33,10 @@ static int	*copy_sequence(
 // --- define ---
 
 /*
-comment
+needs a pre sorted array 1D, the number of buckets 
+(included the last, not full bucket) and its filling: rest
+
+returns a "2D Array" actually not a real one, but you can handle it like one
 */
 
 int	**arr_arr_int_fill_buckets(
@@ -47,29 +49,39 @@ int	**arr_arr_int_fill_buckets(
 
 	full_buckets = buckets - (rest > 0);
 	arr_arr_int = arr_arr_int_init_new(
-		buckets);
+			buckets);
 	if (!arr_arr_int)
 		return (NULL);
 	arr_arr_int = arr_arr_int_fill_full_buckets(
-		arr_arr_int,
-		pre_sorted_arr,
-		full_buckets);
+			arr_arr_int,
+			pre_sorted_arr,
+			full_buckets);
 	if (!arr_arr_int)
 		return (NULL);
 	arr_arr_int = arr_arr_int_fill_rest_bucket(
-		arr_arr_int,
-		pre_sorted_arr,
-		full_buckets,
-		rest);
+			arr_arr_int,
+			pre_sorted_arr,
+			full_buckets,
+			rest);
 	if (!arr_arr_int)
 		return (NULL);
 	return (arr_arr_int);
 }
 
+/*
+takes the empty "2D Array", the pre sorted array 
+and the number of full buckets (wihout the rest)
+
+fills buckets one by one and returns a 
+pointer to the first element of "2D Array"
+
+frees and returns NULL if an error occures
+*/
+
 static int	**arr_arr_int_fill_full_buckets(
 				int **arr_arr_int,
-				int	*pre_sorted_arr,
-				int	full_buckets)
+				int *pre_sorted_arr,
+				int full_buckets)
 {
 	int	*temp;
 	int	i;
@@ -90,24 +102,44 @@ static int	**arr_arr_int_fill_full_buckets(
 	return (arr_arr_int);
 }
 
+/*
+takes the empty "2D Array", the pre sorted array 
+and the number of full buckets (wihout the rest)
+and the rest
+
+fills the last (rest) bucket and returns a 
+pointer to the first element of "2D Array"
+
+frees and returns NULL if an error occures
+*/
+
 static int	**arr_arr_int_fill_rest_bucket(
 			int **arr_arr_int,
-			int	*pre_sorted_arr,
-			int	full_buckets,
-			int	rest)
+			int *pre_sorted_arr,
+			int full_buckets,
+			int rest)
 {
 	int	*temp;
 	int	start;
 
 	if (rest == 0)
 		return (arr_arr_int);
-	start = full_buckets * full_buckets;  // ✅ Richtige Start-Position
+	start = full_buckets * full_buckets;
 	temp = copy_sequence(pre_sorted_arr, start, rest);
 	if (!temp)
 		return (arr_arr_int_free(arr_arr_int));
-	arr_arr_int[full_buckets] = temp;  // ✅ ZUWEISEN!
+	arr_arr_int[full_buckets] = temp;
 	return (arr_arr_int);
 }
+
+/*
+takes the number of all buckets (incl rest bucket) 
+to allocate, first dimension of the "2D Array"
+and NULL terminates it.
+returns a pointer to the new allocated "2D Array"
+
+frees and returns NULL if an error occures
+*/
 
 static int	**arr_arr_int_init_new(
 				int buckets)
@@ -126,6 +158,12 @@ static int	**arr_arr_int_init_new(
 	}
 	return (arr_arr_int);
 }
+
+/*
+works like ft_substring, but with an integer array.
+returns a pointer to the first element of the new alloated in array
+returns NULL if an error occures
+*/
 
 static int	*copy_sequence(
 				int *src_arr,

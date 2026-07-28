@@ -2,12 +2,10 @@
 
 #include "./sort.h"
 
-// test
-
 // --- DOC ---
 
 /*
-TODO: test
+	this file contains functions to get a pre sorted 1D array
 */
 
 // --- prototype ---
@@ -19,7 +17,7 @@ static void	swap_int(int *a, int *b);
 // --- define ---
 
 /*
-comment
+extracts all the values of stack a and returns a pre sorted array
 */
 
 int	*arr_int_get_presorted(
@@ -35,6 +33,10 @@ int	*arr_int_get_presorted(
 	standart_lexxy_sort(arr_int, len);
 	return (arr_int);
 }
+
+/*
+just gets the array fro stack a
+*/
 
 static int	*get_array_from_stack_a(
 		t_stack_machine *machine)
@@ -59,13 +61,16 @@ static int	*get_array_from_stack_a(
 	return (arr);
 }
 
+/*
+lexxy's standart sort :)
+*/
+
 static void	standart_lexxy_sort(int *arr, int len)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-
 	while ((i + 1) < len)
 	{
 		j = i + 1;
@@ -78,6 +83,10 @@ static void	standart_lexxy_sort(int *arr, int len)
 		i++;
 	}
 }
+
+/*
+self explaining
+*/
 
 static void	swap_int(int *a, int *b)
 {

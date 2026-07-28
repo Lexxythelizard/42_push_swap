@@ -47,4 +47,3 @@ int	swap_first_and_third_a(t_stack_machine *machine)
 	machine_operation_execute(machine, RA);
 	return (1);
 }
-

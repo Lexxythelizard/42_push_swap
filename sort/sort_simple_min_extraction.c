@@ -56,8 +56,8 @@ static int	push_element_on_top_to_stack_b(t_stack_machine *machine)
 get idx of min value
 decide rotate / reverse rotate
 rotate smallest element on top
-*/	 
-	
+*/
+
 static int	rotate_smallest_element_to_top(t_stack_machine *machine)
 {
 	int		idx_min;
@@ -65,7 +65,6 @@ static int	rotate_smallest_element_to_top(t_stack_machine *machine)
 
 	stack_a = &(machine -> stacks[0]);
 	idx_min = stack_get_idx_min_val(stack_a);
-
 	if (stack_a -> len == 1)
 		return (0);
 	if (idx_min <= (stack_a -> len / 2))
@@ -74,7 +73,6 @@ static int	rotate_smallest_element_to_top(t_stack_machine *machine)
 				machine,
 				RA,
 				idx_min));
-
 	return (
 		machine_operation_execute_times_n(
 			machine,

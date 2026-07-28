@@ -2,12 +2,11 @@
 
 #include "./sort.h"
 
-// test
-
 // --- DOC ---
 
 /*
-TODO: test
+	meta file for utility array handling functions 
+	for bucket sort adaption
 */
 
 // --- define ---
@@ -31,9 +30,9 @@ int	**get_pre_sorted_buckets_as_arrays(
 	if (!arr_int)
 		return (NULL);
 	arr_arr_int = arr_arr_int_fill_buckets(
-		arr_int,
-		buckets,
-		rest);
+			arr_int,
+			buckets,
+			rest);
 	free(arr_int);
 	if (!arr_arr_int)
 		return (NULL);
@@ -46,7 +45,7 @@ frees an NULL terminated array of pointers to integer arrays
 
 int	**arr_arr_int_free(int **arr_arr_int)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr_arr_int[i])
@@ -64,8 +63,8 @@ credits to mira :)
 
 float	get_sqrt(int x)
 {
-    double	guess;
-    int		i;
+	double	guess;
+	int		i;
 
 	if (x < 0)
 		return (-1);
@@ -73,7 +72,7 @@ float	get_sqrt(int x)
 		return (0);
 	guess = x;
 	i = 0;
-	while (i < 30) 
+	while (i < 30)
 	{
 		guess = (guess + x / guess) / 2.0;
 		i++;

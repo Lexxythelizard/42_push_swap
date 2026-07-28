@@ -8,7 +8,7 @@
 // --- DOC ---
 
 /*
-TODO:	test edge cases, remove printf debugging
+TODO:	delete all the printf stuff
 */
 
 // --- define ---

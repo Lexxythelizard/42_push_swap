@@ -5,20 +5,24 @@
 // --- DOC ---
 
 /*
-TODO: test
+	see comments
 */
-
-// --- prototypes ---
 
 // --- define ---
 
 /*
-comment
+calls insertion sort on a certain range of stack b
+meant to sort exactly one bucket:
+
+	--> coplexity:	O((sqrt(n))²) --> O(n) per bucket
+
+	if O(n) was calles sqrt(n) buckets times, we have the 
+	requested time / operational complexity
 */
 
 void	bucket_insertion_sort_descending(
 			t_stack_machine *machine,
-			int	len)
+			int len)
 {
 	t_stack	*stack_b;
 	int		sorted;

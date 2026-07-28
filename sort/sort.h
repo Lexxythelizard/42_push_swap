@@ -59,7 +59,7 @@ void	sort_medium(
 
 // sort_medium_bucket.c
 
-int		bucket_sort_adaption(
+void	bucket_sort_adaption(
 			t_stack_machine *machine);
 
 int		push_and_sort_buckets(

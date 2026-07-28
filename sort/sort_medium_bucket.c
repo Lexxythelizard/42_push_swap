@@ -5,10 +5,6 @@
 // --- DOC ---
 
 /*
-TODO: test and comment
-*/
-
-/*
 Requieres n * sqrt(n) time / operation complexity
 
 Idea:
@@ -37,8 +33,9 @@ Idea:
 	push all the elements back to a
 
 */
+/*TODO: make function 1 line shorter*/
 
-int	bucket_sort_adaption(t_stack_machine *machine)
+void	bucket_sort_adaption(t_stack_machine *machine)
 {
 	int	**bucket_map;
 	int	bucket_size;
@@ -46,33 +43,28 @@ int	bucket_sort_adaption(t_stack_machine *machine)
 	int	buckets;
 
 	if (machine -> stacks[0].len <= 1)
-		return (machine -> stacks[0].len);
+		return ((void)(machine -> stacks[0].len));
 	if (machine -> stacks[0].len == 2)
-		return (sort_two(machine));
+		return ((void)(sort_two(machine)));
 	if (machine -> stacks[0].len == 3)
-		return (sort_three(machine));
+		return ((void)(sort_three(machine)));
 	buckets = (int)(get_sqrt(machine -> stacks[0].len));
 	bucket_size = buckets;
 	rest = machine -> stacks[0].len - bucket_size * buckets;
 	buckets += (rest > 0);
 	bucket_map = get_pre_sorted_buckets_as_arrays(
-		machine,
-		buckets,
-		rest);
+			machine,
+			buckets,
+			rest);
 	push_and_sort_buckets(
-		machine,
-		bucket_map,
-		bucket_size);
-	push_and_sort_rest(
-		machine,
-		rest);
+		machine, bucket_map, bucket_size);
+	push_and_sort_rest(machine, rest);
 	push_all_elements_to_stack_a(machine);
 	arr_arr_int_free(bucket_map);
-	return (machine -> stacks[0].len);
 }
 
 /*
-comment
+push and sorts all full buckets iterativly to b : descending order
 */
 
 int	push_and_sort_buckets(
@@ -99,7 +91,7 @@ int	push_and_sort_buckets(
 }
 
 /*
-comment
+pushes and sorts the rest to b : descending order
 */
 
 int	push_and_sort_rest(

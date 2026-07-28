@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filename.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
+/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SORT_H
 # define SORT_H
 
@@ -42,6 +54,11 @@ void	merge_to_b(
 			t_stack_machine *machine,
 			int to_merge_in_a,
 			int to_merge_in_b);
+
+// sort_complex_mergesort_efficientcy.c
+
+void	mergesort_a_smaller_stack_more_efficient(
+			t_stack_machine *machine);
 
 // sort_complex_mergesort.c
 

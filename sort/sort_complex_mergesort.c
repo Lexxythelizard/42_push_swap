@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filename.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
+/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 // --- icludes ---
 
 #include <limits.h>
@@ -31,6 +43,8 @@ void	merge_sort(t_stack_machine *machine)
 
 	all_elements = machine -> stacks[0].len;
 	current_merge_size = 4;
+	if (all_elements <= 6)
+		return (mergesort_a_smaller_stack_more_efficient(machine));
 	split_stack(machine);
 	sort_pairs(machine);
 	while (current_merge_size < all_elements)

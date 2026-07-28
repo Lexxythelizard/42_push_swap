@@ -130,12 +130,13 @@ Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
 Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_complex_mergesort_base.c \
 					$(Sort_Dir)/sort_complex_mergesort_merge_to_side_x.c \
+					$(Sort_Dir)/sort_complex_mergesort_efficiency.c \
 					$(Sort_Dir)/sort_complex_mergesort.c \
 					$(Sort_Dir)/sort_complex.c \
 					$(Sort_Dir)/sort_medium.c \
-					$(Sort_Dir)/sort_medium_bucket.c \
-					$(Sort_Dir)/sort_medium_bucket_fill_bucket.c \
-					$(Sort_Dir)/sort_medium_bucket_sort_bucket.c \
+					$(Sort_Dir)/sort_medium_bucketsort.c \
+					$(Sort_Dir)/sort_medium_bucketsort_fill_bucket.c \
+					$(Sort_Dir)/sort_medium_bucketsort_sort_bucket.c \
 					$(Sort_Dir)/sort_medium_bucketsort_utility.c \
 					$(Sort_Dir)/sort_medium_bucketsort_utility_arr.c \
 					$(Sort_Dir)/sort_medium_bucketsort_utility_arr_arr.c \

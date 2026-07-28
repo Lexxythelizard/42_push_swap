@@ -20,7 +20,7 @@ static int	**arr_arr_int_fill_full_buckets(
 static int	**arr_arr_int_fill_rest_bucket(
 				int **arr_arr_int,
 				int	*pre_sorted_arr,
-				int	len,
+				int	full_buckets,
 				int	rest);
 
 static int	**arr_arr_int_init_new(
@@ -59,7 +59,7 @@ int	**arr_arr_int_fill_buckets(
 	arr_arr_int = arr_arr_int_fill_rest_bucket(
 		arr_arr_int,
 		pre_sorted_arr,
-		buckets,
+		full_buckets,
 		rest);
 	if (!arr_arr_int)
 		return (NULL);
@@ -91,20 +91,21 @@ static int	**arr_arr_int_fill_full_buckets(
 }
 
 static int	**arr_arr_int_fill_rest_bucket(
-				int **arr_arr_int,
-				int	*pre_sorted_arr,
-				int	len,
-				int	rest)
+			int **arr_arr_int,
+			int	*pre_sorted_arr,
+			int	full_buckets,
+			int	rest)
 {
 	int	*temp;
-	int start;
+	int	start;
 
 	if (rest == 0)
 		return (arr_arr_int);
-	start = len - rest;
+	start = full_buckets * full_buckets;  // ✅ Richtige Start-Position
 	temp = copy_sequence(pre_sorted_arr, start, rest);
 	if (!temp)
 		return (arr_arr_int_free(arr_arr_int));
+	arr_arr_int[full_buckets] = temp;  // ✅ ZUWEISEN!
 	return (arr_arr_int);
 }
 

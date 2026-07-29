@@ -3,12 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+         #
+#    By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/12 11:27:12 by lenivorb          #+#    #+#              #
-#    Updated: 2026/07/09 16:16:23 by lenivorb         ###   ########.fr        #
+#    Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#              #
+#    Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#  *************************************************************************** #
+
+# ------------------------- Program -------------------------
+
+NAME			=	push_swap
 
 # ------------------------- Variables -------------------------
 
@@ -162,109 +166,26 @@ All_Src_Files	=	$(Stack_Files) \
 
 Push_Swap_Main	=	$(This_Dir)/main.c
 
-Test_Helper		=	$(Main_Dir)/test_helper_stack.c
-
-Test_Stats		=	$(Main_Dir)/test_helper_stats.c
-
-Test_Funcs		=	$(Main_Dir)/test_helper_funcs.c
-
-Test_Machine	=	$(Main_Dir)/test_helper_machine.c
-
-# -------> for testing
-
-Args_Main		=	$(Main_Dir)/test_argparsing.c
-
-Bench_Main		=	$(Main_Dir)/test_output.c
-
-Entropy_Main	=	$(Main_Dir)/test_entropy.c
-
-Stack_Main		=	$(Main_Dir)/test_stack_manipulation.c
-
-Stack_Bas_Main	=	$(Main_Dir)/test_stack_operation_basics.c
-
-Stack_Op_Main	=	$(Main_Dir)/test_stack_operation.c
-
-Stats_Main		=	$(Main_Dir)/test_stats_manipulation.c
-
-Funcs_Main		=	$(Main_Dir)/test_funcs_manipulation.c
-
-Machine_M_Main	=	$(Main_Dir)/test_machine_manipulation.c
-
-Machine_Main	=	$(Main_Dir)/test_machine_operation.c
-
-Ui_Main			=	$(Main_Dir)/test_ui.c
-
-Stack_Obj		=	$(Stack_Files:.c=.o)
-
-Push_Swap_Obj	=	$(Push_Swap_Files:.c=.o)
-
 # ------------------------- compile rules -------------------------
 
 # None
 
 # ------------------------- Commands -------------------------
 
-# test
+all: $(NAME)
 
-test_stackmanipulation: create_testdir
-	$(Compile) $(Stack_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
-	$(Include_Stack) $(Include_Test) \
-	$(Out) $(Test_Dir)/stackmanipulation
+re: fclean all
 
-test_stackbasicoperation: create_testdir
-	$(Compile) $(Stack_Bas_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
-	$(Include_Stack) $(Include_Test) \
-	$(Out) $(Test_Dir)/stackbasicoperations
-
-test_stackoperation: create_testdir
-	$(Compile) $(Stack_Op_Main) $(Test_Helper) $(Stack_Files) $(Debugg) \
-	$(Include_Stack) $(Include_Test) \
-	$(Out) $(Test_Dir)/stackoperations
-
-test_stats: create_testdir
-	$(Compile) $(Stats_Main) $(Test_Stats) $(Stats_Files) $(Debugg) \
-	$(Include_Stats) $(Include_Test) \
-	$(Out) $(Test_Dir)/statsmanipulation
-
-test_funcs: create_testdir
-	$(Compile) $(Funcs_Main) $(Test_Funcs) $(Funcs_Files) $(Debugg) \
-	$(Include_Funcs) $(Include_Test) \
-	$(Out) $(Test_Dir)/funcsmanipulation
-
-test_machinemanipulation: create_testdir
-	$(Compile) $(Machine_M_Main) $(Test_Machine) $(Machine_Files) \
-	$(Stack_Files) $(Stats_Files) $(Funcs_Files) $(Debugg) \
-	$(Include_SM) $(Include_Test) \
-	$(Out) $(Test_Dir)/machinemanipulation
-
-test_machineoperation: create_testdir libft
-	$(Compile) $(Machine_Main) $(Test_Machine) $(Machine_Files) \
-	$(Stack_Files) $(Stats_Files) $(Funcs_Files) $(Debugg) \
-	$(Include_Libft) $(Include_SM) $(Include_Test) \
-	-L $(Library_Dir) -l ft \
-	$(Out) $(Test_Dir)/machineoperation
-
-test_ui: create_testdir libft ftprintf
-	$(Compile) $(Ui_Main) \
-	$(Ui_Files) $(Debugg) \
-	$(Include_Libft) $(Include_Ui) $(Include_Test) \
-	$(LIBRARIES) \
-	$(Out) $(Test_Dir)/ui
-
-# others
-
-push_swap: create_testdir libft ftprintf
+$(NAME): create_testdir libft ftprintf
 	$(Compile) $(CFlags) $(Push_Swap_Main) $(All_Src_Files) \
-	$(Include_All) $(LIBRARIES) -g \
-	$(Out) $(Test_Dir)/prototype
+	$(Include_All) $(LIBRARIES) \
+	$(Out) $(This_Dir)/$(NAME)
 
-clean:
+fclean: ft_printf_fclean libft_fclean clean
+	rm -f $(NAME)
+
+clean: ft_printf_clean libft_clean
 	rm -f $(Push_Swap_Obj) $@
-
-create_testdir:
-	if [ ! -e "$(Test_Dir)" ]; then \
-		mkdir "$(Test_Dir)"; \
-	fi
 
 ftprintf:
 	cd $(Printf_Dir) && $(MAKE)
@@ -298,10 +219,32 @@ libft_fclean:
 libft_clean:
 	cd $(Libft_Dir) && $(MAKE) clean
 
+# for tests
 
-# ------------------------- Commands -------------------------
+push_swap_test: create_testdir libft ftprintf
+	$(Compile) $(CFlags) $(Push_Swap_Main) $(All_Src_Files) \
+	$(Include_All) $(LIBRARIES) -g \
+	$(Out) $(Test_Dir)/prototype
 
-.PHONY: all re flcean clean \
-		ftprintf ftprintf_re ftprintf_fclean ftprintf_clean \
-		libft libft_re libft_fclean libft_clean \
-		create_testdir compile_src 
+create_testdir:
+	if [ ! -e "$(Test_Dir)" ]; then \
+		mkdir "$(Test_Dir)"; \
+	fi
+
+# ------------------------- PHONY -------------------------
+
+.PHONY: \
+	all \
+	re \
+	fclean \
+	clean \
+	ftprintf \
+	ftprintf_re \
+	ftprintf_fclean \
+	ftprintf_clean \
+	libft \
+	libft_re \
+	libft_clean \
+	push_swap_test \
+	create_testdir \
+	compile_src

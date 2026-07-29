@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filename.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
+/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -5,8 +17,6 @@
 # include "./stackmachine/machine.h"
 # include "./sort/sort.h"
 # include "./ui/ui.h"
-
-// --- Makros ---
 
 // --- prototypes ---
 

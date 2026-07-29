@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filename.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
+/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 // --- icludes ---
 
 #include "./ui.h"
@@ -5,7 +17,7 @@
 // --- DOC ---
 
 /*
-	TODO:	test calculate_entropy
+	calculates entropy
 */
 
 // --- define ---

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filename.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
+/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef UI_H
 # define UI_H
 
@@ -20,7 +32,7 @@
 
 // --- prototypes ---
 
-struct s_stats;
+struct	s_stats;
 
 // ui_calculate_entropy.c
 

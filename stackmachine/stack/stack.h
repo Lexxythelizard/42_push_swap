@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filename.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
+/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STACK_H
 # define STACK_H
 
@@ -7,13 +19,15 @@
 
 // --- struct ---
 
-typedef struct s_stack_node {
+typedef struct s_stack_node
+{
 	int					val;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
 }						t_element;
 
-typedef struct s_stack {
+typedef struct s_stack
+{
 	int			len;
 	t_element	*first;
 	t_element	*last;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_adaptive.c                                    :+:      :+:    :+:   */
+/*   filename.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/11 18:22:06 by lenivorb          #+#    #+#             */
-/*   Updated: 2026/07/09 16:15:11 by lenivorb         ###   ########.fr       */
+/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
+/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

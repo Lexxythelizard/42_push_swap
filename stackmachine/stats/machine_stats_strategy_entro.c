@@ -56,27 +56,27 @@ int	stats_assign_strategy_by_entropy(t_stats *stats)
 static int	stats_assign_complex_if_complex(t_stats *stats)
 {
 	if (stats -> entropy >= COMPLEX_ENTRO)
-		stats -> strategy = COMPLEX_STR;
+		stats -> strategy = ADAPTIVE_COMPLEX_STR;
 	return (stats -> entropy >= COMPLEX_ENTRO);
 }
 
 static int	stats_assign_medium_if_medium(t_stats *stats)
 {
 	if (stats -> entropy >= MEDIUM_ENTRO)
-		stats -> strategy = MEDIUM_STR;
+		stats -> strategy = ADAPTIVE_MEDIUM_STR;
 	return (stats -> entropy >= MEDIUM_ENTRO);
 }
 
 static int	stats_assign_simple_if_simple(t_stats *stats)
 {
 	if (stats -> entropy > NULL_ENTRO)
-		stats -> strategy = SIMPLE_STR;
+		stats -> strategy = ADAPTIVE_SIMPLE_STR;
 	return (stats -> entropy > NULL_ENTRO);
 }
 
 static int	stats_assign_null_if_null(t_stats *stats)
 {
 	if (stats -> entropy == NULL_ENTRO)
-		stats -> strategy = NULL;
+		stats -> strategy = ADAPTIVE_NULL_STR;
 	return (stats -> entropy == NULL_ENTRO);
 }

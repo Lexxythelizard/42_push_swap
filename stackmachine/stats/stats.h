@@ -15,15 +15,16 @@
 
 // --- makros ---
 
-# define SIMPLE "(O(n²))"
-# define MEDIUM "(O(n√n\u0305)"
-# define COMPLEX "(O(n*log(n)))"
+# define ADAPTIVE_COMPLEX_STR "Adaptive / O(n*log(n))"
+# define ADAPTIVE_MEDIUM_STR "Adaptive / O(n√n\u0305)"
+# define ADAPTIVE_SIMPLE_STR "Adaptive / O(n²)"
+# define ADAPTIVE_NULL_STR "Adaptive / O(0)"
 
-# define BENCH_STR "test bench"
-# define ADAPTIVE_STR "test adaptive"
-# define COMPLEX_STR "test complex"
-# define MEDIUM_STR "test medium"
-# define SIMPLE_STR "test simple"
+# define BENCH_STR "bench"
+# define ADAPTIVE_STR "Adaptive"
+# define COMPLEX_STR "Complex / O(n*log(n))"
+# define MEDIUM_STR "Medium / O(n√n\u0305)"
+# define SIMPLE_STR "Simple / O(n²)"
 
 # define BENCH_VAL 16
 # define ADAPTIVE_VAL 8

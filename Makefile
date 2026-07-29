@@ -181,10 +181,10 @@ $(NAME): create_testdir libft ftprintf
 	$(Include_All) $(LIBRARIES) \
 	$(Out) $(This_Dir)/$(NAME)
 
-fclean: ft_printf_fclean libft_fclean clean
+fclean: ftprintf_fclean libft_fclean clean
 	rm -f $(NAME)
 
-clean: ft_printf_clean libft_clean
+clean: ftprintf_clean libft_clean
 	rm -f $(Push_Swap_Obj) $@
 
 ftprintf:

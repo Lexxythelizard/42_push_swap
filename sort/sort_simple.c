@@ -14,16 +14,13 @@
 
 #include "./sort.h"
 
-// for test
-#include <stdio.h>
-
 // --- DOC ---
 
 /*
-TODO:	delete all the printf stuff
+TODO:	rewrite comments
 */
 
-static void print_stacks(t_stack_machine *machine);
+// static void print_stacks(t_stack_machine *machine);
 
 // --- define ---
 
@@ -74,22 +71,6 @@ void	selection_sort(int *arr, int len)
 	}
 }
 
-void	min_extraction_sort(int *arr, int len)
-{
-	int	*temp;
-
-	if ((!arr) || (len == 0))
-		return ;
-	temp = malloc(len * size_of(int));
-	if (!temp)
-		return ;
-
-	i = 0;
-	
-	while (i < len)
-		if (arr[])
-}
-
 void	swap(int *a, int *b)
 {
 	int	swp;
@@ -104,12 +85,11 @@ void	swap(int *a, int *b)
 void	sort_simple(t_stack_machine *machine)
 {
 	min_extraction_adaption_sort(machine);
-	print_stacks(machine);
 	return ;
 }
 
 // --- for testing ---
-
+/*
 static void print_stacks(t_stack_machine *machine)
 {
 	int	len_a;
@@ -148,3 +128,4 @@ static void print_stacks(t_stack_machine *machine)
 	printf("-----------------------------\n");
 	printf("a\t\tb\n");
 }
+*/

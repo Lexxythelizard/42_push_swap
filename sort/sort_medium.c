@@ -14,20 +14,18 @@
 
 #include "./sort.h"
 
-// --- test ---
-#include <stdio.h>
-static void print_stacks(t_stack_machine *machine);
+// static void print_stacks(t_stack_machine *machine);
 
 // --- define ---
 
 void	sort_medium(t_stack_machine *machine)
 {
 	bucket_sort_adaption(machine);
-	print_stacks(machine);
+	return ;
 }
 
 // --- for testing ---
-
+/*
 static void print_stacks(t_stack_machine *machine)
 {
 	int	len_a;
@@ -66,3 +64,4 @@ static void print_stacks(t_stack_machine *machine)
 	printf("-----------------------------\n");
 	printf("a\t\tb\n");
 }
+*/

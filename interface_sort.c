@@ -18,7 +18,7 @@
 // --- DOC ---
 
 /*
-	... your comment here ...
+	TODO: wirte a comment
 */
 
 // --- define ---
@@ -38,9 +38,5 @@ void	run_sort(t_stack_machine *machine, int flag_val)
 	else if (flag_val == SIMPLE_VAL)
 		sort_simple(machine);
 	if (bench)
-	{
-		ft_printf("test bench\n");
 		print_bench(machine);
-	}
 }
-		//test_merge_and_split(machine);

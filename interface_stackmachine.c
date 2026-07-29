@@ -17,16 +17,10 @@
 // --- DOC ---
 
 /*
-	... your comment here ...
+ TODO: write comment, norminette check
 */
 
-// --- prototype ---
-
-int	machine_set(t_stack_machine *machine, const char **argv, int argc);
-
 // --- define ---
-
-/* TODO: write comment, norminette check */
 
 int	machine_set(t_stack_machine *machine, const char **argv, int argc)
 {
@@ -41,14 +35,11 @@ int	machine_set(t_stack_machine *machine, const char **argv, int argc)
 	flag_val = get_flag_values(argv, argc);
 	bench = 0;
 	entro = calculate_entropy(arr, len);
-
 	machine_init_new_empty(machine);
 	machine_func_assign(machine);
 	machine_assign_entropy(machine, entro);
 	machine_stack_init(machine, arr, len);
 	bench = 16 * (flag_val / 16);
-
 	free(arr);
-
 	return (bench + machine_assign_strategy(machine, flag_val));
 }

@@ -14,28 +14,24 @@
 
 #include "./sort.h"
 
-// test
-#include <stdio.h>
-
 // --- DOC ---
 
 /*
-TODO:	test and debugg
+TODO:	write comments
 */
 
-static void print_stacks(t_stack_machine *machine);
+//static void print_stacks(t_stack_machine *machine);
 
 // --- define ---
 
 void	sort_complex(t_stack_machine *machine)
 {
 	merge_sort(machine);
-	print_stacks(machine);
 	return ;
 }
 
 // --- for testing ---
-
+/*
 static void print_stacks(t_stack_machine *machine)
 {
 	int	len_a;
@@ -74,3 +70,4 @@ static void print_stacks(t_stack_machine *machine)
 	printf("-----------------------------\n");
 	printf("a\t\tb\n");
 }
+*/

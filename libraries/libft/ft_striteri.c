@@ -3,49 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/06 13:26:36 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/09 15:49:35 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 20:57:05 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
+
+// --- prototypes ---
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+
+// --- DOC ---
+
+/*
+ft_striteri iterate through a string and changing its members 
+by calling f() on them
+
+PARAMS:
+
+	s:	string  to iterate
+	f:	pointer to function { unsigned int, ptr to char }
+
+GUARD:
+
+	if Pointer to funktion is NULL or string is NULL return (void)
+
+RETURN:
+
+	---
+*/
+
+// --- define ---
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 
-	i = -1;
-	if (s && f)
-		while (s[++i])
-			f(i, s + i);
-}
-
-/* --test program-- */
-
-/*
-static void	rvn_fun(unsigned int n, char *c);
-
-// Replaces each even-indexed character with its lowercase version and each
-// odd-indexed character with its uppercase version
-static void	rvn_fun(unsigned int n, char *c)
-{
-	if (n % 2)
-		*c = ft_toupper(*c);
-	else
-		*c = ft_tolower(*c);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
+	i = 0;
+	if ((s == NULL) || (f == NULL))
+		return ;
+	while (s[i])
 	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
+		f(i, &(s[i]));
+		i++;
 	}
-	ft_striteri(argv[1], &rvn_fun);
-	ft_putendl_fd(argv[1], 1);
-	return (0);
 }
-*/

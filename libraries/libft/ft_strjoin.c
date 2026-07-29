@@ -3,53 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 23:29:04 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/09 15:46:34 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 21:22:42 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Allocates memory and returns a new string which is the result of
-   concatenating 's1' and 's2'. Returns NULL on error. */
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	len1;
-	size_t	size;
-	char	*rtrn;
+// --- prototypes ---
 
-	len1 = ft_strlen(s1) + 1;
-	size = len1 + ft_strlen(s2);
-	rtrn = malloc(size);
-	if (!rtrn)
-		return (NULL);
-	ft_strlcpy(rtrn, s1, len1);
-	ft_strlcat(rtrn, s2, size);
-	return (rtrn);
-}
+char	*ft_strjoin(char const *s1, char const *s2);
 
-/* --test program-- */
+// --- DOC ---
 
 /*
-int	main(int argc, char **argv)
-{
-	char	*rtrn;
+DESCRIPTION:
 
-	if (argc != 3)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	rtrn = ft_strjoin(argv[1], argv[2]);
-	if (!rtrn)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		ft_putendl_fd(rtrn, 1);
-		free(rtrn);
-	}
-	return (0);
-}
+ft_join joins to string and turn out a trun out a new string 
+concatinating s1 and s2
+by using malloc, ft_strlcpy, ft_strlcat
+
+PARAMS:
+
+    s1:  'prefix'
+    s2:  'suffix'
+
+GUARD:
+
+    if s1 or s2 is NULL return NULL
+	if memory allocation fails returns NULL
+
+RETURN:
+
+    pointer to new string
+    NULL if Guards are triggered
+
 */
+
+// --- define ---
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*concat;
+	size_t	dim;
+
+	if ((s1 == NULL) || (s2 == NULL))
+		return (NULL);
+	dim = (ft_strlen(s1) + ft_strlen(s2) + 1);
+	concat = malloc(dim);
+	if (concat == NULL)
+		return (NULL);
+	ft_strlcpy(concat, s1, dim);
+	ft_strlcat(concat, s2, dim);
+	return (concat);
+}

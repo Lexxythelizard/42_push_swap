@@ -3,63 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 19:03:46 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/09 15:45:25 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 22:47:01 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Allocates memory and returns a pointer to a new string which is a duplicate
-   of 's'. Returns NULL on error. */
+// --- prototypes ---
+
+char	*ft_strdup(const char *s);
+
+// --- DOC ---
+/*
+
+DESCRIPTION:
+
+	The  strdup() function returns a pointer to a new string 
+	which is a duplicate of the string s.
+    Memory for the new string is obtained with malloc(3), 
+	and can be freed with free(3).
+
+PARAMS:
+
+    s:     string
+
+GUARD:
+
+    if memory allocation fails returns NULL
+
+RETURN:
+
+    pointer to new string
+    NULL if Guard was triggered
+
+NOTE:
+
+	Behaves like the original:
+	--> ft_strdup(NULL) --> segfault or undefined
+
+*/
+
+// --- define ---
+
 char	*ft_strdup(const char *s)
 {
 	size_t	len;
-	char	*rtrn;
+	size_t	i;
+	char	*dup;
 
-	len = ft_strlen(s);
-	rtrn = malloc(len + 1);
-	if (!rtrn)
+	len = 0;
+	i = 0;
+	while (s[len])
+		len++;
+	dup = malloc((len + 1));
+	if (dup == NULL)
 		return (NULL);
-	ft_strlcpy(rtrn, s, len + 1);
-	return (rtrn);
+	while (i <= len)
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	return (dup);
 }
-
-/* --test program-- */
-
-/*
-#include <string.h>
-
-int	main(int argc, char **argv)
-{
-	char	*dup1;
-	char	*dup2;
-
-	if (argc != 2)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	dup1 = strdup(argv[1]);
-	dup2 = ft_strdup(argv[1]);
-	ft_putstr_fd("Original: ", 1);
-	if (!dup1)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		ft_putendl_fd(dup1, 1);
-		free(dup1);
-	}
-	ft_putstr_fd("My version: ", 1);
-	if (!dup2)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		ft_putendl_fd(dup2, 1);
-		free(dup2);
-	}
-	return (0);
-}
-*/

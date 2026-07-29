@@ -3,71 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 10:41:58 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/06 16:19:53 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 17:42:09 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Copies n bytes from 'src' to 'dest'. The memory areas may overlap. */
-void	*ft_memmove(void *dest, const void *src, size_t n)
-{
-	size_t	i;
+// --- prototypes ---
 
-	if (!dest || !src)
-		return (dest);
-	i = -1;
-	if (dest < src)
-		while (++i < n)
-			((char *)dest)[i] = ((char *)src)[i];
-	else
-		while (n--)
-			((char *)dest)[n] = ((char *)src)[n];
-	return (dest);
-}
+void	*ft_memmove(void *dest, const void *src, size_t n);
 
-/* --test program-- */
+// --- DOC ---
 
 /*
-#include <string.h>
+*ft_memmove() acts like if it would store the memory in an array 
+before copying it. 
+Actually it checks if location of source is > location of dest 
+to either coping forward or backward
 
-int	main(int argc, char **argv)
-{
-	int		offset;
-	int		nbr;
-	char	*test1;
-	char	*test2;
+GUARD:
 
-	if (argc != 3)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	offset = ft_atoi(argv[1]);
-	nbr = ft_atoi(argv[2]);
-	if (offset < -20 || offset + nbr > 32 || nbr > 32)
-	{
-		ft_putendl_fd("Trying to access outside of assigned memory.\n" \
-		"Please choose an offset between -20 and 20 and a number\n" \
-		"between 0 and 12 to make sure this doesn't happen!", 2);
-		return (-1);
-	}
-	test1 = ft_calloc(53, 1);
-	test2 = ft_calloc(53, 1);
-	ft_memset(test1, '0', 52);
-	ft_memcpy(test1 + 20, "Hello World!", 12);
-	ft_memcpy(test2, test1, 52);
-	memmove(test1 + 20 + offset, test1 + 20, nbr);
-	ft_memmove(test2 + 20 + offset, test2 + 20, nbr);
-	ft_putstr_fd("Original:   ", 1);
-	ft_putendl_fd(test1, 1);
-	ft_putstr_fd("My version: ", 1);
-	ft_putendl_fd(test2, 1);
-	free(test1);
-	free(test2);
-	return (0);
-}
+	if n is 0 just return dest
+
+RETURN:
+
+	Pointer to dest
 */
+
+// --- define ---
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	size_t		i;
+
+	i = 0;
+	if (!(n))
+		return (dest);
+	if (src < dest)
+	{
+		i = n - 1;
+		while (i > 0)
+		{
+			((char *)(dest))[i] = ((char *)(src))[i];
+			i--;
+		}
+		((char *)(dest))[i] = ((char *)(src))[i];
+		return (dest);
+	}
+	while (i < n)
+	{
+		((char *)(dest))[i] = ((char *)(src))[i];
+		i++;
+	}
+	return (dest);
+}

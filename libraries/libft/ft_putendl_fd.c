@@ -3,34 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 12:49:00 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/06 16:20:46 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/08 19:06:20 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Outputs the string pointed to by 's' to the specified file descriptor 'fd'
-   followed	by a newline */
-void	ft_putendl_fd(char *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-}
+// --- prototypes ---
 
-/* --test program-- */
+void	ft_putendl_fd(char *s, int fd);
+
+// --- DOC ---
 
 /*
-int	main(int argc, char **argv)
-{
-	if (argc != 3)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	ft_putendl_fd(argv[1], ft_atoi(argv[2]));
-	return (0);
-}
+
 */
+
+// --- scrats notes (delete later) ---
+
+/*
+	... notes...
+*/
+
+// --- define ---
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
+}

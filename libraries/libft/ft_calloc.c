@@ -3,79 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 17:56:49 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/07 12:40:09 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 22:53:19 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Allocates memory for an array of nmemb elements of size bytes each. Each byte
-   of the memory area is set to 0. Returns NULL on error or overflow. */
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*rtrn;
+// --- prototypes ---
 
-	if (size)
-		if (nmemb > SIZE_MAX / size)
-			return (NULL);
-	rtrn = malloc(nmemb * size);
-	ft_bzero(rtrn, nmemb * size);
-	return (rtrn);
-}
+void	*ft_calloc(size_t nmemb, size_t size);
 
-/* --test program-- */
+// --- DOC ---
 
 /*
-typedef int	t_type;
+guard: checks if the allocated memory will end in an overflow
+dimensioning nmemb * size
+guard: checks if the memory was available
+setting every byte to ZERO
 
-int	main(int argc, char **argv)
-{
-	void	*dest1;
-	void	*dest2;
-	int		n;
-	int		i;
+return:
 
-	if (argc != 2)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	n = ft_atoi(argv[1]) * (int) sizeof(t_type);
-	dest1 = calloc(n, sizeof(t_type));
-	dest2 = ft_calloc(n, sizeof(t_type));
-	ft_putendl_fd("Original: ", 1);
-	if (!dest1)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		i = 0;
-		while (i < n)
-		{
-			ft_putnbr_fd((int)(((char *)dest1)[i++]), 1);
-			if (i != n)
-				ft_putstr_fd(", ", 1);
-		}
-		ft_putchar_fd('\n', 1);
-		free(dest1);
-	}
-	ft_putendl_fd("My version: ", 1);
-	if (!dest2)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		i = 0;
-		while (i < n)
-		{
-			ft_putnbr_fd((int)(((char *)dest2)[i++]), 1);
-			if (i != n)
-				ft_putstr_fd(", ", 1);
-		}
-		ft_putchar_fd('\n', 1);
-		free(dest2);
-	}
-	return (0);
-}
+	if guard:	NULL
+	else:		pointer to allocated memory
+
+OVERFLOW GUARD:
+
+	IF	| a * b == c | <--> | c / a == b | <--> | c / b == a |
+	EX	| 2 * 4 == 8 | <--> | 8 / 2 == 4 | <--> | 8 / 4 == 2 |
+
+	IF	| a * b >  c | <--> | c / a <  b | <--> | c / b <  a |
+	EX	| 2 * 5 >  8 | <--> | 8 / 2 <  5 | <--> | 8 / 5 <  2 |
+
+	==> 
+	IF	| nmemb * size > SIZE_MAX | <--> | SIZE_MAX / nmemb < size |
+
+NOTE:
+
+	overflows of nmemb or size not covered!
 */
+
+// --- define ---
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void			*arr;
+	unsigned char	*str;
+	size_t			dim;
+	size_t			i;
+
+	if ((nmemb) && (((size_t)(SIZE_MAX / nmemb)) < size))
+		return (NULL);
+	dim = (nmemb * size);
+	if (!(dim))
+		dim = 1;
+	i = 0;
+	arr = malloc(dim);
+	if (arr == NULL)
+		return (NULL);
+	str = arr;
+	while (i < dim)
+	{
+		str[i] = 0;
+		i++;
+	}
+	return (arr);
+}

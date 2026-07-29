@@ -3,70 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/06 16:08:19 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/09 15:33:22 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 16:54:01 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Adds the node 'new' at the end of the list */
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*last;
+// --- prototypes ---
 
-	if (lst)
-	{
-		if (*lst)
-		{
-			last = ft_lstlast(*lst);
-			last -> next = new;
-		}
-		else
-			*lst = new;
-	}
-}
+void	ft_lstadd_back(t_list **lst, t_list *new);
 
-/* --test program-- */
+// --- DOC ---
 
 /*
-static void	rvn_del(void *s);
+void ft_lstadd_back(t_list **lst, t_list *new) itarating through list
+until it finds the note with the NULL pointer and appending new to it.
 
-// Replaces a string with null bytes
-static void	rvn_del(void *s)
-{
-	if (s)
-		while (*((char *)s))
-			*((char *)(s++)) = '\0';
-}
+REQUIRES:
 
-int	main(int argc, char **argv)
-{
-	t_list	*lst;
-	t_list	*new;
-	t_list	*h;
+    #include "libft.h"
 
-	if (argc != 3)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	lst = ft_lstnew(argv[1]);
-	new = ft_lstnew(argv[2]);
-	ft_lstadd_back(&lst, new);
-	ft_putchar_fd('\'', 1);
-	h = lst;
-	while (h)
-	{
-		ft_putstr_fd(h -> content, 1);
-		if (h -> next)
-			ft_putstr_fd("\', \'", 1);
-		h = h -> next;
-	}
-	ft_putendl_fd("\'", 1);
-	ft_lstclear(&lst, &rvn_del);
-	return (0);
-}
+    typedef struct s_list
+    {
+        void *content;
+        struct s_list *next;
+    } t_list
+
+PARAMS:
+
+    lst: The address of a pointer to the first node of a list.
+	new: The address of a pointer to the node to be added.
+
+DESCRIPTION:
+
+    Adds the node ’new’ at the end of the list.
+
+GUARD:
+
+    if lst is NULL, or new is NULL: return (void);
+
+RETURN:
+
+    ---
 */
+
+// --- define ---
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*ptr;
+
+	if ((lst == NULL) || (new == NULL))
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	ptr = *lst;
+	while ((*ptr).next != NULL)
+		ptr = (*ptr).next;
+	(*ptr).next = new;
+}

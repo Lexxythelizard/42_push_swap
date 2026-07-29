@@ -3,119 +3,167 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/06 12:19:31 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/09 15:55:22 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 22:23:24 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-static void	rvn_clear(void ***s);
-static int	rvn_countword(char const *s, char c);
+// --- prototypes ---
 
-/* frees a dynamically allocated, null-terminated array of pointers */
-static void	rvn_clear(void ***s)
+char			**ft_split(char const *s, char c);
+static size_t	lxy_count_fields(const char *str, const char dil);
+static char		**lxy_valid_or_null(char ***new_arr, size_t size);
+static void		lxy_free_broken_str_arr(char ***strs, size_t size);
+
+// --- DOC ---
+/*
+DESCRIPTION:
+
+ft_split allocates memory malloc() array of strings obtained 
+by splitting ’s’ using the character ’c’ as a delimiter.
+The array of pointers itself is allocated dynamically.
+Each string in the returned array is allocated independently 
+by calling ft_substring()
+The returned array is NULL terminated
+
+utility : lxy_is_chr_in_str(const char *str, const char c)
+
+PARAMS:
+
+    s1:     string
+    set:    set of characters to look for
+
+GUARD:
+
+    if s or set is NULL return [NULL]
+    if memory allocation fails returns NULL
+	if memory allocation fails in any string --> return NULL
+
+RETURN:
+
+    pointer to new string
+    NULL if Guard was triggered
+
+UTILITY FUNCTIONS:
+
+	lxy_count_fields(const char *str, const char dil)
+
+		--> count fields 0 - MAX_SIZE possible
+
+	**lxy_valid_or_null(char ***new_arr, size_t size);
+
+		--> created because of ROL (running out of lines)
+			either checks if some str is broken or NULL
+			in this case free everything and return NULL
+			else just return the array itself
+
+	lxy_free_broken_str_arr(char ***strs, size_t size);
+
+		--> runs size time and frees every single string
+			then frees the array itself and set pointer to NULL
+
+NOTE:
+
+	if memory allocation failed in any step
+					--> NULL 			was returned
+
+	if s was empty	--> array { NULL }	was returned
+
+*/
+
+// --- define ---
+
+char	**ft_split(char const *s, char c)
 {
-	size_t	i;
+	char		**str_array;
+	size_t		i;
+	size_t		fields;
+	size_t		start;
+	size_t		stop;
 
-	if (s)
+	i = 0;
+	start = 0;
+	fields = lxy_count_fields(s, ((const char)(c)));
+	str_array = malloc((fields + 1) * sizeof(char *));
+	if (str_array == NULL)
+		return (NULL);
+	while (i < fields)
 	{
-		if (*s)
-		{
-			i = 0;
-			while ((*s)[i])
-			{
-				free((*s)[i]);
-				(*s)[i++] = 0;
-			}
-			free(*s);
-			*s = NULL;
-		}
+		while ((s[start] == c) && (s[start]))
+			start++;
+		stop = start;
+		while ((s[stop] != c) && (s[stop]))
+			stop++;
+		str_array[i] = ft_substr(s, start, (stop - start));
+		start = stop;
+		i++;
 	}
+	str_array[i] = NULL;
+	return (lxy_valid_or_null(&str_array, fields));
 }
 
-/* Counts the number of words in the string s, where words are delimited by
-   a number of occurences of the character 'c' */
-static int	rvn_countword(char const *s, char c)
-{
-	size_t	i;
-	size_t	count;
+// --- utillities ---
 
-	if (!s)
+static size_t	lxy_count_fields(const char *str, const char dil)
+{
+	size_t	count;
+	size_t	i;
+	int		on_dil;
+
+	count = 0;
+	i = 0;
+	on_dil = 1;
+	if (str == NULL)
 		return (0);
-	i = -1;
-	count = (s[0] != c && s[0] != '\0');
-	while (s[++i])
-		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
+	while (str[i])
+	{
+		if (str[i] == dil)
+			on_dil = 1;
+		if ((on_dil) && (str[i] != dil))
+		{
 			count++;
+			on_dil = 0;
+		}
+		i++;
+	}
 	return (count);
 }
 
-/* Allocates memory and returns an array of strings obtained by splitting 's'
-   using the character 'c' as a delimiter. Frees up the already allocated
-   memory and returns NULL on error */
-char	**ft_split(char const *s, char c)
+static char	**lxy_valid_or_null(char ***new_arr, size_t size)
 {
-	size_t	num_words;
-	size_t	i;
-	char	*next;
-	char	**rtrn;
+	size_t		i;
 
-	num_words = rvn_countword(s, c);
-	rtrn = ft_calloc(num_words + 1, 8);
 	i = 0;
-	while (rtrn && i < num_words)
+	while (i < size)
 	{
-		next = ft_strchr(s, c);
-		if (!next)
-			next = ft_strchr(s, 0);
-		if (next != s)
+		if ((*new_arr)[i] == NULL)
 		{
-			rtrn[i++] = ft_substr(s, 0, next - s);
-			if (!(rtrn[i - 1]))
-				rvn_clear((void ***)(&rtrn));
+			lxy_free_broken_str_arr(new_arr, size);
+			return (NULL);
 		}
-		s = next + 1;
+		i++;
 	}
-	return (rtrn);
+	return (*new_arr);
 }
 
-/* --test program-- */
-
-/*
-int	main(int argc, char **argv)
+static void	lxy_free_broken_str_arr(char ***strs, size_t size)
 {
-	char	**rtrn;
 	size_t	i;
 
-	if (argc != 3)
+	i = 0;
+	while (i < size)
 	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
+		if ((*strs)[i] != NULL)
+			free((*strs)[i]);
+		(*strs)[i] = NULL;
+		i++;
 	}
-	if (ft_strlen(argv[2]) != 1)
-	{
-		ft_putendl_fd("Not a single character!", 2);
-		return (-1);
-	}
-	rtrn = ft_split(argv[1], *(argv[2]));
-	if (!rtrn)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		i = 0;
-		ft_putchar_fd('\'', 1);
-		while (rtrn[i])
-		{
-			ft_putstr_fd(rtrn[i++], 1);
-			if (rtrn[i])
-				ft_putstr_fd("\', \'", 1);
-		}
-		ft_putendl_fd("\'", 1);
-		rvn_clear((void ***)(&rtrn));
-	}
-	return (0);
+	free(*strs);
+	*strs = NULL;
 }
-*/

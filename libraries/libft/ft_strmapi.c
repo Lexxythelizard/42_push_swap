@@ -3,66 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/06 12:52:44 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/09 15:49:06 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 22:17:54 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Applies the function f to each character of the string s, passing its index
-   as the first argument and the character itself as the second. Allocates
-   memory and creates a new string from the return values of the successive
-   applications of f. Returns either that string or NULL on error. */
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	char			*rtrn;
-	unsigned int	i;
+// --- prototypes ---
 
-	if (!s || !f)
-		return (NULL);
-	rtrn = ft_calloc(ft_strlen(s) + 1, 1);
-	if (!rtrn)
-		return (NULL);
-	i = -1;
-	while (s[++i])
-		rtrn[i] = f(i, s[i]);
-	return (rtrn); 
-}
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
-/* --test program-- */
+// --- DOC ---
 
 /*
-static char	rvn_fun(unsigned int n, char c);
+LIBRARY:
 
-// Puts every even-indexed character to lowercase and every odd-indexed
-// character to uppercase
-static char	rvn_fun(unsigned int n, char c)
-{
-	if (n % 2)
-		return (ft_toupper(c));
-	return (ft_tolower(c));
-}
+ft_strmapi iterate through a string creating a second one by 
+by calling f() to get the character to cast in every itteration
 
-int	main(int argc, char **argv)
-{
-	char	*rtrn;
+PARAMS:
 
-	if (argc != 2)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	rtrn = ft_strmapi(argv[1], &rvn_fun);
-	if (!rtrn)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		ft_putendl_fd(rtrn, 1);
-		free(rtrn);
-	}
-	return (0);
-}
+    s:  string  to iterate throug an map
+    f:  pointer to function { unsigned int, ptr to char }
+
+GUARD:
+
+    if Pointer to funktion is NULL or string is NULL return NULL
+	if memory allocation fails --- return NULL
+
+RETURN:
+
+    pointer to new string
+	NULL if Guards are triggered
 */
+
+// --- define ---
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	size_t	i;
+	char	*new;
+
+	i = 0;
+	if ((s == NULL) || (f == NULL))
+		return (NULL);
+	new = malloc(ft_strlen(s) + 1);
+	if (new == NULL)
+		return (NULL);
+	while (s[i])
+	{
+		new[i] = f((unsigned int)(i), s[i]);
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
+}

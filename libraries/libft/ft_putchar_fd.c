@@ -3,37 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 12:23:53 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/06 16:20:33 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/08 19:00:52 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Outputs the character 'c' to the specified file descriptor 'fd' */
+// --- prototypes ---
+
+void	ft_putchar_fd(char c, int fd);
+
+// --- DOC ---
+
+/*
+
+*/
+
+// --- scrats notes (delete later) ---
+
+/*
+	... notes...
+*/
+
+// --- define ---
+
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
 
-/* --test program-- */
-
+// --- utilities ---
 /*
-int	main(int argc, char **argv)
+(static)	lxy_...
 {
-	if (argc != 3)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	if (ft_strlen(argv[1]) != 1)
-	{
-		ft_putendl_fd("Not a single character!", 2);
-		return (-1);
-	}
-	ft_putchar_fd(*(argv[1]), ft_atoi(argv[2]));
-	return (0);
+	//ft...
 }
 */

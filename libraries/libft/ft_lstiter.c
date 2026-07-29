@@ -3,62 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/06 14:09:49 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/09 15:35:50 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 14:56:36 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Iterates through the list lst and applies the function f to the content of
-   each node */
-void	ft_lstiter(t_list *lst, void (*f)(void *))
-{
-	while (lst && f)
-	{
-		f(lst -> content);
-		lst = lst -> next;
-	}
-}
+// --- prototypes ---
 
-/* --test program-- */
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+
+// --- DOC ---
 
 /*
-static void	rvn_print(void *s);
-static void	rvn_del(void *s);
 
-// Replaces a string with null bytes
-static void	rvn_del(void *s)
-{
-	if (s)
-		while (*((char *)s))
-			*((char *)(s++)) = '\0';
-}
 
-// Prints a string to stdout, followed by a newline
-static void	rvn_print(void *s)
-{
-	ft_putendl_fd((char *)s, 1);
-}
+PARAMS
 
-int	main(int argc, char **argv)
-{
-	int		i;
-	t_list	*lst;
+	lst: The address of a pointer to a node.
+	f: The address of the function to apply to each node’s content
 
-	if (argc == 1)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	i = 1;
-	lst = NULL;
-	while (argv[i])
-		ft_lstadd_front(&lst, ft_lstnew(argv[i++]));
-	ft_lstiter(lst, &rvn_print);
-	ft_lstclear(&lst, &rvn_del);
-	return (0);
-}
+DESCRIPTION:
+
+	Iterates through the list ’lst’ and applies the
+	function ’f’ to the content of each node.
+
+RETURN:
+
+	---
 */
+
+// --- define ---
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	t_list	*ptr;
+
+	ptr = lst;
+	if ((ptr == NULL) || (f == NULL))
+		return ;
+	f((*ptr).content);
+	while ((*ptr).next != NULL)
+	{
+		ptr = (*ptr).next;
+		f((*ptr).content);
+	}
+}

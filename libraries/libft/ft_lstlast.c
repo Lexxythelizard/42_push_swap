@@ -3,57 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/06 15:54:37 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/06 16:18:26 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/10 17:59:15 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Returns the last node of the list */
-t_list	*ft_lstlast(t_list *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst -> next)
-		lst = lst -> next;
-	return (lst);
-}
+// --- prototypes ---
 
-/* --test program-- */
+t_list	*ft_lstlast(t_list *lst);
+
+// --- DOC ---
 
 /*
-static void	rvn_del(void *s);
+t_list *ft_lstlast(t_list *lst) itarating through list
+until it finds the note with the NULL pointer
 
-// Replaces a string with null bytes
-static void	rvn_del(void *s)
-{
-	if (s)
-		while (*((char *)s))
-			*((char *)(s++)) = '\0';
-}
+REQUIRES:
 
-int	main(int argc, char **argv)
-{
-	int		i;
-	t_list	*lst;
-	t_list	*rtrn;
-	
-	(void)argc;
-	lst = NULL;
-	i = 1;
-	while (argv[i])
-		ft_lstadd_front(&lst, ft_lstnew(argv[i++]));
-	rtrn = ft_lstlast(lst);
-	if (!rtrn)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		ft_putendl_fd(rtrn -> content, 1);
-		ft_lstclear(&lst, &rvn_del);
-	}
-	return (0);
-}
+    #include "libft.h"
+
+    typedef struct s_list
+    {
+        void *content;
+        struct s_list *next;
+    } t_list
+
+PARAMS:
+
+    lst: The beginning of the list.
+
+DESCRIPTION:
+
+    Counts the number of nodes in the list.
+
+GUARD:
+
+    if first element lst is NULL, return NULL
+
+RETURN:
+
+    Pointer to last node of the list
+	NULL if Guard was triggerd
 */
+
+// --- define ---
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*ptr;
+
+	ptr = lst;
+	if (ptr == NULL)
+		return (NULL);
+	while ((*ptr).next != NULL)
+		ptr = (*ptr).next;
+	return (ptr);
+}

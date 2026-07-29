@@ -3,66 +3,146 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 15:10:42 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/07 13:08:04 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 22:17:26 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Allocates memory and returns a string representing the integer received
-   as an argument */
-char	*ft_itoa(int n)
-{
-	int		len;
-	int		h;
-	char	*rtrn;
+// --- prototypes ---
 
-	len = n <= 0;
-	h = n;
-	while (h)
-	{
-		h /= 10;
-		len++;
-	}
-	rtrn = malloc(len + 1);
-	if (!rtrn)
-		return (NULL);
-	h = n * (1 - 2 * (n > 0));
-	rtrn[len] = '\0';
-	while (len--)
-	{
-		rtrn[len] = (-(h % 10) + '0');
-		h /= 10;
-	}
-	if (n < 0)
-		rtrn[0] = '-';
-	return (rtrn);
-}
+char			*ft_itoa(int n);
+static void		lxy_put_pos_int_to_str(char *int_str, int n);
+static size_t	lxy_countdigits_and_sign(int n);
+static int		lxy_set_divisor_base_10(int n);
+static int		lxy_to_negativ(int n);
 
-/* --test program-- */
+// --- DOC ---
 
 /*
+DESCRIPTION:
 
-int	main(int argc, char **argv)
-{
-	char	*rtrn;
+ft_itoa allocates memory malloc() and returns a string 
+representing the integer received as an argument. 
 
-	if (argc != 2)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	rtrn = ft_itoa(ft_atoi(argv[1]));
-	if (!rtrn)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		ft_putendl_fd(rtrn, 1);
-		free (rtrn);
-	}
-	return (0);
-}
+utility : lxy_is_chr_in_str(const char *str, const char c)
+
+PARAMS:
+
+		n:     integer given
+
+GUARD:
+
+		if memory allocation fails returns NULL
+
+RETURN:
+
+    pointer to new string
+    NULL if Guard was triggered
+
+UTILITY FUNCTIONS:
+
+	lxy_put_pos_int_to_str(char *int_str, int n);
+
+        --> puts a positv number into an existing str
+
+	lxy_countdigits_and_sign(int n);
+
+        --> uses aritmetical operations to count the digits 
+			(characters needed) for the string without '\0'
+
+	lxy_set_divisor_base_10(int n);
+
+        --> sets the divisor to 10^(n) ; n = digits - 1
+
+	lxy_to_negativ(int n);
+
+        --> returns negativ of n
+
 */
+
+// --- define ---
+
+char	*ft_itoa(int n)
+{
+	char	*int_str;
+	size_t	len;
+	size_t	i;
+
+	i = 0;
+	len = lxy_countdigits_and_sign(n);
+	int_str = malloc(len + 1);
+	if (int_str == NULL)
+		return (NULL);
+	if (n < 0)
+		int_str[i] = 45;
+	if (n < 0)
+		i++;
+	n = lxy_to_negativ(n);
+	lxy_put_pos_int_to_str(&(int_str[i]), n);
+	return (int_str);
+}
+
+/*
+utillity function
+*/
+
+static void	lxy_put_pos_int_to_str(char *int_str, int n)
+{
+	int		divisor;
+	size_t	i;
+
+	i = 0;
+	n = lxy_to_negativ(n);
+	divisor = lxy_set_divisor_base_10(n);
+	while (divisor >= 10)
+	{
+		int_str[i] = ((((int)(n / divisor)) * (-1)) + 48);
+		n = (int)(n % divisor);
+		divisor /= 10;
+		i++;
+	}
+	int_str[i] = (((int)(n / divisor)) * (-1)) + 48;
+	int_str[i + 1] = '\0';
+}
+
+static size_t	lxy_countdigits_and_sign(int n)
+{
+	size_t	len;
+	int		divisor;
+
+	len = 1;
+	if (n < 0)
+		len++;
+	divisor = 1;
+	n = lxy_to_negativ(n);
+	while ((int)(n / divisor) <= (-10))
+	{
+		len++;
+		divisor *= 10;
+	}
+	return (len);
+}
+
+static int	lxy_set_divisor_base_10(int n)
+{
+	int	divisor;
+
+	divisor = 1;
+	n = lxy_to_negativ(n);
+	while ((int)(n / divisor) <= (-10))
+		divisor *= 10;
+	return (divisor);
+}
+
+static int	lxy_to_negativ(int n)
+{
+	if (n > 0)
+		return (n * (-1));
+	return (n);
+}

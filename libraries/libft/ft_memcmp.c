@@ -3,66 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 19:19:14 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/06 16:19:23 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/09 23:14:31 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Compares the first n bytes of the memory areas pointed to by s1 and s2.
-   Returns the difference of the values of the first bytes that differ or 0
-   if the memory is equal */
+// --- prototypes ---
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n);
+
+// --- define ---
+
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	c1;
+	unsigned char	c2;
 
-	if ((!s1 && !s2) || !n)
+	i = 0;
+	if (!(n))
 		return (0);
-	i = -1;
-	if (!s1)
+	while ((i + 1) < n)
 	{
-		while (++i < n)
-			if (0 != ((unsigned char *)s2)[i])
-				return (-((unsigned char *)s2)[i]);
-		return (0);
+		c1 = ((unsigned char)((char *)(s1))[i]);
+		c2 = ((unsigned char)((char *)(s2))[i]);
+		if (c1 != c2)
+			return ((int)(c1 - c2));
+		i++;
 	}
-	if (!s2)
-	{
-		while (++i < n)
-			if (((unsigned char *)s1)[i] != 0)
-				return (((unsigned char *)s1)[i]);
-		return (0);
-	}
-	while (++i < n)
-		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-	return (0);
+	c1 = ((unsigned char)((char *)(s1))[i]);
+	c2 = ((unsigned char)((char *)(s2))[i]);
+	return ((int)(c1 - c2));
 }
-
-/* --test program-- */
-
-/*
-#include <string.h>
-
-int	main(int argc, char **argv)
-{
-	int	n;
-
-	if (argc != 4)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	n = ft_atoi(argv[3]);
-	ft_putstr_fd("Original: ", 1);
-	ft_putnbr_fd(memcmp(argv[1], argv[2], n), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putstr_fd("My version: ", 1);
-	ft_putnbr_fd(ft_memcmp(argv[1], argv[2], n), 1);
-	ft_putchar_fd('\n', 1);
-	return (0);
-}
-*/

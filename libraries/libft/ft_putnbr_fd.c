@@ -3,37 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 15:36:37 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/06 16:20:58 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 16:56:35 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Outputs the integer 'n' to the specified file descriptor */
+// --- prototypes ---
+
+void	ft_putnbr_fd(int n, int fd);
+
+// --- DOC ---
+
+/*
+
+*/
+
+// --- scrats notes (delete later) ---
+
+/*
+	... notes...
+*/
+
+// --- define ---
 
 void	ft_putnbr_fd(int n, int fd)
 {
+	int		divisor;
+	char	c;
+
+	divisor = 1;
 	if (n < 0)
-		ft_putchar_fd('-', fd);
-	if (n < -9 || n > 9)
-		ft_putnbr_fd((n / 10) * (1 - 2 * (n < 0)), fd);
-	ft_putchar_fd((n % 10) * (1 - 2 * (n < 0)) + '0', fd);
-}
-
-/* --test program-- */
-
-/*
-int	main(int argc, char **argv)
-{
-	if (argc != 3)
+		write(fd, "-", 1);
+	else
+		n *= (-1);
+	while (((int)(n / divisor)) <= (-10))
+		divisor *= 10;
+	while (divisor >= 10)
 	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
+		c = (char)(((int)(n / divisor) *(-1)) + 48);
+		write(fd, &c, 1);
+		n %= divisor;
+		divisor /= 10;
 	}
-	ft_putnbr_fd(ft_atoi(argv[1]), ft_atoi(argv[2]));
-	return (0);
+	c = (char)(((int)(n / divisor) *(-1)) + 48);
+	write(fd, &c, 1);
 }
-*/

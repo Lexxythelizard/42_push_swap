@@ -3,34 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 12:38:52 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/06 16:21:08 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/08 19:06:55 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Outputs the string pointed to by 's' to the specified file descriptor 'fd' */
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (s)
-		while (*s)
-			ft_putchar_fd(*(s++), fd);
-}
+// --- prototypes ---
 
-/* --test program-- */
+void	ft_putstr_fd(char *s, int fd);
+
+// --- DOC ---
 
 /*
-int	main(int argc, char **argv)
-{
-	if (argc != 3)
-	{
-		ft_putstr_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	ft_putstr_fd(argv[1], ft_atoi(argv[2]));
-	return (0);
-}
+
 */
+
+// --- scrats notes (delete later) ---
+
+/*
+	... notes...
+*/
+
+// --- define ---
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen(s));
+}

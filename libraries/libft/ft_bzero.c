@@ -3,62 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 18:44:49 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/06 16:14:55 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/09 22:53:00 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* erases the data in the n bytes of memory starting at the location pointed to
-   by s, by filling it with null bytes */
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, 0, n);
-}
+// --- prototypes ---
 
-/* --test program-- */
+void	ft_bzero(void *s, size_t n);
+
+// --- DOC ---
 
 /*
-#include <strings.h>
+*ft_bzero() iterate forward n times in steps of one byte 
+and setting the memory to 0.
 
-int	main(int argc, char **argv)
-{
-	char	*s1;
-	char	*s2;
-	int		i;
+Usefull to clear sensitiv data.
+RETURN:
 
-	s1 = ft_strdup("Hello World!");
-	s2 = ft_strdup("Hello World!");
-	if (argc != 2)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	ft_putendl_fd("Original: ", 1);
-	i = 0;
-	bzero(s1, ft_atoi(argv[1]));
-	ft_bzero(s2, ft_atoi(argv[1]));
-	while (i < 12)
-	{
-		ft_putnbr_fd((int)(s1[i++]), 1);
-		if (i != 12)
-			ft_putstr_fd(", ", 1);
-	}
-	ft_putchar_fd('\n', 1);
-	ft_putendl_fd("My version: ", 1);
-	i = 0;
-	while (i < 12)
-	{
-		ft_putnbr_fd((int)(s2[i++]), 1);
-		if (i != 12)
-			ft_putstr_fd(", ", 1);
-	}
-	ft_putchar_fd('\n', 1);
-	free(s1);
-	free(s2);
-	return (0);
-}
+    ---
 */
+
+// --- define ---
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)(s))[i] = 0;
+		i++;
+	}
+}

@@ -3,59 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 21:45:56 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/09 15:55:36 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 21:28:34 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Allocates memory and returns a substring of s, starting at start and having
-   maximum length len. Returns NULL on error */
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	slen;
-	char	*rtrn;
+// --- prototypes ---
 
-	slen = ft_strlen(s);
-	if (start > slen)
-	{
-		start = 0;
-		len = 0;
-	}
-	else if (start + len > slen)
-		len = slen - start;
-	rtrn = malloc(len + 1);
-	if (!rtrn)
-		return (NULL);
-	ft_strlcpy(rtrn, s + start, len + 1);
-	rtrn[len] = '\0';
-	return (rtrn);
-}
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
-/* --test program-- */
+// --- DOC ---
 
 /*
-int	main(int argc, char **argv)
-{
-	char	*rtrn;
+DESCRIPTION:
 
-	if (argc != 4)
-	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
-	}
-	rtrn = ft_substr(argv[1], ft_atoi(argv[2]), ft_atoi(argv[3]));
-	if (!rtrn)
-		ft_putendl_fd("(null)", 1);
-	else
-	{
-		ft_putendl_fd(rtrn, 1);
-		free(rtrn);
-	}
-	return (0);
-}
+void ft_substr(char const *s, unsigned int start, size_t len)
+Allocates memory using malloc and returns a substring from the string ’s’.
+The substring starts at index ’start’ and has a maximum length of ’len
+
+PARAMS:
+
+    s	  : string to read from.
+    start : index of starting point
+	len	  : max len of substr
+
+GUARD:
+
+	if s is NULL return NULL
+    if malloc fails return NULL;
+	if strlen new > size --> strlen new = size
+
+RETURN:
+
+    pointer to new allocated substr;
+	if start > strlen return '\0'
 
 */
+
+// --- define ---
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*sub;
+	size_t	len_new;
+
+	if (s == NULL)
+		return (NULL);
+	if (ft_strlen(s) <= ((size_t)(start)))
+	{
+		sub = malloc(1);
+		if (sub == NULL)
+			return (NULL);
+		*sub = '\0';
+		return (sub);
+	}
+	len_new = ft_strlen(&(s[start]));
+	if (len_new > len)
+		len_new = len;
+	sub = malloc(len_new + 1);
+	if (sub == NULL)
+		return (NULL);
+	ft_strlcpy(sub, &s[start], (len + 1));
+	return (sub);
+}

@@ -3,55 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/06 15:41:51 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/06 16:25:30 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/12 16:55:41 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Counts the number of nodes in the list */
+// --- prototypes ---
+
+int	ft_lstsize(t_list *lst);
+
+// --- DOC ---
+
+/*
+ft_lstsize(t_list *lst) itarating through list and counting the nodes
+
+REQUIRES:
+
+	#include "libft.h"
+
+    typedef struct s_list
+    {
+        void *content;
+        struct s_list *next;
+    } t_list
+
+PARAMS:
+
+    lst: The beginning of the list.
+
+DESCRIPTION:
+
+    Counts the number of nodes in the list.
+
+GUARD:
+
+    if allocation fails returning NULL
+
+RETURN:
+
+    Pointer to new node
+*/
+
+// --- define ---
+
 int	ft_lstsize(t_list *lst)
 {
-	int	count;
+	int		count;
+	t_list	*ptr;
 
 	count = 0;
-	while (lst)
+	ptr = lst;
+	while (ptr != NULL)
 	{
 		count++;
-		lst = lst -> next;
+		ptr = (*ptr).next;
 	}
 	return (count);
 }
-
-/* --test program-- */
-
-/*
-static void	rvn_del(void *s);
-
-// Replaces a string with null bytes
-static void	rvn_del(void *s)
-{
-	if (s)
-		while (*((char *)s))
-			*((char *)(s++)) = '\0';
-}
-
-int	main(int argc, char **argv)
-{
-	int		i;
-	t_list	*lst;
-
-	(void)argc;
-	lst = NULL;
-	i = 1;
-	while (argv[i])
-		ft_lstadd_front(&lst, ft_lstnew(argv[i++]));
-	ft_putnbr_fd(ft_lstsize(lst), 1);
-	ft_putchar_fd('\n', 1);
-	ft_lstclear(&lst, &rvn_del);
-	return (0);
-}
-*/

@@ -3,74 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcollet <rcollet@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 19:43:18 by rcollet           #+#    #+#             */
-/*   Updated: 2026/05/07 12:03:55 by rcollet          ###   ########.fr       */
+/*   Created: 2026/05/04 12:17:16 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/05/09 13:49:08 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// --- includes ---
+
 #include "libft.h"
 
-/* Locates and returns a pointer to the first occurence of the string little in
-   'big', where no more than len characters are searched */
+// --- prototypes ---
+
+char		*ft_strnstr(const char *big, const char *little, size_t len);
+static int	lxy_strncmp(const char *s1, const char *s2, size_t n);
+static int	lxy_strlen(const char *str);
+
+// --- define ---
+
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
+	size_t	len_l;
+	size_t	len_b;
 	size_t	i;
-	size_t	j;
 
-	if (!big || !little)
-		return ((char *)big);
-	if (!(*little))
-		return ((char *)big);
 	i = 0;
-	j = 0;
-	while (i + j < len && big[i + j])
+	len_l = lxy_strlen(little);
+	len_b = lxy_strlen(big);
+	if (!(len_l))
+		return ((char *)(&(big[i])));
+	while ((i < len) && (i < len_b))
 	{
-		if (big[i + j] == little[j])
-		{
-			j++;
-			if (!(little[j]))
-				return ((char *)(big + i));
-		}
-		else
-		{
-			j = 0;
-			i++;
-		}
+		if (len_l > (len - i))
+			return (NULL);
+		if (!(lxy_strncmp(&(big[i]), little, len_l)))
+			return ((char *)(&(big[i])));
+		i++;
 	}
 	return (NULL);
 }
 
-/* --test program-- */
+// --- utility ---
 
-/*
-#include <bsd/string.h>
-
-int	main(int argc, char **argv)
+static int	lxy_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*rtrn1;
-	char	*rtrn2;
-	int		n;
+	size_t	i;
 
-	if (argc != 4)
+	i = 0;
+	if (!(n))
+		return (0);
+	while ((i + 1) < n)
 	{
-		ft_putendl_fd("Wrong number of arguments!", 2);
-		return (-1);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
-	n = ft_atoi(argv[3]);
-	rtrn1 = strnstr(argv[1], argv[2], n);
-	rtrn2 = ft_strnstr(argv[1], argv[2], n);
-	ft_putstr_fd("Original: ", 1);
-	if (!rtrn1)
-		ft_putendl_fd("(null)", 1);
-	else
-		ft_putendl_fd(rtrn1, 1);
-	ft_putstr_fd("My version: ", 1);
-	if (!rtrn2)
-		ft_putendl_fd("(null)", 1);
-	else
-		ft_putendl_fd(ft_strnstr(argv[1], argv[2], n), 1);
-	return (0);
+	return ((int)(s1[i] - s2[i]));
 }
-*/
+
+static int	lxy_strlen(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}

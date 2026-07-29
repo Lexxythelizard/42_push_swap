@@ -30,8 +30,8 @@ void	print_bench(t_stack_machine *machine)
 	int		post_comma;
 
 	stats = &(machine -> stats);
-	pre_comma = (int)(stats -> entropy);
-	post_comma = (int)(stats -> entropy * 100.00) % 100;
+	pre_comma = (int)(stats -> entropy * 100);
+	post_comma = (int)(stats -> entropy * 10000) % 100;
 	ft_printf("[bench] disorder:  %d.%d%%\n", pre_comma, post_comma);
 	ft_printf("[bench] strategy:  %s\n", stats -> strategy);
 	ft_printf("[bench] total_ops:  %u\n", stats -> total_ops);

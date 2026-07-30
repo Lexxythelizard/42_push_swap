@@ -99,9 +99,9 @@ int	get_flag_value(const char *flag)
 	if (!flag)
 		return (-1);
 	return (0
-		+ 1 * (!(ft_strncmp(flag, FLAG_SIMPLE, 11)))
-		+ 2 * (!(ft_strncmp(flag, FLAG_MEDIUM, 11)))
-		+ 4 * (!(ft_strncmp(flag, FLAG_COMPLEX, 11)))
-		+ 8 * (!(ft_strncmp(flag, FLAG_ADAPTIVE, 11)))
-		+ 16 * (!(ft_strncmp(flag, FLAG_BENCH, 11))));
+		+ 1 * (is_flag_simple(flag))
+		+ 2 * (is_flag_medium(flag))
+		+ 4 * (is_flag_complex(flag))
+		+ 8 * (is_flag_adaptive(flag))
+		+ 16 * (is_flag_bench(flag)));
 }

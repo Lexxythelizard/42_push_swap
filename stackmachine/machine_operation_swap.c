@@ -94,5 +94,5 @@ int	ss(t_stack_machine *machine)
 	swap(stack_a);
 	swap(stack_b);
 	ft_putendl_fd(SS_STR, 1);
-	return (0);
+	return (1);
 }

@@ -126,6 +126,8 @@ Machine_Files	=	$(Machine_Dir)/machine_machine.c \
 
 Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
 					$(Ui_Dir)/ui_validate_arguments_flags.c \
+					$(Ui_Dir)/ui_validate_arguments_flags_command_flags.c \
+					$(Ui_Dir)/ui_validate_arguments_flags_display_flags.c \
 					$(Ui_Dir)/ui_validate_arguments_numbers.c \
 					$(Ui_Dir)/ui_convert_arguments.c \
 					$(Ui_Dir)/ui_entropy.c \

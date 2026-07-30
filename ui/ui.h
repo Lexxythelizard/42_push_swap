@@ -57,13 +57,27 @@ int				is_valid_nbr(const char *s);
 // ui_validate_arguments_flags.c
 
 int				is_valid_flag(const char *s);
-int				count_repitition_of_flags(const char **argv, int argc);
-int				is_unique_and_one_bench(const char **argv, int argc);
+//int				count_repitition_of_flags(const char **argv, int argc);
+int				is_flag_combination_valid(const char **argv, int argc);
 int				is_any_flag(const char *s);
 
+// ui_validate_arguments_flags_command_flags.c
+
+int				is_command_flag(const char *s);
+int				is_flag_simple(const char *s);
+int				is_flag_medium(const char *s);
+int				is_flag_complex(const char *s);
+int				is_flag_adaptive(const char *s);
+
+// ui_validate_arguments_flagsdisplay_flags.c
+
+
+int				is_display_flag(const char *s);
+int				is_flag_bench(const char *s);
 // ui_output.c
 
 int				put_error(void);
+
 // --- end ---
 
 #endif

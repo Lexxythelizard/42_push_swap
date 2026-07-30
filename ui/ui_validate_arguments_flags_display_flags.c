@@ -13,46 +13,20 @@
 // --- include ---
 
 #include "./ui.h"
-
-// --- prototype ---
-
-static int	count_repitition_of_flags(const char **argv, int argc);
+#include "../libraries/libft/libft.h"
 
 // --- define ---
 
-int	is_args_valid(const char **argv, int argc)
+int	is_display_flag(const char *s)
 {
-	int	i;
-	int	flags;
-
-	if (argc < 2)
+	if (!(is_any_flag(s)))
 		return (0);
-	flags = count_repitition_of_flags(argv, argc);
-	i = flags + 1;
-	if (flags > 2)
-		return (0);
-	while (i < argc)
-	{
-		if (!(is_valid_nbr(argv[i])))
-			return (0);
-		i++;
-	}
-	if (flags == 2)
-		return (is_flag_combination_valid(argv, argc));
-	return (1);
+	return (is_flag_bench(s));
 }
 
-static int	count_repitition_of_flags(const char **argv, int argc)
+int is_flag_bench(const char *s)
 {
-	int	count;
-	int	i;
-
-	count = 0;
-	i = 1;
-	while (i < argc)
-	{
-		count += is_valid_flag(argv[i]);
-		i++;
-	}
-	return (count);
+	if (!(is_any_flag(s)))
+		return (0);
+	return (!(ft_strncmp(s, FLAG_BENCH, 11)));
 }

@@ -16,45 +16,39 @@
 #include "../libraries/libft/libft.h"
 
 // --- define ---
-
+/*
 int	count_repitition_of_flags(const char **argv, int argc)
 {
 	int	count;
 
 	count = 0;
-	if (argc < 2)
-		return (count);
-	count += is_valid_flag(argv[1]);
-	if (argc < 3)
-		return (count);
-	count += is_valid_flag(argv[2]);
-	return (count);
+	while ((count + 1) < argc) && (count < 2)
+		count += is_valid_flag(argv[(count + 1)]);
 }
-
-int	is_unique_and_one_bench(const char **argv, int argc)
+*/
+int	is_flag_combination_valid(const char **argv, int argc)
 {
+	int	display_flags;
+	int	command_flags;
+
+	display_flags = 0;
+	command_flags = 0;
 	if (argc < 2)
 		return (0);
 	if (argc < 3)
 		return (is_valid_flag(argv[1]));
-	if (ft_strncmp(argv[1], argv[2], 11) == 0)
+	display_flags = (is_display_flag(argv[1])) + (is_display_flag(argv[2]));
+	command_flags = (is_command_flag(argv[1])) + (is_command_flag(argv[2]));
+	if ((display_flags >= 2) || (command_flags >= 2))
 		return (0);
-	if (ft_strncmp(argv[1], FLAG_BENCH, 11) == 0)
-		return (1);
-	if (ft_strncmp(argv[2], FLAG_BENCH, 11) == 0)
-		return (1);
-	return (0);
+	return (is_valid_flag(argv[1]));
 }
 
 int	is_valid_flag(const char *s)
 {
 	if (!(is_any_flag(s)))
 		return (0);
-	return ((!(ft_strncmp(s, FLAG_BENCH, 11)))
-		|| (!(ft_strncmp(s, FLAG_SIMPLE, 11)))
-		|| (!(ft_strncmp(s, FLAG_MEDIUM, 11)))
-		|| (!(ft_strncmp(s, FLAG_COMPLEX, 11)))
-		|| (!(ft_strncmp(s, FLAG_ADAPTIVE, 11))));
+	return (is_command_flag(s) || is_display_flag(s));
 }
 
 int	is_any_flag(const char *s)

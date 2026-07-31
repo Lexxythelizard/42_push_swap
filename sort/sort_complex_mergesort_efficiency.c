@@ -83,7 +83,7 @@ static void	mergesort_six_elements(
 	int	bottom_a;
 	int	top_b;
 
-	split_stack(machine);
+	mergesort_sub_split_stack(machine);
 	mergesort_three_elements(machine);
 	machine_operation_execute(machine, PA);
 	if (!(stack_is_first_and_sec_ascending(&(machine -> stacks[1]))))
@@ -96,7 +96,7 @@ static void	mergesort_six_elements(
 		machine_operation_execute(machine, RB);
 	if ((top_b > top_a) && (top_b < bottom_a))
 		machine_operation_execute(machine, SB);
-	merge_to_a(machine, 3, 3);
+	mergesort_sub_merge_to_a(machine, 3, 3);
 }
 
 /*
@@ -109,11 +109,11 @@ static void	mergesort_five_elements(
 	t_stack	*stack_b;
 
 	stack_b = &(machine -> stacks[1]);
-	split_stack(machine);
+	mergesort_sub_split_stack(machine);
 	if (!(stack_is_first_and_sec_ascending(stack_b)))
 		machine_operation_execute(machine, SB);
 	mergesort_three_elements(machine);
-	merge_to_a(machine, 3, 2);
+	mergesort_sub_merge_to_a(machine, 3, 2);
 }
 
 /*
@@ -128,7 +128,7 @@ static void	mergesort_four_elements(
 
 	stack_a = &(machine -> stacks[0]);
 	stack_b = &(machine -> stacks[1]);
-	split_stack(machine);
+	mergesort_sub_split_stack(machine);
 	if ((!(stack_is_first_and_sec_ascending(stack_a)))
 		&& (!(stack_is_first_and_sec_ascending(stack_b))))
 		machine_operation_execute(machine, SS);
@@ -136,7 +136,7 @@ static void	mergesort_four_elements(
 		machine_operation_execute(machine, SA);
 	else if (!(stack_is_first_and_sec_ascending(stack_b)))
 		machine_operation_execute(machine, SB);
-	merge_to_a(machine, 2, 2);
+	mergesort_sub_merge_to_a(machine, 2, 2);
 }
 
 /*
@@ -150,7 +150,7 @@ static void	mergesort_three_elements(
 	int	bottom_a;
 	int	top_b;
 
-	split_stack(machine);
+	mergesort_sub_split_stack(machine);
 	sort_two(machine);
 	top_a = machine -> stacks[0].first -> val;
 	bottom_a = machine -> stacks[0].last -> val;

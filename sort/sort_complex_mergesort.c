@@ -27,8 +27,17 @@
 
 // --- prototype ---
 
-static int	get_number_of_rounds(t_stack_machine *machine, int chunk_size);
-static int	get_to_merge(int unmerged, int chunk_size);
+static void	merge_to(
+				t_stack_machine *machine,
+				int merge_to_size);
+
+static int	get_number_of_rounds(
+				t_stack_machine *machine,
+				int chunk_size);
+
+static int	get_to_merge(
+				int unmerged,
+				int chunk_size);
 
 // --- define ---
 
@@ -45,8 +54,8 @@ void	merge_sort(t_stack_machine *machine)
 	current_merge_size = 4;
 	if (all_elements <= 6)
 		return (mergesort_a_smaller_stack_more_efficient(machine));
-	split_stack(machine);
-	sort_pairs(machine);
+	mergesort_sub_split_stack(machine);
+	mergesort_sub_sort_pairs(machine);
 	while (current_merge_size < all_elements)
 	{
 		merge_to(machine, current_merge_size);
@@ -57,7 +66,7 @@ void	merge_sort(t_stack_machine *machine)
 
 // --- merge functions ---
 
-void	merge_to(
+static void	merge_to(
 			t_stack_machine *machine,
 			int merge_to_size)
 {
@@ -75,11 +84,11 @@ void	merge_to(
 	while (i++ < rounds)
 	{
 		if (i % 2)
-			merge_to_a(machine,
+			mergesort_sub_merge_to_a(machine,
 				get_to_merge(unmerged_a, chunk_size),
 				get_to_merge(unmerged_b, chunk_size));
 		else
-			merge_to_b(machine,
+			mergesort_sub_merge_to_b(machine,
 				get_to_merge(unmerged_a, chunk_size),
 				get_to_merge(unmerged_b, chunk_size));
 		unmerged_a -= int_min_of_two(unmerged_a, chunk_size);

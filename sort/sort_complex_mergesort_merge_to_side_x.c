@@ -19,8 +19,8 @@
 /*
 	this file contains the functions:
 
-		- merge_to_a()
-		- merge_to_b()
+		- mergesort_sub_merge_to_a()
+		- mergesort_sub_merge_to_b()
 
 	those functions are 'dumb' algotithm parts... they need 
 	the exact number of elements which have to get merged in
@@ -38,7 +38,7 @@ static int	top_b_smaller_than_top_a(t_stack_machine *machine);
 
 // --- define ---
 
-void	merge_to_a(
+void	mergesort_sub_merge_to_a(
 			t_stack_machine *machine,
 			int to_merge_in_a,
 			int to_merge_in_b)
@@ -65,7 +65,7 @@ void	merge_to_a(
 	}
 }
 
-void	merge_to_b(
+void	mergesort_sub_merge_to_b(
 			t_stack_machine *machine,
 			int to_merge_in_a,
 			int to_merge_in_b)

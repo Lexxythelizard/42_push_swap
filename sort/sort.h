@@ -32,25 +32,22 @@ void	sort_adaptive(
 void	sort_complex(
 			t_stack_machine *machine);
 
-void	test_merge_and_split(
-			t_stack_machine *machine);
-
 // sort_complex_mergesort_base.c
 
-int		split_stack(
+int		mergesort_sub_split_stack(
 			t_stack_machine *machine);
 
-int		sort_pairs(
+int		mergesort_sub_sort_pairs(
 			t_stack_machine *machine);
 
 // sort_complex_mergesort_merge_to_side_x.c
 
-void	merge_to_a(
+void	mergesort_sub_merge_to_a(
 			t_stack_machine *machine,
 			int to_merge_in_a,
 			int to_merge_in_b);
 
-void	merge_to_b(
+void	mergesort_sub_merge_to_b(
 			t_stack_machine *machine,
 			int to_merge_in_a,
 			int to_merge_in_b);
@@ -64,10 +61,6 @@ void	mergesort_a_smaller_stack_more_efficient(
 
 void	merge_sort(
 			t_stack_machine *machine);
-
-void	merge_to(
-			t_stack_machine *machine,
-			int merge_to_size);
 
 // sort_medium.c
 

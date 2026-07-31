@@ -22,8 +22,8 @@
 
 	it has two functions which are available in the sort.h header file:
 
-		- split_stack()
-		- sort_pairs()
+		- mergesort_sub_split_stack()
+		- mergesort_sub_sort_pairs()
 */
 
 // --- prototypes ---
@@ -45,7 +45,7 @@ to stack b
 if number of elements are uneven
 */
 
-int	split_stack(t_stack_machine *machine)
+int	mergesort_sub_split_stack(t_stack_machine *machine)
 {
 	int	half;
 
@@ -66,7 +66,7 @@ Can handle uneven stacks and odd numbers of elements.
 returns 1 if succes
 */
 
-int	sort_pairs(t_stack_machine *machine)
+int	mergesort_sub_sort_pairs(t_stack_machine *machine)
 {
 	int	unsorted_a;
 	int	unsorted_b;

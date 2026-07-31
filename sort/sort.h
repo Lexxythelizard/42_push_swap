@@ -83,10 +83,10 @@ int		push_and_sort_rest(
 
 // sort_medium_bucket_fill_bucket.c
 
-void	push_last_bucket_to_b(
+void	bucketsort_sub_push_last_bucket_to_b(
 			t_stack_machine *machine);
 
-void	push_bucket_to_b(
+void	bucketsort_sub_push_bucket_to_b(
 			t_stack_machine *machine,
 			int **bucket_map,
 			int bucket_i,
@@ -94,7 +94,7 @@ void	push_bucket_to_b(
 
 // sort_medium_bucket_sort_bucket.c
 
-void	bucket_insertion_sort_descending(
+void	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
 			t_stack_machine *machine,
 			int len);
 

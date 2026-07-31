@@ -32,7 +32,7 @@ meant to sort exactly one bucket:
 	requested time / operational complexity
 */
 
-void	bucket_insertion_sort_descending(
+void	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
 			t_stack_machine *machine,
 			int len)
 {

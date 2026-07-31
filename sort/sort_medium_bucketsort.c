@@ -88,12 +88,12 @@ int	push_and_sort_buckets(
 	bucket_idx = 0;
 	while (bucket_idx < bucket_size)
 	{
-		push_bucket_to_b(
+		bucketsort_sub_push_bucket_to_b(
 			machine,
 			bucket_map,
 			bucket_idx,
 			bucket_size);
-		bucket_insertion_sort_descending(
+		bucketsort_sub_sort_bucket_descending_with_insertion_sort(
 			machine,
 			bucket_size);
 		bucket_idx++;
@@ -109,9 +109,9 @@ int	push_and_sort_rest(
 		t_stack_machine *machine,
 		int rest)
 {
-	push_last_bucket_to_b(
+	bucketsort_sub_push_last_bucket_to_b(
 		machine);
-	bucket_insertion_sort_descending(
+	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
 		machine,
 		rest);
 	return (1);

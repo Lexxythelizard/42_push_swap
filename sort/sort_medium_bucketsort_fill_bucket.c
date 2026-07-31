@@ -34,7 +34,7 @@ static int	rotate_next_element_for_bucket_to_top(
 name says everything
 */
 
-void	push_last_bucket_to_b(
+void	bucketsort_sub_push_last_bucket_to_b(
 			t_stack_machine *machine)
 {
 	int	len;
@@ -47,7 +47,7 @@ void	push_last_bucket_to_b(
 name says everything
 */
 
-void	push_bucket_to_b(
+void	bucketsort_sub_push_bucket_to_b(
 			t_stack_machine *machine,
 			int **bucket_map,
 			int bucket_i,

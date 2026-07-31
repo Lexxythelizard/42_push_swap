@@ -41,6 +41,33 @@ void	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
 	int		pos;
 
 	stack_b = &(machine -> stacks[1]);
+	pos = 0;
+	sorted = stack_count_descending_in_range(stack_b, 0, len);
+	while (sorted < len)
+	{
+		pos = sorted - 1;
+		machine_operation_execute_times_n(machine, RB, pos);
+		while (pos >= 0)
+		{
+			if (stack_is_first_and_sec_ascending(stack_b))
+				machine_operation_execute(machine, SB);
+			if (pos > 0)
+				 machine_operation_execute(machine, RRB);
+			pos --;
+		}
+		sorted = stack_count_descending_in_range(stack_b, 0, len);
+	}
+}
+/*
+void	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
+			t_stack_machine *machine,
+			int len)
+{
+	t_stack	*stack_b;
+	int		sorted;
+	int		pos;
+
+	stack_b = &(machine -> stacks[1]);
 	sorted = 1;
 	while (sorted < len)
 	{
@@ -57,3 +84,4 @@ void	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
 		sorted++;
 	}
 }
+*/

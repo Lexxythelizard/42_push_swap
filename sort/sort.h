@@ -79,6 +79,8 @@ int		push_and_sort_buckets(
 
 int		push_and_sort_rest(
 			t_stack_machine *machine,
+			int **bucket_map,
+			int last_bucket_idx,
 			int rest);
 
 // sort_medium_bucket_fill_bucket.c
@@ -96,6 +98,11 @@ void	bucketsort_sub_push_bucket_to_b(
 
 void	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
 			t_stack_machine *machine,
+			int len);
+
+void	bucketsort_sub_sort_bucket_descending_with_min_extraction(
+			t_stack_machine *machine,
+			int *pre_sorted_bucket,
 			int len);
 
 // sort_medium_bucketsort_utiliy.c

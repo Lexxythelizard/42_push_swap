@@ -89,7 +89,7 @@ int	stack_count_descending_in_range(
 	return (count);
 }
 
-int	stack_count_asscending_in_range(
+int	stack_count_ascending_in_range(
 		t_stack *stack,
 		int start,
 		int range)

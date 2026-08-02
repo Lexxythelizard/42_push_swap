@@ -69,7 +69,7 @@ void	bucket_sort_adaption(t_stack_machine *machine)
 			rest);
 	push_and_sort_buckets(
 		machine, bucket_map, bucket_size);
-	push_and_sort_rest(machine, rest);
+	push_and_sort_rest(machine, bucket_map, (buckets - 1), rest);
 	push_all_elements_to_stack_a(machine);
 	arr_arr_int_free(bucket_map);
 }
@@ -93,9 +93,16 @@ int	push_and_sort_buckets(
 			bucket_map,
 			bucket_idx,
 			bucket_size);
+		/*
 		bucketsort_sub_sort_bucket_descending_with_insertion_sort(
 			machine,
 			bucket_size);
+		*/
+		bucketsort_sub_sort_bucket_descending_with_min_extraction(
+			machine,
+			bucket_map[bucket_idx],
+			bucket_size);
+		// alt try above
 		bucket_idx++;
 	}
 	return (bucket_idx);
@@ -107,12 +114,23 @@ pushes and sorts the rest to b : descending order
 
 int	push_and_sort_rest(
 		t_stack_machine *machine,
+		int **bucket_map,
+		int last_bucket_idx,
 		int rest)
 {
+	if (rest == 0)
+		return (0);
 	bucketsort_sub_push_last_bucket_to_b(
 		machine);
+	/*
 	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
 		machine,
 		rest);
+	*/
+	bucketsort_sub_sort_bucket_descending_with_min_extraction(
+		machine,
+		bucket_map[last_bucket_idx],
+		rest);
+	// alt try above
 	return (1);
 }

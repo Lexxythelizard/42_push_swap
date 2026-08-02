@@ -15,12 +15,14 @@
 #include "./sort.h"
 
 // static void print_stacks(t_stack_machine *machine);
+// #include <stdio.h>
 
 // --- define ---
 
 void	sort_medium(t_stack_machine *machine)
 {
 	bucket_sort_adaption(machine);
+	//print_stacks(machine);
 	return ;
 }
 

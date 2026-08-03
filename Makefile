@@ -103,8 +103,8 @@ LIBRARIES		=	-L $(Library_Dir) -l ftprintf -l ft
 # ------------------------- Files -------------------------
 
 Stack_Files		=	$(Stack_Dir)/stack_elements.c \
-					$(Stack_Dir)/stack_pop_add.c \
 					$(Stack_Dir)/stack_operation.c \
+					$(Stack_Dir)/stack_operation_pop_add.c \
 					$(Stack_Dir)/stack_scan.c \
 					$(Stack_Dir)/stack_scan_max.c \
 					$(Stack_Dir)/stack_scan_min.c \

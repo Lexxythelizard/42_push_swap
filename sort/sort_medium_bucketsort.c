@@ -93,16 +93,10 @@ int	push_and_sort_buckets(
 			bucket_map,
 			bucket_idx,
 			bucket_size);
-		/*
-		bucketsort_sub_sort_bucket_descending_with_insertion_sort(
-			machine,
-			bucket_size);
-		*/
 		bucketsort_sub_sort_bucket_descending_with_min_extraction(
 			machine,
 			bucket_map[bucket_idx],
 			bucket_size);
-		// alt try above
 		bucket_idx++;
 	}
 	return (bucket_idx);
@@ -122,15 +116,9 @@ int	push_and_sort_rest(
 		return (0);
 	bucketsort_sub_push_last_bucket_to_b(
 		machine);
-	/*
-	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
-		machine,
-		rest);
-	*/
 	bucketsort_sub_sort_bucket_descending_with_min_extraction(
 		machine,
 		bucket_map[last_bucket_idx],
 		rest);
-	// alt try above
 	return (1);
 }

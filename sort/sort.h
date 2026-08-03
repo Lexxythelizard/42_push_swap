@@ -177,16 +177,29 @@ int		int_max_of_two(
 			int a,
 			int b);
 
-// sort_utilities_execute_a.c
+// sort_anysort_utilities_execute_a.c
 
 int		push_all_elements_to_stack_a(
 			t_stack_machine *machine);
 
-int		swap_second_and_third_a(
+int		anysort_sub_rotate_smallest_element_to_top_of_stack_a(
 			t_stack_machine *machine);
 
-int		swap_first_and_third_a(
+int		anysort_sub_rotate_element_to_the_top_of_stack_a_by_idx(
+			t_stack_machine *machine,
+			int idx);
+
+// sort_anysort_utilities_execute_b.c
+
+int		push_all_elements_to_stack_b(
 			t_stack_machine *machine);
+
+int		anysort_sub_rotate_largest_element_to_top_of_stack_b(
+			t_stack_machine *machine);
+
+int		anysort_sub_rotate_element_to_the_top_of_stack_b_by_idx(
+			t_stack_machine *machine,
+			int idx);
 
 // new file with anysort_*_b.c
 
@@ -220,17 +233,6 @@ void	anysort_sub_swap_first_and_second_a(
 			t_stack_machine *machine);
 
 void	anysort_sub_swap_first_and_third_a(
-			t_stack_machine *machine);
-
-// sort_utilities_execute_b.c
-
-int		push_all_elements_to_stack_b(
-			t_stack_machine *machine);
-
-int		swap_second_and_third_b(
-			t_stack_machine *machine);
-
-int		swap_first_and_third_b(
 			t_stack_machine *machine);
 
 // --- end ---

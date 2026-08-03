@@ -23,8 +23,7 @@ TODO:	test, norminette
 // --- prototype ---
 
 static int	push_element_on_top_to_stack_b(t_stack_machine *machine);
-static int	rotate_smallest_element_to_top(t_stack_machine *machine);
-static int	elements_in_stack_a(t_stack_machine *machine);
+static int	more_than_two_elements_in_stack_a(t_stack_machine *machine);
 
 // --- define ---
 
@@ -43,14 +42,15 @@ int	min_extraction_adaption_sort(t_stack_machine *machine)
 	stack_a = &(machine -> stacks[0]);
 	if (stack_a -> len <= 1)
 		return (stack_a -> len);
-	if (stack_a -> len == 2)
-		return (sort_two(machine));
-	while (elements_in_stack_a(machine))
+	while (more_than_two_elements_in_stack_a(machine))
 	{
-		rotate_smallest_element_to_top(machine);
+		anysort_sub_rotate_smallest_element_to_top_of_stack_a(machine);
 		push_element_on_top_to_stack_b(machine);
 	}
-	return (push_all_elements_to_stack_a(machine));
+	if (stack_a -> len == 2)
+		sort_two(machine);
+	push_all_elements_to_stack_a(machine);
+	return (1);
 }
 
 // --- utillieties ---
@@ -65,38 +65,10 @@ static int	push_element_on_top_to_stack_b(t_stack_machine *machine)
 }
 
 /*
-get idx of min value
-decide rotate / reverse rotate
-rotate smallest element on top
-*/
-
-static int	rotate_smallest_element_to_top(t_stack_machine *machine)
-{
-	int		idx_min;
-	t_stack	*stack_a;
-
-	stack_a = &(machine -> stacks[0]);
-	idx_min = stack_get_idx_min_val(stack_a);
-	if (stack_a -> len == 1)
-		return (0);
-	if (idx_min <= (stack_a -> len / 2))
-		return (
-			machine_operation_execute_times_n(
-				machine,
-				RA,
-				idx_min));
-	return (
-		machine_operation_execute_times_n(
-			machine,
-			RRA,
-			(stack_a -> len - idx_min)));
-}
-
-/*
 returns 1 / 0 :	elements in stack a / no elements in stack a
 */
 
-static int	elements_in_stack_a(t_stack_machine *machine)
+static int	more_than_two_elements_in_stack_a(t_stack_machine *machine)
 {
 	return (machine -> stacks[0].len > 0);
 }

@@ -36,26 +36,45 @@ int	push_all_elements_to_stack_b(t_stack_machine *machine)
 			machine -> stacks[0].len));
 }
 
-int	swap_second_and_third_b(t_stack_machine *machine)
+int	anysort_sub_rotate_largest_element_to_top_of_stack_b(
+		t_stack_machine *machine)
 {
-	if (!machine)
-		return (-1);
-	if (machine -> stacks[1].len < 3)
+	int		idx_min;
+	t_stack	*stack_b;
+
+	stack_b = &(machine -> stacks[1]);
+	idx_min = stack_get_idx_min_val(stack_b);
+	if (stack_b -> len == 1)
 		return (0);
-	machine_operation_execute(machine, RB);
-	machine_operation_execute(machine, SB);
-	machine_operation_execute(machine, RRB);
-	return (1);
+	if (idx_min <= (stack_b -> len / 2))
+		return (
+			machine_operation_execute_times_n(
+				machine,
+				RB,
+				idx_min));
+	return (
+		machine_operation_execute_times_n(
+			machine,
+			RRB,
+			(stack_b -> len - idx_min)));
 }
 
-int	swap_first_and_third_b(t_stack_machine *machine)
+int	anysort_sub_rotate_element_to_the_top_of_stack_b_by_idx(
+		t_stack_machine *machine,
+		int idx)
 {
-	if (!machine)
-		return (-1);
-	if (machine -> stacks[1].len < 3)
-		return (0);
-	machine_operation_execute(machine, RRB);
-	machine_operation_execute(machine, SB);
-	machine_operation_execute(machine, RB);
-	return (1);
+	t_stack	*stack_b;
+
+	stack_b = &(machine -> stacks[1]);
+	if (idx <= stack_b -> len / 2)
+		return (
+			machine_operation_execute_times_n(
+				machine,
+				RB,
+				idx));
+	return (
+		machine_operation_execute_times_n(
+			machine,
+			RRB,
+			(stack_b -> len - idx)));
 }

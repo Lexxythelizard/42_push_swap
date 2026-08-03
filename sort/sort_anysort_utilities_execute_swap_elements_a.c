@@ -78,14 +78,14 @@ void	anysort_sub_swap_first_and_second_a(
 			t_stack_machine *machine)
 {
 	machine_operation_execute(machine, SA);
-		return ;
+	return ;
 }
 
 /*
 swaps first and third element with five operations - no rotation
 */
 
- void	anysort_sub_swap_first_and_third_a(
+void	anysort_sub_swap_first_and_third_a(
 			t_stack_machine *machine)
 {
 	machine_operation_execute(machine, SA);
@@ -93,5 +93,5 @@ swaps first and third element with five operations - no rotation
 	machine_operation_execute(machine, SA);
 	machine_operation_execute(machine, PA);
 	machine_operation_execute(machine, SA);
-		return ;
+	return ;
 }

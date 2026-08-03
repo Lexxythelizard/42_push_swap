@@ -22,7 +22,6 @@
 
 // --- define ---
 
-
 /*
 sorts buckets with two elements more efficient :)
 */
@@ -66,24 +65,23 @@ void	bucketsort_sub_sub_sort_three_elements_descanding(
 	first = machine -> stacks[1].first -> val;
 	secon = machine -> stacks[1].first -> next -> val;
 	third = machine -> stacks[1].first -> next -> next -> val;
-
 	if ((first > secon) && (secon > third))
 		return ;
 	if ((first > secon) && (secon < third) && (third < first))
 		return (anysort_sub_swap_second_and_third_b(
-			machine));
+				machine));
 	if ((first < secon) && (secon > third) && (third < first))
 		return ((void)(machine_operation_execute(
-			machine, SB)));
+				machine, SB)));
 	if ((first > secon) && (secon < third) && (third > first))
 		return (anysort_sub_swap_second_and_third_then_second_and_first_b(
-			machine));
+				machine));
 	if ((first < secon) && (secon > third) && (third > first))
 		return (anysort_sub_swap_second_and_first_then_second_and_third_b(
-			machine));
+				machine));
 	if ((first < secon) && (secon < third))
 		return (anysort_sub_swap_first_and_third_b(
-			machine));
+				machine));
 }
 
 /*
@@ -100,22 +98,21 @@ void	bucketsort_sub_sub_sort_three_elements_ascanding(
 	first = machine -> stacks[0].first -> val;
 	secon = machine -> stacks[0].first -> next -> val;
 	third = machine -> stacks[0].first -> next -> next -> val;
-
 	if ((first < secon) && (secon < third))
 		return ;
 	if ((first < secon) && (secon > third) && (third > first))
 		return (anysort_sub_swap_second_and_third_a(
-			machine));
+				machine));
 	if ((first > secon) && (secon < third) && (third > first))
 		return ((void)(machine_operation_execute(
-			machine, SB)));
+				machine, SB)));
 	if ((first < secon) && (secon > third) && (third < first))
 		return (anysort_sub_swap_second_and_third_then_second_and_first_a(
-			machine));
+				machine));
 	if ((first > secon) && (secon < third) && (third < first))
 		return (anysort_sub_swap_second_and_first_then_second_and_third_a(
-			machine));
+				machine));
 	if ((first > secon) && (secon > third))
 		return (anysort_sub_swap_first_and_third_a(
-			machine));
+				machine));
 }

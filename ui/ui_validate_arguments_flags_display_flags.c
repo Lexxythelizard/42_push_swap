@@ -24,7 +24,7 @@ int	is_display_flag(const char *s)
 	return (is_flag_bench(s));
 }
 
-int is_flag_bench(const char *s)
+int	is_flag_bench(const char *s)
 {
 	if (!(is_any_flag(s)))
 		return (0);

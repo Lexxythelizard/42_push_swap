@@ -71,9 +71,9 @@ int				is_flag_adaptive(const char *s);
 
 // ui_validate_arguments_flagsdisplay_flags.c
 
-
 int				is_display_flag(const char *s);
 int				is_flag_bench(const char *s);
+
 // ui_output.c
 
 int				put_error(void);

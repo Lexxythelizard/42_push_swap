@@ -27,28 +27,28 @@ int	is_command_flag(const char *s)
 		|| is_flag_adaptive(s));
 }
 
-int is_flag_simple(const char *s)
+int	is_flag_simple(const char *s)
 {
 	if (!(is_any_flag(s)))
 		return (0);
 	return (!(ft_strncmp(s, FLAG_SIMPLE, 11)));
 }
 
-int is_flag_medium(const char *s)
+int	is_flag_medium(const char *s)
 {
 	if (!(is_any_flag(s)))
 		return (0);
 	return (!(ft_strncmp(s, FLAG_MEDIUM, 11)));
 }
 
-int is_flag_complex(const char *s)
+int	is_flag_complex(const char *s)
 {
 	if (!(is_any_flag(s)))
 		return (0);
 	return (!(ft_strncmp(s, FLAG_COMPLEX, 11)));
 }
 
-int is_flag_adaptive(const char *s)
+int	is_flag_adaptive(const char *s)
 {
 	if (!(is_any_flag(s)))
 		return (0);

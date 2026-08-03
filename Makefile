@@ -134,6 +134,9 @@ Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
 					$(Ui_Dir)/ui_output.c
 
 Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
+					$(Sort_Dir)/sort_anysort_sort_small_stacks.c \
+					$(Sort_Dir)/sort_anysort_utilities_execute_swap_elements_a.c \
+					$(Sort_Dir)/sort_anysort_utilities_execute_swap_elements_b.c \
 					$(Sort_Dir)/sort_complex_mergesort_base.c \
 					$(Sort_Dir)/sort_complex_mergesort_merge_to_side_x.c \
 					$(Sort_Dir)/sort_complex_mergesort_efficiency.c \
@@ -143,13 +146,12 @@ Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_medium_bucketsort.c \
 					$(Sort_Dir)/sort_medium_bucketsort_fill_bucket.c \
 					$(Sort_Dir)/sort_medium_bucketsort_sort_bucket.c \
-					$(Sort_Dir)/sort_medium_bucketsort_sort_min_extraction.c \
+					$(Sort_Dir)/sort_medium_bucketsort_sort_bucket_efficiency.c \
 					$(Sort_Dir)/sort_medium_bucketsort_utility.c \
 					$(Sort_Dir)/sort_medium_bucketsort_utility_arr.c \
 					$(Sort_Dir)/sort_medium_bucketsort_utility_arr_arr.c \
 					$(Sort_Dir)/sort_simple.c \
 					$(Sort_Dir)/sort_simple_min_extraction.c \
-					$(Sort_Dir)/sort_small_stacks.c \
 					$(Sort_Dir)/sort_benchmarks.c \
 					$(Sort_Dir)/sort_utillities_execute_a.c \
 					$(Sort_Dir)/sort_utillities_execute_b.c \

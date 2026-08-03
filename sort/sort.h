@@ -105,6 +105,20 @@ void	bucketsort_sub_sort_bucket_descending_with_min_extraction(
 			int *pre_sorted_bucket,
 			int len);
 
+// sort_medium_bucketsort_efficiency_descending_b.c
+
+void	bucketsort_sub_sub_sort_two_elements_descanding(
+			t_stack_machine *machine);
+
+void	bucketsort_sub_sub_sort_two_elements_ascanding(
+			t_stack_machine *machine);
+
+void	bucketsort_sub_sub_sort_three_elements_descanding(
+			t_stack_machine *machine);
+
+void	bucketsort_sub_sub_sort_three_elements_ascanding(
+			t_stack_machine *machine);
+
 // sort_medium_bucketsort_utiliy.c
 
 int		**get_pre_sorted_buckets_as_arrays(
@@ -172,6 +186,40 @@ int		swap_second_and_third_a(
 			t_stack_machine *machine);
 
 int		swap_first_and_third_a(
+			t_stack_machine *machine);
+
+// new file with anysort_*_b.c
+
+void	anysort_sub_swap_second_and_third_b(
+			t_stack_machine *machine);
+
+void	anysort_sub_swap_second_and_third_then_second_and_first_b(
+			t_stack_machine *machine);
+
+void	anysort_sub_swap_second_and_first_then_second_and_third_b(
+			t_stack_machine *machine);
+
+void	anysort_sub_swap_first_and_second_b(
+			t_stack_machine *machine);
+
+void	anysort_sub_swap_first_and_third_b(
+			t_stack_machine *machine);
+
+// new file with anysort_*_a.c
+
+void	anysort_sub_swap_second_and_third_a(
+			t_stack_machine *machine);
+
+void	anysort_sub_swap_second_and_third_then_second_and_first_a(
+			t_stack_machine *machine);
+
+void	anysort_sub_swap_second_and_first_then_second_and_third_a(
+			t_stack_machine *machine);
+
+void	anysort_sub_swap_first_and_second_a(
+			t_stack_machine *machine);
+
+void	anysort_sub_swap_first_and_third_a(
 			t_stack_machine *machine);
 
 // sort_utilities_execute_b.c

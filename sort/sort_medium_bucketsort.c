@@ -56,21 +56,22 @@ void	bucket_sort_adaption(t_stack_machine *machine)
 	if (machine -> stacks[0].len <= 1)
 		return ((void)(machine -> stacks[0].len));
 	if (machine -> stacks[0].len == 2)
-		return ((void)(sort_two(machine)));
+		return ((void)(anysort_sort_two(machine)));
 	if (machine -> stacks[0].len == 3)
-		return ((void)(sort_three(machine)));
+		return ((void)(anysort_sort_three(machine)));
 	buckets = (int)(get_sqrt(machine -> stacks[0].len));
 	bucket_size = buckets;
 	rest = machine -> stacks[0].len - bucket_size * buckets;
 	buckets += (rest > 0);
 	bucket_map = get_pre_sorted_buckets_as_arrays(
-			machine,
-			buckets,
-			rest);
-	push_and_sort_buckets(
+			machine, buckets, rest);
+	if (machine -> stacks[0].len <= 8)
+		return (bucketsort_a_smaller_stack_more_efficient(
+				machine, bucket_map));
+	bucketsort_sub_push_and_sort_buckets(
 		machine, bucket_map, bucket_size);
-	push_and_sort_rest(machine, bucket_map, (buckets - 1), rest);
-	push_all_elements_to_stack_a(machine);
+	bucketsort_sub_push_and_sort_rest(machine, bucket_map, (buckets - 1), rest);
+	anysort_push_all_elements_to_stack_a(machine);
 	arr_arr_int_free(bucket_map);
 }
 
@@ -78,7 +79,7 @@ void	bucket_sort_adaption(t_stack_machine *machine)
 push and sorts all full buckets iterativly to b : descending order
 */
 
-int	push_and_sort_buckets(
+int	bucketsort_sub_push_and_sort_buckets(
 		t_stack_machine *machine,
 		int **bucket_map,
 		int bucket_size)
@@ -106,7 +107,7 @@ int	push_and_sort_buckets(
 pushes and sorts the rest to b : descending order
 */
 
-int	push_and_sort_rest(
+int	bucketsort_sub_push_and_sort_rest(
 		t_stack_machine *machine,
 		int **bucket_map,
 		int last_bucket_idx,

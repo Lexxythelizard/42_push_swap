@@ -22,20 +22,6 @@ TODO:	test, norminette
 
 // --- define ---
 
-/*
-calls machine_operation_execute_times_n -> machine_operation_execute
--> calls pb n times; n = length of stack b
-*/
-
-int	push_all_elements_to_stack_b(t_stack_machine *machine)
-{
-	return (
-		machine_operation_execute_times_n(
-			machine,
-			PB,
-			machine -> stacks[0].len));
-}
-
 int	anysort_sub_rotate_largest_element_to_top_of_stack_b(
 		t_stack_machine *machine)
 {

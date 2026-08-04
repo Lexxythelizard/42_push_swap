@@ -23,50 +23,29 @@ TODO:	test, norminette
 // --- define ---
 
 /*
-get idx of min value
-decide rotate / reverse rotate
-rotate smallest element on top
+calls machine_operation_execute_times_n -> machine_operation_execute
+-> calls pa n times; n = length of stack a
 */
 
-int	anysort_sub_rotate_smallest_element_to_top_of_stack_a(
-		t_stack_machine *machine)
+int	anysort_push_all_elements_to_stack_a(t_stack_machine *machine)
 {
-	int		idx_min;
-	t_stack	*stack_a;
-
-	stack_a = &(machine -> stacks[0]);
-	idx_min = stack_get_idx_min_val(stack_a);
-	if (stack_a -> len == 1)
-		return (0);
-	if (idx_min <= (stack_a -> len / 2))
-		return (
-			machine_operation_execute_times_n(
-				machine,
-				RA,
-				idx_min));
 	return (
 		machine_operation_execute_times_n(
 			machine,
-			RRA,
-			(stack_a -> len - idx_min)));
+			PA,
+			machine -> stacks[1].len));
 }
 
-int	anysort_sub_rotate_element_to_the_top_of_stack_a_by_idx(
-		t_stack_machine *machine,
-		int idx)
-{
-	t_stack	*stack_a;
+/*
+calls machine_operation_execute_times_n -> machine_operation_execute
+-> calls pb n times; n = length of stack b
+*/
 
-	stack_a = &(machine -> stacks[0]);
-	if (idx <= stack_a -> len / 2)
-		return (
-			machine_operation_execute_times_n(
-				machine,
-				RA,
-				idx));
+int	anysort_push_all_elements_to_stack_b(t_stack_machine *machine)
+{
 	return (
 		machine_operation_execute_times_n(
 			machine,
-			RRA,
-			(stack_a -> len - idx)));
+			PB,
+			machine -> stacks[0].len));
 }

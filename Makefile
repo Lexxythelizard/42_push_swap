@@ -135,6 +135,7 @@ Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
 
 Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_anysort_sort_small_stacks.c \
+					$(Sort_Dir)/sort_anysort_utilities_execute_push_a_b.c \
 					$(Sort_Dir)/sort_anysort_utilities_execute_rotation_a.c \
 					$(Sort_Dir)/sort_anysort_utilities_execute_rotation_b.c \
 					$(Sort_Dir)/sort_anysort_utilities_execute_swap_elements_a.c \
@@ -147,6 +148,7 @@ Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_complex.c \
 					$(Sort_Dir)/sort_medium.c \
 					$(Sort_Dir)/sort_medium_bucketsort.c \
+					$(Sort_Dir)/sort_medium_bucketsort_efficiency.c \
 					$(Sort_Dir)/sort_medium_bucketsort_fill_bucket.c \
 					$(Sort_Dir)/sort_medium_bucketsort_sort_bucket.c \
 					$(Sort_Dir)/sort_medium_bucketsort_sort_bucket_efficiency.c \

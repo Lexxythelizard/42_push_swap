@@ -32,7 +32,7 @@ calls machine_operation_execute_times_n -> machine_operation_execute
 -> calls pa n times; n = length of stack a
 */
 
-int	anysort_sort_two(t_stack_machine *machine)
+int	sort_two(t_stack_machine *machine)
 {
 	t_stack	*stack_a;
 
@@ -50,7 +50,9 @@ calls machine_operation_execute_times_n -> machine_operation_execute
 -> calls pb n times; n = length of stack b
 */
 
-int	anysort_sort_three(t_stack_machine *machine)
+// rewrite still made for a ascendin made for a ascendingg
+
+int	sort_three_descending_b(t_stack_machine *machine)
 {
 	t_stack	*stack_a;
 	int		first;
@@ -78,26 +80,26 @@ int	anysort_sort_three(t_stack_machine *machine)
 	return (0);
 }
 
-static int	swap_second_and_third_a(t_stack_machine *machine)
+static int	swap_second_and_third_b(t_stack_machine *machine)
 {
 	if (!machine)
 		return (-1);
-	if (machine -> stacks[0].len < 3)
+	if (machine -> stacks[1].len < 3)
 		return (0);
-	machine_operation_execute(machine, RA);
-	machine_operation_execute(machine, SA);
-	machine_operation_execute(machine, RRA);
+	machine_operation_execute(machine, RB);
+	machine_operation_execute(machine, SB);
+	machine_operation_execute(machine, RRB);
 	return (1);
 }
 
-static int	swap_first_and_third_a(t_stack_machine *machine)
+static int	swap_first_and_third_b(t_stack_machine *machine)
 {
 	if (!machine)
 		return (-1);
-	if (machine -> stacks[0].len < 3)
+	if (machine -> stacks[1].len < 3)
 		return (0);
-	machine_operation_execute(machine, RRA);
-	machine_operation_execute(machine, SA);
-	machine_operation_execute(machine, RA);
+	machine_operation_execute(machine, RRB);
+	machine_operation_execute(machine, SB);
+	machine_operation_execute(machine, RB);
 	return (1);
 }

@@ -26,6 +26,30 @@
 sorts buckets with two elements more efficient :)
 */
 
+void	bucketsort_sub_sub_sort_two_ascending_and_two_descending(
+			t_stack_machine *machine)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = &(machine -> stacks[0]);
+	stack_b = &(machine -> stacks[1]);
+	if (
+		(!(stack_is_first_and_sec_ascending(stack_a)))
+		&& (stack_is_first_and_sec_ascending(stack_b)))
+		return ((void)(machine_operation_execute(machine, SS)));
+	if (
+		!(stack_is_first_and_sec_ascending(stack_a)))
+		return ((void)(machine_operation_execute(machine, SB)));
+	if (
+		stack_is_first_and_sec_ascending(stack_b))
+		return ((void)(machine_operation_execute(machine, SB)));
+}
+
+/*
+sorts buckets with two elements more efficient :)
+*/
+
 void	bucketsort_sub_sub_sort_two_elements_descanding(
 			t_stack_machine *machine)
 {

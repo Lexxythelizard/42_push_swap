@@ -48,8 +48,8 @@ int	min_extraction_adaption_sort(t_stack_machine *machine)
 		push_element_on_top_to_stack_b(machine);
 	}
 	if (stack_a -> len == 2)
-		sort_two(machine);
-	push_all_elements_to_stack_a(machine);
+		anysort_sort_two(machine);
+	anysort_push_all_elements_to_stack_a(machine);
 	return (1);
 }
 

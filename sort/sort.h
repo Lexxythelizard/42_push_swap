@@ -67,23 +67,29 @@ void	merge_sort(
 void	sort_medium(
 			t_stack_machine *machine);
 
-// sort_medium_bucket.c
+// sort_medium_bucketsort.c
 
 void	bucket_sort_adaption(
 			t_stack_machine *machine);
 
-int		push_and_sort_buckets(
+int		bucketsort_sub_push_and_sort_buckets(
 			t_stack_machine *machine,
 			int **bucket_map,
 			int bucket_size);
 
-int		push_and_sort_rest(
+int		bucketsort_sub_push_and_sort_rest(
 			t_stack_machine *machine,
 			int **bucket_map,
 			int last_bucket_idx,
 			int rest);
 
-// sort_medium_bucket_fill_bucket.c
+// sort_medium_bucketsort_efficieny.c
+
+void	bucketsort_a_smaller_stack_more_efficient(
+			t_stack_machine *machine,
+			int **bucket_map);
+
+// sort_medium_bucketsort_fill_bucket.c
 
 void	bucketsort_sub_push_last_bucket_to_b(
 			t_stack_machine *machine);
@@ -94,18 +100,17 @@ void	bucketsort_sub_push_bucket_to_b(
 			int bucket_i,
 			int bucket_size);
 
-// sort_medium_bucket_sort_bucket.c
-
-void	bucketsort_sub_sort_bucket_descending_with_insertion_sort(
-			t_stack_machine *machine,
-			int len);
+// sort_medium_bucketsort_sort_bucket.c
 
 void	bucketsort_sub_sort_bucket_descending_with_min_extraction(
 			t_stack_machine *machine,
 			int *pre_sorted_bucket,
 			int len);
 
-// sort_medium_bucketsort_efficiency_descending_b.c
+// sort_medium_bucketsort_sort_bucket_efficiency.c
+
+void	bucketsort_sub_sub_sort_two_ascending_and_two_descending(
+			t_stack_machine *machine);
 
 void	bucketsort_sub_sub_sort_two_elements_descanding(
 			t_stack_machine *machine);
@@ -161,10 +166,10 @@ void	print_bench(
 
 // sort_small_stacks.c
 
-int		sort_two(
+int		anysort_sort_two(
 			t_stack_machine *machine);
 
-int		sort_three(
+int		anysort_sort_three(
 			t_stack_machine *machine);
 
 // sort_utilities.c
@@ -177,10 +182,15 @@ int		int_max_of_two(
 			int a,
 			int b);
 
-// sort_anysort_utilities_execute_a.c
+// sort_anysort_utilities_execute_push_a_b.c
 
-int		push_all_elements_to_stack_a(
+int		anysort_push_all_elements_to_stack_a(
 			t_stack_machine *machine);
+
+int		anysort_push_all_elements_to_stack_b(
+			t_stack_machine *machine);
+
+// sort_anysort_utilities_execute_rotation_a.c
 
 int		anysort_sub_rotate_smallest_element_to_top_of_stack_a(
 			t_stack_machine *machine);
@@ -189,10 +199,7 @@ int		anysort_sub_rotate_element_to_the_top_of_stack_a_by_idx(
 			t_stack_machine *machine,
 			int idx);
 
-// sort_anysort_utilities_execute_b.c
-
-int		push_all_elements_to_stack_b(
-			t_stack_machine *machine);
+// sort_anysort_utilities_execute_rotation_b.c
 
 int		anysort_sub_rotate_largest_element_to_top_of_stack_b(
 			t_stack_machine *machine);

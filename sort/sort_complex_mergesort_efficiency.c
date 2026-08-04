@@ -50,7 +50,7 @@ void	mergesort_a_smaller_stack_more_efficient(
 		return ;
 	if (len == 2)
 		return (
-			(void)(sort_two(
+			(void)(anysort_sort_two(
 				machine)));
 	if (len == 3)
 		return (
@@ -151,7 +151,7 @@ static void	mergesort_three_elements(
 	int	top_b;
 
 	mergesort_sub_split_stack(machine);
-	sort_two(machine);
+	anysort_sort_two(machine);
 	top_a = machine -> stacks[0].first -> val;
 	bottom_a = machine -> stacks[0].last -> val;
 	top_b = machine -> stacks[1].first -> val;

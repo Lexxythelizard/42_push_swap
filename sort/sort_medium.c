@@ -22,7 +22,6 @@
 void	sort_medium(t_stack_machine *machine)
 {
 	bucket_sort_adaption(machine);
-	//print_stacks(machine);
 	return ;
 }
 

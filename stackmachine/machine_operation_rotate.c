@@ -13,7 +13,6 @@
 // --- include ---
 
 #include "./machine.h"
-#include "../libraries/libft/libft.h"
 
 // --- DOC --
 
@@ -43,15 +42,11 @@ and add it on top of it
 int	ra(t_stack_machine *machine)
 {
 	t_stack	*stack_a;
-	int		ctrl;
 
 	if (!machine)
 		return (-1);
 	stack_a = &(machine -> stacks[0]);
-	ctrl = rotate(stack_a);
-	if (ctrl == 1)
-		ft_putendl_fd(RA_STR, 1);
-	return (ctrl);
+	return (rotate(stack_a));
 }
 
 /*
@@ -63,15 +58,11 @@ and add it on top of it
 int	rb(t_stack_machine *machine)
 {
 	t_stack	*stack_b;
-	int		ctrl;
 
 	if (!machine)
 		return (-1);
 	stack_b = &(machine -> stacks[1]);
-	ctrl = rotate(stack_b);
-	if (ctrl == 1)
-		ft_putendl_fd(RB_STR, 1);
-	return (ctrl);
+	return (rotate(stack_b));
 }
 
 /*
@@ -93,6 +84,5 @@ int	rr(t_stack_machine *machine)
 		return (0);
 	rotate(stack_a);
 	rotate(stack_b);
-	ft_putendl_fd(RR_STR, 1);
 	return (1);
 }

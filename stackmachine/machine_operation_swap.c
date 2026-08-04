@@ -13,7 +13,6 @@
 // --- include ---
 
 #include "./machine.h"
-#include "../libraries/libft/libft.h"
 
 // --- DOC --
 
@@ -43,15 +42,11 @@ and add them in reversed order
 int	sa(t_stack_machine *machine)
 {
 	t_stack	*stack_a;
-	int		ctrl;
 
 	if (!machine)
 		return (-1);
 	stack_a = &(machine -> stacks[0]);
-	ctrl = swap(stack_a);
-	if (ctrl == 1)
-		ft_putendl_fd(SA_STR, 1);
-	return (ctrl);
+	return (swap(stack_a));
 }
 
 /*
@@ -63,15 +58,11 @@ and add them in reversed order
 int	sb(t_stack_machine *machine)
 {
 	t_stack	*stack_b;
-	int		ctrl;
 
 	if (!machine)
 		return (-1);
 	stack_b = &(machine -> stacks[1]);
-	ctrl = swap(stack_b);
-	if (ctrl == 1)
-		ft_putendl_fd(SB_STR, 1);
-	return (ctrl);
+	return (swap(stack_b));
 }
 
 /*
@@ -93,6 +84,5 @@ int	ss(t_stack_machine *machine)
 		return (0);
 	swap(stack_a);
 	swap(stack_b);
-	ft_putendl_fd(SS_STR, 1);
 	return (1);
 }

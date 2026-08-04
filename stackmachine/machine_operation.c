@@ -13,6 +13,7 @@
 // --- include ---
 
 #include "./machine.h"
+#include "../libraries/libft/libft.h"
 
 // --- DOC --
 
@@ -61,8 +62,11 @@ int	machine_operation_execute(t_stack_machine *machine, int idx)
 		return (-1);
 	ctrl = ((machine -> funcs)[idx].func)(machine);
 	if (ctrl == 1)
+	{
 		machine -> stats.calls[idx]++;
-	machine -> stats.total_ops += (ctrl == 1);
+		ft_putendl_fd((machine -> funcs)[idx].name, 1);
+		machine -> stats.total_ops++;
+	}
 	return (ctrl);
 }
 

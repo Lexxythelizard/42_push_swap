@@ -203,29 +203,35 @@ In this cases it just fixed two or three lines and adapted our coding style :)
 ├── interface_stackmachine.c
 ├── interface_ui.c
 ├── libraries/
-│   ├── ft_printf/
-│   └── libft/
+│   ├── libft/
+│   └── ft_printf/
 ├── sort/
 │   ├── sort.h
 │   ├── sort_adaptive.c
-│   ├── sort_benchmarks.c
+│   ├── sort_simple.c
+│   ├── sort_simple_min_extraction.c
+│   ├── sort_medium.c
+│   ├── sort_medium_bucketsort.c
+│   ├── sort_medium_bucketsort_efficiency.c
+│   ├── sort_medium_bucketsort_fill_bucket.c
+│   ├── sort_medium_bucketsort_sort_bucket.c
+│   ├── sort_medium_bucketsort_sort_bucket_efficiency.c
+│   ├── sort_medium_bucketsort_utility.c
+│   ├── sort_medium_bucketsort_utility_arr.c
+│   ├── sort_medium_bucketsort_utility_arr_arr.c
 │   ├── sort_complex.c
 │   ├── sort_complex_mergesort.c
 │   ├── sort_complex_mergesort_base.c
 │   ├── sort_complex_mergesort_efficiency.c
 │   ├── sort_complex_mergesort_merge_to_side_x.c
-│   ├── sort_medium.c
-│   ├── sort_medium_bucketsort.c
-│   ├── sort_medium_bucketsort_fill_bucket.c
-│   ├── sort_medium_bucketsort_sort_bucket.c
-│   ├── sort_medium_bucketsort_utility.c
-│   ├── sort_medium_bucketsort_utility_arr.c
-│   ├── sort_medium_bucketsort_utility_arr_arr.c
-│   ├── sort_simple.c
-│   ├── sort_simple_min_extraction.c
-│   ├── sort_small_stacks.c
-│   ├── sort_utillities_execute_a.c
-│   ├── sort_utillities_execute_b.c
+│   ├── sort_anysort_sort_small_stacks.c
+│   ├── sort_anysort_sort_small_stacks_stack_b.c
+│   ├── sort_anysort_utilities_execute_push_a_b.c
+│   ├── sort_anysort_utilities_execute_rotation_a.c
+│   ├── sort_anysort_utilities_execute_rotation_b.c
+│   ├── sort_anysort_utilities_execute_swap_elements_a.c
+│   ├── sort_anysort_utilities_execute_swap_elements_b.c
+│   ├── sort_benchmarks.c
 │   └── sort_utillities_scan.c
 ├── stackmachine/
 │   ├── machine.h
@@ -233,34 +239,37 @@ In this cases it just fixed two or three lines and adapted our coding style :)
 │   ├── machine_machine.c
 │   ├── machine_operation.c
 │   ├── machine_operation_push.c
-│   ├── machine_operation_reverse_rotate.c
 │   ├── machine_operation_rotate.c
+│   ├── machine_operation_reverse_rotate.c
 │   ├── machine_operation_swap.c
 │   ├── funcs/
 │   │   ├── funcs.h
 │   │   └── machine_funcs.c
 │   ├── stack/
 │   │   ├── stack.h
+│   │   ├── stack_stack.c
 │   │   ├── stack_elements.c
 │   │   ├── stack_operation.c
-│   │   ├── stack_pop_add.c
+│   │   ├── stack_operation_pop_add.c
 │   │   ├── stack_scan.c
-│   │   ├── stack_scan_max.c
 │   │   ├── stack_scan_min.c
-│   │   └── stack_stack.c
+│   │   ├── stack_scan_max.c
+│   │   └── stack_scan.c
 │   └── stats/
 │       ├── stats.h
 │       ├── machine_stats.c
-│       ├── machine_stats_strategy_entro.c
-│       └── machine_stats_strategy_flag.c
+│       ├── machine_stats_strategy_flag.c
+│       └── machine_stats_strategy_entro.c
 └── ui/
     ├── ui.h
     ├── ui_convert_arguments.c
     ├── ui_entropy.c
     ├── ui_output.c
     ├── ui_validate_arguments.c
+    ├── ui_validate_arguments_numbers.c
     ├── ui_validate_arguments_flags.c
-    └── ui_validate_arguments_numbers.c
+    ├── ui_validate_arguments_flags_command_flags.c
+    └── ui_validate_arguments_flags_display_flags.c
 ```
 
 ---
@@ -375,5 +384,5 @@ typedef struct s_func
 42 Berlin login: `esakella` \
 42 Berlin login: `lenivorb`
 
-private Github:	https://github.com/esakella ? \
+private Github:	https://github.com/phymut \
 private Github:	https://github.com/Lexxythelizard

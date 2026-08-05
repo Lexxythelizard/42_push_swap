@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filename.h                                         :+:      :+:    :+:   */
+/*   ui.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*   Updated: 2026/08/05 16:46:43 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define FLAG_MEDIUM    "--medium"
 # define FLAG_COMPLEX   "--complex"
 # define FLAG_ADAPTIVE  "--adaptive"
+
+# define INT_MAX_STR  "2147483647"
 
 # define ERR_STR "Error"
 

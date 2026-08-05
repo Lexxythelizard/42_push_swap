@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filename.c                                         :+:      :+:    :+:   */
+/*   sort_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*   Updated: 2026/08/05 18:53:32 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,15 @@ void	swap(int *a, int *b)
 
 void	sort_simple(t_stack_machine *machine)
 {
+	// for testing
+	int	len;
+
+	len = machine -> stacks[0].len;
+	if (len == 4)
+		return ((void)(anysort_sort_four(machine)));
+	if (len == 5)
+		return ((void)(anysort_sort_five(machine)));
+	// test end
 	min_extraction_adaption_sort(machine);
 	return ;
 }

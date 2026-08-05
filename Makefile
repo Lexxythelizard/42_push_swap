@@ -6,7 +6,7 @@
 #    By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#              #
-#    Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr        #
+#    Updated: 2026/08/05 18:34:44 by lenivorb         ###   ########.fr        #
 #                                                                              #
 #  *************************************************************************** #
 
@@ -134,7 +134,8 @@ Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
 					$(Ui_Dir)/ui_output.c
 
 Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
-					$(Sort_Dir)/sort_anysort_sort_small_stacks.c \
+					$(Sort_Dir)/sort_anysort_sort_small_stacks_two_and_three.c \
+					$(Sort_Dir)/sort_anysort_sort_small_stacks_four_and_five.c \
 					$(Sort_Dir)/sort_anysort_utilities_execute_push_a_b.c \
 					$(Sort_Dir)/sort_anysort_utilities_execute_rotation_a.c \
 					$(Sort_Dir)/sort_anysort_utilities_execute_rotation_b.c \

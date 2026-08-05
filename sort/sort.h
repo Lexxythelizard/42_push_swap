@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filename.h                                         :+:      :+:    :+:   */
+/*   sort.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*   Updated: 2026/08/05 18:39:11 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int		min_extraction_adaption_sort(
 void	print_bench(
 			t_stack_machine *machine);
 
-// sort_small_stacks.c
+// sort_anysort_sort_small_stacks_two_and_three.c
 
 int		anysort_sort_two(
 			t_stack_machine *machine);
@@ -172,15 +172,13 @@ int		anysort_sort_two(
 int		anysort_sort_three(
 			t_stack_machine *machine);
 
-// sort_utilities.c
+// sort_anysort_sort_small_stacks_four_and_five.c
 
-int		int_min_of_two(
-			int a,
-			int b);
+int		anysort_sort_four(
+			t_stack_machine *machine);
 
-int		int_max_of_two(
-			int a,
-			int b);
+int		anysort_sort_five(
+			t_stack_machine *machine);
 
 // sort_anysort_utilities_execute_push_a_b.c
 
@@ -241,6 +239,16 @@ void	anysort_sub_swap_first_and_second_a(
 
 void	anysort_sub_swap_first_and_third_a(
 			t_stack_machine *machine);
+
+// sort_utilities.c
+
+int		int_min_of_two(
+			int a,
+			int b);
+
+int		int_max_of_two(
+			int a,
+			int b);
 
 // --- end ---
 

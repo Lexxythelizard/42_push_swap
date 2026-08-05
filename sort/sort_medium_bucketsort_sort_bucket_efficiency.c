@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filename.c                                         :+:      :+:    :+:   */
+/*   sort_medium_bucketsort_sort_bucket_effici          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*   Updated: 2026/08/05 19:23:14 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,21 @@ sorts buckets with two elements more efficient :)
 void	bucketsort_sub_sub_sort_two_ascending_and_two_descending(
 			t_stack_machine *machine)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+    t_stack *stack_a;
+    t_stack *stack_b;
+	int		a_ascending;
+	int		b_ascending;
 
-	stack_a = &(machine -> stacks[0]);
-	stack_b = &(machine -> stacks[1]);
-	if (
-		(!(stack_is_first_and_sec_ascending(stack_a)))
-		&& (stack_is_first_and_sec_ascending(stack_b)))
+    stack_a = &(machine -> stacks[0]);
+    stack_b = &(machine -> stacks[1]);
+	a_ascending = stack_is_first_and_sec_ascending(stack_a);
+	b_ascending = stack_is_first_and_sec_ascending(stack_b);
+    
+	if (!a_ascending && b_ascending)
 		return ((void)(machine_operation_execute(machine, SS)));
-	if (
-		!(stack_is_first_and_sec_ascending(stack_a)))
-		return ((void)(machine_operation_execute(machine, SB)));
-	if (
-		stack_is_first_and_sec_ascending(stack_b))
+	if (!a_ascending)
+		return ((void)(machine_operation_execute(machine, SA)));
+	if (b_ascending)
 		return ((void)(machine_operation_execute(machine, SB)));
 }
 

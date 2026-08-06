@@ -44,21 +44,21 @@ int	is_numbers_unique(int *list, int len)
 int	is_valid_nbr(const char *s)
 {
 	size_t	i;
+	char		*temp;
+	int		ctrl;
 
-	i = 0;
-	if (!(s))
+	if (!s)
 		return (0);
-	while ((s[i]) && (((s[i] >= 9) && (s[i] <= 13)) || (s[i] == 32)))
-		i++;
-	i += ((s[i] == 43) || (s[i] == 45));
-	while (s[i])
-	{
-		if (!(ft_isdigit(s[i])))
-			return (0);
-		i++;
-	}
-	//return (1);
-	return (is_number_within_int_range(s) == 1);
+	temp = ft_strtrim(s, SPACES_STR);
+	if (!temp)
+		return (0);
+	i = ((temp[0] == 43) || (temp[0] == 45));
+	ctrl = is_digits_str(&(temp[i]));
+	if (!(ctrl))
+		return (free_and_return_int((void *)(temp), ctrl));
+	i = (temp[0] == 43);
+	ctrl = is_number_within_int_range(&(temp[i]));
+	return (free_and_return_int((void *)(temp), ctrl));
 }
 
 int	is_number_within_int_range(const char *s)

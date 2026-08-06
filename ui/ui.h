@@ -61,6 +61,10 @@ int		is_args_valid(const char **argv, int argc);
 int		is_str_equal_to_str(const char *s1, const char *s2);
 int		is_begin_with_double_dash(const char *s);
 
+// ui_validate_arguments_digits.c
+
+int		is_digits_str(const char *s);
+
 // ui_validate_arguments_empty.c
 
 int		is_empty_str(const char *s);

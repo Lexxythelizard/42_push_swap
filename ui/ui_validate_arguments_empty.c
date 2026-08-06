@@ -17,16 +17,23 @@
 
 // --- define ---
 
-int	is_display_flag(const char *s)
+int	is_empty_str_in_arr(const char **argv, int argc)
 {
-	if (!(is_any_flag(s)))
-		return (0);
-	return (is_flag_bench(s));
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (is_empty_str(argv[i]))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-int	is_flag_bench(const char *s)
+int	is_empty_str(const char *s)
 {
-	if (!(is_any_flag(s)))
+	if (!s)
 		return (0);
-	return (is_str_equal_to_str(s, FLAG_BENCH));
+	return (s[0] == 0);
 }

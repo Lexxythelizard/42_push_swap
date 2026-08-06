@@ -125,6 +125,9 @@ Machine_Files	=	$(Machine_Dir)/machine_machine.c \
 					$(Machine_Dir)/machine_operation.c
 
 Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
+					$(Ui_Dir)/ui_validate_arguments_compare.c \
+					$(Ui_Dir)/ui_validate_arguments_empty.c \
+					$(Ui_Dir)/ui_validate_arguments_spaces.c \
 					$(Ui_Dir)/ui_validate_arguments_flags.c \
 					$(Ui_Dir)/ui_validate_arguments_flags_command_flags.c \
 					$(Ui_Dir)/ui_validate_arguments_flags_display_flags.c \

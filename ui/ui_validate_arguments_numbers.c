@@ -57,5 +57,28 @@ int	is_valid_nbr(const char *s)
 			return (0);
 		i++;
 	}
-	return (1);
+	//return (1);
+	return (is_number_within_int_range(s) == 1);
+}
+
+int	is_number_within_int_range(const char *s)
+{
+	char	*control_str;
+	char	*compare_str;
+	int		compare_int;
+	int		ctrl;
+	
+	control_str = ft_strtrim(s, SPACES_STR);
+	if (!control_str)
+		return (-1);
+	compare_int = ft_atoi(control_str);
+	compare_str = ft_itoa(compare_int);
+	if (!compare_str)
+		free(control_str);
+	if (!compare_str)
+		return (-1);
+	ctrl = is_str_equal_to_str(control_str, compare_str);
+	free(control_str);
+	free(compare_str);
+	return (ctrl);
 }

@@ -17,16 +17,37 @@
 
 // --- define ---
 
-int	is_display_flag(const char *s)
+int	is_space_str_in_arr(const char **argv, int argc)
 {
-	if (!(is_any_flag(s)))
-		return (0);
-	return (is_flag_bench(s));
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (is_space_str(argv[i]))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-int	is_flag_bench(const char *s)
+
+int	is_space_str(const char *s)
 {
-	if (!(is_any_flag(s)))
-		return (0);
-	return (is_str_equal_to_str(s, FLAG_BENCH));
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (!(is_space((unsigned char)(s[i]))))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	is_space(int c)
+{
+	c %= 256;
+	return (((c >= 9) && (c <= 13)) || (c == 32));
 }

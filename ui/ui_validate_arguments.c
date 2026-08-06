@@ -27,6 +27,8 @@ int	is_args_valid(const char **argv, int argc)
 
 	if (argc < 2)
 		return (0);
+	if (is_empty_str_in_arr(argv, argc))
+		return (0);
 	flags = count_repitition_of_flags(argv, argc);
 	i = flags + 1;
 	if (flags > 2)

@@ -17,16 +17,27 @@
 
 // --- define ---
 
-int	is_display_flag(const char *s)
+int	is_str_equal_to_str(const char *s1, const char *s2)
 {
-	if (!(is_any_flag(s)))
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	ctrl_len;
+
+	if ((!s1) && (!s2))
+		return (1);
+	if ((!s1) || (!s2))
 		return (0);
-	return (is_flag_bench(s));
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	if (s1_len != s2_len)
+		return (0);
+	ctrl_len = s1_len * (s1_len >= s2_len) + s2_len * (s2_len > s1_len);
+	return (!(ft_strncmp(s1, s2, ctrl_len)));
 }
 
-int	is_flag_bench(const char *s)
+int is_begin_with_double_dash(const char *s) 
 {
-	if (!(is_any_flag(s)))
-		return (0);
-	return (is_str_equal_to_str(s, FLAG_BENCH));
+    if ((s[0]) && (s[1]))
+        return ((s[0] == 45) && (s[1] == 45));
+    return (0);
 }

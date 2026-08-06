@@ -16,16 +16,7 @@
 #include "../libraries/libft/libft.h"
 
 // --- define ---
-/*
-int	count_repitition_of_flags(const char **argv, int argc)
-{
-	int	count;
 
-	count = 0;
-	while ((count + 1) < argc) && (count < 2)
-		count += is_valid_flag(argv[(count + 1)]);
-}
-*/
 int	is_flag_combination_valid(const char **argv, int argc)
 {
 	int	display_flags;

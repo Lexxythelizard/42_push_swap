@@ -163,6 +163,7 @@ Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_medium_bucketsort_utility_arr_arr.c \
 					$(Sort_Dir)/sort_simple.c \
 					$(Sort_Dir)/sort_simple_min_extraction.c \
+					$(Sort_Dir)/sort_simple_min_extraction_efficiency.c \
 					$(Sort_Dir)/sort_utillities_scan.c
 
 Push_Swap_Files	=	$(This_Dir)/interface_sort.c \

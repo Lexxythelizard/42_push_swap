@@ -44,6 +44,7 @@ int	min_extraction_adaption_sort(t_stack_machine *machine)
 		return (stack_a -> len);
 	if (stack_a -> len == 3)
 		return (anysort_sort_three(machine));
+	min_extraction_sort_sub_sort_huge_stack_more_efficiently(machine);
 	while (more_than_two_elements_in_stack_a(machine))
 	{
 		anysort_sub_rotate_smallest_element_to_top_of_stack_a(machine);

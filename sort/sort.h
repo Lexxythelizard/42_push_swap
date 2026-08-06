@@ -159,6 +159,11 @@ void	sort_simple(
 int		min_extraction_adaption_sort(
 			t_stack_machine *machine);
 
+// sort_simple_min_extraction_efficiency.c
+
+int		min_extraction_sort_sub_sort_huge_stack_more_efficiently(
+			t_stack_machine *machine);
+
 // sort_benchmarks.c
 
 void	print_bench(

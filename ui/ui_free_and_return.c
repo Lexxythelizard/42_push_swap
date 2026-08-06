@@ -12,42 +12,21 @@
 
 // --- include ---
 
+#include <stdlib.h>
 #include "./ui.h"
-#include "../libraries/libft/libft.h"
 
 // --- define ---
 
-int	is_flag_combination_valid(const char **argv, int argc)
+int	free_and_return_int(void *ptr, int i)
 {
-	int	display_flags;
-	int	command_flags;
-
-	display_flags = 0;
-	command_flags = 0;
-	if (argc < 2)
-		return (0);
-	if (argc < 3)
-		return (is_valid_flag(argv[1]));
-	display_flags = (is_display_flag(argv[1])) + (is_display_flag(argv[2]));
-	command_flags = (is_command_flag(argv[1])) + (is_command_flag(argv[2]));
-	if ((display_flags >= 2) || (command_flags >= 2))
-		return (0);
-	return (is_valid_flag(argv[1]));
+	if (ptr)
+		free(ptr);
+	return (i);
 }
 
-int	is_valid_flag(const char *s)
+void	*free_and_return_any_ptr(void *ptr, void *address)
 {
-	char	*temp;
-	int		ctrl;
-	
-	if (!s)
-		return (0);
-	temp = ft_strtrim(s, SPACES_STR);
-	if (!temp)
-		return (0);
-	ctrl = is_begin_with_double_dash(temp);
-	if (!(ctrl))
-		return (free_and_return_int((void *)(temp), ctrl));
-	ctrl = (is_command_flag(temp) || is_display_flag(temp));
-	return (free_and_return_int((void *)(temp), ctrl));
+	if (ptr)
+		free(ptr);
+	return (address);
 }

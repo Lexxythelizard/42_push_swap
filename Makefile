@@ -134,6 +134,7 @@ Ui_Files		=	$(Ui_Dir)/ui_validate_arguments.c \
 					$(Ui_Dir)/ui_validate_arguments_numbers.c \
 					$(Ui_Dir)/ui_convert_arguments.c \
 					$(Ui_Dir)/ui_entropy.c \
+					$(Ui_Dir)/ui_free_and_return.c \
 					$(Ui_Dir)/ui_output.c
 
 Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \

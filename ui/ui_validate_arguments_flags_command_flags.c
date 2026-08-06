@@ -19,38 +19,41 @@
 
 int	is_command_flag(const char *s)
 {
-	if (!(is_any_flag(s)))
+	char	*temp;
+	int		ctrl;
+    
+	if (!s)
 		return (0);
-	return (is_flag_simple(s)
-		|| is_flag_medium(s)
-		|| is_flag_complex(s)
-		|| is_flag_adaptive(s));
+	temp = ft_strtrim(s, SPACES_STR);
+	ctrl = 0;
+	if (!temp)
+		return (0);
+	ctrl = (
+		(is_flag_simple((const char *)(temp)))
+		|| (is_flag_medium((const char *)(temp)))
+		|| (is_flag_complex((const char *)(temp)))
+		|| (is_flag_adaptive((const char *)(temp)))
+	);
+	free(temp);
+	return (ctrl);
 }
 
 int	is_flag_simple(const char *s)
 {
-	if (!(is_any_flag(s)))
-		return (0);
 	return (is_str_equal_to_str(s, FLAG_SIMPLE));
 }
 
 int	is_flag_medium(const char *s)
 {
-	if (!(is_any_flag(s)))
-		return (0);
 	return (is_str_equal_to_str(s, FLAG_MEDIUM));
 }
 
 int	is_flag_complex(const char *s)
 {
-	if (!(is_any_flag(s)))
-		return (0);
 	return (is_str_equal_to_str(s, FLAG_COMPLEX));
 }
 
 int	is_flag_adaptive(const char *s)
 {
-	if (!(is_any_flag(s)))
-		return (0);
 	return (is_str_equal_to_str(s, FLAG_ADAPTIVE));
 }

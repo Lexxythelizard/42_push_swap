@@ -19,14 +19,20 @@
 
 int	is_display_flag(const char *s)
 {
-	if (!(is_any_flag(s)))
+	char	*temp;
+	int		ctrl;
+    
+	if (!s)
 		return (0);
-	return (is_flag_bench(s));
+	temp = ft_strtrim(s, SPACES_STR);
+	if (!temp)
+		return (0);
+	ctrl = is_flag_bench((const char *)(temp));
+	free(temp);	
+	return (ctrl);
 }
 
 int	is_flag_bench(const char *s)
 {
-	if (!(is_any_flag(s)))
-		return (0);
 	return (is_str_equal_to_str(s, FLAG_BENCH));
 }

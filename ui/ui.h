@@ -40,6 +40,11 @@ struct	s_stats;
 
 float	calculate_entropy(int *arr, int len);
 
+// ui_free_and_return.c
+
+int		free_and_return_int(void *ptr, int i);
+void	*free_and_return_any_ptr(void *ptr, void *address);
+
 // ui_convert_arguments.c
 
 int		*get_int_list(const char **argv, int argc);

@@ -6,7 +6,7 @@
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 2026/08/05 19:23:14 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/08/06 17:28:36 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,15 @@ sorts buckets with two elements more efficient :)
 void	bucketsort_sub_sub_sort_two_ascending_and_two_descending(
 			t_stack_machine *machine)
 {
-    t_stack *stack_a;
-    t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	int		a_ascending;
 	int		b_ascending;
 
-    stack_a = &(machine -> stacks[0]);
-    stack_b = &(machine -> stacks[1]);
+	stack_a = &(machine -> stacks[0]);
+	stack_b = &(machine -> stacks[1]);
 	a_ascending = stack_is_first_and_sec_ascending(stack_a);
 	b_ascending = stack_is_first_and_sec_ascending(stack_b);
-    
 	if (!a_ascending && b_ascending)
 		return ((void)(machine_operation_execute(machine, SS)));
 	if (!a_ascending)

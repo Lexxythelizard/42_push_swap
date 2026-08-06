@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filename.c                                         :+:      :+:    :+:   */
+/*   ui_validate_arguments_compare.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*   Updated: 2026/08/06 15:41:51 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	is_str_equal_to_str(const char *s1, const char *s2)
 	return (!(ft_strncmp(s1, s2, ctrl_len)));
 }
 
-int is_begin_with_double_dash(const char *s) 
+int	is_begin_with_double_dash(const char *s)
 {
-    if ((s[0]) && (s[1]))
-        return ((s[0] == 45) && (s[1] == 45));
-    return (0);
+	if ((s[0]) && (s[1]))
+		return ((s[0] == 45) && (s[1] == 45));
+	return (0);
 }

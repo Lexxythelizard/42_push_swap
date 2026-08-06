@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filename.c                                         :+:      :+:    :+:   */
+/*   ui_convert_arguments.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*   Updated: 2026/08/06 15:36:38 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,21 @@ int	get_flag_values(const char **argv, int argc)
 
 int	get_flag_value(const char *flag)
 {
+	char	*temp;
+	int		ctrl;
+
 	if (!flag)
-		return (-1);
-	return (0
-		+ 1 * (is_flag_simple(flag))
-		+ 2 * (is_flag_medium(flag))
-		+ 4 * (is_flag_complex(flag))
-		+ 8 * (is_flag_adaptive(flag))
-		+ 16 * (is_flag_bench(flag)));
+		return (0);
+	temp = ft_strtrim(flag, SPACES_STR);
+	ctrl = 0;
+	if (!temp)
+		return (0);
+	ctrl = (0
+			+ 1 * (is_flag_simple(temp))
+			+ 2 * (is_flag_medium(temp))
+			+ 4 * (is_flag_complex(temp))
+			+ 8 * (is_flag_adaptive(temp))
+			+ 16 * (is_flag_bench(temp)));
+	return (
+		free_and_return_int((void *)(temp), ctrl));
 }

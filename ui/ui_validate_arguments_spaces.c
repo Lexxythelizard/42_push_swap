@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filename.c                                         :+:      :+:    :+:   */
+/*   ui_validate_arguments_spaces.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*   Updated: 2026/08/06 15:45:22 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	is_space_str_in_arr(const char **argv, int argc)
 	}
 	return (0);
 }
-
 
 int	is_space_str(const char *s)
 {

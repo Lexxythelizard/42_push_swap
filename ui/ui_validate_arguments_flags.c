@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filename.c                                         :+:      :+:    :+:   */
+/*   ui_validate_arguments_flags.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*   Updated: 2026/08/06 15:42:11 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	is_valid_flag(const char *s)
 {
 	char	*temp;
 	int		ctrl;
-	
+
 	if (!s)
 		return (0);
 	temp = ft_strtrim(s, SPACES_STR);

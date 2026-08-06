@@ -6,7 +6,7 @@
 /*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 2026/08/05 17:40:34 by lenivorb         ###   ########.fr       */
+/*   Updated: 2026/08/06 15:45:08 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	is_numbers_unique(int *list, int len)
 int	is_valid_nbr(const char *s)
 {
 	size_t	i;
-	char		*temp;
+	char	*temp;
 	int		ctrl;
 
 	if (!s)
@@ -67,7 +67,7 @@ int	is_number_within_int_range(const char *s)
 	char	*compare_str;
 	int		compare_int;
 	int		ctrl;
-	
+
 	control_str = ft_strtrim(s, SPACES_STR);
 	if (!control_str)
 		return (-1);

@@ -203,14 +203,25 @@ In this cases it just fixed two or three lines and adapted our coding style :)
 ├── interface_stackmachine.c
 ├── interface_ui.c
 ├── libraries/
-│   ├── libft/
-│   └── ft_printf/
+│   ├── ft_printf/
+│   └── libft/
 ├── sort/
 │   ├── sort.h
 │   ├── sort_adaptive.c
 │   ├── sort_simple.c
-│   ├── sort_simple_min_extraction.c
 │   ├── sort_medium.c
+│   ├── sort_complex.c
+│   ├── sort_benchmarks.c
+│   ├── sort_anysort_sort_small_stacks_two_and_three.c
+│   ├── sort_anysort_sort_small_stacks_four_and_five.c
+│   ├── sort_anysort_sort_small_stacks_stack_b.c
+│   ├── sort_anysort_utilities_execute_push_a_b.c
+│   ├── sort_anysort_utilities_execute_rotation_a.c
+│   ├── sort_anysort_utilities_execute_rotation_b.c
+│   ├── sort_anysort_utilities_execute_swap_elements_a.c
+│   ├── sort_anysort_utilities_execute_swap_elements_b.c
+│   ├── sort_simple_min_extraction.c
+│   ├── sort_simple_min_extraction_efficiency.c
 │   ├── sort_medium_bucketsort.c
 │   ├── sort_medium_bucketsort_efficiency.c
 │   ├── sort_medium_bucketsort_fill_bucket.c
@@ -219,19 +230,10 @@ In this cases it just fixed two or three lines and adapted our coding style :)
 │   ├── sort_medium_bucketsort_utility.c
 │   ├── sort_medium_bucketsort_utility_arr.c
 │   ├── sort_medium_bucketsort_utility_arr_arr.c
-│   ├── sort_complex.c
 │   ├── sort_complex_mergesort.c
 │   ├── sort_complex_mergesort_base.c
 │   ├── sort_complex_mergesort_efficiency.c
 │   ├── sort_complex_mergesort_merge_to_side_x.c
-│   ├── sort_anysort_sort_small_stacks.c
-│   ├── sort_anysort_sort_small_stacks_stack_b.c
-│   ├── sort_anysort_utilities_execute_push_a_b.c
-│   ├── sort_anysort_utilities_execute_rotation_a.c
-│   ├── sort_anysort_utilities_execute_rotation_b.c
-│   ├── sort_anysort_utilities_execute_swap_elements_a.c
-│   ├── sort_anysort_utilities_execute_swap_elements_b.c
-│   ├── sort_benchmarks.c
 │   └── sort_utillities_scan.c
 ├── stackmachine/
 │   ├── machine.h
@@ -262,10 +264,14 @@ In this cases it just fixed two or three lines and adapted our coding style :)
 │       └── machine_stats_strategy_entro.c
 └── ui/
     ├── ui.h
-    ├── ui_convert_arguments.c
-    ├── ui_entropy.c
     ├── ui_output.c
+    ├── ui_entropy.c
+    ├── ui_convert_arguments.c
+    ├── ui_free_and_return.c
     ├── ui_validate_arguments.c
+    ├── ui_validate_arguments_spaces.c
+    ├── ui_validate_arguments_empty.c
+    ├── ui_validate_arguments_digits.c
     ├── ui_validate_arguments_numbers.c
     ├── ui_validate_arguments_flags.c
     ├── ui_validate_arguments_flags_command_flags.c

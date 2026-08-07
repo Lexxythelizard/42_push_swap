@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_medium_bucketsort_sort_bucket_effici          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 2026/08/06 17:28:36 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/08/07 19:12:09 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/08/07 19:12:11 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

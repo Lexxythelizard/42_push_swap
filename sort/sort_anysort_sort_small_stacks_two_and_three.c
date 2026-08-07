@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_anysort_sort_small_stacks.c                   :+:      :+:    :+:   */
+/*   sort_anysort_sort_small_stacks_two_and_th          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 2026/08/05 17:42:25 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/08/07 19:08:29 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/08/07 19:08:31 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

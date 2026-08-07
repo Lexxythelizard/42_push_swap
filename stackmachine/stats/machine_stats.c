@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filename.c                                         :+:      :+:    :+:   */
+/*   machine_stats.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam         ###   ########.fr       */
+/*   Created: 2026/08/07 19:01:25 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/08/07 19:01:27 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 2026/08/06 17:23:55 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/08/07 19:13:22 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/08/07 19:13:24 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

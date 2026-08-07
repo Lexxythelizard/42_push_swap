@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_validate_arguments_flags.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: intranam <intranam@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 20xx/xx/xx xx:xx:xx by intranam          #+#    #+#             */
-/*   Updated: 2026/08/06 15:42:11 by lenivorb         ###   ########.fr       */
+/*   Created: 2026/08/07 19:16:42 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/08/07 19:16:44 by lenivorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

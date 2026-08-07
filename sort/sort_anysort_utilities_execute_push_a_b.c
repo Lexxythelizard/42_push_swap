@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   filename.c										 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: intranam <intranam@student.42berlin.d	  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 20xx/xx/xx xx:xx:xx by intranam		  #+#	#+#			 */
-/*   Updated: 20xx/xx/xx xx:xx:xx by intranam		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_anysort_utilities_execute_push_a_b.c          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lenivorb <lenivorb@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/07 19:08:41 by lenivorb          #+#    #+#             */
+/*   Updated: 2026/08/07 19:08:42 by lenivorb         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 // --- include ---

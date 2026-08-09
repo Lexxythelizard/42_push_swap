@@ -20,7 +20,11 @@
 # define ADAPTIVE_SIMPLE_STR "Adaptive / O(n²)"
 # define ADAPTIVE_NULL_STR "Adaptive / O(0)"
 
-# define BENCH_STR "bench"
+# define BENCH_STR "[bench] "
+# define DISORDER_STR "disorder:  "
+# define STRATEGY_STR "strategy:  "
+# define TOTAL_OPS_STR "total_ops:  "
+
 # define ADAPTIVE_STR "Adaptive"
 # define COMPLEX_STR "Complex / O(n*log(n))"
 # define MEDIUM_STR "Medium / O(n√n\u0305)"

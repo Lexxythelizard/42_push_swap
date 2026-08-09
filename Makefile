@@ -180,6 +180,28 @@ All_Src_Files	=	$(Stack_Files) \
 
 Push_Swap_Main	=	$(This_Dir)/main.c
 
+Stack_Obj		=	$(Stack_Files:.c=.o)
+
+Stats_Obj		=	$(Stats_Files:.c=.o)
+
+Funcs_Obj		=	$(Func_Files:.c=.o)
+
+Machine_Obj		=	$(Machine_Files:.c=.o)
+
+Ui_Obj			=	$(Ui_Files:.c=.o)
+
+Sort_Obj		=	$(Sort_Files:.c=.o)
+
+Push_Swap_Obj	=	$(Push_Swap_Files:.c=.o)
+
+All_Obj			=	$(Stack_Obj) \
+					$(Stats_Obj) \
+					$(Funcs_Obj) \
+					$(Machine_Obj) \
+					$(Sort_Obj) \
+					$(Ui_Obj) \
+					$(Push_Swap_Obj)
+
 # ------------------------- compile rules -------------------------
 
 # None
@@ -190,7 +212,7 @@ all: $(NAME)
 
 re: fclean all
 
-$(NAME): create_testdir libft ftprintf
+$(NAME): libft ftprintf
 	$(Compile) $(CFlags) $(Push_Swap_Main) $(All_Src_Files) \
 	$(Include_All) $(LIBRARIES) \
 	$(Out) $(This_Dir)/$(NAME)
@@ -202,6 +224,9 @@ clean: ftprintf_clean libft_clean
 	rm -f $(Push_Swap_Obj) $@
 
 ftprintf:
+	if [ -f $(Library_Dir)/$(PRINTF) ]; then \
+		mv $(Library_Dir)/$(PRINTF) $(Printf_Dir)/$(PRINTF); \
+	fi
 	cd $(Printf_Dir) && $(MAKE)
 	mv $(Printf_Dir)/$(PRINTF) $(Library_Dir)/$(PRINTF)
 
@@ -218,6 +243,9 @@ ftprintf_clean:
 	cd $(Printf_Dir) && $(MAKE) clean
 
 libft:
+	if [ -f $(Library_Dir)/$(LIBFT) ]; then \
+		mv $(Library_Dir)/$(LIBFT) $(Libft_Dir)/$(LIBFT); \
+	fi
 	cd $(Libft_Dir) && $(MAKE)
 	mv $(Libft_Dir)/$(LIBFT) $(Library_Dir)/$(LIBFT)
 
@@ -244,6 +272,41 @@ create_testdir:
 	if [ ! -e "$(Test_Dir)" ]; then \
 		mkdir "$(Test_Dir)"; \
 	fi
+
+# ------------------------- Compile Rules -------------------------
+
+$(Stack_Obj): %.o: %.c
+	$(Compile) $(CFlags) $(Stack_Files) $(Dont_link) \
+	$(Include_Stack) $< $(Out) $@
+	
+$(Stats_Obj): %.o: %.c
+	$(Compile) $(CFlags) $(Stats_Files) $(Dont_link) \
+	$(Include_Stats) $< $(Out) $@
+
+$(Funcs_Obj): %.o: %.c
+	$(Compile) $(CFlags) $(Funcs_Files) $(Dont_link) \
+	$(Include_Stats) $< $(Out) $@
+
+$(Machine_Obj): %.o: %.c
+	$(Compile) $(CFlags) $(Machine_Files) $(Dont_link) \
+	$(Include_SM) $(Include_Libft) $(Include_Printf) \
+	$(LIBRARIES) $< $(Out) $@
+
+$(Ui_Obj): %.o: %.c
+	$(Compile) $(CFlags) $(Ui_Files) $(Dont_link) \
+	$(Include_Ui) $(Include_Libft) $(Include_Printf) \
+	$(LIBRARIES) $< $(Out) $@
+
+$(Sort_Obj): %.o: %.c
+	$(Compile) $(CFlags) $(Sort_Files) $(Dont_link) \
+	$(Include_Sort) $(Include_SM) $(Include_Libft) $(Include_Printf) \
+	$(LIBRARIES) $< $(Out) $@
+
+$(Push_Swap_Obj): %.o: %.c
+	$(Compile) $(CFlags) $(Push_Swap_Files) $(Dont_link) \
+	$(Include_All) \
+	$(LIBRARIES) $< $(Out) $@
+
 
 # ------------------------- PHONY -------------------------
 

@@ -13,8 +13,8 @@
 // --- includes ---
 
 #include "./ui.h"
-#include "./libraries/ft_printf/ft_printf.h"
-#include "./libraries/libft/libft.h"
+#include "../libraries/ft_printf/ft_printf.h"
+#include "../libraries/libft/libft.h"
 
 // --- define ---
 

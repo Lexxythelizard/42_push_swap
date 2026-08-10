@@ -212,7 +212,7 @@ all: $(NAME)
 
 re: fclean all
 
-$(NAME): libft ftprintf $(All_Obj) $(Main_Obj)
+$(NAME): $(Library_Dir)/$(LIBFT) $(Library_Dir)/$(PRINTF) $(All_Obj) $(Main_Obj)
 	$(Compile) $(CFlags) $(Main_Obj) $(All_Obj) \
 	$(Include_All) $(LIBRARIES) \
 	$(Out) $(This_Dir)/$(NAME)
@@ -223,12 +223,7 @@ fclean: ftprintf_fclean libft_fclean clean
 clean: ftprintf_clean libft_clean
 	rm -f $(Main_Obj) $(Push_Swap_Obj) $@
 
-ftprintf:
-	if [ -f $(Library_Dir)/$(PRINTF) ]; then \
-		mv $(Library_Dir)/$(PRINTF) $(Printf_Dir)/$(PRINTF); \
-	fi
-	cd $(Printf_Dir) && $(MAKE)
-	mv $(Printf_Dir)/$(PRINTF) $(Library_Dir)/$(PRINTF)
+ftprintf: $(Library_Dir)/$(PRINTF)
 
 ftprintf_re:
 	rm -f $(Library_Dir)/$(PRINTF)
@@ -242,12 +237,7 @@ ftprintf_fclean:
 ftprintf_clean:
 	cd $(Printf_Dir) && $(MAKE) clean
 
-libft:
-	if [ -f $(Library_Dir)/$(LIBFT) ]; then \
-		mv $(Library_Dir)/$(LIBFT) $(Libft_Dir)/$(LIBFT); \
-	fi
-	cd $(Libft_Dir) && $(MAKE)
-	mv $(Libft_Dir)/$(LIBFT) $(Library_Dir)/$(LIBFT)
+libft: $(Library_Dir)/$(LIBFT)
 
 libft_re:
 	rm -f $(Library_Dir)/$(LIBFT)
@@ -272,6 +262,22 @@ create_testdir:
 	if [ ! -e "$(Test_Dir)" ]; then \
 		mkdir "$(Test_Dir)"; \
 	fi
+
+# ------------------------- Library files -------------------------
+
+$(Library_Dir)/$(LIBFT):
+	if [ -f $(Library_Dir)/$(LIBFT) ]; then \
+		mv $(Library_Dir)/$(LIBFT) $(Libft_Dir)/$(LIBFT); \
+	fi
+	cd $(Libft_Dir) && $(MAKE)
+	mv $(Libft_Dir)/$(LIBFT) $(Library_Dir)/$(LIBFT)
+
+$(Library_Dir)/$(PRINTF):
+	if [ -f $(Library_Dir)/$(PRINTF) ]; then \
+		mv $(Library_Dir)/$(PRINTF) $(Printf_Dir)/$(PRINTF); \
+	fi
+	cd $(Printf_Dir) && $(MAKE)
+	mv $(Printf_Dir)/$(PRINTF) $(Library_Dir)/$(PRINTF)
 
 # ------------------------- Compile Rules -------------------------
 

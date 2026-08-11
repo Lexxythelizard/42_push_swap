@@ -13,9 +13,16 @@
 // --- includes ---
 
 #include "../stackmachine/machine.h"
-#include "./libraries/libft/libft.h"
+#include "../ui/ui.h"
+#include "../libraries/libft/libft.h"
+#include "./benchmarks.h"
 
 // --- define ---
+
+static void	print_first_line(t_stack_machine *machine);
+static void	print_second_and_third_line(t_stack_machine *machine);
+static void	print_fourth_line(t_stack_machine *machine);
+static void	print_fifth_line(t_stack_machine *machine);
 
 /*
 Prints out the bench statistics
@@ -41,10 +48,10 @@ static void	print_first_line(t_stack_machine *machine)
 	ft_putstr_fd(BENCH_STR, STDERR);
 	ft_putstr_fd(DISORDER_STR, STDERR);
 	ft_putnbr_fd(pre_comma, STDERR);
-	ft_putchr_fd(DOT, STDERR);
+	ft_putchar_fd(DOT, STDERR);
 	ft_putnbr_fd(post_comma, STDERR);
-	ft_putchr_fd(PERCENT, STDERR);
-	ft_putchr_fd(NL, STDERR);
+	ft_putchar_fd(PERCENT, STDERR);
+	ft_putchar_fd(NL, STDERR);
 }
 
 static void	print_second_and_third_line(t_stack_machine *machine)
@@ -58,7 +65,7 @@ static void	print_second_and_third_line(t_stack_machine *machine)
 	ft_putstr_fd(BENCH_STR, STDERR);
 	ft_putstr_fd(TOTAL_OPS_STR, STDERR);
 	ft_putnbr_fd(stats -> total_ops, STDERR);
-	ft_putchr_fd(NL, STDERR);
+	ft_putchar_fd(NL, STDERR);
 }
 
 static void	print_fourth_line(t_stack_machine *machine)
@@ -67,28 +74,22 @@ static void	print_fourth_line(t_stack_machine *machine)
 
 	stats = &(machine -> stats);
 	ft_putstr_fd(BENCH_STR, STDERR);
-
 	ft_putstr_fd(SA_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[SA], STDERR);
-
-	ft_putstr_fd(SB_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd((SPACE_SPACE_STR SB_STR), STDERR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[SB], STDERR);
-
-	ft_putstr_fd(SS_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd((SPACE_SPACE_STR SS_STR), STDERR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[SS], STDERR);
-
-	ft_putstr_fd(PA_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd((SPACE_SPACE_STR PA_STR), STDERR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[PA], STDERR);
-
-	ft_putstr_fd(PB_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd((SPACE_SPACE_STR PB_STR), STDERR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[PB], STDERR);
-
-	ft_putchr_fd(NL, STDERR);
+	ft_putchar_fd(NL, STDERR);
 }
 
 static void	print_fifth_line(t_stack_machine *machine)
@@ -97,30 +98,23 @@ static void	print_fifth_line(t_stack_machine *machine)
 
 	stats = &(machine -> stats);
 	ft_putstr_fd(BENCH_STR, STDERR);
-
 	ft_putstr_fd(RA_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[RA], STDERR);
-
-	ft_putstr_fd(RB_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd((SPACE_SPACE_STR RB_STR), STDERR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[RB], STDERR);
-
-	ft_putstr_fd(RR_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd((SPACE_SPACE_STR RR_STR), STDERR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[RR], STDERR);
-
-	ft_putstr_fd(RRA_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd((SPACE_SPACE_STR RRA_STR), STDERR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[RRA], STDERR);
-
-	ft_putstr_fd(RRB_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd((SPACE_SPACE_STR RRB_STR), STDERR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[RRB], STDERR);
-
-	ft_putstr_fd(RRR_STR, STDERR);
-	ft_putstr_fd(COL_SPACE_STR);
+	ft_putstr_fd((SPACE_SPACE_STR RRR_STR), STDERR);
+	ft_putstr_fd(COL_SPACE_STR, STDERR);
 	ft_putnbr_fd(stats -> calls[RRR], STDERR);
-
-	ft_putchr_fd(NL, STDERR);
+	ft_putchar_fd(NL, STDERR);
 }

@@ -17,6 +17,7 @@
 # include "./stackmachine/machine.h"
 # include "./sort/sort.h"
 # include "./ui/ui.h"
+# include "./benchmarks/benchmarks.h"
 
 // --- prototypes ---
 

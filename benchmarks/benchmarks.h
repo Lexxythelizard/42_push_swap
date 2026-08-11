@@ -16,6 +16,7 @@
 // --- Makros ---
 
 # define COL_SPACE_STR ":  "
+# define SPACE_SPACE_STR "  "
 # define NL 10
 # define DOT 46
 # define PERCENT 37

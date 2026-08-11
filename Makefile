@@ -54,9 +54,9 @@ Ui_Dir			=	$(This_Dir)/ui
 
 Sort_Dir		=	$(This_Dir)/sort
 
-Test_Dir		=	$(This_Dir)/test_programs
+Bench_Dir		=	$(This_Dir)/benchmarks
 
-Main_Dir		=	$(This_Dir)/test_files
+Test_Dir		=	$(This_Dir)/test_programs
 
 Include_This	=	-I $(This_Dir)
 
@@ -76,18 +76,19 @@ Include_Ui		=	-I $(Ui_Dir)
 
 Include_Sort	=	-I $(Sort_Dir)
 
+Include_Bench	=	-I $(Bench_Dir)
+
 Include_SM		=	$(Include_Stack) \
 					$(Include_Stats) \
 					$(Include_Funcs) \
 					$(Include_Machine)
-
-Include_Test	=	-I $(Main_Dir)
 
 Include_All		=	$(Include_SM) \
 					$(Include_Ui) \
 					$(Include_Sort) \
 					$(Include_Libft) \
 					$(Include_Printf) \
+					$(Include_Bench) \
 					$(Include_This)
 
 # ------------------------- library files -------------------------
@@ -146,7 +147,6 @@ Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_anysort_utilities_execute_rotation_b.c \
 					$(Sort_Dir)/sort_anysort_utilities_execute_swap_elements_a.c \
 					$(Sort_Dir)/sort_anysort_utilities_execute_swap_elements_b.c \
-					$(Sort_Dir)/sort_benchmarks.c \
 					$(Sort_Dir)/sort_complex_mergesort_base.c \
 					$(Sort_Dir)/sort_complex_mergesort_merge_to_side_x.c \
 					$(Sort_Dir)/sort_complex_mergesort_efficiency.c \
@@ -165,6 +165,8 @@ Sort_Files	=		$(Sort_Dir)/sort_adaptive.c \
 					$(Sort_Dir)/sort_simple_min_extraction.c \
 					$(Sort_Dir)/sort_simple_min_extraction_efficiency.c \
 					$(Sort_Dir)/sort_utillities_scan.c
+
+Bench_Files	=		$(Bench_Dir)/benchmarks_print.c
 
 Push_Swap_Files	=	$(This_Dir)/interface_sort.c \
 					$(This_Dir)/interface_stackmachine.c \
@@ -194,6 +196,8 @@ Ui_Obj			=	$(Ui_Files:.c=.o)
 
 Sort_Obj		=	$(Sort_Files:.c=.o)
 
+Bench_Obj		=	$(Bench_Files:.c=.o)
+
 Push_Swap_Obj	=	$(Push_Swap_Files:.c=.o)
 
 All_Obj			=	$(Stack_Obj) \
@@ -202,6 +206,7 @@ All_Obj			=	$(Stack_Obj) \
 					$(Machine_Obj) \
 					$(Sort_Obj) \
 					$(Ui_Obj) \
+					$(Bench_Obj) \
 					$(Push_Swap_Obj)
 
 Main_Obj		=	$(Push_Swap_Main:.c=.o)
@@ -221,7 +226,7 @@ fclean: ftprintf_fclean libft_fclean clean
 	rm -f $(NAME)
 
 clean: ftprintf_clean libft_clean
-	rm -f $(Main_Obj) $(Push_Swap_Obj) $@
+	rm -f $(Main_Obj) $(All_Obj) $@
 
 ftprintf: $(Library_Dir)/$(PRINTF)
 
@@ -306,6 +311,12 @@ $(Ui_Obj): %.o: %.c
 $(Sort_Obj): %.o: %.c
 	$(Compile) $(CFlags) $(Dont_link) \
 	$(Include_Sort) $(Include_SM) $(Include_Libft) $(Include_Printf) \
+	$(LIBRARIES) $< $(Out) $@
+
+$(Bench_Obj): %.o: %.c
+	$(Compile) $(CFlags) $(Dont_link) \
+	$(Include_Bench) $(Include_SM) $(Include_Ui) \
+	$(Include_Libft) $(Include_Printf) \
 	$(LIBRARIES) $< $(Out) $@
 
 $(Push_Swap_Obj): %.o: %.c

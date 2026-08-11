@@ -164,11 +164,6 @@ int		min_extraction_adaption_sort(
 int		min_extraction_sort_sub_sort_huge_stack_more_efficiently(
 			t_stack_machine *machine);
 
-// sort_benchmarks.c
-
-void	print_bench(
-			t_stack_machine *machine);
-
 // sort_anysort_sort_small_stacks_two_and_three.c
 
 int		anysort_sort_two(

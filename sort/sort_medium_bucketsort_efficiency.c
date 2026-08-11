@@ -51,6 +51,8 @@ void	bucketsort_a_smaller_stack_more_efficient(
 	int	len;
 
 	len = machine -> stacks[0].len;
+	if (len <= 3)
+		arr_arr_int_free(bucket_map);
 	if ((len <= 1) || (len >= 9))
 		return ;
 	if (len == 2)
@@ -61,6 +63,7 @@ void	bucketsort_a_smaller_stack_more_efficient(
 	bucketsort_six_elements(machine, bucket_map);
 	bucketsort_seven_elements(machine, bucket_map);
 	bucketsort_eight_elements(machine, bucket_map);
+	arr_arr_int_free(bucket_map);
 }
 
 // --- utility functions ---

@@ -24,9 +24,13 @@ TODO:	rewrite comments
 
 void	sort_simple(t_stack_machine *machine)
 {
-	int	len;
+	int		len;
+	t_stack	*stack_a;
 
 	len = machine -> stacks[0].len;
+	stack_a = &(machine -> stacks[0]);
+	if (len == stack_count_ascending_in_range(stack_a, 0, len))
+		return ;
 	if (len == 4)
 		return ((void)(anysort_sort_four(machine)));
 	if (len == 5)

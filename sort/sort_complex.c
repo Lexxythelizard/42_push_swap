@@ -24,9 +24,13 @@ TODO:	write comments
 
 void	sort_complex(t_stack_machine *machine)
 {
-	int	len;
+	int		len;
+	t_stack	*stack_a;
 
 	len = machine -> stacks[0].len;
+	stack_a = &(machine -> stacks[0]);
+	if (len == stack_count_ascending_in_range(stack_a, 0, len))
+		return ;
 	if (len == 3)
 		return ((void)(anysort_sort_three(machine)));
 	if (len == 4)
